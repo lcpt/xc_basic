@@ -1,0 +1,5 @@
+SET(SOURCES rtfAlatex)
+FOREACH(source ${SOURCES})
+  ADD_EXECUTABLE(${source} ${source})
+  TARGET_LINK_LIBRARIES(${source} xc_basic)
+ENDFOREACH(source)

@@ -1,0 +1,5 @@
+SET(SOURCES en_letra xnum2str xel_decomp)
+FOREACH(source ${SOURCES})
+  ADD_EXECUTABLE(${source} ${source})
+  TARGET_LINK_LIBRARIES(${source} xc_basic)
+ENDFOREACH(source)

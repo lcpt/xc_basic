@@ -1,0 +1,2 @@
+- Protestar si no encuentra med.h (de libmed-dev).
+- Sustituir la versión «local» de kdtree++ por la que viene con Debian 7.

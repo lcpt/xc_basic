@@ -1,0 +1,204 @@
+This is TeX, Version 3.1415N (C version 6.1) (format=latex 98.11.18)  10 JAN 1999 14:31
+**simbolos.tex
+(simbolos.tex
+LaTeX2e <1994/06/01> patch level 3
+(/usr/lib/texmf/tex/latex/latex/article.cls
+Document Class: article 1994/07/13 v1.2u Standard LaTeX document class
+(/usr/lib/texmf/tex/latex/latex/size10.clo
+File: size10.clo 1994/07/13 v1.2u Standard LaTeX file (size option)
+)
+\c@part=\count82
+\c@section=\count83
+\c@subsection=\count84
+\c@subsubsection=\count85
+\c@paragraph=\count86
+\c@subparagraph=\count87
+\c@figure=\count88
+\c@table=\count89
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/lib/texmf/tex/latex/babel/babel.sty
+Package: babel 1994/06/24 v3.4e The Babel package
+
+(/usr/lib/texmf/tex/latex/babel/spanish.sty
+(/usr/lib/texmf/tex/latex/babel/babel.def
+File: babel.def 1994/06/24 v3.4e Babel common definitions
+
+(/usr/lib/texmf/tex/latex/babel/switch.def
+File: lthyphen.cfg 
+File: switch.def 1994/06/24 v3.4e Babel language switching mechanism
+)
+\babel@savecnt=\count90
+)
+File: spanish.sty 1994/06/26 v3.3d Spanish support from the babel system
+
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `Spanish'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+\l@spanish = a dialect from \language0
+Warning: You are using encoding OT1 instead of T1.
+Some word breaks will not be found.
+)) (simbolos.aux)
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Info: Redefining \" on input line 3.
+LaTeX Info: Redefining \" on input line 3.
+ [1
+
+] [2]
+Missing character: There is no ^^80 in font cmr10!
+Missing character: There is no ^^81 in font cmr10!
+Missing character: There is no ^^82 in font cmr10!
+Missing character: There is no ^^83 in font cmr10!
+Missing character: There is no ^^84 in font cmr10!
+Missing character: There is no ^^85 in font cmr10!
+Missing character: There is no ^^86 in font cmr10!
+Missing character: There is no ^^87 in font cmr10!
+Missing character: There is no ^^88 in font cmr10!
+Missing character: There is no ^^89 in font cmr10!
+Missing character: There is no ^^8a in font cmr10!
+Missing character: There is no ^^8b in font cmr10!
+Missing character: There is no ^^8c in font cmr10!
+Missing character: There is no ^^8d in font cmr10!
+Missing character: There is no ^^8e in font cmr10!
+Missing character: There is no ^^8f in font cmr10!
+Missing character: There is no ^^90 in font cmr10!
+Missing character: There is no ^^91 in font cmr10!
+Missing character: There is no ^^92 in font cmr10!
+Missing character: There is no ^^93 in font cmr10!
+Missing character: There is no ^^94 in font cmr10!
+Missing character: There is no ^^95 in font cmr10!
+Missing character: There is no ^^96 in font cmr10!
+ [3]
+Missing character: There is no ^^97 in font cmr10!
+Missing character: There is no ^^98 in font cmr10!
+Missing character: There is no ^^99 in font cmr10!
+Missing character: There is no ^^9a in font cmr10!
+Missing character: There is no ^^9b in font cmr10!
+Missing character: There is no ^^9c in font cmr10!
+Missing character: There is no ^^9d in font cmr10!
+Missing character: There is no ^^9e in font cmr10!
+Missing character: There is no ^^9f in font cmr10!
+Missing character: There is no ^^a0 in font cmr10!
+Missing character: There is no ^^a1 in font cmr10!
+Missing character: There is no ^^a2 in font cmr10!
+Missing character: There is no ^^a3 in font cmr10!
+Missing character: There is no ^^a4 in font cmr10!
+Missing character: There is no ^^a5 in font cmr10!
+Missing character: There is no ^^a6 in font cmr10!
+Missing character: There is no ^^a7 in font cmr10!
+Missing character: There is no ^^a8 in font cmr10!
+Missing character: There is no ^^a9 in font cmr10!
+Missing character: There is no ^^aa in font cmr10!
+Missing character: There is no ^^ab in font cmr10!
+Missing character: There is no ^^ac in font cmr10!
+Missing character: There is no ^^ad in font cmr10!
+Missing character: There is no ^^ae in font cmr10!
+Missing character: There is no ^^af in font cmr10!
+Missing character: There is no ^^b0 in font cmr10!
+Missing character: There is no ^^b1 in font cmr10!
+Missing character: There is no ^^b2 in font cmr10!
+Missing character: There is no ^^b3 in font cmr10!
+Missing character: There is no ^^b4 in font cmr10!
+Missing character: There is no ^^b5 in font cmr10!
+Missing character: There is no ^^b6 in font cmr10!
+Missing character: There is no ^^b7 in font cmr10!
+Missing character: There is no ^^b8 in font cmr10!
+Missing character: There is no ^^b9 in font cmr10!
+Missing character: There is no ^^ba in font cmr10!
+Missing character: There is no ^^bb in font cmr10!
+Missing character: There is no ^^bc in font cmr10!
+Missing character: There is no ^^bd in font cmr10!
+Missing character: There is no ^^be in font cmr10!
+Missing character: There is no ^^bf in font cmr10!
+Missing character: There is no ^^c0 in font cmr10!
+Missing character: There is no ^^c1 in font cmr10!
+Missing character: There is no ^^c2 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^c4 in font cmr10!
+Missing character: There is no ^^c5 in font cmr10!
+Missing character: There is no ^^c6 in font cmr10!
+Missing character: There is no ^^c7 in font cmr10!
+Missing character: There is no ^^c8 in font cmr10!
+ [4]
+Missing character: There is no ^^c9 in font cmr10!
+Missing character: There is no ^^ca in font cmr10!
+Missing character: There is no ^^cb in font cmr10!
+Missing character: There is no ^^cc in font cmr10!
+Missing character: There is no ^^cd in font cmr10!
+Missing character: There is no ^^ce in font cmr10!
+Missing character: There is no ^^cf in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^d1 in font cmr10!
+Missing character: There is no ^^d2 in font cmr10!
+Missing character: There is no ^^d3 in font cmr10!
+Missing character: There is no ^^d4 in font cmr10!
+Missing character: There is no ^^d5 in font cmr10!
+Missing character: There is no ^^d6 in font cmr10!
+Missing character: There is no ^^d7 in font cmr10!
+Missing character: There is no ^^d8 in font cmr10!
+Missing character: There is no ^^d9 in font cmr10!
+Missing character: There is no ^^da in font cmr10!
+Missing character: There is no ^^db in font cmr10!
+Missing character: There is no ^^dc in font cmr10!
+Missing character: There is no ^^dd in font cmr10!
+Missing character: There is no ^^de in font cmr10!
+Missing character: There is no ^^df in font cmr10!
+Missing character: There is no ^^e0 in font cmr10!
+Missing character: There is no ^^e1 in font cmr10!
+Missing character: There is no ^^e2 in font cmr10!
+Missing character: There is no ^^e3 in font cmr10!
+Missing character: There is no ^^e4 in font cmr10!
+Missing character: There is no ^^e5 in font cmr10!
+Missing character: There is no ^^e6 in font cmr10!
+Missing character: There is no ^^e7 in font cmr10!
+Missing character: There is no ^^e8 in font cmr10!
+Missing character: There is no ^^e9 in font cmr10!
+Missing character: There is no ^^ea in font cmr10!
+Missing character: There is no ^^eb in font cmr10!
+Missing character: There is no ^^ec in font cmr10!
+Missing character: There is no ^^ed in font cmr10!
+Missing character: There is no ^^ee in font cmr10!
+Missing character: There is no ^^ef in font cmr10!
+Missing character: There is no ^^f0 in font cmr10!
+Missing character: There is no ^^f1 in font cmr10!
+Missing character: There is no ^^f2 in font cmr10!
+Missing character: There is no ^^f3 in font cmr10!
+Missing character: There is no ^^f4 in font cmr10!
+Missing character: There is no ^^f5 in font cmr10!
+Missing character: There is no ^^f6 in font cmr10!
+Missing character: There is no ^^f7 in font cmr10!
+Missing character: There is no ^^f8 in font cmr10!
+Missing character: There is no ^^f9 in font cmr10!
+Missing character: There is no ^^fa in font cmr10!
+ [5]
+Missing character: There is no ^^fb in font cmr10!
+Missing character: There is no ^^fc in font cmr10!
+Missing character: There is no ^^fd in font cmr10!
+Missing character: There is no ^^fe in font cmr10!
+Missing character: There is no ^^ff in font cmr10!
+ [6] (simbolos.aux) ) 
+Here is how much of TeX's memory you used:
+ 396 strings out of 10934
+ 4263 string characters out of 67155
+ 50621 words of memory out of 262141
+ 3307 multiletter control sequences out of 9500
+ 3640 words of font info for 14 fonts, out of 200000 for 512
+ 52 hyphenation exceptions out of 607
+ 22i,5n,18p,205b,108s stack positions out of 300i,40n,60p,3000b,4000s
+
+Output written on simbolos.dvi (6 pages, 3724 bytes).

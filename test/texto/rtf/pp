@@ -1,0 +1,2676 @@
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: panose argumento: 
+cadena:  02020603050405020304
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: f argumento: 0
+palabra de control: froman argumento: 
+palabra de control: fcharset argumento: 0
+palabra de control: fprq argumento: 2
+cadena: Times New Roman;
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fonttbl argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: colortbl argumento: 
+cadena: ;
+palabra de control: red argumento: 0
+palabra de control: green argumento: 0
+palabra de control: blue argumento: 0
+cadena: ;
+palabra de control: red argumento: 0
+palabra de control: green argumento: 0
+palabra de control: blue argumento: 255
+cadena: ;
+palabra de control: red argumento: 0
+palabra de control: green argumento: 255
+palabra de control: blue argumento: 255
+cadena: ;
+palabra de control: red argumento: 0
+palabra de control: green argumento: 255
+palabra de control: blue argumento: 0
+cadena: ;
+
+palabra de control: red argumento: 255
+palabra de control: green argumento: 0
+palabra de control: blue argumento: 255
+cadena: ;
+palabra de control: red argumento: 255
+palabra de control: green argumento: 0
+palabra de control: blue argumento: 0
+cadena: ;
+palabra de control: red argumento: 255
+palabra de control: green argumento: 255
+palabra de control: blue argumento: 0
+cadena: ;
+palabra de control: red argumento: 255
+palabra de control: green argumento: 255
+palabra de control: blue argumento: 255
+cadena: ;
+palabra de control: red argumento: 0
+palabra de control: green argumento: 0
+palabra de control: blue argumento: 128
+cadena: ;
+palabra de control: red argumento: 0
+palabra de control: green argumento: 128
+palabra de control: blue argumento: 128
+cadena: ;
+palabra de control: red argumento: 0
+palabra de control: green argumento: 128
+palabra de control: blue argumento: 0
+cadena: ;
+palabra de control: red argumento: 128
+palabra de control: green argumento: 0
+palabra de control: blue argumento: 128
+cadena: ;
+palabra de control: red argumento: 128
+palabra de control: green argumento: 0
+palabra de control: blue argumento: 0
+cadena: ;
+palabra de control: red argumento: 128
+palabra de control: green argumento: 128
+palabra de control: blue argumento: 0
+cadena: ;
+palabra de control: red argumento: 128
+palabra de control: green argumento: 128
+palabra de control: blue argumento: 128
+cadena: ;
+
+palabra de control: red argumento: 192
+palabra de control: green argumento: 192
+palabra de control: blue argumento: 192
+cadena: ;
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: fs argumento: 20
+palabra de control: lang argumento: 3082
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: snext argumento: 0
+cadena:  Normal;
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: cs argumento: 10
+cadena:  
+palabra de control: additive argumento: 
+cadena:  Default Paragraph Font;
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: s argumento: 15
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: b argumento: 
+palabra de control: ul argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: sbasedon argumento: 0
+cadena:  
+palabra de control: snext argumento: 15
+cadena:  Body Text;
+Salida latex: 
+
+Entrada RTF: 
+cadena: 
+
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: sbasedon argumento: 0
+cadena:  
+palabra de control: snext argumento: 16
+cadena:  Body Text 2;
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: stylesheet argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: leveltext argumento: 
+cadena: 
+
+caracter hexadecimal: '
+  argumento: 01
+
+cadena: -;
+Salida latex: 
+
+-;
+Entrada RTF: 
+palabra de control: levelnumbers argumento: 
+cadena: ;
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: listlevel argumento: 
+palabra de control: levelnfc argumento: 23
+palabra de control: leveljc argumento: 0
+palabra de control: levelfollow argumento: 0
+palabra de control: levelstartat argumento: 4
+palabra de control: levelspace argumento: 0
+palabra de control: levelindent argumento: 0
+palabra de control: fbias argumento: 0
+cadena:  
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+cadena:  
+Salida latex: 
+  
+Entrada RTF: 
+palabra de control: listname argumento: 
+cadena:  ;
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: list argumento: 
+palabra de control: listtemplateid argumento: -314786856
+palabra de control: listsimple argumento: 
+palabra de control: listid argumento: 504170929
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: listtable argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: listoverride argumento: 
+palabra de control: listid argumento: 504170929
+palabra de control: listoverridecount argumento: 0
+palabra de control: ls argumento: 1
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: listoverridetable argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: title argumento: 
+cadena:  CATA DE LA REUNION MANTENIDA EL DIA 2 DE SEPTIEMBRE DE 1998 CON MOTIVO D LAS OBRAS DE REPARACION DEL PIE DEL TALUD SUR DEL VERTEDERO DE SANTOVENIA DE LA VALDONCINA
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: author argumento: 
+cadena:  Juan Pablo P
+caracter hexadecimal: '
+  argumento: e9
+
+cadena: rez Tato
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: operator argumento: 
+cadena:  Juan Pablo P
+caracter hexadecimal: '
+  argumento: e9
+
+cadena: rez Tato
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: creatim argumento: 
+palabra de control: yr argumento: 1998
+palabra de control: mo argumento: 9
+palabra de control: dy argumento: 9
+palabra de control: hr argumento: 11
+palabra de control: min argumento: 27
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: revtim argumento: 
+palabra de control: yr argumento: 1998
+palabra de control: mo argumento: 9
+palabra de control: dy argumento: 9
+palabra de control: hr argumento: 11
+palabra de control: min argumento: 27
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: printim argumento: 
+palabra de control: yr argumento: 1998
+palabra de control: mo argumento: 9
+palabra de control: dy argumento: 9
+palabra de control: hr argumento: 11
+palabra de control: min argumento: 26
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: version argumento: 2
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: edmins argumento: 0
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: nofpages argumento: 1
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: nofwords argumento: 782
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: nofchars argumento: 4463
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: company argumento: 
+cadena:  TATOSOFT
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: nofcharsws argumento: 5480
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: vern argumento: 73
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: info argumento: 
+cadena: 
+
+cadena: 
+
+Salida latex: 
+
+
+
+Entrada RTF: 
+palabra de control: pntxta argumento: 
+cadena:  .
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pnseclvl argumento: 1
+palabra de control: pnucrm argumento: 
+palabra de control: pnstart argumento: 1
+palabra de control: pnindent argumento: 720
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxta argumento: 
+cadena:  .
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pnseclvl argumento: 2
+palabra de control: pnucltr argumento: 
+palabra de control: pnstart argumento: 1
+palabra de control: pnindent argumento: 720
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxta argumento: 
+cadena:  .
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pnseclvl argumento: 3
+palabra de control: pndec argumento: 
+palabra de control: pnstart argumento: 1
+palabra de control: pnindent argumento: 720
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxta argumento: 
+cadena:  )
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pnseclvl argumento: 4
+palabra de control: pnlcltr argumento: 
+palabra de control: pnstart argumento: 1
+palabra de control: pnindent argumento: 720
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  (
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxta argumento: 
+cadena:  )
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pnseclvl argumento: 5
+cadena: 
+
+palabra de control: pndec argumento: 
+palabra de control: pnstart argumento: 1
+palabra de control: pnindent argumento: 720
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  (
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxta argumento: 
+cadena:  )
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pnseclvl argumento: 6
+palabra de control: pnlcltr argumento: 
+palabra de control: pnstart argumento: 1
+palabra de control: pnindent argumento: 720
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  (
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxta argumento: 
+cadena:  )
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pnseclvl argumento: 7
+palabra de control: pnlcrm argumento: 
+palabra de control: pnstart argumento: 1
+palabra de control: pnindent argumento: 720
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  (
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxta argumento: 
+cadena:  )
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pnseclvl argumento: 8
+palabra de control: pnlcltr argumento: 
+palabra de control: pnstart argumento: 1
+palabra de control: pnindent argumento: 720
+palabra de control: pnhang argumento: 
+cadena: 
+
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  (
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntxta argumento: 
+cadena:  )
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pnseclvl argumento: 9
+palabra de control: pnlcrm argumento: 
+palabra de control: pnstart argumento: 1
+palabra de control: pnindent argumento: 720
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: 
+ACTA DE LA REUNION MANTENIDA EL DIA 2 DE SEPTIEMBRE DE 1998 CON MOTIVO DE LAS OBRAS DE REPARACION DEL PIE DEL TALUD SUR DEL VERTEDERO DE SANTOVENIA DE LA VALDONCINA.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+
+ACTA DE LA REUNION MANTENIDA EL DIA 2 DE SEPTIEMBRE DE 1998 CON MOTIVO DE LAS OBRAS DE REPARACION DEL PIE DEL TALUD SUR DEL VERTEDERO DE SANTOVENIA DE LA VALDONCINA.
+ 
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  Lugar: Delegaci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n en Le
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de ONYX,SCL .
+
+palabra de control: par argumento: 
+cadena:  Fecha: 2 de septiembre de 1998.
+
+palabra de control: par argumento: 
+cadena:  Hora: 10.00 horas.
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  Asistentes:
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  Por parte de ONYX,SCL.:
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+palabra de control: tab argumento: 
+cadena:  -D. Sylvain Cortes.
+
+palabra de control: par argumento: 
+cadena:  
+palabra de control: tab argumento: 
+cadena:  -D. Jos
+caracter hexadecimal: '
+  argumento: e9
+
+cadena:  A. Ib
+caracter hexadecimal: '
+  argumento: e1
+
+caracter hexadecimal: '
+  argumento: f1
+
+cadena: ez.
+
+palabra de control: par argumento: 
+cadena:  
+palabra de control: tab argumento: 
+cadena:  -D. Jos
+caracter hexadecimal: '
+  argumento: e9
+
+cadena:  Torres.
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  Por parte de E.R. Ingenier
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: a Civil y Arquitectura,S.L.:
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+palabra de control: tab argumento: 
+cadena:  -D
+caracter hexadecimal: '
+  argumento: aa
+
+cadena:  . Laura L
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: pez Mascu
+caracter hexadecimal: '
+  argumento: f1
+
+cadena: ano, Directora de las Obras.
+
+palabra de control: par argumento: 
+cadena:  
+palabra de control: tab argumento: 
+cadena:  -D. Jos
+caracter hexadecimal: '
+  argumento: e9
+
+cadena:  I. Mart
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: nez Fondevila.
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  Los asuntos tratados fueron:
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+ Lugar: Delegación en León de ONYX,SCL .
+ Fecha: 2 de septiembre de 1998.
+ Hora: 10.00 horas.
+ 
+ Asistentes:
+ 
+ Por parte de ONYX,SCL.:
+ 
+  -D. Sylvain Cortes.
+  -D. José A. Ibáñez.
+  -D. José Torres.
+ 
+ Por parte de E.R. Ingeniería Civil y Arquitectura,S.L.:
+ 
+  -D . Laura López Mascuñano, Directora de las Obras.
+  -D. José I. Martínez Fondevila.
+ 
+ 
+ Los asuntos tratados fueron:
+ 
+ 
+ 
+Entrada RTF: 
+cadena: -D. Sylvain Cortes  pregunt
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  a la Direcci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de obra los motivos por los que al comienzo de las obras se realizaron penalizaciones a la empresa ACS, a lo que D
+caracter hexadecimal: '
+  argumento: aa
+
+cadena:  Laura L
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+pez contest
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  que no se estaban cumpliendo por parte de la empresa constructora los plazos parciales de trabajo marcados en el plan de trabajo. Se le solicit
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  a la Direcci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de obra las fechas y escritos correspondientes.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+-D. Sylvain Cortes  preguntó a la Dirección de obra los motivos por los que al comienzo de las obras se realizaron penalizaciones a la empresa ACS, a lo que D Laura Ló
+pez contestó que no se estaban cumpliendo por parte de la empresa constructora los plazos parciales de trabajo marcados en el plan de trabajo. Se le solicitó a la Dirección de obra las fechas y escritos correspondientes.
+ 
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  -Se solicit
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  copia de la hoja n
+caracter hexadecimal: '
+  argumento: ba
+
+cadena:  5.a del libro de ordenes que no se encontraba en poder de la propiedad as
+caracter hexadecimal: '
+  argumento: ed
+
+cadena:  como de las 
+caracter hexadecimal: '
+  argumento: fa
+
+cadena: ltimas redactadas.
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  -Se solicit
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:   la revisi
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de los gastos hasta el momento y del presupuesto remitido por ACS..
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  -Se solicit
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  a la Direcci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n d obra un informe sobre la ejecuci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de la balsa provisional de lixiviados .
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  -Se di
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  orden de de forma inmediata una l
+caracter hexadecimal: '
+  argumento: e1
+
+cadena: mina de pl
+caracter hexadecimal: '
+  argumento: e1
+
+cadena: stico que cubriera la zona fisurada del talud.
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  -Se coment
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  que de  los hitos colocados en el talud para el control de movimientos los situados en cabeza no se han movido, mientras que los colocados en las dos bermas inferiores han desaparecido al ejecutarse los trabajos de sustituci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+n del pie de talud por escollera. Estos datos se reflejar
+caracter hexadecimal: '
+  argumento: e1
+
+cadena: n en el correspondiente plano con los comentarios oportunos.
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ -Se solicitó copia de la hoja nº 5.a del libro de ordenes que no se encontraba en poder de la propiedad así como de las últimas redactadas.
+ 
+ -Se solicitó  la revisión de los gastos hasta el momento y del presupuesto remitido por ACS..
+ 
+ -Se solicitó a la Dirección d obra un informe sobre la ejecución de la balsa provisional de lixiviados .
+ 
+ -Se dió orden de de forma inmediata una lámina de plástico que cubriera la zona fisurada del talud.
+ 
+ -Se comentó que de  los hitos colocados en el talud para el control de movimientos los situados en cabeza no se han movido, mientras que los colocados en las dos bermas inferiores han desaparecido al ejecutarse los trabajos de sustitució
+n del pie de talud por escollera. Estos datos se reflejarán en el correspondiente plano con los comentarios oportunos.
+ 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  Se solicit
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ a E.R. un informe sobre las diferencias entre lo facturado por ACS y lo presupuestado para el d
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: a 3 de Septiembre.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ Se solicitó
+ a E.R. un informe sobre las diferencias entre lo facturado por ACS y lo presupuestado para el día 3 de Septiembre.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  Se coment
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+  que la colocaci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de la arqueta de toma de muestras a la entrada del pozo de lixiviados impide el correcto funcionamiento de la red de drenaje, se decide verlo en la visita a obra que se efectuar
+caracter hexadecimal: '
+  argumento: e1
+
+cadena:  despu
+caracter hexadecimal: '
+  argumento: e9
+
+cadena: s.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ Se comentó
+  que la colocación de la arqueta de toma de muestras a la entrada del pozo de lixiviados impide el correcto funcionamiento de la red de drenaje, se decide verlo en la visita a obra que se efectuará después.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+Se comenta el informe realizado por Ricardo Arribas, que fue solicitado a nivel informativo por E.R.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+Se comenta el informe realizado por Ricardo Arribas, que fue solicitado a nivel informativo por E.R.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: s argumento: 16
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: 
+D. Sylvain Cortes recibi
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  por parte de ACS los resultados de las pruebas de funcionamiento de la red de biogas efectuados por METSA y en los que faltan datos de la l
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: nea n
+caracter hexadecimal: '
+  argumento: ba
+
+cadena:  7 y en los que la suma de caudales por l
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: 
+nea no coincide con el total medido. Por este motivo no se consideran correctos y deber
+caracter hexadecimal: '
+  argumento: e1
+
+cadena: n solicitarse u
+n informe al respecto a ACS. En cuanto al hecho de que el horario de funcionamiento de la antorcha no coincida don el determinado a priori, de 8:00 a 20:00 horas la Direcci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de obra explico que el t
+caracter hexadecimal: '
+  argumento: e9
+
+cadena: cnico de METSA consultado indic
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ que era debido a la altura de la l
+caracter hexadecimal: '
+  argumento: e1
+
+cadena: mina de agua en el interior de la celda. Se solicitar
+caracter hexadecimal: '
+  argumento: e1
+
+cadena:  un informe sobre este tema a ACS.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+
+D. Sylvain Cortes recibió por parte de ACS los resultados de las pruebas de funcionamiento de la red de biogas efectuados por METSA y en los que faltan datos de la línea nº 7 y en los que la suma de caudales por lí
+nea no coincide con el total medido. Por este motivo no se consideran correctos y deberán solicitarse u
+n informe al respecto a ACS. En cuanto al hecho de que el horario de funcionamiento de la antorcha no coincida don el determinado a priori, de 8:00 a 20:00 horas la Dirección de obra explico que el técnico de METSA consultado indicó
+ que era debido a la altura de la lámina de agua en el interior de la celda. Se solicitará un informe sobre este tema a ACS.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: s argumento: 16
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: 
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: Se indic
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ que los albarane de suministro de escollera deben reflejar el peso total en un tiquet de b
+caracter hexadecimal: '
+  argumento: e1
+
+cadena: scula adem
+caracter hexadecimal: '
+  argumento: e1
+
+cadena: s de todos los datos solicitados por ONYX antes de proceder a su firma.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+Se indicó
+ que los albarane de suministro de escollera deben reflejar el peso total en un tiquet de báscula además de todos los datos solicitados por ONYX antes de proceder a su firma.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: s argumento: 16
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: 
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: Se coment
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ la necesidad de determinar los motivos de que pueda llegar agua al pie de talud mediante ensayos, ya sea la causa un posible defecto d ejecuci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n u otra cualquiera. Posiblemente comenzar
+caracter hexadecimal: '
+  argumento: e1
+
+cadena: n el pr
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: ximo lunes 7 d
+e septiembre de 1998 por parte de una empresa ajena determinada por ONYX.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+Se comentó
+ la necesidad de determinar los motivos de que pueda llegar agua al pie de talud mediante ensayos, ya sea la causa un posible defecto d ejecución u otra cualquiera. Posiblemente comenzarán el próximo lunes 7 d
+e septiembre de 1998 por parte de una empresa ajena determinada por ONYX.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: s argumento: 16
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: 
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: Se pregunt
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ a la Direcci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de Obra si iba a dar parte al Seguro del Colegio de Ingenieros de Caminos de los hechos ocurridos, presentando en este caso copia de ello a ONYX, as
+caracter hexadecimal: '
+  argumento: ed
+
+cadena:  como del seguro que cubre a esta obra de este Colegio.    
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+Se preguntó
+ a la Dirección de Obra si iba a dar parte al Seguro del Colegio de Ingenieros de Caminos de los hechos ocurridos, presentando en este caso copia de ello a ONYX, así como del seguro que cubre a esta obra de este Colegio.    
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:     
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+    
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  En este punto se incorpora a la reuni
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n  por parte de ACS:
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  -D. Jer
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: nimo Moreno.
+
+palabra de control: par argumento: 
+cadena:  -D. Juan Carlos Hidalgo.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ En este punto se incorpora a la reunión  por parte de ACS:
+ 
+ -D. Jerónimo Moreno.
+ -D. Juan Carlos Hidalgo.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  Se pregunt
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ a la empresa constructora  el volumen empleado hasta la fecha de escollera , ACS entreg
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  a ONYX,SCL y a la Direcci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de Obra un resumen econ
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: mico de los trabajos. 
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ Se preguntó
+ a la empresa constructora  el volumen empleado hasta la fecha de escollera , ACS entregó a ONYX,SCL y a la Dirección de Obra un resumen económico de los trabajos. 
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: s argumento: 16
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: 
+Se pregunt
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  a D. Jer
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: nimo Moreno por la inexistencia de los informes de hidroge
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: logo previstos en presupuesto y no realizados ni incluidos en las certificaciones,a lo que D. Jer
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: nimo contest
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  que seg
+caracter hexadecimal: '
+  argumento: fa
+
+cadena: n cre
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: a ser
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: 
+an realizados por parte de la Universidad de Le
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+
+Se preguntó a D. Jerónimo Moreno por la inexistencia de los informes de hidrogeólogo previstos en presupuesto y no realizados ni incluidos en las certificaciones,a lo que D. Jerónimo contestó que según creía serí
+an realizados por parte de la Universidad de León.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: s argumento: 16
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+cadena: 
+El Sr. Ib
+caracter hexadecimal: '
+  argumento: e1
+
+caracter hexadecimal: '
+  argumento: f1
+
+cadena: ez anot
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  que la Universidd comenz
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  a realizar sus trabajos practicamente coincidiendo con la finalizaci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de ejecuci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de taludes, por lo que no ha intervenido durante la ejecuci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de la obra.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+
+El Sr. Ibáñez anotó que la Universidd comenzó a realizar sus trabajos practicamente coincidiendo con la finalización de ejecución de taludes, por lo que no ha intervenido durante la ejecución de la obra.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  Se solicit
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ a ACS si exist
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: an tomas de datos de los niveles de agua en los pozos y vol
+caracter hexadecimal: '
+  argumento: fa
+
+cadena: menes  de evacuaci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n realizados durante la ejecuci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de las obras para entregar a ONYX.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ Se solicitó
+ a ACS si existían tomas de datos de los niveles de agua en los pozos y volúmenes  de evacuación realizados durante la ejecución de las obras para entregar a ONYX.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  Se solicit
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ igualmente un informe sobre los ensayos de funcionamiento de la red de biogas realizados los d
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: as 22 y 26 de Junio y 23 de Julio.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ Se solicitó
+ igualmente un informe sobre los ensayos de funcionamiento de la red de biogas realizados los días 22 y 26 de Junio y 23 de Julio.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  Se  consult
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ sobre la colocaci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de drenajes de di
+caracter hexadecimal: '
+  argumento: e1
+
+cadena: metro 110 mm en lugar de 160 a lo que D. Jer
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: nimo Moreno contest
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  que seg
+caracter hexadecimal: '
+  argumento: fa
+
+cadena: n sus informaciones exist
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: a un escrito autorizando el cambio a ACS por parte de la Direcci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de Obra.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ Se  consultó
+ sobre la colocación de drenajes de diámetro 110 mm en lugar de 160 a lo que D. Jerónimo Moreno contestó que según sus informaciones existía un escrito autorizando el cambio a ACS por parte de la Dirección de Obra.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  Se pregunt
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ a ACS por el plazo de ejecuci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de las obras , esta entreg
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  un plan de obra con fecha final el d
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: a 9 de Septiembre. D. Juan Carlos Hidalgo indic
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  que depend
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: 
+a en todo caso de las dificultades de suministro de escollera y de transporte de la misma.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ Se preguntó
+ a ACS por el plazo de ejecución de las obras , esta entregó un plan de obra con fecha final el día 9 de Septiembre. D. Juan Carlos Hidalgo indicó que dependí
+a en todo caso de las dificultades de suministro de escollera y de transporte de la misma.
+ 
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlcont argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 0
+palabra de control: pnrnot argumento: 0
+palabra de control: pndec argumento: 
+cadena:  
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: pntext argumento: 
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: hich argumento: 
+palabra de control: af argumento: 0
+palabra de control: dbch argumento: 
+palabra de control: af argumento: 0
+palabra de control: loch argumento: 
+palabra de control: f argumento: 0
+cadena:  -
+palabra de control: tab argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+Entrada RTF: 
+palabra de control: pntxtb argumento: 
+cadena:  -
+Salida latex: 
+
+Entrada RTF: 
+simbolo de control: *
+palabra de control: pn argumento: 
+cadena:  
+palabra de control: pnlvlblt argumento: 
+palabra de control: ilvl argumento: 0
+palabra de control: ls argumento: 1
+palabra de control: pnrnot argumento: 0
+palabra de control: pnstart argumento: 4
+palabra de control: pnindent argumento: 360
+palabra de control: pnhang argumento: 
+Salida latex: 
+
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  Se consult
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: 
+ a ACS por si se va a realizar un informe de los hechos ocurridos a su compa
+caracter hexadecimal: '
+  argumento: f1
+
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: a aseguradora, a lo que se contest
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  que s
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: . ONYX solicit
+caracter hexadecimal: '
+  argumento: f3
+
+cadena:  que se informase a la Direcci
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: n de Obra de la fecha en que se efectuar
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: 
+a la visita de perito de esta compa
+caracter hexadecimal: '
+  argumento: f1
+
+caracter hexadecimal: '
+  argumento: ed
+
+cadena: a.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ Se consultó
+ a ACS por si se va a realizar un informe de los hechos ocurridos a su compañía aseguradora, a lo que se contestó que sí. ONYX solicitó que se informase a la Dirección de Obra de la fecha en que se efectuarí
+a la visita de perito de esta compañía.
+ 
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ 
+ 
+ 
+ 
+ 
+Entrada RTF: 
+palabra de control: fs argumento: 24
+palabra de control: lang argumento: 1034
+cadena:  Fdo: Laura L
+caracter hexadecimal: '
+  argumento: f3
+
+cadena: pez.
+
+palabra de control: par argumento: 
+cadena:  
+Salida latex: 
+ Fdo: Laura López.
+ 
+Entrada RTF: 
+palabra de control: rtf argumento: 1
+palabra de control: ansi argumento: 
+palabra de control: ansicpg argumento: 1252
+palabra de control: uc argumento: 1
+cadena:  
+palabra de control: deff argumento: 0
+palabra de control: deflang argumento: 1033
+palabra de control: deflangfe argumento: 3082
+cadena: 
+
+palabra de control: paperw argumento: 11906
+palabra de control: paperh argumento: 16838
+palabra de control: margl argumento: 1701
+palabra de control: margr argumento: 1701
+palabra de control: margt argumento: 1417
+palabra de control: margb argumento: 1417
+cadena:  
+palabra de control: deftab argumento: 708
+palabra de control: widowctrl argumento: 
+palabra de control: ftnbj argumento: 
+palabra de control: aenddoc argumento: 
+palabra de control: hyphhotz argumento: 425
+palabra de control: hyphcaps argumento: 0
+palabra de control: formshade argumento: 
+palabra de control: viewkind argumento: 4
+palabra de control: viewscale argumento: 100
+palabra de control: pgbrdrhead argumento: 
+palabra de control: pgbrdrfoot argumento: 
+cadena:  
+palabra de control: fet argumento: 0
+palabra de control: sectd argumento: 
+cadena:  
+palabra de control: linex argumento: 0
+palabra de control: headery argumento: 709
+palabra de control: footery argumento: 709
+palabra de control: colsx argumento: 709
+palabra de control: endnhere argumento: 
+palabra de control: sectdefaultcl argumento: 
+cadena:  
+
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: s argumento: 15
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: b argumento: 
+palabra de control: ul argumento: 
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: fs argumento: 20
+palabra de control: lang argumento: 3082
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: fs argumento: 20
+palabra de control: lang argumento: 3082
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: fs argumento: 20
+palabra de control: lang argumento: 3082
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: fs argumento: 20
+palabra de control: lang argumento: 3082
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: s argumento: 16
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: lang argumento: 1034
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+palabra de control: plain argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: fs argumento: 20
+palabra de control: lang argumento: 3082
+palabra de control: cgrid argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: fi argumento: -360
+palabra de control: li argumento: 360
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: jclisttab argumento: 
+palabra de control: tx argumento: 360
+palabra de control: ls argumento: 1
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+palabra de control: pard argumento: 
+cadena:  
+palabra de control: qj argumento: 
+palabra de control: li argumento: 4248
+palabra de control: nowidctlpar argumento: 
+palabra de control: widctlpar argumento: 
+palabra de control: adjustright argumento: 
+cadena:  
+Salida latex: 

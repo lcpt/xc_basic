@@ -1,0 +1,18 @@
+//xGetToken.cc
+
+#include "../imanip.h"
+
+int main(void)
+  {
+    const char delim= '|';
+    int i;
+    String str;
+    float f;
+    double d;
+    cin >> get_token(f,delim) >> get_token(str,delim) >> get_token(i,delim) >> get_token(d,delim);
+    cout << "i= " << i << endl;
+    cout << "str= " << str << endl;
+    cout << "f= " << f << endl;
+    cout << "d= " << d << endl;
+    return 0;
+  }

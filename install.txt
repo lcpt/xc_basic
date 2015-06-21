@@ -1,0 +1,68 @@
+xc_basic installation.
+ 
+0.- Patience (please).
+
+    I'ts not always easy to verify than installation works properly
+    (obviously the developer's machine is the worst place to test
+    installation process). If you find a bug in the installation please 
+    feel free to write to l.pereztato@gmail.com.
+
+1.- Pre-requisites.
+
+    xc_basic is a C++ (and fortran) library, so a C++ and a Fortran
+    compiler are necessary. The library and test programs were tested
+    with GNU C++ and Fortran version 4.8.2
+    
+
+    - You will also need CMake also ((http://www.cmake.org/).
+    - The library is suposed to be used over Linux, maybe it's possible
+      to use it with other Unix flavors.
+    - Libraries needed:
+
+         -Boost c++ libraries (<http://www.boost.org/>).
+         -GLib library (libglib2.0-dev).
+         -GTK GIMP Tookit (libgtk2.0-dev, libgtkgl2.0-dev,
+               libgtkglextmm-x11-1.2-dev, libgtkmm-2.4-dev).
+         -SQLite 3 development files (libsqlite3).
+         -VTK (Visualization ToolKit <http://www.vtk.org>).
+         -X11 (libX11-dev).
+         -HDF5 (www.hdfgroup.org). Salome interface.
+         -MED V3.0 (www.code-aster.org/outils/med). Salome interface.
+
+      You can find a list of the Ubuntu (or Debian) packages you need to
+      fulfill the installation in "doc/needed_packages.txt". If you have
+      a Debian, Ubuntu or (probably) Linux Mint distribution you can
+      run the "doc/install_debian_packages.sh" to install all needed packages.
+
+2.- Make a directory to place files inside (Debian administrators 
+    know what to do):
+
+    sudo mkdir /usr/local/src/prgs
+    sudo chown yourUserName.yourUserName /usr/local/src/prgs
+
+3.- Unzip the files is "prgs" directory:
+
+    cp xc_basic.tar.gz /usr/local/src/prgs
+    cd /usr/local/src/prgs
+    tar -xzvf xc_basic.tar.gz
+
+4.- Make a directory to compile sources.
+
+    mkdir /usr/local/src/prgs/build
+    mkdir /usr/local/src/prgs/build/xc_basic
+
+
+6.- Use CMake for Makefile generation.
+
+    cd /usr/local/src/prg/build/xc_basic
+    cmake ../../prg/xc_basic/src
+
+7.- Compile code.
+
+    make
+
+8.- Install library.
+
+    sudo make install
+
+8.- Verify that in the '/usr/local/lib' there is a file named 'libxc_basic.a'.

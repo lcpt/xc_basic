@@ -1,0 +1,138 @@
+//Resoluci¢n de un sistema lineal regular cualquiera mediante
+//     eliminaci¢n de Gauss
+
+#include <stdio.h>
+#include <math.h>
+#define SWAPi(a,b) {int temp=a; a=b; b=temp;}
+
+main()
+  {
+
+   char  fil[14], linea[81];
+   int   i, iaux, ip, *ipvt, *ivector(), j, k, l, n, pi;
+   float **a, *b, c, **matriz(), r, r1, smax, *vector(), *x;
+   FILE  *f1;
+
+   printf ("Dimension de la Matriz A?\n");
+   scanf ("%d", &n);
+   printf ("Fichero de datos?\n");
+   scanf ("%s", &fil);
+   f1   = fopen (fil, "r");
+   a    = matriz(n,n);           /* Reservar memoria para A */
+   b    = vector(n);             /*     "       "    para b */
+   x    = vector(n);             /*     "       "    para x */
+   n   -= 1;
+   for (j=0; j<=n; j++)
+     {
+       fgets (linea,81,f1);
+       for (i=0; i<=n; i++) a[j][i]=atof(linea+i*5);
+     }
+   fgets (linea,81,f1);
+   for (i=0; i<=n; i++) b[i]=atof(linea+i*5);
+
+   ipvt = ivector(n);             /* Reservar memoria para ipvt */
+   for (i=0; i<=n; i++) ipvt[i]=i;
+
+/*  *** Triangularizaci¢n *** */
+
+   for (k=0, l=0; k<n; k++)
+     {
+       smax = fabs(a[ipvt[k]][k]);
+       for (i=k+1; i<=n; i++)
+         {
+           ip = ipvt[i];
+           if (fabs(a[ip][k]) > smax)
+             {
+               l= i;
+               smax = fabs(a[ip][k]);
+             }
+          }
+       if (l) SWAPi(ipvt[k],ipvt[l]);
+       pi = ipvt[k];
+       r1 = 1.0/a[pi][k];
+       for (i=k+1; i<=n; i++)
+         {
+           ip = ipvt[i];
+           r  = a[ip][k]*r1;
+           for (j=k+1; j<=n; j++) a[ip][j] -= r*a[pi][j];
+           a[ip][k] = -r;
+         }
+     }
+
+   for (k=0; k<n; k++)
+     {
+       ip = ipvt[k];
+       for (i=k+1; i<=n; i++)
+         {
+           pi = ipvt[i];
+           b[pi]+= a[pi][k]*b[ip];
+         }
+     }
+
+/*  *** Sustituci¢n inversa *** */
+
+   x[n] = b[ipvt[n]]/a[ipvt[n]][n];
+   for (i=n-1; i>=0; i--)
+     {
+       pi = ipvt[i];
+       for (j=i+1, c=b[pi]; j<=n; j++) c -= a[pi][j]*x[j];
+       x[i] = c/a[pi][i];
+     }
+
+   printf("Soluci¢n: ");
+   for (i=0; i<=n; i++) printf("%f, ", x[i]);
+   printf("\n");
+
+   return 0;
+}
+
+/*
+float **matriz(nf,nc)
+int nf,nc;
+{
+    int i;
+    float **m, *m1;
+
+    m1 = (float *) calloc(nf*nc,sizeof(float));
+    if (!m1){
+       printf("Error de asignaci¢n de memoria en matriz\n");
+       abort();
+    }
+    m = (float **) malloc(nf*sizeof(float *));
+    if (!m){
+       printf("Error de asignaci¢n de memoria en matriz\n");
+       abort();
+    }
+    for (i=0; i<nf; i++){
+        m[i] = m1;
+        m1  += nc;
+    }
+    return m;
+}
+
+float *vector(n)
+int n;
+{
+    float *m;
+
+    m = (float *) malloc(n*sizeof(float));
+    if (!m){
+       printf("Error de asignaci¢n de memoria en vector\n");
+       abort();
+    }
+    return m;
+}
+
+int *ivector(n)
+int n;
+{
+    int *m;
+
+    m = (int *) malloc(n*sizeof(int));
+    if (!m){
+       printf("Error de asignaci¢n de memoria en ivector\n");
+       abort();
+    }
+    return m;
+}
+*/
