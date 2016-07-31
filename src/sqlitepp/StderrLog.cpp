@@ -60,7 +60,7 @@ void StderrLog::error(Database& db,Query& q,const std::string& str)
 	fprintf(stderr,"%d-%02d-%02d %02d:%02d:%02d :: Query: %s: %s(%d)\n",
 		tp -> tm_year + 1900,tp -> tm_mon + 1,tp -> tm_mday,
 		tp -> tm_hour,tp -> tm_min, tp -> tm_sec,
-		str.c_str(),q.GetError().c_str(),q.GetErrno());
+		str.c_str(),q.getError().c_str(),q.GetErrno());
 	fprintf(stderr," (QUERY: \"%s\")\n",q.GetLastQuery().c_str());
 }
 

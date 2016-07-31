@@ -554,7 +554,7 @@ const std::string &Query::GetLastQuery(void) const
   { return m_last_query; }
 
 
-std::string Query::GetError(void) const
+std::string Query::getError(void) const
   {
     if(odb)
       return sqlite3_errmsg(odb->db);

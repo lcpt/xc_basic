@@ -106,7 +106,7 @@ class Query
       { return (m_nmap[str] - 1); }
 
     /** Last error string. */
-    std::string GetError(void) const;
+    std::string getError(void) const;
     /** Last error code. */
     int GetErrno();
 

@@ -60,7 +60,7 @@ void SysLog::error(Database& db,const std::string& str)
 
 void SysLog::error(Database& db,Query& q,const std::string& str)
 {
-	syslog(LOG_ERR, "%s: %s(%d)", str.c_str(),q.GetError().c_str(),q.GetErrno() );
+	syslog(LOG_ERR, "%s: %s(%d)", str.c_str(),q.getError().c_str(),q.GetErrno() );
 	syslog(LOG_ERR, "QUERY: \"%s\"", q.GetLastQuery().c_str());
 }
 
