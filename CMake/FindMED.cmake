@@ -29,6 +29,17 @@
 #  MED_LIBRARY, the med library.
 #  MEDC_LIBRARY, the medC library
 
+#FindHDF5.cmake shipped with CMake in Ubuntu 16 doesn't seems to work very well...
+FIND_PATH(HDF5_HEADER_INCLUDE_DIR hdf5.h
+  /usr/local/include/hdf5/serial
+  /usr/local/include/hdf5/openmpi
+  /usr/local/include
+  /usr/include/hdf5/serial
+  /usr/include/hdf5/openmpi
+  /usr/include
+)
+message(STATUS "hdf5.h found: " ${HDF5_HEADER_INCLUDE_DIR})
+
 FIND_PATH(MED_INCLUDE_DIR med.h
   /usr/local/include
   /usr/include

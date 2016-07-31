@@ -29,7 +29,7 @@
 #include <cassert>
 
 // UTILE AUX DEUX NAMESPACES
-#include <hdf5.h>
+#include "hdf5.h"
 #include "med.h"
 #include "med_err.h"
 //#include "med_xc.h"

@@ -47,6 +47,7 @@ find_package(Boost 1.38 COMPONENTS regex math)
 find_package(SQLITE3 REQUIRED)
 find_package(MED REQUIRED)
 find_package(ExecInfo)
+find_package(HDF5 REQUIRED)
 
 if(GTK2_FOUND)
   include_directories(${GTK2_INCLUDE_DIRS})
@@ -61,6 +62,13 @@ if(MED_FOUND)
 endif()
 
 INCLUDE_DIRECTORIES(${GTK_INCLUDE_DIR})
+include_directories(${HDF5_INCLUDE_DIRS})
+include_directories(${HDF5_HEADER_INCLUDE_DIR})
+message(STATUS "hdf5 found: " ${HDF5_FOUND})
+# message(STATUS "********* hdf5 version: " ${HDF5_VERSION})
+# message(STATUS "********* hdf5 includes: " ${HDF5_INCLUDE_DIRS})
+# message(STATUS "********* hdf5 include: " ${HDF5_INCLUDE_FILENAME})
+# message(STATUS "********* hdf5 definitions: " ${HDF_DEFINITIONS})
 
 SET(tiempo tiempo/agno tiempo/mes tiempo/diasemana tiempo/hora tiempo/fecha tiempo/fechahora tiempo/timer)
 
