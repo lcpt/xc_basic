@@ -30,9 +30,9 @@ find_library(SQLITE3_LIBRARY
 
 if(SQLITE3_INCLUDE_DIR AND SQLITE3_LIBRARY)
   set(SQLITE3_FOUND TRUE)
-  MESSAGE(STATUS "Encontrada biblioteca: SQLite3")
+  MESSAGE(STATUS "SQLite3 library found.")
 else(SQLITE3_INCLUDE_DIR AND SQLITE3_LIBRARY)
-  MESSAGE(STATUS "No se encontró la biblioteca: SQLite3")  
+  MESSAGE(STATUS "SQLite3 library NOT found.")  
 endif(SQLITE3_INCLUDE_DIR AND SQLITE3_LIBRARY)
 
 
