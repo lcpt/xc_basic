@@ -33,7 +33,7 @@ xc_basic installation.
       fulfill the installation in "doc/needed_packages.txt". If you have
       a Debian, Ubuntu or (probably) Linux Mint distribution you can
       run the "doc/install_*whatever*_packages.sh" to install all
-      needed packages.
+      needed packages (*whatever* can be debian, ubuntu16,...).
 
 2.- Make a directory to place files inside (Debian administrators 
     know what to do):
