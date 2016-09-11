@@ -70,8 +70,6 @@ message(STATUS "hdf5 found: " ${HDF5_FOUND})
 # message(STATUS "********* hdf5 include: " ${HDF5_INCLUDE_FILENAME})
 # message(STATUS "********* hdf5 definitions: " ${HDF_DEFINITIONS})
 
-SET(tiempo tiempo/agno tiempo/mes tiempo/diasemana tiempo/hora tiempo/fecha tiempo/fechahora tiempo/timer)
-
 SET(texto texto/cadena_carac texto/LabelContainer texto/en_letra texto/StrTok texto/tab_cod texto/latex texto/StringFormatter texto/FixedWidthReader)
 
 SET(streams streams/imanip streams/prep)
