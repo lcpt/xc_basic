@@ -74,8 +74,6 @@ SET(texto texto/cadena_carac texto/LabelContainer texto/en_letra texto/StrTok te
 
 SET(streams streams/imanip streams/prep)
 
-SET(stl stl/persist)
-
 SET(util util/cmd_args util/memoria util/inercia util/print_trace)
 
 SET(sqlitepp sqlitepp/Database  sqlitepp/Query  sqlitepp/StderrLog  sqlitepp/SysLog)
