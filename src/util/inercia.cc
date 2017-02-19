@@ -21,4 +21,20 @@
 //inercia.cc
 
 #include "inercia.h"
+#include <iostream>
 
+double theta_inercia(const double &Ix,const double &Iy,const double &Pxy)
+  {
+    const double tol= std::numeric_limits<double>::epsilon();
+    const double eps= abs(Ix-Iy)/std::max(Ix,Iy);
+    if(eps<tol)
+      if(abs(Pxy)<tol)
+	return 0.0;
+      else
+        if(Pxy<0)
+	  return M_PI/4.0;
+        else
+	  return -M_PI/4.0;
+    else
+      return (atan(-2*Pxy/(Ix-Iy)))/2.0;
+  }

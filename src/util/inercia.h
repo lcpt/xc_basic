@@ -27,14 +27,7 @@
 #include "matem.h"
 
 //! @brief Devuelve el ángulo que define un eje principal de inercia.
-inline double theta_inercia(const double &Ix,const double &Iy,const double &Pxy)
-  {
-    const double eps= abs(Ix-Iy)/std::max(Ix,Iy);
-    if(eps<std::numeric_limits<double>::epsilon())
-      return 0.0;
-    else
-      return (atan(-2*Pxy/(Ix-Iy)))/2.0;
-  }
+double theta_inercia(const double &Ix,const double &Iy,const double &Pxy);
 
 //! @brief Funcion auxiliar para calcular los momentos principales de inercia.
 inline double R_inercia(const double &Ix,const double &Iy,const double Pxy)
