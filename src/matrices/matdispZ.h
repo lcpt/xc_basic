@@ -145,6 +145,7 @@ class matdispZ : public matrizZ<numero>
     size_type size(void) const;
     void Compacta(void);
     void Anula(void);
+    void Identity(void);
     inline bool Cuadrada(void) const
       { return (this->fls == this->cls); }
     matdispZ<numero> &Trn(void);
@@ -432,6 +433,20 @@ void matdispZ<numero>::Anula(void)
   { cols.erase(cols.begin(),cols.end()); }
 
 template <class numero>
+void matdispZ<numero>::Identity(void)
+  {
+    this->Anula();
+    if(this->fls!=this->cls)
+      std::cerr << "matdispZ::" << __FUNCTION__
+	        << "not a square matrix: "
+	        << this->fls << " x " << this->cls << std::endl;
+    const size_t sz= std::min(this->fls,this->cls);
+    for(size_t i=1;i<=sz;i++)
+      (*this)(i,i)= 1.0;
+    Compacta();
+  }
+
+template <class numero>
 matdispZ<numero> &matdispZ<numero>::Trn(void)
   {
     matrizZ_numero::Trn();
@@ -498,6 +513,7 @@ matdispZ<numero> matdispZ<numero>::GetCaja(size_t f1, size_t c1, size_t f2, size
           caja(f->first-f1+1,c->first-c1+1)= f->second;
     return caja;
   }
+
 template <class numero>
 void matdispZ<numero>::PutCaja(size_t f,size_t c,const matdispZ<numero> &caja)
   {
