@@ -56,7 +56,7 @@ class ParentIzdo : public Operador
     ParentIzdo(void) : Operador(-1) {}
     inline virtual Clase GetClase(void) const
       { return parent_izdo; }
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbParentIzdo; }
   };
 
@@ -66,7 +66,7 @@ class ParentDcho : public Operador
     ParentDcho(void) : Operador(-1) {}
     inline virtual Clase GetClase(void) const
       { return parent_dcho; }
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbParentDcho; }
   };
 

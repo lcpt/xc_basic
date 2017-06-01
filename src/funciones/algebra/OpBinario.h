@@ -52,7 +52,7 @@ class OpSuma : public OpBinario
     
   public:
     OpSuma(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpSuma; }
     virtual int GetPrioridad(void) const
       { return 4; }
@@ -66,7 +66,7 @@ class OpResta : public OpBinario
     
   public:
     OpResta(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpResta; }
     virtual int GetPrioridad(void) const
       { return 4; }
@@ -79,7 +79,7 @@ class OpProd : public OpBinario
     
   public:
     OpProd(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpProd; }
     virtual int GetPrioridad(void) const
       { return 5; }
@@ -96,7 +96,7 @@ class OpDiv : public OpBinario
     
   public:
     OpDiv(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpDiv; }
     virtual int GetPrioridad(void) const
       { return 5; }
@@ -109,7 +109,7 @@ class OpDivEnt : public OpBinario
     
   public:
     OpDivEnt(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpDivEnt; }
     virtual int GetPrioridad(void) const
       { return 5; }
@@ -121,7 +121,7 @@ class OpMod : public OpBinario
     
   public:
     OpMod(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpMod; }
     virtual int GetPrioridad(void) const
       { return 5; }
@@ -133,7 +133,7 @@ class OpPot : public OpBinario
     
   public:
     OpPot(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpPot; }
     virtual int GetPrioridad(void) const
       { return 6; }
@@ -147,7 +147,7 @@ class OpMax : public OpBinario
     
   public:
     OpMax(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpMax; }
     virtual int GetPrioridad(void) const
       { return 4; }
@@ -163,7 +163,7 @@ class OpMin : public OpBinario
     
   public:
     OpMin(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpMin; }
     virtual int GetPrioridad(void) const
       { return 4; }

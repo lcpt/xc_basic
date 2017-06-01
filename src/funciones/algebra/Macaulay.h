@@ -38,7 +38,7 @@ class OpMacaulay0: public OpBinario
     virtual double get_val(const double &x,const double &a) const;
   public:
     OpMacaulay0(void) : OpBinario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpMacaulay0; }
     virtual int GetPrioridad(void) const
       { return 4; }
@@ -60,7 +60,7 @@ class OpMacaulayN: public OpMacaulay0
     virtual double get_val(const double &x,const double &a) const;
   public:
     OpMacaulayN(size_t n=1);
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpMacaulayN; }
     virtual ~OpMacaulayN(void)
       {}

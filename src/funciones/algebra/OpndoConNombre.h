@@ -44,7 +44,7 @@ class OpndoConNombre : public Operando
 	Operando::Put(v);
         nombre= nmb;
       }
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nombre; }
     inline virtual const std::string &GetFullString(void) const
       { return nombre; }

@@ -62,7 +62,7 @@ class Segnal
   public:
     inline Segnal(void) {}
     inline virtual ~Segnal(void) {}
-    virtual const std::string &GetNombre(void) const= 0;
+    virtual const std::string &getName(void) const= 0;
     virtual Clase GetClase(void) const= 0;
     virtual const double &GetValor(const double &v1= 0.0, const double &v2= 0.0) const= 0;
     inline virtual int GetPrioridad(void) const
@@ -72,7 +72,7 @@ class Segnal
     inline virtual bool IgualA(const double &) const
       { return false; }
     friend int operator<(const Segnal &s1,const Segnal &s2)
-      { return (s1.GetNombre() < s2.GetNombre()); }
+      { return (s1.getName() < s2.getName()); }
     friend int operator==(const Segnal &s,const double &d)
       { return s.IgualA(d); }
     friend int operator==(const double &d,const Segnal &s)

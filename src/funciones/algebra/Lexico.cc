@@ -78,27 +78,27 @@ Lexico::Lexico(void)
 //! como parámetro.
 Segnal *Lexico::CalcDirOpUnario(const std::string &nmb)
   {
-    if(nmb == neg.GetNombre()) return &neg;
-    if(nmb == inv.GetNombre()) return &inv;
-    if(nmb == abs.GetNombre()) return &abs;
-    if(nmb == sqr.GetNombre()) return &sqr;
-    if(nmb == raiz2.GetNombre()) return &raiz2;
-    if(nmb == expn.GetNombre()) return &expn;
-    if(nmb == ln.GetNombre()) return &ln;
-    if(nmb == lg.GetNombre()) return &lg;
-    if(nmb == pi.GetNombre()) return &pi;
-    if(nmb == seno.GetNombre()) return &seno;
-    if(nmb == cose.GetNombre()) return &cose;
-    if(nmb == tang.GetNombre()) return &tang;
-    if(nmb == sec.GetNombre()) return &sec;
-    if(nmb == cosec.GetNombre()) return &cosec;
-    if(nmb == cotg.GetNombre()) return &cotg;
-    if(nmb == deg2rad.GetNombre()) return &deg2rad;
-    if(nmb == rad2deg.GetNombre()) return &rad2deg;
-    if(nmb == arctg.GetNombre()) return &arctg;
-    if(nmb == round.GetNombre()) return &round;
-    if(nmb == trunc.GetNombre()) return &trunc;
-    if(nmb == to_num.GetNombre()) return &to_num;
+    if(nmb == neg.getName()) return &neg;
+    if(nmb == inv.getName()) return &inv;
+    if(nmb == abs.getName()) return &abs;
+    if(nmb == sqr.getName()) return &sqr;
+    if(nmb == raiz2.getName()) return &raiz2;
+    if(nmb == expn.getName()) return &expn;
+    if(nmb == ln.getName()) return &ln;
+    if(nmb == lg.getName()) return &lg;
+    if(nmb == pi.getName()) return &pi;
+    if(nmb == seno.getName()) return &seno;
+    if(nmb == cose.getName()) return &cose;
+    if(nmb == tang.getName()) return &tang;
+    if(nmb == sec.getName()) return &sec;
+    if(nmb == cosec.getName()) return &cosec;
+    if(nmb == cotg.getName()) return &cotg;
+    if(nmb == deg2rad.getName()) return &deg2rad;
+    if(nmb == rad2deg.getName()) return &rad2deg;
+    if(nmb == arctg.getName()) return &arctg;
+    if(nmb == round.getName()) return &round;
+    if(nmb == trunc.getName()) return &trunc;
+    if(nmb == to_num.getName()) return &to_num;
     return NULL;
   }
 
@@ -106,29 +106,29 @@ Segnal *Lexico::CalcDirOpUnario(const std::string &nmb)
 //! como parámetro.
 Segnal *Lexico::CalcDirOpBinario(const std::string &nmb)
   {
-    if(nmb == suma.GetNombre()) return &suma;
-    if(nmb == resta.GetNombre()) return &resta;
-    if(nmb == prodt.GetNombre()) return &prodt;
-    if(nmb == divn.GetNombre()) return &divn;
-    if(nmb == dive.GetNombre()) return &dive;
-    if(nmb == modulo.GetNombre()) return &modulo;
-    if(nmb == pot.GetNombre()) return &pot;
-    if(nmb == menor.GetNombre()) return &menor;
-    if(nmb == menor_igual.GetNombre()) return &menor_igual;
-    if(nmb == igual.GetNombre()) return &igual;
-    if(nmb == mayor.GetNombre()) return &mayor;
-    if(nmb == mayor_igual.GetNombre()) return &mayor_igual;
-    if(nmb == distinto.GetNombre()) return &distinto;
-    if(nmb == And.GetNombre()) return &And;
-    if(nmb == Or.GetNombre()) return &Or;
-    if(nmb == Not.GetNombre()) return &Not;
-    if(nmb == max.GetNombre()) return &max;
-    if(nmb == min.GetNombre()) return &min;
-    if(nmb == F0.GetNombre()) return &F0;
-    if(nmb == F1.GetNombre()) return &F1;
-    if(nmb == F2.GetNombre()) return &F2;
-    if(nmb == F3.GetNombre()) return &F3;
-    if(nmb == F4.GetNombre()) return &F4;
+    if(nmb == suma.getName()) return &suma;
+    if(nmb == resta.getName()) return &resta;
+    if(nmb == prodt.getName()) return &prodt;
+    if(nmb == divn.getName()) return &divn;
+    if(nmb == dive.getName()) return &dive;
+    if(nmb == modulo.getName()) return &modulo;
+    if(nmb == pot.getName()) return &pot;
+    if(nmb == menor.getName()) return &menor;
+    if(nmb == menor_igual.getName()) return &menor_igual;
+    if(nmb == igual.getName()) return &igual;
+    if(nmb == mayor.getName()) return &mayor;
+    if(nmb == mayor_igual.getName()) return &mayor_igual;
+    if(nmb == distinto.getName()) return &distinto;
+    if(nmb == And.getName()) return &And;
+    if(nmb == Or.getName()) return &Or;
+    if(nmb == Not.getName()) return &Not;
+    if(nmb == max.getName()) return &max;
+    if(nmb == min.getName()) return &min;
+    if(nmb == F0.getName()) return &F0;
+    if(nmb == F1.getName()) return &F1;
+    if(nmb == F2.getName()) return &F2;
+    if(nmb == F3.getName()) return &F3;
+    if(nmb == F4.getName()) return &F4;
     return NULL;
   }
 
@@ -143,8 +143,8 @@ Variable *Lexico::CalcDirVar(const std::string &nmb)
 Segnal *Lexico::CalcDir(const std::string &nmb)
   {
     //Parentesis
-    if(nmb == parenti.GetNombre()) return &parenti;
-    if(nmb == parentd.GetNombre()) return &parentd;
+    if(nmb == parenti.getName()) return &parenti;
+    if(nmb == parentd.getName()) return &parentd;
 
     //Operadores binarios.
     Segnal *retval= CalcDirOpBinario(nmb);
@@ -156,56 +156,56 @@ Segnal *Lexico::CalcDir(const std::string &nmb)
 void Lexico::PrintPrioridades(std::ostream &os) const
   {
     os << "Prioridad de los paréntesis:" << std::endl;
-    os << parentd.GetNombre() << ": " << parentd.GetPrioridad() << std::endl;
-    os << parenti.GetNombre() << ": " << parenti.GetPrioridad() << std::endl;
+    os << parentd.getName() << ": " << parentd.GetPrioridad() << std::endl;
+    os << parenti.getName() << ": " << parenti.GetPrioridad() << std::endl;
 
     os << "Prioridad de operadores binarios." << std::endl;
-    os << suma.GetNombre() << ": " << suma.GetPrioridad() << std::endl;
-    os << resta.GetNombre() << ": " << resta.GetPrioridad() << std::endl;
-    os << prodt.GetNombre() << ": " << prodt.GetPrioridad() << std::endl;
-    os << divn.GetNombre() << ": " << divn.GetPrioridad() << std::endl;
-    os << dive.GetNombre() << ": " << dive.GetPrioridad() << std::endl;
-    os << modulo.GetNombre() << ": " << modulo.GetPrioridad() << std::endl;
-    os << pot.GetNombre() << ": " << pot.GetPrioridad() << std::endl;
-    os << menor.GetNombre() << ": " << menor.GetPrioridad() << std::endl;
-    os << menor_igual.GetNombre() << ": " << menor_igual.GetPrioridad() << std::endl;
-    os << igual.GetNombre() << ": " << igual.GetPrioridad() << std::endl;
-    os << mayor.GetNombre() << ": " << mayor.GetPrioridad() << std::endl;
-    os << mayor_igual.GetNombre() << ": " << mayor_igual.GetPrioridad() << std::endl;
-    os << distinto.GetNombre() << ": " << distinto.GetPrioridad() << std::endl;
-    os << And.GetNombre() << ": " << And.GetPrioridad() << std::endl;
-    os << Or.GetNombre() << ": " << Or.GetPrioridad() << std::endl;
-    os << Not.GetNombre() << ": " << Not.GetPrioridad() << std::endl;
-    os << max.GetNombre() << ": " << max.GetPrioridad() << std::endl;
-    os << min.GetNombre() << ": " << min.GetPrioridad() << std::endl;
-    os << F0.GetNombre() << ": " << F0.GetPrioridad() << std::endl;
-    os << F1.GetNombre() << ": " << F1.GetPrioridad() << std::endl;
-    os << F2.GetNombre() << ": " << F2.GetPrioridad() << std::endl;
-    os << F3.GetNombre() << ": " << F3.GetPrioridad() << std::endl;
-    os << F4.GetNombre() << ": " << F4.GetPrioridad() << std::endl;
+    os << suma.getName() << ": " << suma.GetPrioridad() << std::endl;
+    os << resta.getName() << ": " << resta.GetPrioridad() << std::endl;
+    os << prodt.getName() << ": " << prodt.GetPrioridad() << std::endl;
+    os << divn.getName() << ": " << divn.GetPrioridad() << std::endl;
+    os << dive.getName() << ": " << dive.GetPrioridad() << std::endl;
+    os << modulo.getName() << ": " << modulo.GetPrioridad() << std::endl;
+    os << pot.getName() << ": " << pot.GetPrioridad() << std::endl;
+    os << menor.getName() << ": " << menor.GetPrioridad() << std::endl;
+    os << menor_igual.getName() << ": " << menor_igual.GetPrioridad() << std::endl;
+    os << igual.getName() << ": " << igual.GetPrioridad() << std::endl;
+    os << mayor.getName() << ": " << mayor.GetPrioridad() << std::endl;
+    os << mayor_igual.getName() << ": " << mayor_igual.GetPrioridad() << std::endl;
+    os << distinto.getName() << ": " << distinto.GetPrioridad() << std::endl;
+    os << And.getName() << ": " << And.GetPrioridad() << std::endl;
+    os << Or.getName() << ": " << Or.GetPrioridad() << std::endl;
+    os << Not.getName() << ": " << Not.GetPrioridad() << std::endl;
+    os << max.getName() << ": " << max.GetPrioridad() << std::endl;
+    os << min.getName() << ": " << min.GetPrioridad() << std::endl;
+    os << F0.getName() << ": " << F0.GetPrioridad() << std::endl;
+    os << F1.getName() << ": " << F1.GetPrioridad() << std::endl;
+    os << F2.getName() << ": " << F2.GetPrioridad() << std::endl;
+    os << F3.getName() << ": " << F3.GetPrioridad() << std::endl;
+    os << F4.getName() << ": " << F4.GetPrioridad() << std::endl;
 
     os << "Prioridad de operadores unarios." << std::endl;
-    os << neg.GetNombre() << ": " << neg.GetPrioridad() << std::endl;
-    os << inv.GetNombre() << ": " << inv.GetPrioridad() << std::endl;
-    os << sign.GetNombre() << ": " << sign.GetPrioridad() << std::endl;
-    os << abs.GetNombre() << ": " << abs.GetPrioridad() << std::endl;
-    os << sqr.GetNombre() << ": " << sqr.GetPrioridad() << std::endl;
-    os << raiz2.GetNombre() << ": " << raiz2.GetPrioridad() << std::endl;
-    os << expn.GetNombre() << ": " << expn.GetPrioridad() << std::endl;
-    os << ln.GetNombre() << ": " << ln.GetPrioridad() << std::endl;
-    os << lg.GetNombre() << ": " << lg.GetPrioridad() << std::endl;
-    os << pi.GetNombre() << ": " << pi.GetPrioridad() << std::endl;
-    os << seno.GetNombre() << ": " << seno.GetPrioridad() << std::endl;
-    os << cose.GetNombre() << ": " << cose.GetPrioridad() << std::endl;
-    os << tang.GetNombre() << ": " << tang.GetPrioridad() << std::endl;
-    os << arctg.GetNombre() << ": " << arctg.GetPrioridad() << std::endl;
-    os << sec.GetNombre() << ": " << sec.GetPrioridad() << std::endl;
-    os << cosec.GetNombre() << ": " << cosec.GetPrioridad() << std::endl;
-    os << cotg.GetNombre() << ": " << cotg.GetPrioridad() << std::endl;
-    os << deg2rad.GetNombre() << ": " << deg2rad.GetPrioridad() << std::endl;
-    os << rad2deg.GetNombre() << ": " << rad2deg.GetPrioridad() << std::endl;
-    os << round.GetNombre() << ": " << round.GetPrioridad() << std::endl;
-    os << trunc.GetNombre() << ": " << trunc.GetPrioridad() << std::endl;
-    os << to_num.GetNombre() << ": " << to_num.GetPrioridad() << std::endl;
+    os << neg.getName() << ": " << neg.GetPrioridad() << std::endl;
+    os << inv.getName() << ": " << inv.GetPrioridad() << std::endl;
+    os << sign.getName() << ": " << sign.GetPrioridad() << std::endl;
+    os << abs.getName() << ": " << abs.GetPrioridad() << std::endl;
+    os << sqr.getName() << ": " << sqr.GetPrioridad() << std::endl;
+    os << raiz2.getName() << ": " << raiz2.GetPrioridad() << std::endl;
+    os << expn.getName() << ": " << expn.GetPrioridad() << std::endl;
+    os << ln.getName() << ": " << ln.GetPrioridad() << std::endl;
+    os << lg.getName() << ": " << lg.GetPrioridad() << std::endl;
+    os << pi.getName() << ": " << pi.GetPrioridad() << std::endl;
+    os << seno.getName() << ": " << seno.GetPrioridad() << std::endl;
+    os << cose.getName() << ": " << cose.GetPrioridad() << std::endl;
+    os << tang.getName() << ": " << tang.GetPrioridad() << std::endl;
+    os << arctg.getName() << ": " << arctg.GetPrioridad() << std::endl;
+    os << sec.getName() << ": " << sec.GetPrioridad() << std::endl;
+    os << cosec.getName() << ": " << cosec.GetPrioridad() << std::endl;
+    os << cotg.getName() << ": " << cotg.GetPrioridad() << std::endl;
+    os << deg2rad.getName() << ": " << deg2rad.GetPrioridad() << std::endl;
+    os << rad2deg.getName() << ": " << rad2deg.GetPrioridad() << std::endl;
+    os << round.getName() << ": " << round.GetPrioridad() << std::endl;
+    os << trunc.getName() << ": " << trunc.GetPrioridad() << std::endl;
+    os << to_num.getName() << ": " << to_num.GetPrioridad() << std::endl;
 
   }

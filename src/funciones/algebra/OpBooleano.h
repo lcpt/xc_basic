@@ -42,7 +42,7 @@ class OpAnd : public OpBooleano
     
   public:
     OpAnd(void) : OpBooleano() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpAnd; }
     virtual const Operando &Opera(const Operando *v1= NULL,const Operando *v2= NULL) const;
   };
@@ -54,7 +54,7 @@ class OpOr : public OpBooleano
     
   public:
     OpOr(void) : OpBooleano() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpOr; }
     virtual const Operando &Opera(const Operando *v1= NULL,const Operando *v2= NULL) const;
   };
@@ -64,7 +64,7 @@ class OpNot : public OpUnario
     
   public:
     OpNot(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpNot; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
   };

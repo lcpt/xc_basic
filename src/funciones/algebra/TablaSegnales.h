@@ -43,6 +43,6 @@ class TablaSegnales : public std::map<std::string,T,std::less<std::string> >
         return retval;
       }
     inline T *Nueva(const T &t)
-      { return &((*this)[t.GetNombre()]= t); }
+      { return &((*this)[t.getName()]= t); }
   };
 #endif

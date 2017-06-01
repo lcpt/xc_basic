@@ -45,7 +45,7 @@ void ExprAlgebra::expand(void)
     ConjVariables cv= Variables();
     for(register ConjVariables::const_iterator i=cv.begin();i!=cv.end();i++)
       {
-        const std::string &nmb_var= (*i)->GetNombre();
+        const std::string &nmb_var= (*i)->getName();
         if(LexA().EsExpresion(nmb_var))
           {
             ExprAlgebra e= LexA().GetExpresion(nmb_var);

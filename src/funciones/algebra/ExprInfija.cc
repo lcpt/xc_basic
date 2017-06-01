@@ -50,7 +50,7 @@ ExprInfija &ExprInfija::operator=(const std::string &str)
 //! @brief Inserta la señal que se pasa como parámetro.
 void ExprInfija::InsertaPalabra(const std::streampos &pos,Segnal *t)
   {
-    const std::string &nmb_palabra= t->GetNombre();
+    const std::string &nmb_palabra= t->getName();
     if(Inicial())
       if(t->GetClase() == op_binario)
         {
@@ -128,7 +128,7 @@ bool ExprInfija::InsertaOpUnario(const std::streampos &pos,Segnal *t)
         err_traduc= true;
       }
     else if(t->GetClase() == op_binario)    //Un operador binario es ilegal en esta
-      t= InsertaNeg(pos,t->GetNombre()[0]); //posición, debe ser unario.
+      t= InsertaNeg(pos,t->getName()[0]); //posición, debe ser unario.
     else
       PonerSegnal(t);
     return true;
@@ -143,7 +143,7 @@ void ExprInfija::InsertaOpBinario(const std::streampos &pos,Segnal *t)
       {
         std::cerr << "ExprInfija::InsertaOpBinario; error, posicion: " << pos
                   << " se esperaba operador binario o )." 
-                  << " se obtuvo: " << t->GetNombre() << std::endl;
+                  << " se obtuvo: " << t->getName() << std::endl;
         err_traduc= true;
       }
   }
@@ -171,7 +171,7 @@ std::streampos ExprInfija::EncontrarPalabra(const std::streampos &pos,std::istre
     Variable s;
     is >> s;
     Segnal *t= NULL;
-    const std::string &nmb= s.GetNombre();
+    const std::string &nmb= s.getName();
     if((t= CalcularDireccion(nmb)))
       InsertaPalabra(pos,t);
     else

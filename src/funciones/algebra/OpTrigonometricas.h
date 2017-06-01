@@ -31,7 +31,7 @@ class OpPi : public OpUnario
     
   public:
     OpPi(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpPi; }
     virtual const Operando &Opera(const Operando *v1= NULL,const Operando *v2= NULL) const;
   };
@@ -41,7 +41,7 @@ class OpSin : public OpUnario
     
   public:
     OpSin(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpSin; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
     virtual Rama Diferencia(const Variable &,const Rama &r) const;
@@ -52,7 +52,7 @@ class OpCos : public OpUnario
     
   public:
     OpCos(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpCos; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
     virtual Rama Diferencia(const Variable &,const Rama &r) const;
@@ -63,7 +63,7 @@ class OpTan : public OpUnario
     
   public:
     OpTan(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpTan; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
     virtual Rama Diferencia(const Variable &,const Rama &r) const;
@@ -74,7 +74,7 @@ class OpAtan : public OpUnario
     
   public:
     OpAtan(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpAtan; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
     virtual Rama Diferencia(const Variable &,const Rama &r) const;
@@ -86,7 +86,7 @@ class OpSec : public OpUnario
     
   public:
     OpSec(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpSec; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
   };
@@ -97,7 +97,7 @@ class OpCosec : public OpUnario
     
   public:
     OpCosec(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpCosec; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
   };
@@ -108,7 +108,7 @@ class OpCotg : public OpUnario
     
   public:
     OpCotg(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpCotg; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
   };
@@ -119,7 +119,7 @@ class OpDeg2Rad : public OpUnario
     
   public:
     OpDeg2Rad(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpDeg2Rad; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
     virtual Rama Diferencia(const Variable &,const Rama &r) const;
@@ -132,7 +132,7 @@ class OpRad2Deg : public OpUnario
     
   public:
     OpRad2Deg(void) : OpUnario() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpRad2Deg; }
     virtual const Operando &Opera(const Operando *,const Operando *v2= NULL) const;
     virtual Rama Diferencia(const Variable &,const Rama &r) const;

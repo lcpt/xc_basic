@@ -48,7 +48,7 @@ class Operando: public Segnal, public ProtoExpresion
       : valor(d) {}
     void Put(const double &v)
       { valor= v; }
-    virtual const std::string &GetNombre(void) const;
+    virtual const std::string &getName(void) const;
     virtual const std::string &GetFullString(void) const;
     inline virtual Clase GetClase(void) const
       { return operando; }

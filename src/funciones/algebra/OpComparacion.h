@@ -43,7 +43,7 @@ class OpMenor : public OpComparacion
     
   public:
     OpMenor(void) : OpComparacion() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpMenor; }
     virtual const Operando &Opera(const Operando *v1= NULL,const Operando *v2= NULL) const;
   };
@@ -56,7 +56,7 @@ class OpMenorIgual : public OpComparacion
     
   public:
     OpMenorIgual(void) : OpComparacion() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpMenorIgual; }
     virtual const Operando &Opera(const Operando *v1= NULL,const Operando *v2= NULL) const;
   };
@@ -69,7 +69,7 @@ class OpIgual : public OpComparacion
     
   public:
     OpIgual(void) : OpComparacion() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpIgual; }
     virtual const Operando &Opera(const Operando *v1= NULL,const Operando *v2= NULL) const;
   };
@@ -82,7 +82,7 @@ class OpMayor : public OpComparacion
     
   public:
     OpMayor(void) : OpComparacion() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpMayor; }
     virtual const Operando &Opera(const Operando *v1= NULL,const Operando *v2= NULL) const;
   };
@@ -95,7 +95,7 @@ class OpMayorIgual : public OpComparacion
     
   public:
     OpMayorIgual(void) : OpComparacion() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpMayorIgual; }
     virtual const Operando &Opera(const Operando *v1= NULL,const Operando *v2= NULL) const;
   };
@@ -108,7 +108,7 @@ class OpDistinto : public OpComparacion
     
   public:
     OpDistinto(void) : OpComparacion() {}
-    inline virtual const std::string &GetNombre(void) const
+    inline virtual const std::string &getName(void) const
       { return nmbOpDistinto; }
     virtual const Operando &Opera(const Operando *v1= NULL,const Operando *v2= NULL) const;
   };

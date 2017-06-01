@@ -30,4 +30,4 @@ Operador &Operador::operator=(const Operador &otro)
     return *this;
   }
 const std::string &Operador::GetFullString(void) const
-  { return GetNombre(); }
+  { return getName(); }

@@ -74,7 +74,7 @@ bool Rama::EsToNum(void) const
   {
     bool retval= false;
     if(GetClase()==op_unitario)
-      if(data->GetNombre()==OpToNum().GetNombre())
+      if(data->getName()==OpToNum().getName())
         retval= true;
     return retval;
   }

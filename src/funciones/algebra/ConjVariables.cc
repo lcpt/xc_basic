@@ -40,7 +40,7 @@ std::vector<std::string> ConjVariables::getNombres(void) const
     std::vector<std::string> retval(size());
     size_t conta= 0;
     for(const_iterator i= begin();i!=end();i++,conta++)
-      retval[conta]= (*i)->GetNombre();
+      retval[conta]= (*i)->getName();
     return retval;
   }
 

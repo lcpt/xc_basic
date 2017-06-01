@@ -33,9 +33,9 @@ VarExpr *LexAlgebra::CalcDirExpr(const std::string &nmb)
 OpndoConNombre *LexAlgebra::NuevaVar(const Variable &v)
   {
     //Si existía como expresión advertimos del problema:
-    TablaExpresiones::const_iterator i= expresiones.find(v.GetNombre());
+    TablaExpresiones::const_iterator i= expresiones.find(v.getName());
     if(i!=expresiones.end())
-      std::cerr << "¡Ojo! la variable: '" << v.GetNombre() 
+      std::cerr << "¡Ojo! la variable: '" << v.getName() 
            << "' ya existe como expresión." << std::endl;
     //La agregamos a la tabla de expresiones.
     return vars.Nueva(v);
@@ -44,12 +44,12 @@ OpndoConNombre *LexAlgebra::NuevaVar(const Variable &v)
 OpndoConNombre *LexAlgebra::NuevaExpr(const VarExpr &v)
   {
     //Si existía como variable advertimos del problema:
-    TablaVariables::const_iterator i= vars.find(v.GetNombre());
+    TablaVariables::const_iterator i= vars.find(v.getName());
     if(i!=vars.end())
-      std::cerr << "¡Ojo! la expresión: '" << v.GetNombre() 
+      std::cerr << "¡Ojo! la expresión: '" << v.getName() 
            << "' ya existe como variable." << std::endl;
     //Si realmente es nueva, la agregamos a la tabla de expresiones.
-    TablaExpresiones::iterator j= expresiones.find(v.GetNombre());
+    TablaExpresiones::iterator j= expresiones.find(v.getName());
     OpndoConNombre *retval= NULL;
     if(j==expresiones.end())
       retval= expresiones.Nueva(v);

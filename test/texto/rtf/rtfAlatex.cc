@@ -97,12 +97,12 @@ class CadenaRTF: public EntidadRTF
       : EntidadRTF(otro), nmb(otro.nmb) {}
     virtual EntidadRTF *Copia(void) const
       { return new CadenaRTF(*this); }
-    const string &GetNombre(void) const
+    const string &getName(void) const
       { return nmb; }
     inline virtual void Print(std::ostream &os) const
-      { os << "cadena: " << GetNombre(); }
+      { os << "cadena: " << getName(); }
     inline virtual void PrintLatex(std::ostream &os) const
-      { os << GetNombre(); }  
+      { os << getName(); }  
     friend istream &operator>>(istream &is,CadenaRTF &str)
       {
         if(cin.eof()) return is;
@@ -150,10 +150,10 @@ class PalabCtrl: public CadenaRTF
     const string &GetArgumento(void) const
       { return arg; }
     virtual int Coincide (const string &str) const
-      { return (GetNombre() == str); }
+      { return (getName() == str); }
     virtual void Print(std::ostream &os) const
       {  
-        os << "palabra de control: " << GetNombre()
+        os << "palabra de control: " << getName()
            << " argumento: " << GetArgumento();
       }
     virtual void PrintLatex(std::ostream &os) const

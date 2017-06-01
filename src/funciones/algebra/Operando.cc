@@ -43,7 +43,7 @@ Rama *Operando::Distrib(Rama *r) const
   { return r; }
 
 //! @brief Devuelve el nombre del operando.
-const std::string &Operando::GetNombre(void) const
+const std::string &Operando::getName(void) const
   { return GetFullString(); }
 
 //! @brief Devuelve la cadena de caracteres correspondiente al valor

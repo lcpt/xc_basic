@@ -121,14 +121,14 @@ Rama *OpProd::Distrib(Rama *r) const
     const Operando *data= r->DatoDcho();
     if(data)
       {
-        const std::string nmbD= data->GetNombre();
+        const std::string nmbD= data->getName();
         if((nmbD=="+") || (nmbD=="-")) //Hay suma a la derecha.
           r= DistribDcha(r);
       }
     data= r->DatoIzdo();
     if(data)
       {
-        const std::string nmbI= data->GetNombre();
+        const std::string nmbI= data->getName();
         if((nmbI=="+") || (nmbI=="-")) //Hay suma a la izquierda.
           r= DistribIzda(r);
       }

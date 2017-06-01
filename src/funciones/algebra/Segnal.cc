@@ -25,7 +25,7 @@
 
 std::ostream &Segnal::Imprime(std::ostream &os) const
   {
-    os << GetNombre();
+    os << getName();
     return os;
   }
 
