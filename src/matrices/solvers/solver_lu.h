@@ -91,7 +91,7 @@ class SolverLU: public SolverM<M>
             if ((*this->A)(this->P(k),k) == solver_m::CERO) //Si el pivote de esa columna es nulo.
               {
                 v = -1;
-                if(this->verborrea) std::cerr << "Matriz singular" << std::endl;
+                if(this->verbosity) std::cerr << "Matriz singular" << std::endl;
                 return false;
               }
             aplica_pivote(k);
@@ -140,7 +140,7 @@ class SolverLU: public SolverM<M>
     inline void check_decomp(void) const
       { if(!this->desc) std::cerr << "¡Ojo! Se ha llamado a Backsub sin llamar antes a Decomp." << std::endl; }
   public:
-    SolverLU(const size_t &verborrea= 0): solver_m(verborrea) {}
+    SolverLU(const size_t &verbosity= 0): solver_m(verbosity) {}
     V BackSub(V &B) const
       {
         check_decomp();
@@ -160,7 +160,7 @@ class SolverConstLU: public SolverLU<M,V>
   protected:
     M a;
   public:
-    SolverConstLU(const size_t &verborrea): SolverLU<M,V>(verborrea), a(0,0){}
+    SolverConstLU(const size_t &verbosity): SolverLU<M,V>(verbosity), a(0,0){}
     void PutMatriz(const M &m)
       {
         a= m;
@@ -173,8 +173,8 @@ template <class treal,class V>
 class SolverSimLU: public SolverConstLU<matrizZ<treal>,V>
   {
   public:
-    SolverSimLU(const size_t &verborrea)
-      : SolverConstLU<matrizZ<treal>,V>(verborrea)
+    SolverSimLU(const size_t &verbosity)
+      : SolverConstLU<matrizZ<treal>,V>(verbosity)
       {}
     void PutMatriz(const matsimZ<treal> &m)
       { SolverConstLU<matrizZ<treal>,V>::PutMatriz(m.GetCompleta()); }
@@ -243,7 +243,8 @@ class SolverDispLU: public SolverLU<matdispZ<treal>,V>
             if ((*this->A)(this->P(k),k) == solver_lu::CERO) //Si el pivote de esa columna es nulo.
               {
                 this->v = -1;
-                if(this->verborrea) std::cerr << "Matriz singular" << std::endl;
+                if(this->verbosity)
+		  std::cerr << "Matriz singular" << std::endl;
                 return false;
               }
             //aplica_pivote(ic->first);

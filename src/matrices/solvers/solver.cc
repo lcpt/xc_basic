@@ -31,7 +31,7 @@ int Solver::check_pp(const size_t num_filas) const
   {
     if(PP.getNumFilas()!= num_filas || PP.getNumCols()!=1)
       {
-        if(verborrea) std::cerr << "La matriz " << PP << "no tiene dimensiones válidas";
+        if(verbosity) std::cerr << "La matriz " << PP << "no tiene dimensiones válidas";
         return 0;
       }
     return 1;

@@ -91,7 +91,7 @@ double baja_hasta( const double &a,const double &b,const double &umbral,
   }
 
 template<class MF>
-double busqueda_direccional(const MF &F,const m_double &x,const m_double &dx,const size_t &verborrea= 1)
+double busqueda_direccional(const MF &F,const m_double &x,const m_double &dx,const size_t &verbosity= 1)
   {
     Funcion_f<MF> f(F);
     const m_double nabla_f= gradiente_cdf(x,f);
@@ -99,7 +99,7 @@ double busqueda_direccional(const MF &F,const m_double &x,const m_double &dx,con
     double lambda= 1.0; //Valor por defecto.
     if(prod>0.0) //Problemas de estabilidad numérica.
       {
-        if(verborrea)
+        if(verbosity)
           {
             std::cerr << "Problemas de estabilidad numérica en búsqueda direccional." << std::endl;
             std::cerr << "  nabla_f= " << nabla_f << std::endl;
@@ -128,7 +128,7 @@ class NewtonRaphson
     size_t iter; //Contador de iteraciones.
     int error; //Flag de error. 0: Se produjo un error.
     size_t maxIter; //Número máximo de iteraciones.
-    size_t verborrea;
+    size_t verbosity;
     m_double actualiza_delta_X(SolverLU<m_double,m_double> &solver,m_double &J,const m_double &residuo,const m_double &X)
       {
         m_double retval(residuo);
@@ -137,7 +137,7 @@ class NewtonRaphson
         if(!solver.Decomp()) //Jacobiano singular.
           {
             error= 0;
-            if(verborrea)
+            if(verbosity)
               {
                 std::cerr << "No se pudo hacer la descomposición LU para el jacobiano:" << std::endl;
                 std::cerr << "  X= " << X << std::endl;
@@ -158,7 +158,7 @@ class NewtonRaphson
       }
   public:
     NewtonRaphson(const size_t &vrbrr= 1)
-      : iter(0),error(1),maxIter(30), verborrea(vrbrr) {}
+      : iter(0),error(1),maxIter(30), verbosity(vrbrr) {}
     const size_t &GetNumIter(void) const
       //Devuelve el número de iteraciones empleadas para el cálculo.
       { return iter; }
@@ -184,7 +184,7 @@ m_double NewtonRaphson<MF>::Itera( const MF &F,const m_double &Xguess,
     m_double J(numEqns,numEqns); //Matriz para el jacobiano.
     m_double residuo(numEqns,1); //Vector para el residuo.
     double lambda= 1.0;
-    SolverLU<m_double,m_double> solver(verborrea);
+    SolverLU<m_double,m_double> solver(verbosity);
     do
       {
         iter++;
@@ -206,7 +206,7 @@ m_double NewtonRaphson<MF>::Itera( const MF &F,const m_double &Xguess,
           X_buena= X;
 
         // update guess and test for convergence
-        lambda= busqueda_direccional(F,X,delta_X,verborrea);
+        lambda= busqueda_direccional(F,X,delta_X,verbosity);
         X+= lambda*delta_X;
         // clear the more-iteration flag
         moreIter = actualiza_moreIter(delta_X,tol_dx);

@@ -30,7 +30,7 @@ class Solver
   private:
     m_sizet PP;
   protected:
-    size_t verborrea; //0: No mostrar ningún mensaje de error o aviso.
+    size_t verbosity; //0: No mostrar ningún mensaje de error o aviso.
                       //1: Mostrar sólo los importantes.
                       //2: Mostrar todos los mensajes.
     size_t n;
@@ -44,9 +44,9 @@ class Solver
     void inic_p(void);
     int check_pp(const size_t num_filas) const;
   public:
-    Solver(const size_t &vrbrr= 1): PP(0,0), verborrea(vrbrr), n(0), desc(0) {}
-    void SetVerborrea(const size_t &v)
-      { verborrea= v; }
+    Solver(const size_t &vrbrr= 1): PP(0,0), verbosity(vrbrr), n(0), desc(0) {}
+    void SetVerbosity(const size_t &v)
+      { verbosity= v; }
   };
 
 template<class M>
@@ -64,7 +64,7 @@ class SolverM: public Solver
       {
         if(A->getNumCols() != A->getNumFilas())
           {
-	    if(verborrea)
+	    if(verbosity)
               std::cerr << "La matriz no es cuadrada" << std::endl;
 	    return 0;
           }
@@ -77,7 +77,10 @@ class SolverM: public Solver
         if(!check_matriz()) return 0;
         if(B.getNumFilas()!=A->getNumFilas() || B.getNumCols()!=1)
           {
-	    if(verborrea) std::cerr << "La matriz " << B << " no tiene las mismas filas que " << A << std::endl;
+	    if(verbosity)
+	      std::cerr << "La matriz " << B
+			<< " no tiene las mismas filas que "
+			<< A << std::endl;
 	    return 0;
           }
         return check_pp(A->getNumFilas());
@@ -94,7 +97,8 @@ class SolverM: public Solver
       {
         if(!A)
           {
-	    if(verborrea) std::cerr << "No hay matriz que descomponer." << std::endl;
+	    if(verbosity)
+	      std::cerr << "No hay matriz que descomponer." << std::endl;
             return false;
           }
         if(!desc)
