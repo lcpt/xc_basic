@@ -59,6 +59,11 @@ class LabelContainer
 
   public:
     LabelContainer(void);
+    LabelContainer &operator+=(const LabelContainer &);
+    LabelContainer &operator-=(const LabelContainer &);
+    LabelContainer &operator*=(const LabelContainer &);
+
+    void extend(const LabelContainer &);
 
     const std::set<int> &getIdsEtiquetas(void) const;
 
@@ -70,9 +75,15 @@ class LabelContainer
     void clear(void);
 
     void Print(std::ostream &os) const;
+    friend LabelContainer operator+(const LabelContainer &,const LabelContainer &);
+    friend LabelContainer operator-(const LabelContainer &,const LabelContainer &);
+    friend LabelContainer operator*(const LabelContainer &,const LabelContainer &);
 
   };
 
 std::ostream &operator<<(std::ostream &os,const LabelContainer &lc);
+LabelContainer operator+(const LabelContainer &,const LabelContainer &);
+LabelContainer operator-(const LabelContainer &,const LabelContainer &);
+LabelContainer operator*(const LabelContainer &,const LabelContainer &);
 
 #endif

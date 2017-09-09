@@ -86,20 +86,50 @@ DiccionarioEtiquetas LabelContainer::dic;
 
 //! @brief Constructor.
 LabelContainer::LabelContainer(void)
- {}
+   {}
 
+//! @brief += operator.
+LabelContainer &LabelContainer::operator+=(const LabelContainer &otro)
+  {
+    extend(otro);
+    return *this;
+  }
 
-//! @brief Devuelve el número de etiquetas del objeto.
+//! @brief -= operator.
+LabelContainer &LabelContainer::operator-=(const LabelContainer &otro)
+  {
+    std::set<int> tmp;
+    std::set_difference(etiquetas.begin(),etiquetas.end(),otro.etiquetas.begin(),otro.etiquetas.end(), std::inserter(tmp,tmp.begin()));
+    etiquetas= tmp;
+    return *this;
+  }
+
+//! @brief *= operator (intersection).
+LabelContainer &LabelContainer::operator*=(const LabelContainer &otro)
+  {
+    std::set<int> tmp;
+    std::set_intersection(etiquetas.begin(),etiquetas.end(),otro.etiquetas.begin(),otro.etiquetas.end(), std::inserter(tmp,tmp.begin()));
+    etiquetas= tmp;
+    return *this;
+  }
+
+//! @brief Return a reference to the label dictionary.
 const DiccionarioEtiquetas &LabelContainer::getDiccionario(void)
   { return dic; }
 
-//! @brief Devuelve el número de etiquetas del objeto.
+//! @brief Return the number of labels in this object.
 size_t LabelContainer::getNumEtiquetas(void) const
   { return etiquetas.size(); }
 
-//! @brief Devuelve los identificadores de etiqueta.
+//! @brief Return the label identifiers.
 const std::set<int> &LabelContainer::getIdsEtiquetas(void) const
   { return etiquetas; }
+
+void LabelContainer::extend(const LabelContainer &otro)
+  {
+    for(std::set<int>::const_iterator i= otro.etiquetas.begin();i!=otro.etiquetas.end();i++)
+      etiquetas.insert(*i);
+  }
 
 int LabelContainer::addEtiqueta(const std::string &e)
   {
@@ -149,4 +179,28 @@ std::ostream &operator<<(std::ostream &os,const LabelContainer &lc)
   {
     lc.Print(os);
     return os;
+  }
+
+//! @brief Return the union of both containers.
+LabelContainer operator+(const LabelContainer &a,const LabelContainer &b)
+  {
+    LabelContainer retval(a);
+    retval+=b;
+    return retval;
+  }
+
+//! @brief Return the labels in a that are not in b.
+LabelContainer operator-(const LabelContainer &s1,const LabelContainer &s2)
+  {
+    LabelContainer retval(s1);
+    retval-=s2;
+    return retval;
+  }
+
+//! @brief Return the labels in a that are also in b.
+LabelContainer operator*(const LabelContainer &s1,const LabelContainer &s2)
+  {
+    LabelContainer retval(s1);
+    retval*=s2;
+    return retval;    
   }
