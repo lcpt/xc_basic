@@ -111,18 +111,9 @@ inline long double pow10(const long double &v)
 //{ return pow(10,v); }
 
 
-//Redondeo
+//Rounding functions
 inline long iround(const long double &v)
   { return boost::math::lround(v); }
-inline long double round(const long double &v, short unsigned int dec)
-     //xxx funciona mal
-  {
-    const double p= pow10(dec);
-    double d= v * p;
-    d= round(d);
-    d/= p;
-    return d;
-  }
 
 inline int entre(const double &inf,const double &v,const double &sup)
   {
