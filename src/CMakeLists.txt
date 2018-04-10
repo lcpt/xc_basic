@@ -70,7 +70,7 @@ message(STATUS "hdf5 found:  ${HDF5_FOUND}")
 # message(STATUS "********* hdf5 include: " ${HDF5_INCLUDE_FILENAME})
 # message(STATUS "********* hdf5 definitions: " ${HDF_DEFINITIONS})
 
-SET(texto texto/cadena_carac texto/LabelContainer texto/en_letra texto/StrTok texto/tab_cod texto/latex texto/StringFormatter texto/FixedWidthReader)
+SET(text text/text_string text/LabelContainer text/en_letra text/StrTok text/tab_cod text/latex text/StringFormatter text/FixedWidthReader)
 
 SET(streams streams/imanip streams/prep)
 
@@ -94,7 +94,7 @@ SET(funciones ${algebra} ${misc_funciones})
 
 SET(MedXC  med_xc/CellModel med_xc/MEDMEM_CellModel med_xc/InterpKernelGaussCoords med_xc/InterpKernelException med_xc/MEDMEM_Coordinate med_xc/MEDMEM_DriversDef med_xc/MEDMEM_Exception med_xc/MEDMEM_Family med_xc/MEDMEM_Field med_xc/MEDMEM_GaussLocalization med_xc/MEDMEM_GenDriver med_xc/MEDMEM_Grid med_xc/MEDMEM_Group med_xc/MEDMEM_Init med_xc/MEDMEM_MedFileBrowser med_xc/MEDMEM_MedVersion med_xc/MEDMEM_MeshFuse med_xc/MEDMEM_PorflowMeshDriver med_xc/MEDMEM_RCBase med_xc/MEDMEM_SkyLineArray med_xc/MEDMEM_Support med_xc/MEDMEM_TopLevel med_xc/MEDMEM_Unit med_xc/MEDMEM_Connectivity med_xc/MEDMEM_ConnectZone med_xc/MEDMEM_DriverFactory med_xc/MEDMEM_DriverTools med_xc/MEDMEM_Mesh med_xc/MEDMEM_GMesh med_xc/PointLocator med_xc/MEDMEM_Meshing med_xc/MEDMEM_VtkMeshDriver med_xc/MEDMEM_GibiMeshDriver med_xc/MEDMEM_EnsightFieldDriver med_xc/MEDMEM_EnsightMeshDriver med_xc/MEDMEM_EnsightMedDriver med_xc/MEDMEM_EnsightUtils med_xc/MEDMEM_MedMeshDriver med_xc/MEDMEM_VtkMedDriver med_xc/MEDMEM_InterlacingPolicy)
 
-ADD_LIBRARY(xc_basic ${tiempo} ${texto} ${streams} ${stl} ${util} ${sqlitepp} ${matrices} ${skypack} ${itpack} ${umfpack} ${funciones} ${unidades} ${MedXC})
+ADD_LIBRARY(xc_basic ${tiempo} ${text} ${streams} ${stl} ${util} ${sqlitepp} ${matrices} ${skypack} ${itpack} ${umfpack} ${funciones} ${unidades} ${MedXC})
 INSTALL(TARGETS xc_basic DESTINATION lib)
  
 SET(CPACK_GENERATOR "DEB")

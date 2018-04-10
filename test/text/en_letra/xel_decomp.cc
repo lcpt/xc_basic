@@ -1,7 +1,7 @@
 //xel_decomp.cc
 
 #include <iostream>
-#include "xc_basic/src/texto/en_letra.h"
+#include "xc_basic/src/text/en_letra.h"
 
 int main(void)
   {

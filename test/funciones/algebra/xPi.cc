@@ -1,6 +1,6 @@
 //xExprAlgebra.cc
 #include "matemat/funciones/src/algebra/ExprAlgebra.h"
-#include "texto/src/StrTok.hxx"
+#include "text/src/StrTok.hxx"
 
 int main(void)
   {

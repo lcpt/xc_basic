@@ -1,7 +1,7 @@
 //codigos.cc
 #include <iostream>
 #include "xc_basic/src/streams/imanip.h"
-#include "xc_basic/src/texto/latex.h"
+#include "xc_basic/src/text/latex.h"
 
 int main(void)
   {

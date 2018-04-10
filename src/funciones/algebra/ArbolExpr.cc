@@ -25,7 +25,7 @@
 #include "ConjVariables.h"
 #include "ExprPostfija.h"
 #include "ExprFunctor.h"
-#include "xc_basic/src/texto/cadena_carac.h"
+#include "xc_basic/src/text/text_string.h"
 #include <sstream>
 #include <boost/lexical_cast.hpp>
 #include <cmath>
@@ -34,7 +34,7 @@
 //! @brief Constructor por defecto.
 ArbolExpr::ArbolExpr(void): ExprBase(false), raiz(NULL) {}
 
-//! @brief Constructor a partir de cadena de caracteres.
+//! @brief Constructor a partir de text string.
 ArbolExpr::ArbolExpr(const std::string &str)
   : ExprBase(false), raiz(NULL)
   { InicFromStr(str); }
@@ -293,14 +293,14 @@ std::vector<std::string> ArbolExpr::getNombresVariables(void) const
 void ArbolExpr::Print(std::ostream &os) const
   { os << GetFullString(); }
 
-//! @brief Devuelve una cadena de caracteres con el contenido de la expresión.
+//! @brief Devuelve una text string con el contenido de la expresión.
 std::string ArbolExpr::GetString(void) const
   {
     std::ostringstream retval;
     Print(retval);
     return retval.str();
   }
-//! @brief Devuelve una cadena de caracteres con el contenido de la expresión
+//! @brief Devuelve una text string con el contenido de la expresión
 //! representando los valores reales con toda la precisión posible.
 const std::string &ArbolExpr::GetFullString(void) const
   {

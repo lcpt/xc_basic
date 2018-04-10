@@ -25,7 +25,7 @@
 #define PCL_H
 
 #include <iostream>
-#include "xc_basic/src/texto/tab_cod.h"
+#include "xc_basic/src/text/tab_cod.h"
 
 //Comandos de control de trabajo
 inline void PCLReset(std::ostream &os)

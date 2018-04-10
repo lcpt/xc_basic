@@ -1,5 +1,5 @@
 #include <iostream>
-#include "xc_basic/src/texto/StrTok.h"
+#include "xc_basic/src/text/StrTok.h"
 
 void prueba_StrTok(const std::string &dato,const char &sep,std::ostream &os)
   {

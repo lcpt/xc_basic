@@ -18,9 +18,9 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//cadena_carac.cc
+//text_string.cc
 
-#include "cadena_carac.h"
+#include "text_string.h"
 #include <algorithm>
 #include <boost/tokenizer.hpp>
 #include <boost/algorithm/string/trim.hpp>
@@ -28,8 +28,8 @@
 #include <cctype>
 #include "xc_basic/src/util/matem.h"
 
-//! Ajusta una cadena de caracteres a la derecha dentro de otra de
-//! tamaño n rellena de caracteres 'c'.
+//! Ajusta una text string a la derecha dentro de otra de
+//! tamaño n rellena de characters 'c'.
 const std::string &ajusta_dcha(const std::string &s,const size_t &n,const char &fill_char)
   {
     static std::string retval;
@@ -43,8 +43,8 @@ const std::string &ajusta_dcha(const std::string &s,const size_t &n,const char &
     return retval;
   }
 
-//! Ajusta una cadena de caracteres a la izquierda dentro de otra de
-//! tamaño n rellena de caracteres 'c'.
+//! Ajusta una text string a la izquierda dentro de otra de
+//! tamaño n rellena de characters 'c'.
 const std::string &ajusta_izda(const std::string &s,const size_t &n,const char &fill_char)
   {
     static std::string retval;
@@ -58,18 +58,18 @@ const std::string &ajusta_izda(const std::string &s,const size_t &n,const char &
     return retval;
   }
 
-//! @brief Imprime los códigos ASCII de la cadena de caracteres.
+//! @brief Imprime los códigos ASCII de la text string.
 void deletrea_ascii(const std::string &s,std::ostream &os)
   {
     for(std::string::const_iterator i= s.begin();i!=s.end();i++)
       os << int(*i) << ',';
   }
 
-//! @brief Devuelve el número de caracteres iguales a C que hay en la cadena.
+//! @brief Devuelve el número de characters iguales a C que hay en la cadena.
 size_t num_car(const char *str,const char C)
 { return num_car(std::string(str),C); }
 
-//! @brief Devuelve el número de caracteres iguales a C que hay en la cadena.
+//! @brief Devuelve el número de characters iguales a C que hay en la cadena.
 size_t num_car(const std::string &str,const char C)
   {
     size_t conta= 0;
@@ -79,12 +79,12 @@ size_t num_car(const std::string &str,const char C)
   }
 
 
-//! @brief Devuelve el número de caracteres C que hay a la izquierda de
+//! @brief Devuelve el número de characters C que hay a la izquierda de
 //! la cadena.
 int num_car_i(const char *str,const char C)
   { return num_car_i(std::string(str),C); }
 
-//! @brief Devuelve el número de caracteres C que hay a la izquierda de
+//! @brief Devuelve el número de characters C que hay a la izquierda de
 //! la cadena.
 size_t num_car_i(const std::string &s,const char C)
   {
@@ -94,16 +94,16 @@ size_t num_car_i(const std::string &s,const char C)
     return b;
   }
 
-//! @brief Devuelve el número de caracteres C que hay a la derecha de
+//! @brief Devuelve el número de characters C que hay a la derecha de
 //! la cadena.
 int num_car_d(const char *str,const char C)
   { return num_car_d(std::string(str),C); }
 
-//! @brief Devuelve el número de caracteres C que hay a la derecha de
+//! @brief Devuelve el número de characters C que hay a la derecha de
 //! la cadena.
 int num_car_d(const std::string &s,const char C)
   {
-    //Contamos los caracteres C a la derecha
+    //Contamos los characters C a la derecha
     const size_t long_str= s.length();
     size_t num_car= 0;
     size_t i= long_str-1;
@@ -115,7 +115,7 @@ int num_car_d(const std::string &s,const char C)
     return num_car;
   }
 
-//! @brief Desplaza los caracteres n posiciones a la izquierda.
+//! @brief Desplaza los characters n posiciones a la izquierda.
 char *shift_i(char *str,int n)
   {
     const size_t long_str= strlen(str);
@@ -125,7 +125,7 @@ char *shift_i(char *str,int n)
     return str;    
   }
 
-//! @brief Desplaza los caracteres n posiciones a la izquierda.
+//! @brief Desplaza los characters n posiciones a la izquierda.
 const std::string &shift_i(const std::string &s,int n)
   { 
     static std::string retval;
@@ -134,7 +134,7 @@ const std::string &shift_i(const std::string &s,int n)
     return retval;
   }
 
-//! @brief Quita los caracteres C a la derecha
+//! @brief Quita los characters C a la derecha
 char *q_car_d(char *str,const char C)
   {
     if(str)
@@ -146,7 +146,7 @@ char *q_car_d(char *str,const char C)
     return str;
   }
 
-//! @brief Quita los caracteres C a la derecha
+//! @brief Quita los characters C a la derecha
 const std::string &q_car_d(const std::string &s,const char C)
   {
     static std::string retval;
@@ -160,7 +160,7 @@ const std::string &q_car_d(const std::string &s,const char C)
     return retval;
   }
 
-//! @brief Elimina los caracteres C.
+//! @brief Elimina los characters C.
 const std::string &elimina_car(const std::string &s,const char C)
   {
     static std::string retval;
@@ -242,7 +242,7 @@ const std::string &copia_desde(const std::string &s,char delim)
 
 //! @brief Devuelve la cadena que resulta de copiar
 //! la que se le pasa como parámetro hasta
-//! encontrar alguno de los caracteres de delim.
+//! encontrar alguno de los characters de delim.
 const std::string &copia_hasta(const std::string &s,const std::string &delim)
   {
     static std::string retval;
@@ -258,7 +258,7 @@ const std::string &copia_hasta(const std::string &s,const std::string &delim)
     return retval;
   }
 
-//! @brief Devuelve los n últimos caracteres.
+//! @brief Devuelve los n últimos characters.
 const std::string &get_car_d(const std::string &s,const size_t &n)
   {
     static std::string retval;
@@ -347,9 +347,9 @@ int isNumber(const std::string &s)
     return true;
   }
 
-//! @brief Devuelve el número de llaves caracteres de apertura '{[«' menos el de llaves
+//! @brief Devuelve el número de llaves characters de apertura '{[«' menos el de llaves
 //! cierre '}]»' en la cadena que se pasa como parámetro'}' 
-int get_balance_caracteres(const std::string &s,const char &abre,const char &cierra)
+int get_balance_characters(const std::string &s,const char &abre,const char &cierra)
   {
     int retval= 0;
     for(std::string::const_iterator i= s.begin();i!=s.end();i++)
@@ -394,7 +394,7 @@ int get_balance_caracteres(const std::string &s,const char &abre,const char &cie
 //     return s;
 //   }
 
-//! Devuelve verdadero si la cadena de caracteres representa un número entero.
+//! Devuelve verdadero si la text string representa un número entero.
 bool es_entero(const std::string &str)
   {
     if(str.length()<1) return false;
@@ -407,7 +407,7 @@ bool es_entero(const std::string &str)
     return true;
   }
 
-//! Devuelve verdadero si la cadena de caracteres representa un número real.
+//! Devuelve verdadero si la text string representa un número real.
 bool es_real(const std::string &str)
   {
     if(str.length()<1) return false;
@@ -444,15 +444,15 @@ struct ToUpper
   };
 
 
-//! @brief Devuelve la cadena de caracteres transformada a mayúsculas.
+//! @brief Devuelve la text string transformada a mayúsculas.
 const std::string &tolower(const std::string &str)
   { return a_minusculas(str); }
 
-//! @brief Devuelve la cadena de caracteres transformada a minúsculas.
+//! @brief Devuelve la text string transformada a minúsculas.
 const std::string &toupper(const std::string &str)
   { return a_mayusculas(str); }
 
-//! @brief Devuelve la cadena de caracteres transformada a minúsculas.
+//! @brief Devuelve la text string transformada a minúsculas.
 const std::string &a_minusculas(const std::string &str)
   {
     static std::string retval;
@@ -461,7 +461,7 @@ const std::string &a_minusculas(const std::string &str)
     return retval;
   }
 
-//! @brief Devuelve la cadena de caracteres transformada a mayúsculas.
+//! @brief Devuelve la text string transformada a mayúsculas.
 const std::string &a_mayusculas(const std::string &str)
   {
     static std::string retval;
@@ -470,7 +470,7 @@ const std::string &a_mayusculas(const std::string &str)
     return retval;
   }
 
-//! @brief Devuelve un objeto ios_base::openMode a partir de la cadena de caracteres que se pasa como parámetro.
+//! @brief Devuelve un objeto ios_base::openMode a partir de la text string que se pasa como parámetro.
 std::ios_base::openmode string_to_openmode(const std::string &str)
   {
     if(str == "app")
@@ -494,11 +494,11 @@ std::ios_base::openmode string_to_openmode(const std::string &str)
 
 //Parsing.
 
-//! @brief Separa una cadena en subcadenas separadas por uno de los caracteres
+//! @brief Separa una cadena en subcadenas separadas por uno de los characters
 //! que se pasan en el parámetro sep.
 //!
-//! @param str: Cadena de caracteres a dividir.
-//! @param sp: Caracteres que separan campos.
+//! @param str: text string a dividir.
+//! @param sp: Characters que separan campos.
 const std::deque<std::string> &separa_escaped_cadena(const std::string &str,const std::string &sp)
   {
     typedef boost::tokenizer<boost::escaped_list_separator<char> >  tokenizer;
@@ -514,11 +514,11 @@ const std::deque<std::string> &separa_escaped_cadena(const std::string &str,cons
     return retval;
   }
 
-//! @brief Separa una cadena en subcadenas separadas por uno de los caracteres
+//! @brief Separa una cadena en subcadenas separadas por uno de los characters
 //! que se pasan en el parámetro sep.
 //!
-//! @param str: Cadena de caracteres a dividir.
-//! @param sp: Caracteres que separan campos.
+//! @param str: text string a dividir.
+//! @param sp: Characters que separan campos.
 const std::deque<std::string> &separa_cadena(const std::string &str,const std::string &sp)
   {
     typedef boost::tokenizer<boost::char_separator<char> >  tokenizer;
@@ -532,12 +532,12 @@ const std::deque<std::string> &separa_cadena(const std::string &str,const std::s
   }
 
 
-//! @brief Separa una cadena en subcadenas separadas por uno de los caracteres
+//! @brief Separa una cadena en subcadenas separadas por uno de los characters
 //! que se pasan en el parámetro sep. Además comprueba que el número de argumentos coindide
 //! con el valor sz que se pasa como parámetro.
 //!
-//! @param str: Cadena de caracteres a dividir.
-//! @param sp: Caracteres que separan campos.
+//! @param str: text string a dividir.
+//! @param sp: Characters que separan campos.
 //! @param sz: Número de campos que se espera obtener (si es igual a cero no se comprueba).
 const std::deque<std::string> &separa_cadena(const std::string &str,const std::string &sp,const size_t &sz)
   {
@@ -572,9 +572,9 @@ const std::deque<std::string> &split_at_first(const std::string &str,const char 
     return retval;
   }
 
-//! @brief Separa los campos de una cadena de texto CSV (comma separated values).
+//! @brief Separa los campos de una text string CSV (comma separated values).
 //!
-//! @param str: Cadena de caracteres a dividir.
+//! @param str: text string a dividir.
 const std::deque<std::string> &separa_csv(const std::string &str)
   {
     typedef boost::tokenizer<boost::escaped_list_separator<char> >  tokenizer;
@@ -586,7 +586,7 @@ const std::deque<std::string> &separa_csv(const std::string &str)
     return retval;
   }
 
-//! @brief Devuelve los sumandos de la cadena de caracteres (A +B + C + ...) que se pasa como parámetro.
+//! @brief Devuelve los sumandos de la text string (A +B + C + ...) que se pasa como parámetro.
 const std::deque<std::string> &separa_sumandos(const std::string &str)
   {
     static std::deque<std::string> retval;
@@ -601,11 +601,11 @@ const std::deque<std::string> &separa_sumandos(const std::string &str)
   }
 
 
-//! Recibe una cadena de caracteres del tipo:
+//! Recibe una text string del tipo:
 //
 //! nombre_funcion(arg1,arg2,arg3,...)
 //!
-//! y devuelve las cadenas de caracteres;
+//! y devuelve las text strings;
 //! - retval[0]= nombre_funcion
 //! - retval[1]= arg1,arg2,arg3,...
 //!
@@ -620,11 +620,11 @@ std::deque<std::string> getfuncargs(const std::string &str)
     return retval;
   }
 
-//! Recibe una cadena de caracteres del tipo:
+//! Recibe una text string del tipo:
 //
 //! nombre_funcion(arg1,arg2,arg3,...)
 //!
-//! y devuelve las cadenas de caracteres;
+//! y devuelve las text strings;
 //! - retval[0]= nombre_funcion
 //! - retval[1]= arg1
 //! - retval[2]= arg2
@@ -646,11 +646,11 @@ const std::deque<std::string> &getargs(const std::string &str)
     return retval;
   }
 
-//! Recibe una cadena de caracteres del tipo:
+//! Recibe una text string del tipo:
 //
 //! nombre[v1,v2,v3,...]
 //!
-//! y devuelve las cadenas de caracteres;
+//! y devuelve las text strings;
 //! - retval[0]= nombre
 //! - retval[1]= v1,v2,v3,...
 //!
@@ -665,11 +665,11 @@ const std::deque<std::string> &getnmbindices(const std::string &str)
     return retval;
   }
 
-//! Recibe una cadena de caracteres del tipo:
+//! Recibe una text string del tipo:
 //
 //! nombre[v1,v2,v3,...]
 //!
-//! y devuelve las cadenas de caracteres;
+//! y devuelve las text strings;
 //! - retval[0]= nombre
 //! - retval[1]= v1
 //! - retval[2]= v2
@@ -755,7 +755,7 @@ const std::string &protege_signos(const std::string &str)
     return retval;
   }
   
-int saldo_caracteres(const std::string &str,const char &abre,const char &cierra)
+int saldo_characters(const std::string &str,const char &abre,const char &cierra)
   {
     int retval= 0;
     const size_t sz= str.size();
@@ -785,10 +785,10 @@ int saldo_caracteres(const std::string &str,const char &abre,const char &cierra)
   }
 
 int saldo_parentesis(const std::string &str)
-  { return saldo_caracteres(str,'(',')'); }
+  { return saldo_characters(str,'(',')'); }
 
 int saldo_corchetes(const std::string &str)
-  { return saldo_caracteres(str,'[',']'); }
+  { return saldo_characters(str,'[',']'); }
 
 bool check_parentesis(const std::string &str)
   {
@@ -820,7 +820,7 @@ bool check_corchetes(const std::string &str)
     return retval;
   }
 
-//! @brief Devuelve una cadena de caracteres comprendida entre paréntesis, por.
+//! @brief Devuelve una text string comprendida entre paréntesis, por.
 //! ejemplo si la cadena es 'AAB(C(DEF)J)KL' y el iterador apunta al primer paréntesis (al
 //! que está detrás de la B) devolverá 'C(DEF)J'
 //! @param iter: Iterador apuntando al paréntesis que abre el bloque.
@@ -846,7 +846,7 @@ const std::string &get_bloque_parentesis(std::string::const_iterator &iter,const
     return retval;
   }
 
-//! @brief Devuelve una cadena de caracteres comprendida entre paréntesis, por.
+//! @brief Devuelve una text string comprendida entre paréntesis, por.
 //! ejemplo si la cadena es 'AAB(C(DEF)J)KL' y el iterador apunta al primer paréntesis (al
 //! que está detrás de la B) devolverá 'C(DEF)J'
 //! @param iter: Índice apuntando al paréntesis que abre el bloque.
@@ -873,7 +873,7 @@ const std::string &get_bloque_parentesis(const std::string &str,const size_t &it
     return retval;
   }
 
-//! @brief Devuelve una cadena de caracteres comprendida entre corchetes, por.
+//! @brief Devuelve una text string comprendida entre corchetes, por.
 //! ejemplo si la cadena es 'AAB[C[DEF]J]KL' y el iterador apunta al primer corchetes [al
 //! que está detrás de la B] devolverá 'C[DEF]J'
 //! @param iter: Iterador apuntando al corchete que abre el bloque.
@@ -899,7 +899,7 @@ const std::string &get_bloque_corchetes(std::string::const_iterator &iter,const 
     return retval;
   }
 
-//! @brief Devuelve una cadena de caracteres comprendida entre corchetes, por.
+//! @brief Devuelve una text string comprendida entre corchetes, por.
 //! ejemplo si la cadena es 'AAB[C[DEF]J]KL' y el iterador apunta al primer corchetes [al
 //! que está detrás de la B] devolverá 'C[DEF]J'
 //! @param iter: Iterador apuntando al corchete que abre el bloque.

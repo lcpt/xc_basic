@@ -135,8 +135,8 @@ inline std::ostream &ltx_cline(std::ostream &os,const std::string &str)
 inline omanip<const std::string &> ltx_cline(const std::string &str)
   { return omanip<const std::string &>(&ltx_cline,str); }
 
-inline std::string ltx_datos_multicolumn(const std::string &num_campos,const std::string &just,const std::string &texto)
-  { return ("{" + num_campos + "}{" + just + "}{" + texto + "}"); }
+inline std::string ltx_datos_multicolumn(const std::string &num_campos,const std::string &just,const std::string &text)
+  { return ("{" + num_campos + "}{" + just + "}{" + text + "}"); }
 inline std::ostream &ltx_multicolumn(std::ostream &os,const std::string &str)
   { return os << "\\multicolumn" << str; }
 

@@ -18,11 +18,11 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//cadena_carac.h
-//Utilidades para cadenas de caracteres.
+//text_string.h
+//Utilidades para text strings.
 
-#ifndef CADENA_CARAC_H
-#define CADENA_CARAC_H
+#ifndef TEXT_STRING_H
+#define TEXT_STRING_H
 
 #include <string>
 #include <iostream>
@@ -54,12 +54,12 @@ int num_car_d(const std::string &s,const char C= ' ');
 inline int num_blancos_d(const std::string &s)
   { return num_car_d(s,' '); }
 
-//! @brief Desplaza los caracteres n posiciones a la izquierda.
+//! @brief Desplaza los characters n posiciones a la izquierda.
 char *shift_i(char *str,int n);
-//! @brief Desplaza los caracteres n posiciones a la izquierda.
+//! @brief Desplaza los characters n posiciones a la izquierda.
 const std::string &shift_i(const std::string &s,int n);
 
-//! @brief Quita los caracteres C a la izquierda de la cadena.
+//! @brief Quita los characters C a la izquierda de la cadena.
 inline char *q_car_i(char *str,const char C= ' ')
   { return shift_i(str,num_car_i(str,C)); }
 //! @brief Quita los blancos a la izquierda de la cadena.
@@ -88,14 +88,14 @@ inline std::string q_CR_d(const std::string &s)
 
 const std::string &elimina_car(const std::string &s,const char C);
 
-//! @brief Quita los caracteres C a izquierda y derecha de la cadena.
+//! @brief Quita los characters C a izquierda y derecha de la cadena.
 inline char *q_car(char *str,const char C= ' ')
   { return q_car_d(q_car_i(str,C),C); }
 
 inline char *q_blancos(char *str)
   { return q_car(str,' '); }
 
-//! @brief Quita los caracteres C a izquierda y derecha de la cadena.
+//! @brief Quita los characters C a izquierda y derecha de la cadena.
 inline std::string q_car(const std::string &s,const char C= ' ')
   { return q_car_d(q_car_i(s,C),C); }
 
@@ -118,22 +118,22 @@ const std::string &copia_desde(const std::string &s,char delim);
 const std::string &copia_hasta(const std::string &s,const std::string &delim);
 //Devuelve la cadena que resulta de copiar
 //la que se le pasa como parámetro hasta
-//encontrar el alguno de los caracteres de delim.
+//encontrar el alguno de los characters de delim.
 
 const std::string &get_car_d(const std::string &s,const size_t &n);
-//Devuelve los n últimos caracteres.
+//Devuelve los n últimos characters.
 
-//! @brief Devuelve el número de  caracteres de apertura '{[«' menos el de caracteres de
+//! @brief Devuelve el número de  characters de apertura '{[«' menos el de characters de
 //! cierre '}]»' en la cadena que se pasa como parámetro.
-int get_balance_caracteres(const std::string &s,const char &abre,const char &cierra);
+int get_balance_characters(const std::string &s,const char &abre,const char &cierra);
 //! @brief Devuelve el número de llaves de apertura '{' menos el de llaves de
 //! cierre '}' en la cadena que se pasa como parámetro.
 inline int get_balance_llaves(const std::string &s)
-  { return get_balance_caracteres(s,'{','}'); }
+  { return get_balance_characters(s,'{','}'); }
 //! @brief Devuelve el número de corchetes de apertura '[' menos el de corchetes de
 //! cierre ']' en la cadena que se pasa como parámetro.
 inline int get_balance_corchetes(const std::string &s)
-  { return get_balance_caracteres(s,'[',']'); }
+  { return get_balance_characters(s,'[',']'); }
 
 int isInteger(const std::string &s);
 int isNumber(const std::string &s);
@@ -148,13 +148,13 @@ inline bool has_char(const std::string &s,const char &c)
 //const std::string &itos(int n);
 
 bool es_entero(const std::string &str);
-//Devuelve verdadero si la cadena de caracteres representa un número entero.
+//Devuelve verdadero si la text string representa un número entero.
 
 bool es_real(const std::string &str);
-//Devuelve verdadero si la cadena de caracteres representa un número real.
+//Devuelve verdadero si la text string representa un número real.
 
 inline bool es_numero(const std::string &str)
-//Devuelve verdadero si la cadena de caracteres representa un número real o entero.
+//Devuelve verdadero si la text string representa un número real o entero.
   { return es_real(str); }
 
 const std::string &tolower(const std::string &);

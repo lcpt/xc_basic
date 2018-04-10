@@ -17,4 +17,4 @@ LINK_DIRECTORIES(${LIBRARY_OUTPUT_PATH})
 
 ADD_DEFINITIONS(-Wall)
 
-SUBDIRS(cadena_carac en_letra latex pcl pjl rtf)
+SUBDIRS(text_string en_letra latex pcl pjl rtf)

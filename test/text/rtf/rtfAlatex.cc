@@ -50,20 +50,20 @@ class SimbCtrl:public EntidadRTF
       }
   };
 
-class CaracterHex: public SimbCtrl
+class HexCharacter: public SimbCtrl
   {
   private:
     string arg;
 
   public:
-    CaracterHex(void): SimbCtrl(), arg() {}
-    CaracterHex(const CaracterHex &otro): SimbCtrl(otro), arg(otro.arg) {}
+    HexCharacter(void): SimbCtrl(), arg() {}
+    HexCharacter(const HexCharacter &otro): SimbCtrl(otro), arg(otro.arg) {}
     virtual EntidadRTF *Copia(void) const
-      { return new CaracterHex(*this); }
+      { return new HexCharacter(*this); }
     virtual int Coincide (const string &str) const
       { return (cod == str[0]); }
     virtual void Print(std::ostream &os) const
-      { os << "caracter hexadecimal: " << cod << std::endl
+      { os << "hexadecimal character: " << cod << std::endl
            << "  argumento: " << arg << std::endl; }
     virtual void PrintLatex(std::ostream &os) const
       {
@@ -75,7 +75,7 @@ class CaracterHex: public SimbCtrl
         if(arg == "f3") os << 'ó';
         if(arg == "fa") os << 'ú';
       }
-    friend istream &operator>>(istream &is,CaracterHex &sc)
+    friend istream &operator>>(istream &is,HexCharacter &sc)
       {
         sc.cod= char(cin.get());
         sc.arg+= char(cin.get());
@@ -257,7 +257,7 @@ int main(void)
               {
                 if(sig == '\'')
                   {
-                    CaracterHex ch;
+                    HexCharacter ch;
                     cin >> ch;
                     pila.top().push_back(ch);
                   }

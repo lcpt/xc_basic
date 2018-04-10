@@ -21,7 +21,7 @@
 //MapValores.cc
 
 #include "MapValores.h"
-#include "xc_basic/src/texto/cadena_carac.h"
+#include "xc_basic/src/text/text_string.h"
 
 //! @brief Constructor.
 MapValores::MapValores(void)

@@ -21,7 +21,7 @@
 //FixedWidthReader.cc
 
 #include "FixedWidthReader.h"
-#include "cadena_carac.h"
+#include "text_string.h"
 #include <iostream>
 #include <sstream>
 

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "xc_basic/src/texto/cadena_carac.h"
-#include "xc_basic/src/texto/en_letra.h"
+#include "xc_basic/src/text/text_string.h"
+#include "xc_basic/src/text/en_letra.h"
 
 
 int main(void)

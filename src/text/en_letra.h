@@ -19,7 +19,7 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //en_letra.h
-//Utilidades para cadenas de caracteres.
+//Utilidades para text strings.
 
 #ifndef EN_LETRA_H
 #define EN_LETRA_H
@@ -30,9 +30,9 @@
 #include <sstream>
 #include "xc_basic/src/streams/omanip.h"
 #include "xc_basic/src/util/matem.h"
-#include "cadena_carac.h"
+#include "text_string.h"
 
-//! @brief Devuelve la cadena de caracteres que representa al número
+//! @brief Devuelve la text string que representa al número
 //! que se pasa como parámetro siendo 'precision' el número
 //! de decimales.
 template <class N>

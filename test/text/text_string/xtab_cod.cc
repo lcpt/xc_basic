@@ -1,5 +1,5 @@
 #include <iostream>
-#include "xc_basic/src/texto/tab_cod.h"
+#include "xc_basic/src/text/tab_cod.h"
 
 int main(void)
   {

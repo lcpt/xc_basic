@@ -1,6 +1,6 @@
 #include <iostream>
-#include "xc_basic/src/texto/pcl.h"
-#include "xc_basic/src/texto/hpgl.h"
+#include "xc_basic/src/text/pcl.h"
+#include "xc_basic/src/text/hpgl.h"
 
 int main(void)
   {

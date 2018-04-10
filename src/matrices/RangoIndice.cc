@@ -21,7 +21,7 @@
 //RangoIndice.cc
 
 #include "RangoIndice.h"
-#include "xc_basic/src/texto/cadena_carac.h"
+#include "xc_basic/src/text/text_string.h"
 #include <deque>
 
 const char RangoIndice::sep=':';
@@ -46,6 +46,7 @@ void RangoIndice::SetInfSup(const size_t &imin,const size_t &imax)
     mn= std::min(imin,imax);
     mx= std::max(imin,imax);
   }
+
 //! @brief Reduce los valores del rango de manera que ambos sean menores que
 //! el que se pasa como parámetro.
 void RangoIndice::Recorta(const size_t &imax)
@@ -53,6 +54,7 @@ void RangoIndice::Recorta(const size_t &imax)
     mn= std::min(mn,imax);
     mx= std::min(mx,imax);
   }
+
 //! @brief Asigna a ESTE la intersección de ambos rangos.
 void RangoIndice::Intersec(const RangoIndice &otro)
   {
