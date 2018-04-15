@@ -24,34 +24,34 @@
 #include "m_double.h"
 
 matrizPolmio::matrizPolmio(const m_double &m)
-  : polmio_matriz(m.getNumFilas(),m.getNumCols())
+  : polmio_matriz(m.getNumberOfRows(),m.getNumberOfColumns())
   {
-    for(register size_type i=1;i<=fls;i++)
-      for(register size_type j=1;j<=cls;j++)
+    for(register size_type i=1;i<=n_rows;i++)
+      for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= Polinomio(m(i,j));
   }
 void matrizPolmio::eval(short unsigned int k,const double &val)
   {
-    for(register size_type i=1;i<=fls;i++)
-      for(register size_type j=1;j<=cls;j++)
+    for(register size_type i=1;i<=n_rows;i++)
+      for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Eval(k,val);
   }
 void matrizPolmio::eval(short unsigned int k,const Polinomio &val)
   {
-    for(register size_type i=1;i<=fls;i++)
-      for(register size_type j=1;j<=cls;j++)
+    for(register size_type i=1;i<=n_rows;i++)
+      for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Eval(k,val);
   }
 void matrizPolmio::eval(const vZ_double &v)
   {
-    for(register size_type i=1;i<=fls;i++)
-      for(register size_type j=1;j<=cls;j++)
+    for(register size_type i=1;i<=n_rows;i++)
+      for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Eval(v);
   }
 void matrizPolmio::eval(const mZ_double &v)
   {
-    for(register size_type i=1;i<=fls;i++)
-      for(register size_type j=1;j<=cls;j++)
+    for(register size_type i=1;i<=n_rows;i++)
+      for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Eval(v);
   }
 matrizPolmio matrizPolmio::Eval(short unsigned int j,const double &val) const
@@ -103,10 +103,10 @@ matrizPolmio &matrizPolmio::operator+=(const m_double &m)
         std::cerr << "Matrices de dimensiones distintas en operador +=" << std::endl;
         abort();
       }
-    matrizPolmio::size_type fls= getNumFilas(), cls= getNumCols();
+    matrizPolmio::size_type n_rows= getNumberOfRows(), n_columns= getNumberOfColumns();
     register matrizPolmio::size_type i,j;
-    for (i=1;i<=fls;i++)
-      for (j=1;j<=cls;j++)
+    for (i=1;i<=n_rows;i++)
+      for (j=1;j<=n_columns;j++)
         (*this)(i,j)+= m(i,j);
     return *this;
   }
@@ -117,40 +117,40 @@ matrizPolmio &matrizPolmio::operator-=(const m_double &m)
         std::cerr << "Matrices de dimensiones distintas en operador +=" << std::endl;
         abort();
       }
-    matrizPolmio::size_type fls= getNumFilas(), cls= getNumCols();
+    matrizPolmio::size_type n_rows= getNumberOfRows(), n_columns= getNumberOfColumns();
     register matrizPolmio::size_type i,j;
-    for (i=1;i<=fls;i++)
-      for (j=1;j<=cls;j++)
+    for (i=1;i<=n_rows;i++)
+      for (j=1;j<=n_columns;j++)
         (*this)(i,j)-= m(i,j);
     return *this;
   }
 
 matrizPolmio &matrizPolmio::Primitiva(short unsigned int k)
   {
-    const matrizPolmio::size_type fls= getNumFilas();
-    const matrizPolmio::size_type cls= getNumCols();
+    const matrizPolmio::size_type n_rows= getNumberOfRows();
+    const matrizPolmio::size_type n_columns= getNumberOfColumns();
     matrizPolmio::size_type i,j;
-    for (i=1;i<=fls;i++)
-      for (j=1;j<=cls;j++)
+    for (i=1;i<=n_rows;i++)
+      for (j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Primitiva(k);
     return *this;
   }
 
 matrizPolmio &matrizPolmio::Diferencial(short unsigned int k)
   {
-    const matrizPolmio::size_type fls= getNumFilas();
-    const matrizPolmio::size_type cls= getNumCols();
+    const matrizPolmio::size_type n_rows= getNumberOfRows();
+    const matrizPolmio::size_type n_columns= getNumberOfColumns();
     matrizPolmio::size_type i,j;
-    for (i=1;i<=fls;i++)
-      for (j=1;j<=cls;j++)
+    for (i=1;i<=n_rows;i++)
+      for (j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Parcial(k);
     return *this;
   }
 
 matrizPolmio operator*(const matrizPolmio &m1,const matrizPolmio &m2)
   {
-    matrizPolmio producto(m1.fls,m2.cls);
-    if (m1.cls != m2.fls)
+    matrizPolmio producto(m1.n_rows,m2.n_columns);
+    if (m1.n_columns != m2.n_rows)
       {
         std::cerr << "Matrices de dimensiones incompatibles en producto." << std::endl;
         std::cerr << "  m1= " << m1 << std::endl;
@@ -158,9 +158,9 @@ matrizPolmio operator*(const matrizPolmio &m1,const matrizPolmio &m2)
         return producto;
       }
     matrizPolmio::size_type i=1,j=1;
-    for (i= 1;i<=m1.fls;i++)
-      for (j= 1;j<=m2.cls;j++)
-        producto(i,j) = dot(m1.GetFila(i),m2.GetCol(j));
+    for (i= 1;i<=m1.n_rows;i++)
+      for (j= 1;j<=m2.n_columns;j++)
+        producto(i,j) = dot(m1.getRow(i),m2.getColumn(j));
     return producto;
   }
 matrizPolmio operator+(const matrizPolmio &m1,const matrizPolmio &m2)
@@ -197,61 +197,61 @@ matrizPolmio operator-(const matrizPolmio &m)
     return retval;
   }
 
-//Devuelve el valor del polinomio en el punto vp.
+//Return el valor del polinomio en el punto vp.
 Polinomio Eval(const Polinomio &p,const matrizPolmio &vp)
   {
     Polinomio result= p;
-    size_t i,sz= vp.getNumFilas();
+    size_t i,sz= vp.getNumberOfRows();
     for (i=1;i<=sz;i++) result= result.Eval(i,vp(i,1));
     return result;
   }
 
 m_double Eval(const matrizPolmio &p,const m_double &x)
   {
-    matrizPolmio::size_type fls= p.getNumFilas();
-    matrizPolmio::size_type cls= p.getNumCols();
-    m_double f(fls,cls);
+    matrizPolmio::size_type n_rows= p.getNumberOfRows();
+    matrizPolmio::size_type n_columns= p.getNumberOfColumns();
+    m_double f(n_rows,n_columns);
     matrizPolmio::size_type i,j;
-    for (i=1;i<=fls;i++)
-      for (j=1;j<=cls;j++)
+    for (i=1;i<=n_rows;i++)
+      for (j=1;j<=n_columns;j++)
         f(i,j)= p(i,j).Eval(x);
     return f;
   }
 
 matrizPolmio Eval(const matrizPolmio &m1,const matrizPolmio &m2)
   {
-    matrizPolmio::size_type fls= m1.getNumFilas();
-    matrizPolmio::size_type cls= m1.getNumCols();
-    matrizPolmio f(fls,cls);
+    matrizPolmio::size_type n_rows= m1.getNumberOfRows();
+    matrizPolmio::size_type n_columns= m1.getNumberOfColumns();
+    matrizPolmio f(n_rows,n_columns);
     matrizPolmio::size_type i,j;
-    for (i=1;i<=fls;i++)
-      for (j=1;j<=cls;j++)
+    for (i=1;i<=n_rows;i++)
+      for (j=1;j<=n_columns;j++)
         f(i,j)= Eval(m1(i,j),m2);
     return f;
   }
 Polinomio dot(const matrizPolmio &v1,const m_double &v2)
 //Producto escalar de dos vectores.
-//v1: Vector fila.
-//v2: Vector columna.
+//v1: row vector.
+//v2: column vector.
   {
-    const matrizPolmio::size_type cls= v1.getNumCols();
-    if (cls != v2.getNumFilas())
+    const matrizPolmio::size_type n_columns= v1.getNumberOfColumns();
+    if (n_columns != v2.getNumberOfRows())
       {
         std::cerr << "Matrices de dimensiones incompatibles en producto escalar." << std::endl;
         abort();      
       }
     Polinomio retval= Polinomio::neutro_suma();
-    for(register matrizPolmio::size_type i=1;i<=cls;i++)
+    for(register matrizPolmio::size_type i=1;i<=n_columns;i++)
       retval+= v1(1,i) * v2(i,1);
     return retval;
   }
 Polinomio dot(const m_double &v1,const matrizPolmio &v2)
 //Producto escalar de dos vectores.
-//v1: Vector fila.
-//v2: Vector columna.
+//v1: row vector.
+//v2: column vector.
   {
-    const m_double::size_type cls= v1.getNumCols();
-    if (cls != v2.getNumFilas())
+    const m_double::size_type n_columns= v1.getNumberOfColumns();
+    if (n_columns != v2.getNumberOfRows())
       {
         std::cerr << "Matrices de dimensiones incompatibles en producto escalar." << std::endl;
         std::cerr << "  v1= " << v1 << std::endl;
@@ -259,17 +259,17 @@ Polinomio dot(const m_double &v1,const matrizPolmio &v2)
         abort();
       }
     Polinomio retval= Polinomio::neutro_suma();
-    for(register matrizPolmio::size_type i=1;i<=cls;i++)
+    for(register matrizPolmio::size_type i=1;i<=n_columns;i++)
       retval+= v1(1,i) * v2(i,1);
     return retval;  
   }
 matrizPolmio operator*(const Polinomio &p,const m_double &m)
   {
-    const m_double::size_type fls= m.getNumFilas();
-    const m_double::size_type cls= m.getNumCols();
-    matrizPolmio prod(fls,cls);
-    for(register matrizPolmio::size_type i= 1;i<=fls;i++)
-      for(register matrizPolmio::size_type j= 1;j<=cls;j++)
+    const m_double::size_type n_rows= m.getNumberOfRows();
+    const m_double::size_type n_columns= m.getNumberOfColumns();
+    matrizPolmio prod(n_rows,n_columns);
+    for(register matrizPolmio::size_type i= 1;i<=n_rows;i++)
+      for(register matrizPolmio::size_type j= 1;j<=n_columns;j++)
         prod(i,j)= m(i,j) * p;
     return prod;
   }

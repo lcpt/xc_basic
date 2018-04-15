@@ -35,7 +35,7 @@ void elim( matsimZ<treal> &a,
            matrizZ<treal> &b,
            const size_t &j)
   {
-    size_t i,n= a.getNumFilas();
+    size_t i,n= a.getNumberOfRows();
     i=j;
     while(i<n)
       {
@@ -54,7 +54,7 @@ template <class treal>
 matrizZ<treal> calcularx( const matsimZ<treal> &a,
                           const matrizZ<treal> &b)
   {
-    size_t l,k,n= a.getNumFilas();
+    size_t l,k,n= a.getNumberOfRows();
     matrizZ<treal> x(n,1,0.0);
     for(l=n;l>=1;l--)
       {
@@ -71,7 +71,7 @@ matrizZ<treal> calcularx( const matsimZ<treal> &a,
 template <class treal>
 matrizZ<treal> gausim(matsimZ<treal> &a,matrizZ<treal> &b,int &simreg)
   {
-    size_t j= 0,n= a.getNumFilas();
+    size_t j= 0,n= a.getNumberOfRows();
     simreg=1;
     while(simreg && (j<n))
       {

@@ -30,7 +30,7 @@ template <class treal>
 matrizZ<treal> inversa(matrizZ<treal> &m,int &regular)
   {
     if (!m.Cuadrada()) matrizZError("La matriz no es cuadrada.");
-    if(m.getNumFilas()<2)
+    if(m.getNumberOfRows()<2)
       {
         //invierte kii
         matrizZ<treal> t(m);

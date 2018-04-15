@@ -24,7 +24,7 @@
 
 //! @brief Constructor.
 //!
-//! @param dim: Dimensiones de filas y columnas (matriz cuadrada).
+//! @param dim: Dimensiones de rows and columns (matriz cuadrada).
 vcolM::vcolM(const std::vector<size_t> &dim)
   : matrizM(dim.size(),1)
   {
@@ -35,9 +35,9 @@ vcolM::vcolM(const std::vector<size_t> &dim)
   }
 //! @brief Constructor.
 vcolM::vcolM(const matrizM &m,const size_type &c)
-  : matrizM(m.getNumFilas(),1)
+  : matrizM(m.getNumberOfRows(),1)
   {
-    const size_type nf= m.getNumFilas();
+    const size_type nf= m.getNumberOfRows();
     for(register size_type i=1;i<=nf;i++)
       (*this)(i)= m(i,1);
   }

@@ -22,30 +22,30 @@
 
 #include "RangoMatriz.h"
 
-//! @brief Devuelve verdadero si el rango no contiene ningún índice.
+//! @brief Return verdadero si el rango no contiene ningún índice.
 bool RangoMatriz::Vacio(void) const
-{ return (rango_filas.Vacio() || rango_cols.Vacio()); }
+{ return (row_range.Vacio() || column_range.Vacio()); }
 
 //! @brief Imprime el rango.
 void RangoMatriz::Print(std::ostream &os) const
-  { os << rango_filas << ',' << rango_cols; }
+  { os << row_range << ',' << column_range; }
 
 //! @brief Reduce los valores del rango de manera que ambos sean menores que
-//! los que se pasan como parámetro.
+//! los being passed as parameter.
 void RangoMatriz::Recorta(const size_t &fmax,const size_t &cmax)
   {
-    rango_filas.Recorta(fmax);
-    rango_cols.Recorta(cmax);
+    row_range.Recorta(fmax);
+    column_range.Recorta(cmax);
   }
 
 //! @brief Asigna a ESTE la intersección de ambos rangos.
 void RangoMatriz::Intersec(const RangoMatriz &otro)
   {
-    rango_filas.Intersec(otro.rango_filas);
-    rango_cols.Intersec(otro.rango_cols);
+    row_range.Intersec(otro.row_range);
+    column_range.Intersec(otro.column_range);
   }
 
-//! @brief Devuelve la intersección de ambos rangos.
+//! @brief Return la intersección de ambos rangos.
 RangoMatriz RangoMatriz::Intersec(const RangoMatriz &otro) const
   {
     RangoMatriz retval(*this);
@@ -66,6 +66,6 @@ RangoMatriz recorta(const RangoMatriz &r,const size_t &fmax,const size_t &cmax)
     return retval;
   }
 
-//! @brief Devuelve la intersección de ambos rangos.
+//! @brief Return la intersección de ambos rangos.
 RangoMatriz intersec(const RangoMatriz &r1,const RangoMatriz &r2)
   { return r1.Intersec(r2); }

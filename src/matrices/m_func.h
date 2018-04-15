@@ -32,14 +32,14 @@ template<class F>
 class MatrizF: public matrizZ<F>
 //Matriz de cosas que operan (::operator())
 //sobre una matriz de doubles y
-//devuelven un double.
+//returnn un double.
   {
   public:
     typedef matrizZ<F> matriz_f;
     typedef typename matriz_f::size_type size_type;
 
     MatrizF(void) : matriz_f(1,1) {}
-    MatrizF(size_type filas,size_type cols) : matriz_f(filas,cols) {}
+    MatrizF(size_type n_rows,size_type cols) : matriz_f(n_rows,cols) {}
     MatrizF(const MatrizF<F> &otra) : matriz_f(otra) {}
     m_double Eval(const m_double &d) const;
   };

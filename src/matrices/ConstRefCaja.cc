@@ -24,7 +24,7 @@
 
 //! @brief Constructor por defecto.
 BaseRefCaja::BaseRefCaja(const ProtoMatriz &mat,const size_t &f1,const size_t &c1)
-  : ProtoMatriz(std::max(mat.getNumFilas()-f1+1,size_t(0)),std::max(mat.getNumCols()-c1+1,size_t(0))), offset_f(f1-1),offset_c(c1-1)
+  : ProtoMatriz(std::max(mat.getNumberOfRows()-f1+1,size_t(0)),std::max(mat.getNumberOfColumns()-c1+1,size_t(0))), offset_f(f1-1),offset_c(c1-1)
   {}
 
 //! @brief Constructor.
@@ -33,25 +33,25 @@ BaseRefCaja::BaseRefCaja(const ProtoMatriz &mat,const size_t &f1,const size_t &c
   {}
 
 //! @brief Constructor.
-BaseRefCaja::BaseRefCaja(const ProtoMatriz &mat,const RangoIndice &rango_filas,const RangoIndice &rango_cols)
-  : ProtoMatriz(rango_filas.Size(),rango_cols.Size()), offset_f(rango_filas.Offset()),offset_c(rango_cols.Offset())
+BaseRefCaja::BaseRefCaja(const ProtoMatriz &mat,const RangoIndice &row_range,const RangoIndice &column_range)
+  : ProtoMatriz(row_range.Size(),column_range.Size()), offset_f(row_range.Offset()),offset_c(column_range.Offset())
   {}
 
-//! @brief Constructor columna única.
-BaseRefCaja::BaseRefCaja(const ProtoMatriz &mat,const RangoIndice &rango_filas,const size_t &col)
-  : ProtoMatriz(rango_filas.Size(),1), offset_f(rango_filas.Offset()),offset_c(col-1)
+//! @brief Column alone constructor.
+BaseRefCaja::BaseRefCaja(const ProtoMatriz &mat,const RangoIndice &row_range,const size_t &col)
+  : ProtoMatriz(row_range.Size(),1), offset_f(row_range.Offset()),offset_c(col-1)
   {}
 
-//! @brief Constructor fila única.
-BaseRefCaja::BaseRefCaja(const ProtoMatriz &mat,const size_t &fila,const RangoIndice &rango_cols)
-  : ProtoMatriz(1,rango_cols.Size()), offset_f(fila-1),offset_c(rango_cols.Offset())
+//! @brief Row alone constructor.
+BaseRefCaja::BaseRefCaja(const ProtoMatriz &mat,const size_t &iRow,const RangoIndice &column_range)
+  : ProtoMatriz(1,column_range.Size()), offset_f(iRow-1),offset_c(column_range.Offset())
   {}
 
-//! @brief Devuelve el rango de filas.
-RangoIndice BaseRefCaja::RangoFilas(void) const
-  { return RangoIndice(offset_f+1,offset_f+getNumFilas()); }
+//! @brief Return the row range.
+RangoIndice BaseRefCaja::getRowRange(void) const
+  { return RangoIndice(offset_f+1,offset_f+getNumberOfRows()); }
 
-//! @brief Devuelve el rango de columnas.
-RangoIndice BaseRefCaja::RangoCols(void) const
-  { return RangoIndice(offset_c+1,offset_c+getNumCols()); }
+//! @brief Return the column range.
+RangoIndice BaseRefCaja::getColumnRange(void) const
+  { return RangoIndice(offset_c+1,offset_c+getNumberOfColumns()); }
 

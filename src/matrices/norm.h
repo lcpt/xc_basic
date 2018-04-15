@@ -31,7 +31,7 @@ template <class treal>
 treal norm(const matrizZ<treal> &x)
   {
     treal r;
-    size_t n= x.getNumFilas();
+    size_t n= x.getNumberOfRows();
     r= gj_abs(x(1));
     for(size_t i= 2;i<=n;i++)
       if (r<gj_abs(x(i))) r= gj_abs(x(i));

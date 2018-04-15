@@ -35,7 +35,7 @@ matrizZ<treal> calcularx( const matrizZ<treal> &a,
                           const matrizZ<treal> &b,
                           size_t *pivot)
   {
-    size_t j,l,k,n= a.getNumFilas(),m= b.getNumCols();
+    size_t j,l,k,n= a.getNumberOfRows(),m= b.getNumberOfColumns();
     matrizZ<treal> x(n,m,0.0);
     for(j=n;j>=1;j--)
       {

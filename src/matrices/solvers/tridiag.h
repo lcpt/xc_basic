@@ -51,7 +51,7 @@ void fil(const size_t &i,
 template<class treal>
 matrizZ<treal> calcularx(matridZ<treal> &a,matrizZ<treal> &b)
   {
-    size_t n= a.getNumFilas();
+    size_t n= a.getNumberOfRows();
     matrizZ<treal> x(n,1,0.0);
     x(n)= b(n);
     for(size_t k=n-1;k>=1;k--) x(k)=b(k)-x(k+1)*a(k,k+1);
@@ -61,7 +61,7 @@ matrizZ<treal> calcularx(matridZ<treal> &a,matrizZ<treal> &b)
 template <class treal>
 matrizZ<treal> tridiag(matridZ<treal> &a,matrizZ<treal> &b,int &regular)
   {
-    size_t i,n= a.getNumFilas();
+    size_t i,n= a.getNumberOfRows();
     i=0; regular=1;
     while(regular && (i<n))
       { i++; fil(i,a,b,regular); }

@@ -26,21 +26,21 @@
 #include "matrizM.h"
 
 
-//! Vector columna de matrices.
+//! column vector de matrices.
 class vcolM: public matrizM
   {
   private:
-    inline m_double &operator()(const size_t &fila,const size_t &)
-      { return matrizM::operator()(fila,1); }
-    inline const m_double &operator()(const size_t &fila,const size_t &) const
-      { return matrizM::operator()(fila,1); }
+    inline m_double &operator()(const size_t &iRow,const size_t &)
+      { return matrizM::operator()(iRow,1); }
+    inline const m_double &operator()(const size_t &iRow,const size_t &) const
+      { return matrizM::operator()(iRow,1); }
   public:
     //! Constructor por defecto.
-    vcolM(const size_type &filas= 1)
-      : matrizM(filas,1) {}
+    vcolM(const size_type &n_rows= 1)
+      : matrizM(n_rows,1) {}
     //! Constructor.
-    vcolM(const size_type &filas,const m_double &val)
-      : matrizM(filas,1,val) {}
+    vcolM(const size_type &n_rows,const m_double &val)
+      : matrizM(n_rows,1,val) {}
     vcolM(const std::vector<size_t> &dim);
     vcolM(const matrizM &m,const size_type &c);
     //! Constructor de copia.
@@ -52,10 +52,10 @@ class vcolM: public matrizM
 	matrizM::operator=(m);
         return *this;
       }
-    m_double &operator()(const size_t &fila=1)
-      { return matrizM::operator()(fila,1); }
-    const m_double &operator()(const size_t &fila=1) const
-      { return matrizM::operator()(fila,1); }
+    m_double &operator()(const size_t &iRow=1)
+      { return matrizM::operator()(iRow,1); }
+    const m_double &operator()(const size_t &iRow=1) const
+      { return matrizM::operator()(iRow,1); }
 
     vcolM &operator*=(const m_double &m);
     vcolM &operator*=(const double &d);

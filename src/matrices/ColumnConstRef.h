@@ -18,40 +18,40 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//ConstRefFila.h 
+//ColumnConstRef.h 
 
-#ifndef CONSTREFFILA_H
-#define CONSTREFFILA_H
+#ifndef COLUMNCONSTREF_H
+#define COLUMNCONSTREF_H
 
 #include "ConstRefCaja.h"
 
-//! @brief Referencia a una fila de una matriz.
+//! @brief Constant reference to a column of a matrix.
 template <class MAT>
-class ConstRefFila: public ConstRefCaja<MAT>
+class ColumnConstRef: public ConstRefCaja<MAT>
   {
   public:
     typedef typename ConstRefCaja<MAT>::const_reference const_reference;
 
-    ConstRefFila(const MAT &m,const size_t &f= 1,const size_t &c= 1);
-    ConstRefFila(const MAT &m,const size_t &,const size_t &,const size_t &);
-    ConstRefFila(const MAT &mat,const size_t &,const RangoIndice &);
-    virtual const_reference operator()(size_t col) const
-      { return ConstRefCaja<MAT>::operator()(1,col); }
+    ColumnConstRef(const MAT &m,const size_t &c= 1,const size_t &f= 1);
+    ColumnConstRef(const MAT &m,const size_t &,const size_t &,const size_t &);
+    ColumnConstRef(const MAT &mat,const RangoIndice &,const size_t &);
+    virtual const_reference operator()(size_t iRow) const
+      { return ConstRefCaja<MAT>::operator()(iRow,1); }
   };
 
 template<class MAT>
-ConstRefFila<MAT>::ConstRefFila(const MAT &mat,const size_t &f,const size_t &c)
-  : ConstRefCaja<MAT>(mat,f,c,f,mat.getNumCols())
+ColumnConstRef<MAT>::ColumnConstRef(const MAT &mat,const size_t &c,const size_t &f)
+  : ConstRefCaja<MAT>(mat,f,c,mat.getNumberOfRows(),c)
   {}
 
 template<class MAT>
-ConstRefFila<MAT>::ConstRefFila(const MAT &mat,const size_t &f,const size_t &c1,const size_t &c2)
-  : ConstRefCaja<MAT>(mat,f,RangoIndice(c1,c2))
+ColumnConstRef<MAT>::ColumnConstRef(const MAT &mat,const size_t &c,const size_t &f1,const size_t &f2)
+  : ConstRefCaja<MAT>(mat,f1,c,f2,c)
   {}
 
 template<class MAT>
-ConstRefFila<MAT>::ConstRefFila(const MAT &mat,const size_t &f,const RangoIndice &rango_cols)
-  : ConstRefCaja<MAT>(mat,f,rango_cols)
+ColumnConstRef<MAT>::ColumnConstRef(const MAT &mat,const RangoIndice &row_range,const size_t &col)
+  : ConstRefCaja<MAT>(mat,row_range,col)
   {}
 
 #endif

@@ -32,7 +32,7 @@
 template <class treal>
 void compos(matrizZ<treal> &a,treal &max)
   {
-    size_t i,j,k,l,n= a.getNumFilas();
+    size_t i,j,k,l,n= a.getNumberOfRows();
     treal s,xx;
     max=0;
     for(i=1;i<= n;i++)

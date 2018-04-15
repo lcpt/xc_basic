@@ -31,13 +31,13 @@
 #include "xc_basic/src/matrices/solvers/calcularx.h"
 
 template <class treal>
-void fila( const size_t &j,
+void row( const size_t &j,
            matrizZ<treal> &a,
            matrizZ<treal> &b,
            const set_szt &fp,
            size_t *pivot)
   {
-    size_t i,k,l=pivot[j],n=a.getNumFilas();
+    size_t i,k,l=pivot[j],n=a.getNumberOfRows();
     treal s,r= gj_inv(a(l,j));
     for(k=j+1;k<=n;k++)
       {
@@ -59,13 +59,13 @@ void fila( const size_t &j,
   }
 
 template <class treal>
-void colum( const size_t &j,
+void column( const size_t &j,
             matrizZ<treal> &a,
             matrizZ<treal> &b,
             const set_szt &fp,
             size_t *pivot)
   {
-    size_t l,i,n= a.getNumFilas();
+    size_t l,i,n= a.getNumberOfRows();
     for(i=1;i<=n;i++)
     if (!In(fp,i))
       if(j<=n)
@@ -81,7 +81,7 @@ matrizZ<treal> crout(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
   {
     //Dimensionamos la matriz de indices de pivote.
     typedef typename matrizZ<treal>::size_type size_type;
-    const size_type n= a.getNumFilas();
+    const size_type n= a.getNumberOfRows();
     size_type *pivot= new size_type[n];
     set_szt fp;
     regular=1; size_t j=0;
@@ -93,7 +93,7 @@ matrizZ<treal> crout(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
         if(regular)
           {
             fp.insert(pivot[j]);
-            fila(j,a,b,fp,pivot); colum(j+1,a,b,fp,pivot);
+            row(j,a,b,fp,pivot); column(j+1,a,b,fp,pivot);
           }
       }
     matrizZ<treal> x;

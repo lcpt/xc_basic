@@ -20,8 +20,8 @@
 //----------------------------------------------------------------------------
 //MatridZ.h
 //Matrices tridiagonales.
-//Se almacena la matriz por filas el primer elemento del vector es el que se devuelve
-//para indices fuera de las tres diagonales.
+//The matrix is stored by rows the first vector component is returned when
+// the indexes are outside the three diagonals.
 #ifndef MATRIDZ_H
 #define MATRIDZ_H
 
@@ -37,17 +37,17 @@ class matridZ : public matrizZ<numero>
     typedef typename matrizZ_numero::const_reference const_reference;
     typedef typename matrizZ_numero::size_type size_type;
   protected:
-    inline virtual size_type Tam(size_type filas,size_type cols) const
-      { return (3*filas-1); }
-    inline virtual int se_guarda(size_type fila,size_type col) const
-      { return (labs(fila-col) <= 1); }
-    inline virtual size_type Indice( const size_type &fila,
+    inline virtual size_type Tam(size_type n_rows,size_type cols) const
+      { return (3*n_rows-1); }
+    inline virtual int se_guarda(size_type iRow,size_type col) const
+      { return (labs(iRow-col) <= 1); }
+    inline virtual size_type Indice( const size_type &iRow,
                                      const size_type &col) const
       {
-        if(!se_guarda(fila,col) || (fila == 0) || (col == 0))
+        if(!se_guarda(iRow,col) || (iRow == 0) || (col == 0))
           return 0;
         else
-          return ((fila-1)*3+col-fila+1);
+          return ((iRow-1)*3+col-iRow+1);
       }
   public:
     matridZ(void) : matrizZ_numero (1,1)
@@ -57,7 +57,7 @@ class matridZ : public matrizZ<numero>
     matridZ(const size_type &dim,const numero &val) : matrizZ_numero(1,Tam(dim,dim))
       { PutDim(dim,dim); vectorZ_numero::operator[](0)= 0.0; }
     matridZ(const matridZ<numero> &otra) : matrizZ_numero(otra)
-      { PutDim(otra.fls,otra.cls); vectorZ_numero::operator[](0)= 0.0; }
+      { PutDim(otra.n_rows,otra.n_columns); vectorZ_numero::operator[](0)= 0.0; }
     matridZ<numero>& operator =(const matridZ<numero> &m)
       {
         matrizZ_numero::operator =(m);
@@ -88,7 +88,7 @@ class matridZ : public matrizZ<numero>
       {
         if (!CompDim(m1,m2))
           matrizZError("Matrices de dimensiones distintas en operador +");
-        matridZ<numero> suma(m1.fls);
+        matridZ<numero> suma(m1.n_rows);
         suma.Suma(m1,m2);
         return suma;
       }
@@ -96,7 +96,7 @@ class matridZ : public matrizZ<numero>
       {
         if (!CompDim(m1,m2)) 
           matrizZError("Matrices de dimensiones distintas en operador -");
-        matridZ<numero> resta(m1.fls,m1.cls);
+        matridZ<numero> resta(m1.n_rows,m1.n_columns);
         resta.Resta(m1,m2);
         return resta;
       }

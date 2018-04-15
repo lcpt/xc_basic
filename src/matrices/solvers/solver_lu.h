@@ -41,10 +41,10 @@ class SolverLU: public SolverM<M>
 
     virtual tipo_val busca_pivote(const size_t &k,size_t &maxi) const
       {
-        //Para cada fila de la columna k a partir de la fila k
+        //For each row of the k colum starting by row k
         tipo_val c;
         tipo_val c1;
-        register size_t i;
+        register size_t i= 0;
         for(i= k, maxi= k, c=solver_m::CERO;i<=this->n;i++)
           {
             c1= (*this->A)(this->P(i),k);
@@ -53,10 +53,10 @@ class SolverLU: public SolverM<M>
           }
         return c;
       }
-    void resto_fila(const size_t &i,const size_t &k,const tipo_val &d)
+    void rest_of_row(const size_t &i,const size_t &k,const tipo_val &d)
       {
         const size_t pk= this->P(k);
-        for(register size_t j=k+1;j<=this->n;j++) //Columnas siguientes de la fila.
+        for(register size_t j=k+1;j<=this->n;j++) //Next columns of the row.
           (*this->A)(i,j)-= d * (*this->A)(pk,j);
       }
     void aplica_pivote(const size_t &k)
@@ -64,23 +64,23 @@ class SolverLU: public SolverM<M>
         register tipo_val d= (*this->A)(this->P(k),k);
         for(register size_t i= k+1;i<=this->n;i++)
           {
-            //Divide el elemento de la columna 
+            //Divide el elemento de the column 
 	    //del pivote por el pivote.
             register const size_t pi= this->P(i);
             register const tipo_val &dd= ((*this->A)(pi,k)/= d);
-            if(dd!=solver_m::CERO) resto_fila(pi,k,dd);
+            if(dd!=solver_m::CERO) rest_of_row(pi,k,dd);
           }
       }
 
+    //! @brie Return true if it can decompose the matrix.
     virtual bool decomp(void)
-      //Devuelve verdadero si puede descomponer la matriz.
       {
-        size_t maxi; //Fila del pivote.
-        tipo_val c; //Valor del pivote.
+        size_t maxi; //pivot's row.
+        tipo_val c; //pivot's value.
         size_t p= 1;
         this->inic_p();
 
-        for(register size_t k= 1;k<= this->n; k++) //Para cada columna.
+        for(register size_t k= 1;k<= this->n; k++) //For each column.
           {
             c= busca_pivote(k,maxi);
             if (k != maxi)
@@ -88,7 +88,7 @@ class SolverLU: public SolverM<M>
                 p++;
 		std::swap(this->P(k),this->P(maxi));
 	      }
-            if ((*this->A)(this->P(k),k) == solver_m::CERO) //Si el pivote de esa columna es nulo.
+            if ((*this->A)(this->P(k),k) == solver_m::CERO) //If the pivot of this column is zero.
               {
                 v = -1;
                 if(this->verbosity) std::cerr << "Matriz singular" << std::endl;
@@ -197,10 +197,10 @@ class SolverDispLU: public SolverLU<matdispZ<treal>,V>
     tipo_val busca_pivote( const c_iterator &ic,
                            const_f_iterator &maxi) const
       {
-        //Para cada fila de la columna ic a partir de la fila ic->first
+        //For each row of the column starting with row ic->first
         tipo_val c1,c= solver_lu::CERO;
-        const_f_iterator fi= this->A->FlsFind(ic,this->P(ic->first));
-        for(maxi= fi,c= solver_lu::CERO;fi!=this->A->FlsEnd(ic);fi++)
+        const_f_iterator fi= this->A->find_row(ic,this->P(ic->first));
+        for(maxi= fi,c= solver_lu::CERO;fi!=this->A->rows_end(ic);fi++)
           {
             c1= fabs(fi->second);
             if(c1 > c) { c = c1; maxi = fi; }
@@ -212,26 +212,26 @@ class SolverDispLU: public SolverLU<matdispZ<treal>,V>
         const size_t k= ic->first;
         tipo_val d= (*this->A)(this->P(k),k);
         std::cout << "***** aplica pivote col: " << k << ' ' << d << std::endl;
-	sp_vector &col= this->A->GetCol(ic);
+	sp_vector &col= this->A->getColumn(ic);
         for(register size_t i= k+1;i<=this->n;i++)
           {
-            //Divide el elemento de la columna 
+            //Divide el elemento de the column 
 	    //del pivote por el pivote.
             const double &dd= (col[this->P(i)]/=d);
-            if(dd!=solver_lu::CERO) resto_fila(this->P(i),k,dd);
+            if(dd!=solver_lu::CERO) rest_of_row(this->P(i),k,dd);
           }
       }
     bool decomp(void)
-      //Devuelve verdadero si puede descomponer la matriz.
+      //Return verdadero si puede descomponer la matriz.
       {
         std::cout << "parece que falla" << std::endl;
-        const_f_iterator maxi; //Fila del pivote.
+        const_f_iterator maxi; //pivot row.
         tipo_val c; //Valor del pivote.
         size_t p= 1;
         this->inic_p();
 
 	c_iterator ic;
-        for(ic= this->A->ClsBegin();ic!= this->A->ClsEnd(); ic++) //Para cada columna.
+        for(ic= this->A->rows_begin();ic!= this->A->rows_end(); ic++) //For each column.
           {
             size_t k= ic->first;
             c= busca_pivote(ic,maxi);
@@ -240,7 +240,7 @@ class SolverDispLU: public SolverLU<matdispZ<treal>,V>
                 p++;
 		std::swap(this->P(k),this->P(maxi->first));
 	      }
-            if ((*this->A)(this->P(k),k) == solver_lu::CERO) //Si el pivote de esa columna es nulo.
+            if ((*this->A)(this->P(k),k) == solver_lu::CERO) //If the pivot of this column is zero.
               {
                 this->v = -1;
                 if(this->verbosity)

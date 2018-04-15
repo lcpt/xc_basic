@@ -25,16 +25,16 @@
 
 //! @brief Constructor.
 //!
-//! @param dim: Dimensiones de filas y columnas (matriz cuadrada).
+//! @param dim: Dimensiones de rows and columns (matriz cuadrada).
 matrizM::matrizM(const std::vector<size_t> &dim)
   :  m_matriz(dim) {}
 
 //! @brief Constructor.
 //!
-//! @param dim_fls: Dimensiones de las filas.
-//! @param dim_cls: Dimensiones de las columnas.
-matrizM::matrizM(const std::vector<size_t> &dim_filas,const std::vector<size_t> &dim_cols)
-  :  m_matriz(dim_filas,dim_cols) {}
+//! @param dim_rows: row dimension.
+//! @param dim_columns: column dimension.
+matrizM::matrizM(const std::vector<size_t> &dim_rows,const std::vector<size_t> &dim_columns)
+  :  m_matriz(dim_rows,dim_columns) {}
 
 //! @brief Operador *=
 matrizM &matrizM::operator*=(const m_double &m)
@@ -70,7 +70,7 @@ matrizM operator*(const matrizM &m1,const matrizM &m2)
     return producto;
   }
 
-//! @brief Devuelve la traspuesta.
+//! @brief Return the transposed matrix.
 matrizM matrizM::GetTrn(void) const
   {
     matrizM m= *this;
@@ -78,47 +78,47 @@ matrizM matrizM::GetTrn(void) const
     return m;
   }
 
-//! @brief Convierte en una matriz de bloques, la que se pasa como parámetro.
+//! @brief Convierte en una matriz de bloques, la que is being passed as parameter.
 //!
-//! @param dim_fls: Dimensiones de las filas.
-//! @param dim_cls: Dimensiones de las columnas.
+//! @param dim_rows: row dimension.
+//! @param dim_columns: column dimension.
 //! @param a: Matriz que se convertirá a bloques.
-matrizM a_cajas(const std::vector<size_t> dim_fls,const std::vector<size_t> dim_cls,const m_double &a)
+matrizM a_cajas(const std::vector<size_t> dim_rows,const std::vector<size_t> dim_columns,const m_double &a)
   {
-    matrizM retval(dim_fls,dim_cls);
+    matrizM retval(dim_rows,dim_columns);
     //Comprobamos dimensiones.
-    assert(retval.GetTotalFilas()==a.getNumFilas()); 
-    assert(retval.GetTotalCols()==a.getNumCols());
+    assert(retval.getTotalNumberOfRows()==a.getNumberOfRows()); 
+    assert(retval.getTotalNumberOfColumns()==a.getNumberOfColumns());
 
-    const size_t fls= retval.getNumFilas();
-    const size_t cls= retval.getNumCols();
+    const size_t n_rows= retval.getNumberOfRows();
+    const size_t n_columns= retval.getNumberOfColumns();
 
-    size_t fila_caja= 1; //Fila donde empieza la caja.
-    size_t col_caja= 1; //Columna donde empieza la caja.
-    for(size_t i=1;i<=fls;i++)
+    size_t row_box= 1; //Row where the box starts.
+    size_t col_caja= 1; //Column where the box starts.
+    for(size_t i=1;i<=n_rows;i++)
       {
         col_caja= 1;
-        const size_t fbloque= dim_fls[i-1]; //Filas de la fila i.
-        for(size_t j=1;j<=cls;j++)
+        const size_t fbloque= dim_rows[i-1]; //Rows of i-th row.
+        for(size_t j=1;j<=n_columns;j++)
           {
-            const size_t cbloque= dim_cls[j-1]; //Columnas de la columna j.
-            retval(i,j)= a.GetCaja(fila_caja,col_caja,fila_caja+fbloque-1,col_caja+cbloque-1);
-            col_caja+=cbloque; //Avanza las columnas.
+            const size_t cbloque= dim_columns[j-1]; //Columns of j-th column.
+            retval(i,j)= a.GetCaja(row_box,col_caja,row_box+fbloque-1,col_caja+cbloque-1);
+            col_caja+=cbloque; //Next column.
           }
-        fila_caja+=fbloque; //Avanza las filas.
+        row_box+=fbloque; //Next row.
       }
     return retval;
   }
 
-//! @brief Convierte en una matriz de bloques, la que se pasa como parámetro.
+//! @brief Convierte en una matriz de bloques, la que is being passed as parameter.
 //!
 //! @param muestra: Matriz de muestra cuyos bloques sirven para definir la nueva.
 //! @param a: Matriz que se convertirá a bloques.
 matrizM a_cajas(const matrizM &muestra,const m_double &a)
   {
-    const std::vector<size_t> dim_fls= muestra.get_dim_filas();
-    const std::vector<size_t> dim_cls= muestra.get_dim_cols();
-    return a_cajas(dim_fls,dim_cls,a);
+    const std::vector<size_t> dim_rows= muestra.get_dim_rows();
+    const std::vector<size_t> dim_columns= muestra.get_dim_columns();
+    return a_cajas(dim_rows,dim_columns,a);
   }
 
 

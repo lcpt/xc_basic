@@ -43,35 +43,35 @@ class matdispZ : public matrizZ<numero>
         typedef typename map_elem::const_iterator const_iterator;
         typedef typename map_elem::const_reverse_iterator const_reverse_iterator;
       private:
-        inline int TieneFila(const typename sp_vector::size_type f) const
+        inline int hasRow(const typename sp_vector::size_type f) const
           { return (find(f)!=this->end()); }
       public:
         sp_vector &operator+=(const sp_vector &v);
         sp_vector &operator-=(const sp_vector &v);
         void QuitaElem(const numero &n);
         void PutCol(const typename sp_vector::size_type c,matrizZ_numero &m) const;
-        sp_vector getNumFilas(const typename sp_vector::size_type f1,const typename sp_vector::size_type f2) const;
+        sp_vector getNumberOfRows(const typename sp_vector::size_type f1,const typename sp_vector::size_type f2) const;
         size_t ndiagL(const size_t &icol) const;
         size_t ndiagU(const size_t &icol) const;
         void writeCpp(std::ostream &os,const size_t &icol) const;
 	void PutColBanda(const size_t &sz,const size_t &i,const size_t &ndiagu,numero *vptr) const;
       };
-    typedef std::map<size_type, sp_vector> map_cols;
-    map_cols cols;
+    typedef std::map<size_type, sp_vector> column_map;
+    column_map columns;
 
 
     typedef typename sp_vector::const_iterator const_f_iterator;
     typedef typename sp_vector::iterator f_iterator;
-    typedef typename map_cols::const_iterator const_c_iterator;
-    typedef typename map_cols::iterator c_iterator;
+    typedef typename column_map::const_iterator const_c_iterator;
+    typedef typename column_map::iterator c_iterator;
 
   private:
-    inline virtual size_type Tam(size_type filas,size_type cols)
+    inline virtual size_type Tam(size_type ,size_type )
       { return 0; }
-    inline virtual size_type Indice(const size_type &fila,const size_type &col) const
+    inline virtual size_type Indice(const size_type &iRow,const size_type &col) const
       { return 0; }
-    inline bool TieneColumna(const size_type &c) const
-      { return (cols.find(c)!=cols.end()); }
+    inline bool hasColumn(const size_type &c) const
+      { return (columns.find(c)!=columns.end()); }
     inline const numero &PorDefecto(void) const
       { return (matrizZ_numero::operator()(1,1)); }
     bool IgualA(const matdispZ<numero> &otra) const;
@@ -83,16 +83,16 @@ class matdispZ : public matrizZ<numero>
 
   public:
 
-    matdispZ(size_type fls=1,size_type cls= 1)
+    matdispZ(size_type n_rows=1,size_type n_columns= 1)
       : matrizZ_numero(1,1,numero())
-      { this->PutDim(fls,cls); }
+      { this->PutDim(n_rows,n_columns); }
     matdispZ(const matdispZ<numero> &otra)
-      : matrizZ_numero(otra), cols(otra.cols)
-      { this->PutDim(otra.fls,otra.cls); }
+      : matrizZ_numero(otra), columns(otra.columns)
+      { this->PutDim(otra.n_rows,otra.n_columns); }
     matdispZ<numero>& operator =(const matdispZ<numero> &m)
       {
         matrizZ_numero::operator =(m);
-        cols= m.cols;
+        columns= m.columns;
         return *this;
       }
     matdispZ<numero>& operator+=(const matdispZ<numero> &m);
@@ -103,18 +103,18 @@ class matdispZ : public matrizZ<numero>
     size_t ndiagU(void) const;
     void FillVectorBanda(numero *vptr) const;
     //Acceso a los elementos.
-    numero &operator()(size_t fila=1,size_t col=1)
+    numero &operator()(size_t iRow=1,size_t col=1)
       {
-        assert(col>0 && col<=this->cls);
-        assert(fila>0 && fila<=this->fls);
-        return cols[col][fila];
+        assert(col>0 && col<=this->n_columns);
+        assert(iRow>0 && iRow<=this->n_rows);
+        return columns[col][iRow];
       }
-    const numero &operator()(size_t fila=1,size_t col=1) const
+    const numero &operator()(size_t iRow=1,size_t col=1) const
       {
-        const_c_iterator k1= cols.find(col);
-        if(k1!=cols.end())
+        const_c_iterator k1= columns.find(col);
+        if(k1!=columns.end())
           {
-	    const_f_iterator k2= (k1->second).find(fila);
+	    const_f_iterator k2= (k1->second).find(iRow);
             if(k2!= (k1->second).end())
               return k2->second;
             else
@@ -123,23 +123,23 @@ class matdispZ : public matrizZ<numero>
         else 
           return PorDefecto();
       }
-    const_c_iterator ClsBegin(void) const
-      { return cols.begin(); }
-    const_c_iterator ClsEnd(void) const
-      { return cols.end(); }
-    c_iterator ClsBegin(void)
-      { return cols.begin(); }
-    c_iterator ClsEnd(void)
-      { return cols.end(); }
-    const_f_iterator FlsBegin(const const_c_iterator &ci) const
+    const_c_iterator columns_begin(void) const
+      { return columns.begin(); }
+    const_c_iterator columns_end(void) const
+      { return columns.end(); }
+    c_iterator columns_begin(void)
+      { return columns.begin(); }
+    c_iterator columns_end(void)
+      { return columns.end(); }
+    const_f_iterator rows_begin(const const_c_iterator &ci) const
       { return ci->second.begin(); }
-    const_f_iterator FlsFind(const const_c_iterator &ci,size_t f) const
+    const_f_iterator find_row(const const_c_iterator &ci,size_t f) const
       { return ci->second.find(f); }
-    const_f_iterator FlsEnd(const const_c_iterator &ci) const
+    const_f_iterator rows_end(const const_c_iterator &ci) const
       { return ci->second.end(); }
-    f_iterator FlsFind(const c_iterator &ci,size_t f)
+    f_iterator find_row(const c_iterator &ci,size_t f)
       { return ci->second.find(f); }
-    sp_vector &GetCol(const c_iterator &ci)
+    sp_vector &getColumn(const c_iterator &ci)
       { return ci->second; }
 
     size_type size(void) const;
@@ -147,7 +147,7 @@ class matdispZ : public matrizZ<numero>
     void Anula(void);
     void Identity(void);
     inline bool Cuadrada(void) const
-      { return (this->fls == this->cls); }
+      { return (this->n_rows == this->n_columns); }
     matdispZ<numero> &Trn(void);
     matdispZ<numero> GetTrn(void)
       {
@@ -156,10 +156,10 @@ class matdispZ : public matrizZ<numero>
         return retval;
       }
     matdispZ<numero> GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const;
-    matdispZ<numero> GetFila(size_t fila) const
-      { return GetCaja(fila,1,fila,this->cls); }
-    matdispZ<numero> GetCol(size_t col) const
-      { return GetCaja(1,col,this->fls,col); }
+    matdispZ<numero> getRow(size_t iRow) const
+      { return GetCaja(iRow,1,iRow,this->n_columns); }
+    matdispZ<numero> getColumn(size_t col) const
+      { return GetCaja(1,col,this->n_rows,col); }
     void PutCaja(size_t f,size_t c,const matdispZ<numero> &caja);
     numero Traza(void) const;
     matrizZ_numero GetCompleta(void) const;
@@ -169,14 +169,14 @@ class matdispZ : public matrizZ<numero>
     template <class V>
     numero dot(const V &v2) const
     //Producto escalar de este por v2.
-    //v2: Vector columna.
+    //v2: column vector.
       {
         check_dot(*this,v2);
         return (this->Post(v2))(1,1);
       }
     numero dot(const matdispZ<numero> &v2) const
     //Producto escalar de este por v2.
-    //v2: Vector columna.
+    //v2: column vector.
       {
         check_dot(*this,v2);
         return (this->Post(v2))(1,1);
@@ -200,8 +200,8 @@ class matdispZ : public matrizZ<numero>
     inline friend bool operator==(const matdispZ<numero> &m1,const matdispZ<numero> &m2)
       { return m1.IgualA(m2); }
     //Producto escalar de dos vectores.
-    //v1: Vector fila.
-    //v2: Vector columna.
+    //v1: row vector.
+    //v2: column vector.
     friend numero dot(const matdispZ<numero> &v1,const matdispZ<numero> &v2)
       { return v1.dot(v2); }
     friend numero dot(const matdispZ<numero> &v1,const matrizZ<numero> &v2)
@@ -222,11 +222,11 @@ class matdispZ : public matrizZ<numero>
     friend matdispZ<numero> operator*(const matdispZ<numero> &m1,const matrizZ<numero> &m2)
       {
         check_prod(m1,m2);
-        matdispZ<numero> producto(m1.fls,m2.getNumCols());
+        matdispZ<numero> producto(m1.n_rows,m2.getNumberOfColumns());
         matdispZ<numero>::size_type i=1,j=1;
-        for (i= 1;i<=m1.fls;i++)
-          for (j= 1;j<=m2.getNumCols();j++)
-            producto(i,j) = dot(m1.GetFila(i),m2.GetCol(j));
+        for (i= 1;i<=m1.n_rows;i++)
+          for (j= 1;j<=m2.getNumberOfColumns();j++)
+            producto(i,j) = dot(m1.getRow(i),m2.getColumn(j));
         return producto;
       }
     */
@@ -251,7 +251,7 @@ typename matdispZ<numero>::sp_vector &matdispZ<numero>::sp_vector::operator+=(co
   {
     const_iterator f;
     for(f= v.begin();f!=v.end();f++)
-      if(TieneFila(f->first))
+      if(hasRow(f->first))
         (*this)[f->first]+= f->second;
       else
         (*this)[f->first]= f->second;
@@ -262,7 +262,7 @@ typename matdispZ<numero>::sp_vector &matdispZ<numero>::sp_vector::operator-=(co
   {
     const_iterator f;
     for(f= v.begin();f!=v.end();f++)
-      if(TieneFila(f->first))
+      if(hasRow(f->first))
         (*this)[f->first]-= f->second;
       else
         (*this)[f->first]= f->second;
@@ -284,7 +284,7 @@ void matdispZ<numero>::sp_vector::PutCol(const typename sp_vector::size_type c,m
       m(f->first,c)= f->second;
   }
 template<class numero>
-typename matdispZ<numero>::sp_vector matdispZ<numero>::sp_vector::getNumFilas(const typename sp_vector::size_type f1,const typename sp_vector::size_type f2) const
+typename matdispZ<numero>::sp_vector matdispZ<numero>::sp_vector::getNumberOfRows(const typename sp_vector::size_type f1,const typename sp_vector::size_type f2) const
   {
     if(f2<f1) return;
     sp_vector retval;
@@ -295,8 +295,8 @@ typename matdispZ<numero>::sp_vector matdispZ<numero>::sp_vector::getNumFilas(co
     return retval;
   }
 
-//! @brief Devuelve el número de diagonales, con algún elemento no nulo, que tiene la columna por debajo de la diagonal principal. 
-//! @param icol: Índice de la columna a la que corresponde este vector.
+//! @brief Return el número de diagonales, con algún elemento no nulo, que tiene the column por debajo de la diagonal principal. 
+//! @param icol: Índice de the column a la que corresponde este vector.
 template<class numero>
 size_t matdispZ<numero>::sp_vector::ndiagL(const size_t &icol) const
   {
@@ -306,12 +306,12 @@ size_t matdispZ<numero>::sp_vector::ndiagL(const size_t &icol) const
         const numero zero= numero();
         for(const_reverse_iterator f= this->rbegin();f!=this->rend();f++)
           {
-            const size_t ifila= f->first;
-            if(ifila>icol) //El elemento esta por debajo de la diagonal principal.
+            const size_t iRow= f->first;
+            if(iRow>icol) //El elemento esta por debajo de la diagonal principal.
               {
                 if(f->second != zero) //no nulo.
                   {
-                    retval= ifila-icol;
+                    retval= iRow-icol;
                     break;
                   }
               }
@@ -322,8 +322,8 @@ size_t matdispZ<numero>::sp_vector::ndiagL(const size_t &icol) const
     return retval;
   }
 
-//! @brief Devuelve el número de diagonales, con algún elemento no nulo, que tiene la columna por encima de la diagonal principal. 
-//! @param icol: Índice de la columna a la que corresponde este vector.
+//! @brief Return el número de diagonales, con algún elemento no nulo, que tiene the column por encima de la diagonal principal. 
+//! @param icol: Índice de the column a la que corresponde este vector.
 template<class numero>
 size_t matdispZ<numero>::sp_vector::ndiagU(const size_t &icol) const
   {
@@ -333,12 +333,12 @@ size_t matdispZ<numero>::sp_vector::ndiagU(const size_t &icol) const
         const numero zero= numero();
         for(const_iterator f= this->begin();f!=this->end();f++)
           {
-            const size_t ifila= f->first;
-            if(ifila<icol) //El elemento esta por encima de la diagonal principal.
+            const size_t iRow= f->first;
+            if(iRow<icol) //El elemento esta por encima de la diagonal principal.
               {
                 if(f->second != zero) //no nulo.
                   {
-                    retval= icol-ifila;
+                    retval= icol-iRow;
                     break;
                   }
               }
@@ -349,7 +349,7 @@ size_t matdispZ<numero>::sp_vector::ndiagU(const size_t &icol) const
     return retval;
   }
 
-//! @brief Escribe los elementos no nulos de la columna en formato de C++.
+//! @brief Escribe los elementos no nulos de the column en formato de C++.
 template<class numero>
 void matdispZ<numero>::sp_vector::writeCpp(std::ostream &os,const size_t &icol) const
   {
@@ -362,10 +362,10 @@ void matdispZ<numero>::sp_vector::writeCpp(std::ostream &os,const size_t &icol) 
       }    
   }
 
-//! @brief Coloca los elementos de la columna que forman parte de la banda
-//! en el vector que se pasa como parámetro.
+//! @brief Coloca los elementos de the column que forman parte de la banda
+//! en el vector que is being passed as parameter.
 //! @param sz: Ancho de banda.
-//! @param icol: Índice de la columna.
+//! @param icol: Índice de the column.
 //! @param ndiagu: Número de diagonales por encima de la principal.
 //! @param vptr: Vector en el que se colocal los elementos.
 template<class numero>
@@ -377,9 +377,9 @@ void matdispZ<numero>::sp_vector::PutColBanda(const size_t &sz,const size_t &ico
         const int offset= (icol-1)*sz-icol+ndiagu;
         for(const_iterator f= this->begin();f!=this->end();f++)
           {
-            const size_t ifila_banda= f->first+offset;
+            const size_t iRow_banda= f->first+offset;
             if(f->second != zero)
-              vptr[ifila_banda]= f->second;
+              vptr[iRow_banda]= f->second;
           }
       }    
   }
@@ -389,11 +389,11 @@ template <class numero>
 matdispZ<numero>& matdispZ<numero>::operator+=(const matdispZ<numero> &m)
   {
     const_c_iterator c;
-    for(c= m.cols.begin();c!=m.cols.end();c++)
-      if(TieneColumna(c->first))
-        cols[c->first]+= c->second;
+    for(c= m.columns.begin();c!=m.columns.end();c++)
+      if(hasColumn(c->first))
+        columns[c->first]+= c->second;
       else
-        cols[c->first]= c->second;
+        columns[c->first]= c->second;
     return *this;
   }
 
@@ -401,11 +401,11 @@ template <class numero>
 matdispZ<numero>& matdispZ<numero>::operator-=(const matdispZ<numero> &m)
   {
     const_c_iterator c;
-    for(c= m.cols.begin();c!=m.cols.end();c++)
-      if(TieneColumna(c->first))
-        cols[c->first]-= c->second;
+    for(c= m.columns.begin();c!=m.columns.end();c++)
+      if(hasColumn(c->first))
+        columns[c->first]-= c->second;
       else
-        cols[c->first]= c->second;
+        columns[c->first]= c->second;
     return *this;
   }
 
@@ -414,7 +414,7 @@ typename matdispZ<numero>::size_type matdispZ<numero>::size(void) const
   {
     size_type retval= 0;
     const_c_iterator c;
-    for(c= cols.begin();c!=cols.end();c++)
+    for(c= columns.begin();c!=columns.end();c++)
       retval+=c->second.size();
     return retval;
   }
@@ -423,24 +423,24 @@ template <class numero>
 void matdispZ<numero>::Compacta(void)
   {
     const numero &n= PorDefecto();
-    typename map_cols::iterator c;
-    for(c= cols.begin();c!=cols.end();c++)
+    typename column_map::iterator c;
+    for(c= columns.begin();c!=columns.end();c++)
       c->second.QuitaElem(n);
   }
 
 template <class numero>
 void matdispZ<numero>::Anula(void)
-  { cols.erase(cols.begin(),cols.end()); }
+  { columns.erase(columns.begin(),columns.end()); }
 
 template <class numero>
 void matdispZ<numero>::Identity(void)
   {
     this->Anula();
-    if(this->fls!=this->cls)
+    if(this->n_rows!=this->n_columns)
       std::cerr << "matdispZ::" << __FUNCTION__
 	        << "not a square matrix: "
-	        << this->fls << " x " << this->cls << std::endl;
-    const size_t sz= std::min(this->fls,this->cls);
+	        << this->n_rows << " x " << this->n_columns << std::endl;
+    const size_t sz= std::min(this->n_rows,this->n_columns);
     for(size_t i=1;i<=sz;i++)
       (*this)(i,i)= 1.0;
     Compacta();
@@ -452,7 +452,7 @@ matdispZ<numero> &matdispZ<numero>::Trn(void)
     matrizZ_numero::Trn();
     const_c_iterator c;
     const_f_iterator f;
-    for(c= cols.begin();c!=cols.end();c++)
+    for(c= columns.begin();c!=columns.end();c++)
       for(f= c->second.find(c->first+1);f!=c->second.end();f++)
         std::swap((*this)(f->first,c->first),(*this)(c->first,f->first));
     Compacta();
@@ -464,7 +464,7 @@ size_t matdispZ<numero>::ndiagL(void) const
   {
     const_c_iterator c;
     size_t retval= 0;
-    for(c= cols.begin();c!=cols.end();c++)
+    for(c= columns.begin();c!=columns.end();c++)
       retval= std::max(retval,c->second.ndiagL(c->first));
     return retval;
   }
@@ -473,19 +473,19 @@ size_t matdispZ<numero>::ndiagU(void) const
   {
     const_c_iterator c;
     size_t retval= 0;
-    for(c= cols.begin();c!=cols.end();c++)
+    for(c= columns.begin();c!=columns.end();c++)
       retval= std::max(retval,c->second.ndiagU(c->first));
     return retval;
   }
 
-//! @brief Rellena el vector en banda que se pasa como parámetro para su empleo en Arpack++.
+//! @brief Rellena el vector en banda que is being passed as parameter para su empleo en Arpack++.
 template<class numero>
 void matdispZ<numero>::FillVectorBanda(numero *vptr) const
   {
     const size_t ndiagu= ndiagU();
     const size_t ndiagl= ndiagL();
     const size_t ancho_banda= ndiagl+ndiagu+1;
-    for(const_c_iterator c= cols.begin();c!=cols.end();c++)
+    for(const_c_iterator c= columns.begin();c!=columns.end();c++)
       c->second.PutColBanda(ancho_banda,c->first,ndiagu,vptr);
   }
 
@@ -493,7 +493,7 @@ void matdispZ<numero>::FillVectorBanda(numero *vptr) const
 template<class numero>
 void matdispZ<numero>::writeCpp(std::ostream &os) const
   {
-    for(const_c_iterator c= cols.begin();c!=cols.end();c++)
+    for(const_c_iterator c= columns.begin();c!=columns.end();c++)
       c->second.writeCpp(os,c->first);
   }
 
@@ -506,7 +506,7 @@ matdispZ<numero> matdispZ<numero>::GetCaja(size_t f1, size_t c1, size_t f2, size
     matdispZ<numero> caja(f2-f1+1,c2-c1+1);
     const_c_iterator c;
     const_f_iterator f;
-    for(c= cols.begin();c!=cols.end();c++)
+    for(c= columns.begin();c!=columns.end();c++)
       for(f= c->second.begin();f!=c->second.end();f++)
         if( (c->first>=c1) && (c->first<=c2) &&
             (f->first>=f1) && (f->first<=f2))
@@ -519,8 +519,8 @@ void matdispZ<numero>::PutCaja(size_t f,size_t c,const matdispZ<numero> &caja)
   {
     check_put_caja(f,c,caja);
     size_t i,j;
-    for (i=1;i<=caja.fls;i++)
-      for (j=1;j<=caja.cls;j++)
+    for (i=1;i<=caja.n_rows;i++)
+      for (j=1;j<=caja.n_columns;j++)
         (*this)(i+f-1,j+c-1)= caja(i,j);
     Compacta();
   }
@@ -532,7 +532,7 @@ numero matdispZ<numero>::Traza(void) const
     numero n= numero();
     const_c_iterator c;
     const_f_iterator f;
-    for(c= cols.begin();c!=cols.end();c++)
+    for(c= columns.begin();c!=columns.end();c++)
       if((f= c->second.find(c->first)) != c->second.end())
         n+=f->second;
     return n;
@@ -541,9 +541,9 @@ numero matdispZ<numero>::Traza(void) const
 template<class numero>
 typename matdispZ<numero>::matrizZ_numero matdispZ<numero>::GetCompleta(void) const
   {
-    matrizZ_numero retval(this->fls,this->cls,PorDefecto());
+    matrizZ_numero retval(this->n_rows,this->n_columns,PorDefecto());
     const_c_iterator c;
-    for(c= cols.begin();c!=cols.end();c++)
+    for(c= columns.begin();c!=columns.end();c++)
       c->second.PutCol(c->first,retval);
     return retval;
   }
@@ -553,7 +553,7 @@ bool matdispZ<numero>::IgualA(const matdispZ<numero> &otra) const
   {
     if(!CompDim(*this,otra)) return false;
     typename matdispZ<numero>::const_c_iterator c;
-    for(c= this->cols.begin();c!=this->cols.end();c++)
+    for(c= this->columns.begin();c!=this->columns.end();c++)
       {
         typename matdispZ<numero>::const_f_iterator f;
         for(f= c->second.begin();f!=c->second.end();f++)
@@ -564,16 +564,16 @@ bool matdispZ<numero>::IgualA(const matdispZ<numero> &otra) const
 
 template<class numero>
 matdispZ<numero> matdispZ<numero>::Post(const matdispZ<numero> &b) const
-//Devuelve el producto de esta matriz por
+//Return el producto de esta matriz por
 //la matriz b.
   {
     check_prod(*this,b);
-    matdispZ<numero> ret(this->getNumFilas(),b.getNumCols());
+    matdispZ<numero> ret(this->getNumberOfRows(),b.getNumberOfColumns());
     const_c_iterator bc;
     const_c_iterator c;
     const_f_iterator f;
-    for(bc= b.cols.begin();bc!=b.cols.end();bc++)
-      for(c= cols.begin();c!=cols.end();c++)
+    for(bc= b.columns.begin();bc!=b.columns.end();bc++)
+      for(c= columns.begin();c!=columns.end();c++)
         for(f= c->second.begin();f!=c->second.end();f++)
           ret(f->first,bc->first)+= f->second*b(c->first,bc->first);
     return(ret);
@@ -582,16 +582,16 @@ matdispZ<numero> matdispZ<numero>::Post(const matdispZ<numero> &b) const
 template<class numero>
 template<class M>
 matdispZ<numero> matdispZ<numero>::Post(const M &b) const
-//Devuelve el producto de esta matriz por
+//Return el producto de esta matriz por
 //la matriz b.
   {
     check_prod(*this,b);
-    matdispZ<numero> ret(this->getNumFilas(),b.getNumCols());
+    matdispZ<numero> ret(this->getNumberOfRows(),b.getNumberOfColumns());
     size_type bc;
     const_c_iterator c;
     const_f_iterator f;
-    for(bc= 1;bc<=b.getNumCols();bc++)
-      for(c= cols.begin();c!=cols.end();c++)
+    for(bc= 1;bc<=b.getNumberOfColumns();bc++)
+      for(c= columns.begin();c!=columns.end();c++)
         for(f= c->second.begin();f!=c->second.end();f++)
           ret(f->first,bc)+= f->second*b(c->first,bc);
     return(ret);

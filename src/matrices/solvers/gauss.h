@@ -37,7 +37,7 @@ void eliminar( matrizZ<treal> &a,
                size_t *pivot,
                const set_szt &fp)
   {
-    size_t i,k,l,n= a.getNumFilas(),m=b.getNumCols();
+    size_t i,k,l,n= a.getNumberOfRows(),m=b.getNumberOfColumns();
     l=pivot[j-1]; treal r=gj_inv(a(l,j));
     for(k=j+1;k<= n;k++) a(l,k)*=r;
     for(k=1;k<=m;k++) b(l,k)*=r;
@@ -54,7 +54,7 @@ matrizZ<treal> gauss(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
   {
     size_t j;
     //Dimensionamos la matriz de indices de pivote.
-    typename matrizZ<treal>::size_type n= a.getNumFilas();
+    typename matrizZ<treal>::size_type n= a.getNumberOfRows();
     typename matrizZ<treal>::size_type *pivot= new typename matrizZ<treal>::size_type[n];
     set_szt fp;
     regular=1; j=0;
@@ -86,7 +86,7 @@ template <class treal>
 matrizZ<treal> operator /(const matrizZ<treal> &b, const matrizZ<treal> &a)
 //Se le pasan copias de los valores de b y a.
   {
-    if (b.getNumFilas() != a.getNumFilas())
+    if (b.getNumberOfRows() != a.getNumberOfRows())
       {
 	std::cerr << "Matrices de dimensiones incompatibles en operador /" << std::endl;
         abort();      
@@ -105,7 +105,7 @@ matrizZ<treal> operator /(const matrizZ<treal> &m,const treal &d)
 template <class treal>
 matrizZ<treal> gauss_invierte(const matrizZ<treal> &a,int &regular)
   {
-    matrizZ<treal> b(a.getNumFilas(),a.getNumCols());
+    matrizZ<treal> b(a.getNumberOfRows(),a.getNumberOfColumns());
     b.Idn();
     matrizZ<treal> x= gauss_const(a,b,regular);
     return x;

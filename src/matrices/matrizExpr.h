@@ -38,8 +38,8 @@ class matrizExpr: public expr_matriz
     void eval(const char *palabra,const ExprAlgebra &a);
     void eval(const char *palabra,const double &d);
   public:
-    matrizExpr(size_type filas=1,size_type cols=1,const ExprAlgebra &val=ExprAlgebra())
-      : expr_matriz(filas,cols,val) {}
+    matrizExpr(size_type n_rows=1,size_type cols=1,const ExprAlgebra &val=ExprAlgebra())
+      : expr_matriz(n_rows,cols,val) {}
     matrizExpr(const matrizExpr &otra) : expr_matriz(otra) {}
     matrizExpr &operator=(const matrizExpr &m)
       {

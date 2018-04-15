@@ -43,11 +43,11 @@ class TritrizIndices: public std::vector<MatrizIndices >
     inline const MatrizIndices &get_capa(const size_t &capa) const
       { return (*this)[capa-1]; }
   public:
-    TritrizIndices(const size_t &capas= 1,const size_t &filas= 1,const size_t &cols= 1);
+    TritrizIndices(const size_t &capas= 1,const size_t &n_rows= 1,const size_t &n_cols= 1);
     inline size_t GetCapas(void) const
       { return this->size(); }
-    size_t getNumFilas(void) const;
-    size_t getNumCols(void) const;
+    size_t getNumberOfRows(void) const;
+    size_t getNumberOfColumns(void) const;
     size_t NumIndices(void) const;
 
     inline const MatrizIndices &operator()(const size_t &capa) const

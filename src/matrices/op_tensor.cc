@@ -24,8 +24,8 @@
 
 //Producto tensorial de dos tensores de primer orden.
 m_double prod_tensor(const m_double &u,const m_double &v)
-//u: vector fila.
-//v: vector columna.
+//u: row vector.
+//v: column vector.
   {
     const size_t sz_u= u.size();
     const size_t sz_v= v.size();

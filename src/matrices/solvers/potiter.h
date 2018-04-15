@@ -32,7 +32,7 @@ template <class treal>
 treal valorp(const matrizZ<treal> &a)
   {
     const treal epsi = 1e-5;
-    size_t n= a.getNumFilas();
+    size_t n= a.getNumberOfRows();
     matrizZ<treal> v(n,1,1.0),va(n,1);
     treal ln=10*epsi,la= 0.0;
     while (gj_abs(la-ln)>epsi)

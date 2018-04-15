@@ -32,7 +32,7 @@ template <class treal>
 void descomp(matrizZ<treal> &a)
   {
    size_t i,j,k;
-   const size_t n= a.getNumFilas();
+   const size_t n= a.getNumberOfRows();
    for(i=1;i<= n-1;i++)
      {
        for(j= i+1;j<= n;j++)

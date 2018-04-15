@@ -28,20 +28,20 @@
 class ProtoMatriz
   {
   protected:
-    size_t fls; //filas.
-    size_t cls; //columnas.
-    inline void PutDim(size_t filas,size_t cols)
+    size_t n_rows; //number of rows.
+    size_t n_columns; //number of columns.
+    inline void PutDim(size_t nRows,size_t nCols)
       {
-        fls= filas;
-        cls= cols;
+        n_rows= nRows;
+        n_columns= nCols;
       }
-    inline void inic(size_t filas,size_t cols)
-      { PutDim(filas,cols); }
-    inline virtual bool check_range(const size_t &fila,const size_t &col) const
-      { return ((fila<=fls) && (col<=cls)); }
+    inline void inic(size_t n_rows,size_t n_columns)
+      { PutDim(n_rows,n_columns); }
+    inline virtual bool check_range(const size_t &iRow,const size_t &col) const
+      { return ((iRow<=n_rows) && (col<=n_columns)); }
     inline void check_put_caja(size_t f,size_t c,const ProtoMatriz &caja) const
       {
-        if(((f+caja.getNumFilas())>(fls+1)) || ((c+caja.getNumCols())>(cls+1)))
+        if(((f+caja.getNumberOfRows())>(n_rows+1)) || ((c+caja.getNumberOfColumns())>(n_columns+1)))
           std::cerr << "Indices erróneos en función PutCaja." << std::endl;
       }
     inline void check_get_caja(size_t f1, size_t c1, size_t f2, size_t c2) const
@@ -53,15 +53,15 @@ class ProtoMatriz
       {
         if (!CompDim(*this,m))
           std::cerr << "Matrices de dimensiones distintas en operador += " << std::endl
-                    << "  this: " << " (" << fls << 'x' << cls << ')' << std::endl
-                    << "  m= " << " (" << m.fls << 'x' << m.cls << ')' << std::endl;
+                    << "  this: " << " (" << n_rows << 'x' << n_columns << ')' << std::endl
+                    << "  m= " << " (" << m.n_rows << 'x' << m.n_columns << ')' << std::endl;
       }
     inline void check_sto_dif(const ProtoMatriz &m) const
       {
         if (!CompDim(*this,m))
           std::cerr << "Matrices de dimensiones distintas en operador -="  << std::endl
-                    << "  this: " << " (" << fls << 'x' << cls << ')' << std::endl
-                    << "  m= " << " (" << m.fls << 'x' << m.cls << ')' << std::endl;
+                    << "  this: " << " (" << n_rows << 'x' << n_columns << ')' << std::endl
+                    << "  m= " << " (" << m.n_rows << 'x' << m.n_columns << ')' << std::endl;
       }
     inline void check_traza(void) const
       {
@@ -70,14 +70,16 @@ class ProtoMatriz
       }
     inline friend int check_dot(const ProtoMatriz &v1,const ProtoMatriz &v2)
       {
-        if (!v1.EsFila())
-          std::cerr << "La primera matriz del producto escalar no es fila." << std::endl;
-        if (!v2.EsColumna())
-          std::cerr << "La segunda matriz del producto escalar no es columna." << std::endl;
-        if (v1.cls != v2.fls)
+        if (!v1.isRow())
+          std::cerr << "First matrix of scalar product is not a row matrix."
+		    << std::endl;
+        if (!v2.isColumn())
+          std::cerr << "Second matrix of scalar product is not a column matrix."
+		    << std::endl;
+        if (v1.n_columns != v2.n_rows)
           std::cerr << "Matrices de dimensiones incompatibles en producto escalar."
-                    << "  m1= " << v1 << " (" << v1.fls << 'x' << v1.cls << ')' << std::endl
-                    << "  m2= " << v2 << " (" << v2.fls << 'x' << v2.cls << ')'
+                    << "  m1= " << v1 << " (" << v1.n_rows << 'x' << v1.n_columns << ')' << std::endl
+                    << "  m2= " << v2 << " (" << v2.n_rows << 'x' << v2.n_columns << ')'
                     << std::endl;
         return 1;
       }
@@ -103,7 +105,7 @@ class ProtoMatriz
       }
     inline friend int check_prod(const ProtoMatriz &m1,const ProtoMatriz &m2)
       {
-        if (m1.cls != m2.fls)
+        if (m1.n_columns != m2.n_rows)
           {
             std::cerr << "Matrices de dimensiones incompatibles en producto." << std::endl;
             std::cerr << "  m1= " << m1 << std::endl;
@@ -113,43 +115,43 @@ class ProtoMatriz
         return 1;
       }
   public:
-    ProtoMatriz(size_t filas= 1,size_t cols= 1)
-      { inic(filas,cols); }
+    ProtoMatriz(size_t n_rows= 1,size_t n_columns= 1)
+      { inic(n_rows,n_columns); }
     ProtoMatriz(const ProtoMatriz &otra)
-      { inic(otra.fls,otra.cls); }
+      { inic(otra.n_rows,otra.n_columns); }
     ProtoMatriz& operator =(const ProtoMatriz &m)
       {
-        inic(m.fls,m.cls);
+        inic(m.n_rows,m.n_columns);
         return *this;
       }
     virtual ~ProtoMatriz(void) {}
-    inline virtual void resize(size_t filas,size_t cols)
-      { inic(filas,cols); }
+    inline virtual void resize(size_t n_rows,size_t n_columns)
+      { inic(n_rows,n_columns); }
     inline virtual size_t Tam(void)
-      { return (fls*cls); }
-    inline size_t getNumFilas(void) const
-      { return fls; }                    
-    inline size_t getNumCols(void) const
-      { return cls; }
+      { return (n_rows*n_columns); }
+    inline size_t getNumberOfRows(void) const
+      { return n_rows; }                    
+    inline size_t getNumberOfColumns(void) const
+      { return n_columns; }
     inline bool CheckIndices(const size_t &f,const size_t &c) const
       { return check_range(f,c);; }
-    //! @brief Devuelve verdadero si los índices corresponden a un elemento
+    //! @brief Return verdadero si los índices corresponden a un elemento
     //! "interior" de la matriz.
     inline bool interior(const size_t &i,const size_t &j) const
-      { return ( (i>1) && (j>1) && (i<fls) && (j<cls) ); }
+      { return ( (i>1) && (j>1) && (i<n_rows) && (j<n_columns) ); }
     inline int Cuadrada(void) const
-      { return (fls == cls); }
-    inline bool EsFila(void) const
-      { return (fls == 1); }
-    inline bool EsColumna(void) const
-      { return (cls == 1); }
+      { return (n_rows == n_columns); }
+    inline bool isRow(void) const
+      { return (n_rows == 1); }
+    inline bool isColumn(void) const
+      { return (n_columns == 1); }
     virtual void Print(std::ostream &os) const=0;
-    friend inline bool CompFilas(const ProtoMatriz &m1,const ProtoMatriz &m2)
-      { return (m1.fls == m2.fls); }
-    friend inline bool CompCols(const ProtoMatriz &m1,const ProtoMatriz &m2)
-      { return (m1.cls == m2.cls); }
+    friend inline bool compareRowNumber(const ProtoMatriz &m1,const ProtoMatriz &m2)
+      { return (m1.n_rows == m2.n_rows); }
+    friend inline bool compareColumnNumber(const ProtoMatriz &m1,const ProtoMatriz &m2)
+      { return (m1.n_columns == m2.n_columns); }
     friend inline bool CompDim(const ProtoMatriz &m1,const ProtoMatriz &m2)
-      { return (CompFilas(m1,m2) && CompCols(m1,m2)); }
+      { return (compareRowNumber(m1,m2) && compareColumnNumber(m1,m2)); }
     friend inline std::ostream &operator<<(std::ostream &os,const ProtoMatriz &m)
       {
         m.Print(os);

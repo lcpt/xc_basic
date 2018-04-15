@@ -45,7 +45,7 @@ inline int In(const set_szt &fp,const size_t &i)
 template <class treal>
 size_t pivote(const size_t &j,const matrizZ<treal> &a,const set_szt &fp)
   {
-    size_t i,k=0,n= a.getNumFilas();
+    size_t i,k=0,n= a.getNumberOfRows();
     treal amax=zero;
     for(i= 1;i<=n;i++)
       if (!In(fp,i) && ( amax<gj_abs(a(i,j)) ) )

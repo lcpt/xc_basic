@@ -109,7 +109,7 @@ int NewtonSimNLE(m_double &X, double tolerance,int maxIter, const MF &f)
   {
     int moreIter, iter= 0;
     double h;
-    size_t numEqns= X.getNumFilas();
+    size_t numEqns= X.getNumberOfRows();
 
     m_double J(numEqns,numEqns);
     m_double Xdash(X);

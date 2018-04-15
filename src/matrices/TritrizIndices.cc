@@ -23,10 +23,10 @@
 
 #include "TritrizIndices.h"
 
-TritrizIndices::TritrizIndices(const size_t &capas,const size_t &filas,const size_t &cols)
-  : std::vector<MatrizIndices>(capas,MatrizIndices(filas,cols)) {}
+TritrizIndices::TritrizIndices(const size_t &capas,const size_t &n_rows,const size_t &n_columns)
+  : std::vector<MatrizIndices>(capas,MatrizIndices(n_rows,n_columns)) {}
 
-//! @brief Devuelve el número de elementos de la tritriz.
+//! @brief Return el número de elementos de la tritriz.
 size_t TritrizIndices::NumIndices(void) const
   {
     const size_t sz= this->size();
@@ -35,25 +35,25 @@ size_t TritrizIndices::NumIndices(void) const
     else
       {
         const MatrizIndices &capa= (*this)(1); 
-        return sz*capa.getNumFilas()*capa.getNumCols();
+        return sz*capa.getNumberOfRows()*capa.getNumberOfColumns();
       }
   }
 
-//! @brief Devuelve el número de filas de la tritriz.
-size_t TritrizIndices::getNumFilas(void) const
+//! @brief Return el number of rows de la tritriz.
+size_t TritrizIndices::getNumberOfRows(void) const
   {
     size_t retval= 0;
     if(this->size())
-      retval= (*this)[0].getNumFilas();
+      retval= (*this)[0].getNumberOfRows();
     return retval;
   }
 
-//! @brief Devuelve el número de columnas de la tritriz.
-size_t TritrizIndices::getNumCols(void) const
+//! @brief Return el number of columns de la tritriz.
+size_t TritrizIndices::getNumberOfColumns(void) const
   {
     size_t retval= 0;
     if(this->size())
-      retval= (*this)[0].getNumCols();
+      retval= (*this)[0].getNumberOfColumns();
     return retval;
   }
 
@@ -67,7 +67,7 @@ inline std::ostream &operator<<(std::ostream &os,const TritrizIndices &t)
   }
 
 //! @brief Agrega a todos los elementos el valor
-//! que se pasa como parámetro.
+//! que is being passed as parameter.
 void TritrizIndices::Offset(const VIndices &vi)
   {
     const size_t nCapas= GetCapas();

@@ -25,20 +25,20 @@
 
 void matrizMExpr::eval(void)
   {
-    for(size_type i=1;i<=fls;i++)
-      for(size_type j=1;j<=cls;j++)
+    for(size_type i=1;i<=n_rows;i++)
+      for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval();
   }
 void matrizMExpr::eval(const char *palabra,const ExprAlgebra &a)
   {
-    for(size_type i=1;i<=fls;i++)
-      for(size_type j=1;j<=cls;j++)
+    for(size_type i=1;i<=n_rows;i++)
+      for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval(palabra,a);
   }
 void matrizMExpr::eval(const char *palabra,const double &d)
   {
-    for(size_type i=1;i<=fls;i++)
-      for(size_type j=1;j<=cls;j++)
+    for(size_type i=1;i<=n_rows;i++)
+      for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval(palabra,d);
   }
 
@@ -62,31 +62,31 @@ matrizMExpr matrizMExpr::Eval(const char *palabra,const double &d)
   }
 bool matrizMExpr::Evaluable(void) const
   {
-    for(size_type i=1;i<=fls;i++)
-      for(size_type j=1;j<=cls;j++)
+    for(size_type i=1;i<=n_rows;i++)
+      for(size_type j=1;j<=n_columns;j++)
         if(!(*this)(i,j).Evaluable())
           return false;
     return true;
   }
 matrizM matrizMExpr::ToNum(void) const
   {
-    matrizM retval(fls,cls);
+    matrizM retval(n_rows,n_columns);
     if(!Evaluable())
       std::cerr << "matrizExpr::ToNum: no se pudo evaluar la matriz de expresiones" << std::endl;
     else
-      for(size_type i=1;i<=fls;i++)
-        for(size_type j=1;j<=cls;j++)
+      for(size_type i=1;i<=n_rows;i++)
+        for(size_type j=1;j<=n_columns;j++)
           retval(i,j)= (*this)(i,j).ToNum();
     return retval;
   }
 matrizM matrizMExpr::ToNum(const char *palabra,const double &d) const
   {
-    matrizM retval(fls,cls);
+    matrizM retval(n_rows,n_columns);
     if(!Evaluable())
       std::cerr << "matrizExpr::ToNum: no se pudo evaluar la matriz de expresiones" << std::endl;
     else
-      for(size_type i=1;i<=fls;i++)
-        for(size_type j=1;j<=cls;j++)
+      for(size_type i=1;i<=n_rows;i++)
+        for(size_type j=1;j<=n_columns;j++)
           retval(i,j)= (*this)(i,j).ToNum(palabra,d);
     return retval;
   }

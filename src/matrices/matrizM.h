@@ -36,12 +36,12 @@ class matrizM: public m_matriz
     //! Constructor.
     matrizM(void) : m_matriz(1,1) {}
     //! Constructor.
-    matrizM(size_type filas,size_type cols) : m_matriz(filas,cols) {}
+    matrizM(size_type n_rows,size_type cols) : m_matriz(n_rows,cols) {}
     //! Constructor.
-    matrizM(size_type filas,size_type cols,const m_double &val)
-      : m_matriz(filas,cols,val) {}
+    matrizM(size_type n_rows,size_type cols,const m_double &val)
+      : m_matriz(n_rows,cols,val) {}
     matrizM(const std::vector<size_t> &dim);
-    matrizM(const std::vector<size_t> &dim_filas,const std::vector<size_t> &dim_cols);
+    matrizM(const std::vector<size_t> &dim_rows,const std::vector<size_t> &dim_cols);
     //! Constructor de copia.
     matrizM(const matrizM &otra) : m_matriz(otra) {}
     matrizM& operator=(const matrizM &m)
@@ -83,7 +83,7 @@ class matrizM: public m_matriz
     friend matrizM operator*(const matrizM &mM, const m_double &m)
       { return m*mM; }
     friend matrizM a_cajas(const matrizM &muestra,const m_double &a);
-    friend matrizM a_cajas(const std::vector<size_t> dim_fls,const std::vector<size_t> dim_cls,const m_double &a);
+    friend matrizM a_cajas(const std::vector<size_t> dim_n_rows,const std::vector<size_t> dim_n_columns,const m_double &a);
   };
 
 #endif

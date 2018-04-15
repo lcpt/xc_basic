@@ -34,7 +34,7 @@ void eliminar( matrizZ<treal> &a,
                matrizZ<treal> &b,
                const size_t &j,size_t *pivot)
   {
-    size_t i,k,l,n= a.getNumFilas(),m= b.getNumCols();
+    size_t i,k,l,n= a.getNumberOfRows(),m= b.getNumberOfColumns();
     l=pivot[j]; treal r=gj_inv(a(l,j));
     for(k=j+1;k<= n;k++) a(l,k)*=r;
     for(k=1;k<=m;k++) b(l,k)*=r;
@@ -51,7 +51,7 @@ matrizZ<treal> calcularx( const matrizZ<treal> &a,
                           const matrizZ<treal> &b,
                           size_t *pivot)
   {
-    size_t n= a.getNumFilas(),m=b.getNumCols();
+    size_t n= a.getNumberOfRows(),m=b.getNumberOfColumns();
     matrizZ<treal> x(n,m,0.0);
     for(size_t j=1;j<= n;j++)
       for(size_t k=1;k<=m;k++) x(j,k)= b(pivot[j],k);
@@ -64,7 +64,7 @@ matrizZ<treal> jordan(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
     size_t j;
     //Dimensionamos la matriz de indices de pivote.
     typedef typename matrizZ<treal>::size_type size_type;
-    const size_type n= a.getNumFilas();
+    const size_type n= a.getNumberOfRows();
     size_type *pivot= new size_type[n];
     set_szt fp;
     regular= 1; j=0;
@@ -96,7 +96,7 @@ template <class treal>
 matrizZ<treal> operator /(const matrizZ<treal> &b, const matrizZ<treal> &a)
 //Se le pasan copias de los valores de b y a.
   {
-    if (b.getNumFilas() != a.getNumFilas())
+    if (b.getNumberOfRows() != a.getNumberOfRows())
       {
         std::cerr << "Matrices de dimensiones incompatibles en operador /" << std::endl;
         abort();      

@@ -23,28 +23,28 @@
 #include "matrizExpr.h"
 
 matrizExpr::matrizExpr(const m_double &m)
-  : expr_matriz(m.getNumFilas(),m.getNumCols())
+  : expr_matriz(m.getNumberOfRows(),m.getNumberOfColumns())
   {
-    for(size_type i=1;i<=fls;i++)
-      for(size_type j=1;j<=cls;j++)
+    for(size_type i=1;i<=n_rows;i++)
+      for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= ExprAlgebra(m(i,j));
   }
 void matrizExpr::eval(void)
   {
-    for(size_type i=1;i<=fls;i++)
-      for(size_type j=1;j<=cls;j++)
+    for(size_type i=1;i<=n_rows;i++)
+      for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval();
   }
 void matrizExpr::eval(const char *palabra,const ExprAlgebra &a)
   {
-    for(size_type i=1;i<=fls;i++)
-      for(size_type j=1;j<=cls;j++)
+    for(size_type i=1;i<=n_rows;i++)
+      for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval(palabra,a);
   }
 void matrizExpr::eval(const char *palabra,const double &d)
   {
-    for(size_type i=1;i<=fls;i++)
-      for(size_type j=1;j<=cls;j++)
+    for(size_type i=1;i<=n_rows;i++)
+      for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval(palabra,d);
   }
 matrizExpr matrizExpr::Eval(void) const
@@ -67,31 +67,31 @@ matrizExpr matrizExpr::Eval(const char *palabra,const double &d)
   }
 bool matrizExpr::Evaluable(void) const
   {
-    for(size_type i=1;i<=fls;i++)
-      for(size_type j=1;j<=cls;j++)
+    for(size_type i=1;i<=n_rows;i++)
+      for(size_type j=1;j<=n_columns;j++)
         if(!(*this)(i,j).Evaluable())
           return false;
     return true;
   }
 m_double matrizExpr::ToNum(void) const
   {
-    m_double retval(fls,cls,0.0);
+    m_double retval(n_rows,n_columns,0.0);
     if(!Evaluable())
       std::cerr << "matrizExpr::ToNum: no se pudo evaluar la matriz de expresiones" << std::endl;
     else
-      for(size_type i=1;i<=fls;i++)
-        for(size_type j=1;j<=cls;j++)
+      for(size_type i=1;i<=n_rows;i++)
+        for(size_type j=1;j<=n_columns;j++)
           retval(i,j)= (*this)(i,j).ToNum();
     return retval;  
   }
 m_double matrizExpr::ToNum(const char *palabra,const double &d) const
   {
-    m_double retval(fls,cls,0.0);
+    m_double retval(n_rows,n_columns,0.0);
     if(!Evaluable())
       std::cerr << "matrizExpr::ToNum: no se pudo evaluar la matriz de expresiones" << std::endl;
     else
-      for(size_type i=1;i<=fls;i++)
-        for(size_type j=1;j<=cls;j++)
+      for(size_type i=1;i<=n_rows;i++)
+        for(size_type j=1;j<=n_columns;j++)
           retval(i,j)= (*this)(i,j).ToNum(palabra,d);
     return retval;  
   }
@@ -120,8 +120,8 @@ matrizExpr &matrizExpr::operator*=(const matrizExpr &m)
   }
 matrizExpr operator*(const matrizExpr &m1,const matrizExpr &m2)
   {
-    matrizExpr producto(m1.fls,m2.cls);
-    if (m1.cls != m2.fls)
+    matrizExpr producto(m1.n_rows,m2.n_columns);
+    if (m1.n_columns != m2.n_rows)
       {
         std::cerr << "Matrices de dimensiones incompatibles en producto." << std::endl;
         std::cerr << "  m1= " << m1 << std::endl;
@@ -129,9 +129,9 @@ matrizExpr operator*(const matrizExpr &m1,const matrizExpr &m2)
         return producto;
       }
     matrizExpr::size_type i=1,j=1;
-    for (i= 1;i<=m1.fls;i++)
-      for (j= 1;j<=m2.cls;j++)
-        producto(i,j)= dot(m1.GetFila(i),m2.GetCol(j));
+    for (i= 1;i<=m1.n_rows;i++)
+      for (j= 1;j<=m2.n_columns;j++)
+        producto(i,j)= dot(m1.getRow(i),m2.getColumn(j));
     return producto;
   }
 

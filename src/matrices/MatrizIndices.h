@@ -48,8 +48,8 @@ class MatrizIndices: public MatrizT<VIndices,std::vector<VIndices > >
     MatrizIndices(const m_int &,const std::vector<VIndices > &);
 
     MatrizIndices GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const;
-    MatrizIndices GetFila(size_t fila) const;
-    MatrizIndices GetCol(size_t col) const;
+    MatrizIndices getRow(size_t ) const;
+    MatrizIndices getColumn(size_t ) const;
 
     void Offset(const VIndices &);
   };

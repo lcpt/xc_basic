@@ -50,17 +50,17 @@ class matrizZ : public MatrizT<numero,vectorZ<numero> >
     numero DMGT(const numero &eps) const;
 
   protected:
-    numero suma_de_fila(size_type i) const;
-    numero suma_de_columna(size_type j) const;
+    numero row_sum(size_type i) const;
+    numero column_sum(size_type j) const;
   public:
     matrizZ(void) : mT_numero(1,1) {}
-    matrizZ(size_type filas,size_type cols) : mT_numero(filas,cols) {}
-    matrizZ(size_type filas,size_type cols,numero val) : mT_numero(filas,cols,val) {}
-    matrizZ(size_type filas,size_type cols,const lst_numero &ln) : mT_numero(filas,cols)
+    matrizZ(size_type n_rows,size_type n_columns) : mT_numero(n_rows,n_columns) {}
+    matrizZ(size_type n_rows,size_type n_columns,numero val) : mT_numero(n_rows,n_columns,val) {}
+    matrizZ(size_type n_rows,size_type n_columns,const lst_numero &ln) : mT_numero(n_rows,n_columns)
       { vectorZ_numero::operator=(vectorZ_numero(ln)); }
     matrizZ(const matrizZ<numero> &otra) : mT_numero(otra) {}
     template <class InputIterator>
-    matrizZ(const size_t &fls,const size_t &cls,InputIterator b,InputIterator e);
+    matrizZ(const size_t &n_rows,const size_t &n_columns,InputIterator b,InputIterator e);
     matrizZ<numero> &operator=(const matrizZ<numero> &m)
       {
 	mT_numero::operator=(m);
@@ -93,8 +93,8 @@ class matrizZ : public MatrizT<numero,vectorZ<numero> >
         *this= (*this)*m;
         return *this;
       }
-    numero maximo_de_fila(size_type i) const;
-    numero maximo_de_columna(size_type j) const;
+    numero row_maximum(size_type i) const;
+    numero column_maximum(size_type j) const;
     void PutSuma(size_type i,size_type j,const numero &n)
     //Le suma n a la posiciOn i,j.
       { vectorZ_numero::PutSuma(Indice(i,j),n); }
@@ -118,10 +118,10 @@ class matrizZ : public MatrizT<numero,vectorZ<numero> >
         return m;
       }
     matrizZ<numero> GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const;
-    matrizZ<numero> GetFila(size_type fila) const
-      { return GetCaja(fila,1,fila,this->cls); }
-    matrizZ<numero> GetCol(size_type col) const
-      { return GetCaja(1,col,this->fls,col); }
+    matrizZ<numero> getRow(size_type iRow) const
+      { return GetCaja(iRow,1,iRow,this->n_columns); }
+    matrizZ<numero> getColumn(size_type col) const
+      { return GetCaja(1,col,this->n_rows,col); }
     matrizZ<numero> GetMenor(size_t f,size_t c) const;
     void Idn(void);
     void SumaCaja(size_t f,size_t c,const matrizZ<numero> &caja);
@@ -130,8 +130,8 @@ class matrizZ : public MatrizT<numero,vectorZ<numero> >
     numero Traza(void) const;
     inline bool Nulo(const numero &tol= numero()) const
       { return (this->Abs2()<(tol*tol)); }
-    numero NormaPorFilas(void) const;
-    numero NormaPorColumnas(void) const;
+    numero getRowNorm(void) const;
+    numero getColumnNorm(void) const;
     inline void Neg(void)
       { return vectorZ<numero>::Neg(); }
 
@@ -140,42 +140,42 @@ class matrizZ : public MatrizT<numero,vectorZ<numero> >
 
     friend bool operator==(const matrizZ<numero> &m1,const matrizZ<numero> &m2)
       { return ((const mT_numero &) m1 == (const mT_numero &) m2); }
-/*     friend matrizZ<numero> operator+(const matrizZ<numero> &m1,const matrizZ<numero> &m2) return suma(m1.fls,m1.cls); */
+/*     friend matrizZ<numero> operator+(const matrizZ<numero> &m1,const matrizZ<numero> &m2) return suma(m1.n_rows,m1.n_columns); */
 /*       { */
 /*         check_sum(m1,m2); */
-/*         //matrizZ<numero> suma(m1.fls,m1.cls); */
+/*         //matrizZ<numero> suma(m1.n_rows,m1.n_columns); */
 /*         suma.Suma(m1,m2); */
 /*         return; */
 /*       } */
     friend matrizZ<numero> operator-(const matrizZ<numero> &m1,const matrizZ<numero> &m2)
       {
         check_dif(m1,m2);
-        matrizZ<numero> resta(m1.fls,m1.cls);
+        matrizZ<numero> resta(m1.n_rows,m1.n_columns);
         resta.Resta(m1,m2);
         return resta;
       }
     numero dot(const matrizZ<numero> &v2) const;
     //Producto escalar de este por v2.
-    //v2: Vector columna.
+    //v2: column vector.
 
     numero Abs2(void) const;
     numero Abs(void) const;
 
     inline friend numero dot(const matrizZ<numero> &v1,const matrizZ<numero> &v2)
     //Producto escalar de dos vectores.
-    //v1: Vector fila.
-    //v2: Vector columna.
+    //v1: row vector.
+    //v2: column vector.
       { return v1.dot(v2); }
 
 /*     friend matrizZ<numero> operator*(const matrizZ<numero> &m1,const matrizZ<numero> &m2) */
 /*       { */
 /*         check_prod(m1,m2); */
-/*         matrizZ<numero> producto(m1.fls,m2.cls); */
-/*         for(register size_type i=1;i<=m1.fls;i++) */
-/*           for(register size_type j=1;j<=m2.cls;j++) */
+/*         matrizZ<numero> producto(m1.n_rows,m2.n_columns); */
+/*         for(register size_type i=1;i<=m1.n_rows;i++) */
+/*           for(register size_type j=1;j<=m2.n_columns;j++) */
 /*  	    { */
 /*               register numero t=numero(); */
-/*               for(register size_type k=1;k<= m1.cls;k++) */
+/*               for(register size_type k=1;k<= m1.n_columns;k++) */
 /*                 t+= m1(i,k) * m2(k,j); */
 /*               producto(i,j)= t; */
 /* 	    } */
@@ -195,8 +195,8 @@ class matrizZ : public MatrizT<numero,vectorZ<numero> >
   };
 
 template <class numero> template<class InputIterator>
-matrizZ<numero>::matrizZ(const size_t &fls,const size_t &cls,InputIterator b,InputIterator e)
-  : mT_numero(fls,cls,b,e) {}
+matrizZ<numero>::matrizZ(const size_t &n_rows,const size_t &n_columns,InputIterator b,InputIterator e)
+  : mT_numero(n_rows,n_columns,b,e) {}
 
 template <class numero>
 matrizZ<numero> operator-(const matrizZ<numero> &m)
@@ -214,8 +214,8 @@ template <class numero>
 void matrizZ<numero>::SumaCaja(size_t f,size_t c,const matrizZ<numero> &caja)
   {
     register size_type i,j;
-    for(i=1;i<=caja.fls;i++)
-      for(j=1;j<=caja.cls;j++)
+    for(i=1;i<=caja.n_rows;i++)
+      for(j=1;j<=caja.n_columns;j++)
         PutSuma(i+f-1,j+c-1,caja(i,j));
   }
 
@@ -226,16 +226,17 @@ void matrizZ<numero>::Idn(void)
     if(this->Cuadrada())
       {
 	vectorZ_numero::Con(numero());
-	for(i= 1;i<=this->fls;i++) (*this)(i,i)= neutro_producto(numero()); //Neutro del producto
+	for(i= 1;i<=this->n_rows;i++) (*this)(i,i)= neutro_producto(numero()); //Neutro del producto
       }
   }
 
-//!  @brief Producto vectorial. ¡Ojo! está escrito para vectores columna de dimensión 3 xxx.
+//!  @brief Cross product. ¡Warning! written for column vectors
+//! of dimension 3 xxx.
 template <class MATR>
 MATR prod_vectorial(const MATR &v1,const MATR &v2)
   {
-    MATR v(v1.getNumFilas(),v1.getNumCols());
-    MATR m(v1.getNumFilas(),3);
+    MATR v(v1.getNumberOfRows(),v1.getNumberOfColumns());
+    MATR m(v1.getNumberOfRows(),3);
     m.PutCol(2,v1);
     m.PutCol(3,v2);
     MATR menor(2,2);
@@ -248,9 +249,9 @@ MATR prod_vectorial(const MATR &v1,const MATR &v2)
     return v;
   }
 
-//! @brief Devuelve el determinante.
+//! @brief Return el determinante.
 //! 
-//! Devuelve el determinante empleando un algoritmo recursivo lentísimo 
+//! Return el determinante empleando un algoritmo recursivo lentísimo 
 //! pero que no necesita divisiones.
 template <class numero>
 numero matrizZ<numero>::GetDetLento(void) const
@@ -258,7 +259,7 @@ numero matrizZ<numero>::GetDetLento(void) const
     this->check_traza();
     numero p= neutro_suma(numero());
     const numero cero= neutro_suma(p);
-    size_type n= this->getNumFilas();
+    size_type n= this->getNumberOfRows();
     switch(n)
       {
         case 0:
@@ -294,7 +295,7 @@ numero matrizZ<numero>::GetDetLento(void) const
     return p;
   }
 
-//! @brief Devuelve el determinante.
+//! @brief Return el determinante.
 //! 
 template <class numero>
 numero matrizZ<numero>::GetDet(const numero &eps) const
@@ -305,12 +306,12 @@ std::ostream &operator<<(std::ostream &os,const matrizZ<numero> &m)
   {
     os << '[';
     register typename matrizZ<numero>::size_type i,j;
-    typename matrizZ<numero>::size_type fls= m.getNumFilas(),cls= m.getNumCols();
-    for(i= 1;i<=fls;i++)
+    typename matrizZ<numero>::size_type n_rows= m.getNumberOfRows(),n_columns= m.getNumberOfColumns();
+    for(i= 1;i<=n_rows;i++)
       {
 	os << '[';
-        if(cls > 0) os << m(i,1);
-	for(j= 2;j<=cls;j++)
+        if(n_columns > 0) os << m(i,1);
+	for(j= 2;j<=n_columns;j++)
 	  os << ',' << m(i,j);
 	os << ']';
       }
@@ -338,12 +339,12 @@ template<class numero>
 inline matrizZ<numero> operator*(const matrizZ<numero> &m1,const matrizZ<numero> &m2)
   {
     check_prod(m1,m2);
-    matrizZ<numero> producto(m1.getNumFilas(),m2.getNumCols());
-    size_t nfilas= m1.getNumFilas();
-    size_t ncols_m1= m1.getNumCols();
-    size_t ncols= m2.getNumCols();
+    matrizZ<numero> producto(m1.getNumberOfRows(),m2.getNumberOfColumns());
+    size_t n_rows= m1.getNumberOfRows();
+    size_t ncols_m1= m1.getNumberOfColumns();
+    size_t ncols= m2.getNumberOfColumns();
     typedef typename matrizZ<numero>::size_type sz_type;
-    for(register sz_type i=1;i<=nfilas;i++)
+    for(register sz_type i=1;i<=n_rows;i++)
       for(register sz_type j=1;j<=ncols;j++)
         {
           register numero t= m1(i,1) * m2(1,j); //Inicializamos (pueden ser matrices por cajas).
@@ -381,7 +382,7 @@ The variables po(real), lo and ko(integer) store respectively pivot at step k,
 its line number and its column number.
 -----------------------------------------------------------------------------*/
   {
-    const size_t n= this->fls;
+    const size_t n= this->n_rows;
     register size_t i,j,k;
     size_t ko,lo; numero po,t0;
     //Iguala la matriz C a ésta
@@ -445,7 +446,7 @@ Note: types pMat and pVecI must be declared and allocated for by main program,
 except local variables C,Kp,Lp allocated (and disposed of) here.
 -----------------------------------------------------------------------------*/
   {
-    const size_t n= this->fls;
+    const size_t n= this->n_rows;
     size_t it;
     register size_t k,l;
     numero d0;
@@ -470,103 +471,103 @@ except local variables C,Kp,Lp allocated (and disposed of) here.
           }
         if ((l%2)!=0)  d0=-d0;
       }
-    return d0;  //devuelve el determinante
+    return d0;  //return el determinante
   } //DMGT
 
-//! @brief Devuelve la «caja» comprendida entre los índices que se pasan como parámetro.
+//! @brief Return la «caja» comprendida entre los índices being passed as parameter.
 template <class numero>
 matrizZ<numero> matrizZ<numero>::GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
   {
     this->check_get_caja(f1,c1,f2,c2);
     matrizZ<numero> caja(f2-f1+1,c2-c1+1);
-    for(register size_type i=1;i<=caja.fls;i++)
-      for(register size_type j=1;j<=caja.cls;j++)
+    for(register size_type i=1;i<=caja.n_rows;i++)
+      for(register size_type j=1;j<=caja.n_columns;j++)
         caja(i,j)= matrizZ<numero>::operator()(i+f1-1,j+c1-1);
     return caja;
   }
 
-//! @brief Devuelve la traza de la matriz.
+//! @brief Return la traza de la matriz.
 template <class numero>
 numero matrizZ<numero>::Traza(void) const
   {
     this->check_traza();
     numero n= numero();
-    for(register size_type i= 1;i<=this->fls;i++) n+= (*this)(i,i);
+    for(register size_type i= 1;i<=this->n_rows;i++) n+= (*this)(i,i);
     return n;
   }
 template <class numero>
-numero matrizZ<numero>::suma_de_fila(size_type i) const
+numero matrizZ<numero>::row_sum(size_type i) const
   {
     numero sumaf= (*this)(i,1);
-    for(register size_t j=2;j<=this->cls;j++)
+    for(register size_t j=2;j<=this->n_columns;j++)
       sumaf+= (*this)(i,j);
     return sumaf;
   }
 template <class numero>
-numero matrizZ<numero>::suma_de_columna(size_type j) const
+numero matrizZ<numero>::column_sum(size_type j) const
   {
     numero sumac= (*this)(1,j);
-    for(register size_t i=2;i<=this->cls;i++)
+    for(register size_t i=2;i<=this->n_columns;i++)
       sumac+= (*this)(i,j);
     return sumac;
   }
 template <class numero>
-numero matrizZ<numero>::maximo_de_fila(size_type i) const
+numero matrizZ<numero>::row_maximum(size_type i) const
   {
     numero maxf= (*this)(i,1);
-    for(register size_t j=2;j<=this->cls;j++)
+    for(register size_t j=2;j<=this->n_columns;j++)
       maxf= std::max(maxf,(*this)(i,j));
     return maxf;
   }
 template <class numero>
-numero matrizZ<numero>::maximo_de_columna(size_type j) const
+numero matrizZ<numero>::column_maximum(size_type j) const
   {
     numero maxc= (*this)(1,j);
-    for(register size_t i=2;i<=this->cls;i++)
+    for(register size_t i=2;i<=this->n_columns;i++)
       maxc+= std::max(maxc,(*this)(i,j));
     return maxc;
   }
-//! @brief Devuelve el valor máximo de los elementos del vector
-//! que resulta de sumar los elementos de las filas.
+//! @brief Return el valor máximo de los elementos del vector
+//! que resulta de sumar los rows elements.
 template <class numero>
-numero matrizZ<numero>::NormaPorFilas(void) const
+numero matrizZ<numero>::getRowNorm(void) const
   {
-    numero maximo= suma_de_fila(1);
-    for(register size_t i=2;i<=this->fls;i++) maximo= max(maximo,suma_de_fila(i));
+    numero maximo= row_sum(1);
+    for(register size_t i=2;i<=this->n_rows;i++) maximo= max(maximo,row_sum(i));
     return maximo;
   }
-//! @brief Devuelve el valor máximo de los elementos del vector
-//! que resulta de sumar los elementos de las columnas.
+//! @brief Return the maximum value of the components of the vector obtained by
+//! adding the components of the columns.
 template <class numero>
-numero matrizZ<numero>::NormaPorColumnas(void) const
+numero matrizZ<numero>::getColumnNorm(void) const
   {
-    numero maximo= suma_de_columna(1);
-    for(register size_t j=2;j<=this->cls;j++) maximo= max(maximo,suma_de_columna(j));
+    numero maximo= column_sum(1);
+    for(register size_t j=2;j<=this->n_columns;j++) maximo= max(maximo,column_sum(j));
     return maximo;
   }
 template <class numero>
 numero matrizZ<numero>::dot(const matrizZ<numero> &v2) const
 //Producto escalar de este por v2.
-//v2: Vector columna.
+//v2: column vector.
   {
     check_dot(*this,v2);
     numero retval((*this)(1,1)*v2(1,1));
     register typename matrizZ<numero>::size_type i;
-    for(i=2;i<=this->cls;i++)
+    for(i=2;i<=this->n_columns;i++)
       { retval+= (*this)(1,i) * v2(i,1); }
     return retval;
   }
 
-//! @brief Devuelve el cuadrado del módulo (norma euclídea) de la matriz.
+//! @brief Return el cuadrado del módulo (norma euclídea) de la matriz.
 template <class numero>
 numero matrizZ<numero>::Abs2(void) const
   {
     numero r= numero();
     const matrizZ<numero> trn= this->GetTrn();
-    if(this->EsFila()) //Es matriz fila.
+    if(this->isRow()) //is a row matrix.
       r= dot(trn);
     else
-      if(this->EsColumna()) //Es matriz columna.
+      if(this->isColumn()) //is a column matrix.
         r= trn.dot(*this);
       else //Es cualquiera
         {
@@ -576,7 +577,7 @@ numero matrizZ<numero>::Abs2(void) const
     return r;
   }
 
-//! @brief Devuelve el módulo (norma euclídea) de la matriz.
+//! @brief Return el módulo (norma euclídea) de la matriz.
 template <class numero>
 numero matrizZ<numero>::Abs(void) const
   { return sqrt(Abs2()); }
@@ -587,7 +588,7 @@ void matrizZ<numero>::Input(std::istream &is)
   {
     char c;
     typename matrizZ<numero>::lst_numero ln;
-    size_t fls=0,cls=1;
+    size_t n_rows=0,n_columns=1;
     int sigue= 1;
     numero ni;
     is >> c;
@@ -599,7 +600,7 @@ void matrizZ<numero>::Input(std::istream &is)
         switch(c)
           {
 	  case '[':
-            fls++;
+            n_rows++;
             break;
           case ']':
             sigue= 0;
@@ -611,12 +612,12 @@ void matrizZ<numero>::Input(std::istream &is)
               }
             else
               {
-                (*this)= matrizZ<numero>(fls,cls,ln.begin(),ln.end());
+                (*this)= matrizZ<numero>(n_rows,n_columns,ln.begin(),ln.end());
                 return;
               }
             break;
           case ',':
-            if(sigue) cls++;
+            if(sigue) n_columns++;
             break;
           default:
             break;
@@ -624,7 +625,7 @@ void matrizZ<numero>::Input(std::istream &is)
         is >> ni;
         ln.push_back(ni);
       }
-    (*this)= matrizZ<numero>(fls,cls,ln.begin(),ln.end());
+    (*this)= matrizZ<numero>(n_rows,n_columns,ln.begin(),ln.end());
     return;
   }
 
@@ -636,7 +637,7 @@ void matrizZ<numero>::Input(const std::string &str)
     Input(iss);
   }
 
-//! @brief Devuelve la norma de la matriz.
+//! @brief Return la norma de la matriz.
 template <class treal>  
 inline treal Abs(const matrizZ<treal> &m)
   { return m.Abs(); }

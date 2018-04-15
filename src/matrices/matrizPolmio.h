@@ -39,8 +39,8 @@ class matrizPolmio: public polmio_matriz
     void eval(const vZ_double &v);
     void eval(const mZ_double &v);
   public:
-    matrizPolmio(size_type filas=1,size_type cols=1,const Polinomio &val=Polinomio())
-      : polmio_matriz(filas,cols,val) {}
+    matrizPolmio(size_type n_rows=1,size_type cols=1,const Polinomio &val=Polinomio())
+      : polmio_matriz(n_rows,cols,val) {}
     matrizPolmio(const matrizPolmio &otra) : polmio_matriz(otra) {}
     matrizPolmio &operator=(const matrizPolmio &m)
       {
@@ -51,9 +51,9 @@ class matrizPolmio: public polmio_matriz
     matrizPolmio GetTrn(void) const;
 
     matrizPolmio NeutroSuma(void) const
-      { return matrizPolmio(getNumFilas(),getNumCols(),Polinomio::neutro_suma()); }
+      { return matrizPolmio(getNumberOfRows(),getNumberOfColumns(),Polinomio::neutro_suma()); }
     matrizPolmio NeutroProducto(void) const
-      { return matrizPolmio(getNumFilas(),getNumCols(),Polinomio::neutro_producto()); }
+      { return matrizPolmio(getNumberOfRows(),getNumberOfColumns(),Polinomio::neutro_producto()); }
 
     matrizPolmio Eval(short unsigned int j,const double &val) const;
     matrizPolmio Eval(short unsigned int j,const Polinomio &val) const;

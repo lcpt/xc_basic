@@ -300,8 +300,8 @@ sqlite_int64 Query::insert_id()
 long Query::num_rows(void) const
   { return odb && res ? m_row_count : 0; }
 
-//! @brief Devuelve el número de columnas de la consulta.
-size_t Query::num_cols(void) const
+//! @brief Return the number of columns of the query.
+size_t Query::num_columns(void) const
   { return m_nmap.size(); }
 
 //! @brief Devuelve una cadena de caracteres con los nombres de los campos.

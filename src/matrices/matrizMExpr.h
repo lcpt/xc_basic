@@ -38,9 +38,9 @@ class matrizMExpr: public m_matriz_expr
     void eval(const char *palabra,const double &d);
   public:
     matrizMExpr(void) : m_matriz_expr(1,1) {}
-    matrizMExpr(size_type filas,size_type cols) : m_matriz_expr(filas,cols) {}
-    matrizMExpr(size_type filas,size_type cols,const matrizExpr &val)
-      : m_matriz_expr(filas,cols,val) {}
+    matrizMExpr(size_type n_rows,size_type cols) : m_matriz_expr(n_rows,cols) {}
+    matrizMExpr(size_type n_rows,size_type cols,const matrizExpr &val)
+      : m_matriz_expr(n_rows,cols,val) {}
     matrizMExpr(const matrizMExpr &otra) : m_matriz_expr(otra) {}
     matrizMExpr& operator=(const matrizMExpr &m)
       {

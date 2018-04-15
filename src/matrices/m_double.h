@@ -28,10 +28,10 @@
 
 typedef matrizZ<double> m_double;
 
-m_double identidad(const m_double &m);
-m_double identidad(const size_t &fls,const size_t &cls);
+m_double identidad(const m_double &);
+m_double identidad(const size_t &,const size_t &);
 
 
-m_double string_to_m_double(const std::string &str);
+m_double string_to_m_double(const std::string &);
 
 #endif

@@ -48,9 +48,9 @@ class Parametriza
 template <class F>
 inline m_double ArgMatriz(const F &f,const m_double &m)
   {
-    m_double retval(m.getNumFilas(),m.getNumCols());
-    for(size_t k= 1; k <= m.getNumFilas(); k++)
-      for(size_t l= 1; l <= m.getNumCols(); l++)
+    m_double retval(m.getNumberOfRows(),m.getNumberOfColumns());
+    for(size_t k= 1; k <= m.getNumberOfRows(); k++)
+      for(size_t l= 1; l <= m.getNumberOfColumns(); l++)
         retval(k,l)= f(m(k,l));
     return retval;
   }

@@ -100,7 +100,7 @@ class Query
     sqlite_int64 insert_id();
 
     long num_rows(void) const;
-    size_t num_cols(void) const;
+    size_t num_columns(void) const;
     std::string field_names(void) const;
     inline int field_index(const std::string &str)
       { return (m_nmap[str] - 1); }

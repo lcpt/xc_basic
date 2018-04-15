@@ -32,7 +32,7 @@
 template <class treal>
 matrizZ<treal> calbk(const matrizZ<treal> &ak,const treal &tk)
   {
-    size_t n= ak.getNumFilas();
+    size_t n= ak.getNumberOfRows();
     matrizZ<treal> b(ak);
     for(size_t i=1;i<=n;i++)
       b(i,i)+=tk;
@@ -49,7 +49,7 @@ vectorZ<treal> souriau(matrizZ<treal> &a)
 //		vector en el que el elemento de Indice (k,1) es el
 //		coeficiente de grado n-k del polinomio.
   {
-    size_t n= a.getNumFilas();
+    size_t n= a.getNumberOfRows();
     vectorZ<treal> t(n+1,1);    
     matrizZ<treal>  ak(n,n,0.0),b(n,n);
     t[0]= 1;

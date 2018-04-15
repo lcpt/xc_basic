@@ -32,7 +32,7 @@
 template <class treal>
 size_t pivote(const size_t &j)
   {
-    size_t i,m= a.getNumFilas();
+    size_t i,m= a.getNumberOfRows();
     treal rm,piv,r= 0;
     r=zero;piv=0;
     for(i=1;i<=m;i++)
@@ -103,7 +103,7 @@ void resolver( const size_t &m,
   {
     size_t i,j,k,l,rmax,rango;
     //Dimensionamos la matriz de indices de pivote.
-    matrizZ<treal>::size_type n= a.getNumFilas();
+    matrizZ<treal>::size_type n= a.getNumberOfRows();
     matrizZ<treal>::size_type *pivot= new matrizZ<treal>::size_type[mmax];
     set_szt fp;
     set_szt cp;
@@ -170,11 +170,11 @@ void ecuag(const size_t &m,
 // solucion general de un sistema de ecuaciones
 //         m        = numero de ecuaciones
 //         n        = numero de incognitas mas uno
-//         a        = matriz de los coeficientes
-//                          termino independiente en columna n
+//         a        = matrix of the coefficients
+//                          termino independiente in column n
 //         x        = matriz solucion
-//                        columna 1 variables dependientes
-//                                2 a holguras+1 independientes
+//                        column 1 variables dependientes
+//                               2 a holguras+1 independientes
 //         libres   = indices de variables libres
 //         holgura  = numero de variables libres
 //           error  = si el sistema es incompatible,

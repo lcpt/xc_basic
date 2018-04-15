@@ -30,16 +30,16 @@
 class BaseRefCaja: public ProtoMatriz
   {
   protected:
-    size_t offset_f; //!< Offset fila.
-    size_t offset_c; //!< Offset columna.
+    size_t offset_f; //!< row offset.
+    size_t offset_c; //!< column offset.
   public:
     BaseRefCaja(const ProtoMatriz &m,const size_t &f1= 1,const size_t &c1= 1);
     BaseRefCaja(const ProtoMatriz &m,const size_t &,const size_t &,const size_t &,const size_t &);
-    BaseRefCaja(const ProtoMatriz &mat,const RangoIndice &rango_filas,const RangoIndice &rango_cols);
+    BaseRefCaja(const ProtoMatriz &mat,const RangoIndice &row_range,const RangoIndice &column_range);
     BaseRefCaja(const ProtoMatriz &mat,const RangoIndice &,const size_t &);
     BaseRefCaja(const ProtoMatriz &mat,const size_t &,const RangoIndice &);
-    RangoIndice RangoFilas(void) const;
-    RangoIndice RangoCols(void) const;
+    RangoIndice getRowRange(void) const;
+    RangoIndice getColumnRange(void) const;
   };
 
 //! @brief Referencia a una caja de una matriz.
@@ -52,11 +52,11 @@ class ConstRefCaja: public BaseRefCaja
 
     ConstRefCaja(const MAT &m,const size_t &f1= 1,const size_t &c1= 1);
     ConstRefCaja(const MAT &m,const size_t &,const size_t &,const size_t &,const size_t &);
-    ConstRefCaja(const MAT &mat,const RangoIndice &rango_filas,const RangoIndice &rango_cols);
+    ConstRefCaja(const MAT &mat,const RangoIndice &row_range,const RangoIndice &column_range);
     ConstRefCaja(const MAT &mat,const RangoIndice &,const size_t &);
     ConstRefCaja(const MAT &mat,const size_t &,const RangoIndice &);
-    virtual const_reference operator()(size_t fila=1,size_t col=1) const
-      { return m(fila+offset_f,col+offset_c); }
+    virtual const_reference operator()(size_t iRow=1,size_t col=1) const
+      { return m(iRow+offset_f,col+offset_c); }
     void Print(std::ostream &) const;
   };
 
@@ -73,29 +73,29 @@ ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const size_t &f1,const size_t &c1
 
 //! @brief Constructor.
 template<class MAT>
-ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const RangoIndice &rango_filas,const RangoIndice &rango_cols)
-  : BaseRefCaja(mat,rango_filas,rango_cols), m(mat) {}
+ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const RangoIndice &row_range,const RangoIndice &column_range)
+  : BaseRefCaja(mat,row_range,column_range), m(mat) {}
 
-//! @brief Constructor columna única.
+//! @brief Column alone constructor.
 template<class MAT>
-ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const RangoIndice &rango_filas,const size_t &col)
-  : BaseRefCaja(mat,rango_filas,col), m(mat) {}
+ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const RangoIndice &row_range,const size_t &col)
+  : BaseRefCaja(mat,row_range,col), m(mat) {}
 
-//! @brief Constructor fila única.
+//! @brief Row alone constructor.
 template<class MAT>
-ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const size_t &fila,const RangoIndice &rango_cols)
-  : BaseRefCaja(mat,fila,rango_cols), m(mat) {}
+ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const size_t &iRow,const RangoIndice &column_range)
+  : BaseRefCaja(mat,iRow,column_range), m(mat) {}
 
 template<class MAT>
 void ConstRefCaja<MAT>::Print(std::ostream &os) const
   {
     os << '[';
-    size_t fls= getNumFilas(),cls= getNumCols();
-    for(register size_t i= 1;i<=fls;i++)
+    size_t n_rows= this->getNumberOfRows(),n_columns= this->getNumColumns();
+    for(register size_t i= 1;i<=n_rows;i++)
       {
         os << '[';
-        if(cls > 0) os << (*this)(i,1);
-	for(register size_t j= 2;j<=cls;j++)
+        if(n_columns > 0) os << (*this)(i,1);
+	for(register size_t j= 2;j<=n_columns;j++)
 	  os << ',' << (*this)(i,j);
         os << ']';
       }

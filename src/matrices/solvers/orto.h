@@ -33,7 +33,7 @@
 template <class treal>
 treal escalar(const size_t &i,const size_t &j,const matrizZ<treal> &a)
   {
-    treal s=0.0,n= a.getNumFilas();
+    treal s=0.0,n= a.getNumberOfRows();
     for(size_t k=1;k<=n;k++) s+=a(i,k)*a(j,k);
     return s;
   }
@@ -43,7 +43,7 @@ matrizZ<treal> calcularx( const matrizZ<treal> &a,
                           matrizZ<treal> &b,
                           const matrizZ<treal> &r)
   {
-    size_t i,n= a.getNumFilas();
+    size_t i,n= a.getNumberOfRows();
     matrizZ<treal> x(n,1,0.0);
     for(i=1;i<=n;i++) b(i,1)*=r(i,1);
     for(i=1;i<=n;i++)
@@ -54,7 +54,7 @@ matrizZ<treal> calcularx( const matrizZ<treal> &a,
 template <class treal>
 matrizZ<treal> ortoresol(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
   {
-    size_t   i=0,l=0,n= a.getNumFilas();
+    size_t   i=0,l=0,n= a.getNumberOfRows();
     matrizZ<treal> r(n,1,0.0),landa(n,1,0.0);
     regular=1;
     while( regular && (l<n))

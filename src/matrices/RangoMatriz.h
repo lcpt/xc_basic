@@ -28,31 +28,31 @@
 //! @brief Rango de variación de un índice, se emplea en ConstRefCaja.
 class RangoMatriz
   {
-    RangoIndice rango_filas; //!< Rango de las filas.
-    RangoIndice rango_cols; //!< Rango de las columnas.
+    RangoIndice row_range; //!< row range.
+    RangoIndice column_range; //!< column range.
   public:
     RangoMatriz(const RangoIndice &rf,const RangoIndice &rc)
-      :rango_filas(rf),rango_cols(rc) {}
+      :row_range(rf),column_range(rc) {}
     template <class M>
     RangoMatriz(const M &);
-    size_t NumFilas(void) const
-      { return rango_filas.Size(); }
-    size_t NumCols(void) const
-      { return rango_cols.Size(); }
+    size_t getNumberOfRows(void) const
+      { return row_range.Size(); }
+    size_t getNumberOfColumns(void) const
+      { return column_range.Size(); }
     size_t Size(void) const
-      { return NumFilas()*NumCols(); }
-    const RangoIndice &GetRangoFilas(void) const
-      { return rango_filas; }
-    RangoIndice &GetRangoFilas(void)
-      { return rango_filas; }
-    const RangoIndice &GetRangoCols(void) const
-      { return rango_cols; }
-    RangoIndice &GetRangoCols(void)
-      { return rango_cols; }
-    bool EsFila(void) const
-      { return (rango_filas.Size()==1); }
-    bool EsColumna(void) const
-      { return (rango_cols.Size()==1); }
+      { return getNumberOfRows()*getNumberOfColumns(); }
+    const RangoIndice &getRowRange(void) const
+      { return row_range; }
+    RangoIndice &getRowRange(void)
+      { return row_range; }
+    const RangoIndice &GetgetColumnRange(void) const
+      { return column_range; }
+    RangoIndice &GetgetColumnRange(void)
+      { return column_range; }
+    bool isRow(void) const
+      { return (row_range.Size()==1); }
+    bool isColumn(void) const
+      { return (column_range.Size()==1); }
     bool Vacio(void) const;
     inline static const char &Separador(void)
       { return RangoIndice::Separador(); }
@@ -71,7 +71,7 @@ std::ostream &operator<<(std::ostream &os,const RangoMatriz &rango);
 //! @brief Constructor a partir de una matriz.
 template <class M>
 RangoMatriz::RangoMatriz(const M &m)
-  : rango_filas(1,m.getNumFilas()),rango_cols(1,m.getNumCols()) {}
+  : row_range(1,m.getNumberOfRows()),column_range(1,m.getNumberOfColumns()) {}
 
 //! @brief Recorte de los intervalos del rango a partir de una matriz.
 template <class M>

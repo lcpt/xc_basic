@@ -179,7 +179,7 @@ m_double NewtonRaphson<MF>::Itera( const MF &F,const m_double &Xguess,
     m_double X(Xguess);
     m_double X_buena(X); //Última X para la que no se produjo error.
     m_double delta_X(X); //Incremento de X.
-    size_t numEqns= X.getNumFilas();
+    size_t numEqns= X.getNumberOfRows();
 
     m_double J(numEqns,numEqns); //Matriz para el jacobiano.
     m_double residuo(numEqns,1); //Vector para el residuo.

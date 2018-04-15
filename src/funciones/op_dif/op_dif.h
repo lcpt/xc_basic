@@ -37,7 +37,7 @@ inline double calcula_incremento(const double &t)
 
 template<class F>
 inline double parcial_fd(const m_double &x,const F &f,const size_t &i)
-//Devuelve la derivada parcial de la función f
+//Return la derivada parcial de la función f
 //en el punto x respecto al parámetro i empleando
 //el método "forward difference" 
   {
@@ -50,7 +50,7 @@ inline double parcial_fd(const m_double &x,const F &f,const size_t &i)
 
 template<class F>
 inline double parcial_cdf(const m_double &x,const F &f,const size_t &i)
-//Devuelve la derivada parcial de la función f
+//Return la derivada parcial de la función f
 //en el punto x respecto al parámetro i empleando
 //el método "extended central difference" 
   {
@@ -70,41 +70,41 @@ inline double parcial_cdf(const m_double &x,const F &f,const size_t &i)
 
 template<class F>
 inline m_double gradiente_cdf(const m_double &x,const F &f)
-//Devuelve el vector gradiente de f en el punto x
+//Return el vector gradiente de f en el punto x
 //empleando el método "extended central difference"
   {
     m_double g(x);
-    size_t fls= x.getNumFilas();
-    for(register size_t i= 1;i<=fls;i++)
+    size_t n_rows= x.getNumberOfRows();
+    for(register size_t i= 1;i<=n_rows;i++)
       g(i)= parcial_cdf(x,f,i);
     return g;
   }
 
+//! @brief Return el vector gradiente de f en el punto x
+//! empleando el método "extended central difference"
+//! como row vector
 template<class F>
-inline m_double gradiente_cdf_fila(const m_double &x,const F &f)
-//Devuelve el vector gradiente de f en el punto x
-//empleando el método "extended central difference"
-//como vector fila
+inline m_double extended_central_differece_row_gradient(const m_double &x,const F &f)
   {
-    m_double g(1,x.getNumFilas());
-    size_t fls= x.getNumFilas();
-    for(register size_t i= 1;i<=fls;i++)
+    m_double g(1,x.getNumberOfRows());
+    size_t n_rows= x.getNumberOfRows();
+    for(register size_t i= 1;i<=n_rows;i++)
       g(1,i)= parcial_cdf(x,f,i);
     return g;
   }
 
+//! @brief Return the jacobian vector de f en el punto x
+//! using the "extended central difference" method
 template<class MF>
 inline m_double jacobiano_cdf(const m_double &x,const MF &mf)
-//Devuelve el vector jacobiano de f en el punto x
-//empleando el método "extended central difference"
   {
-    size_t fls= mf.getNumFilas();
-    size_t cls= x.getNumFilas();
-    m_double J(fls,cls);
-    for(register size_t i= 1;i<=fls;i++)
+    size_t n_rows= mf.getNumberOfRows();
+    size_t n_columns= x.getNumberOfRows();
+    m_double J(n_rows,n_columns);
+    for(register size_t i= 1;i<=n_rows;i++)
       {
-        m_double g= gradiente_cdf_fila(x,mf(i));
-        J.PutFila(i,g);
+        m_double g= extended_central_differece_row_gradient(x,mf(i));
+        J.putRow(i,g);
       }
     return J;
   }

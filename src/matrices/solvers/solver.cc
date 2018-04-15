@@ -27,11 +27,13 @@ void Solver::inic_p(void)
     PP= m_sizet(n,1);
     for(register size_t i= 1;i<= n;i++) P(i)= i;
   }
-int Solver::check_pp(const size_t num_filas) const
+int Solver::check_pp(const size_t n_rows) const
   {
-    if(PP.getNumFilas()!= num_filas || PP.getNumCols()!=1)
+    if(PP.getNumberOfRows()!= n_rows || PP.getNumberOfColumns()!=1)
       {
-        if(verbosity) std::cerr << "La matriz " << PP << "no tiene dimensiones válidas";
+        if(verbosity) std::cerr << "Matrix " << PP
+				<< "has invalid dimensions."
+			        << std::endl;
         return 0;
       }
     return 1;

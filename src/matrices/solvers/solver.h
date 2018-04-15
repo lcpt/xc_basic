@@ -42,7 +42,7 @@ class Solver
       { return PP(i); }
 
     void inic_p(void);
-    int check_pp(const size_t num_filas) const;
+    int check_pp(const size_t n_rows) const;
   public:
     Solver(const size_t &vrbrr= 1): PP(0,0), verbosity(vrbrr), n(0), desc(0) {}
     void SetVerbosity(const size_t &v)
@@ -62,7 +62,7 @@ class SolverM: public Solver
 
     inline int check_matriz(void) const
       {
-        if(A->getNumCols() != A->getNumFilas())
+        if(A->getNumberOfColumns() != A->getNumberOfRows())
           {
 	    if(verbosity)
               std::cerr << "La matriz no es cuadrada" << std::endl;
@@ -75,22 +75,22 @@ class SolverM: public Solver
     inline int check_backsub(const V &B) const
       {
         if(!check_matriz()) return 0;
-        if(B.getNumFilas()!=A->getNumFilas() || B.getNumCols()!=1)
+        if(B.getNumberOfRows()!=A->getNumberOfRows() || B.getNumberOfColumns()!=1)
           {
 	    if(verbosity)
-	      std::cerr << "La matriz " << B
-			<< " no tiene las mismas filas que "
+	      std::cerr << "Matrix " << B
+			<< " has a different row number than "
 			<< A << std::endl;
 	    return 0;
           }
-        return check_pp(A->getNumFilas());
+        return check_pp(A->getNumberOfRows());
       }
   public:
     SolverM(const size_t &vrbrr= 1): Solver(vrbrr), A(NULL) {}
     void PutMatriz(M &m)
       {
         A= &m;
-        n= A->getNumCols();
+        n= A->getNumberOfColumns();
         desc= 0;
       }
     bool Decomp(void)

@@ -39,18 +39,18 @@ void GaussJordan(matsimZ<treal> &a,matrizZ<treal> &x,matrizZ<treal> &b)
   {
     bool Singular= 0;
     const zero= 1.0E-8;
-    matsimZ<treal>::size_type fls= a.getNumFilas();
+    matsimZ<treal>::size_type n_rows= a.getNumberOfRows();
     //Dimensionamos las matrices ipx y piv.
-    matrizZ<size_t> ipx(fls,1);
-    size_t n1= fls + 1;
+    matrizZ<size_t> ipx(n_rows,1);
+    size_t n1= n_rows + 1;
     matrizZ<short int> piv(n1,1,0); //inicializamos a cero.
     //Dimensionamos el vector soluciOn.
-    x= matrizZ<treal>(fls,1,0.0);
+    x= matrizZ<treal>(n_rows,1,0.0);
     matrizZ<treal>::size_type j,k;
-    for(j=1;j<=fls;j++)
+    for(j=1;j<=n_rows;j++)
       {
         //Busqueda de pivote en la diagonal principal
-        for(k=1;k<=fls;k++) piv(k)= 0;
+        for(k=1;k<=n_rows;k++) piv(k)= 0;
         for(k=1;k<=j;k++)
           {
             k1= ipx(k);
@@ -58,7 +58,7 @@ void GaussJordan(matsimZ<treal> &a,matrizZ<treal> &x,matrizZ<treal> &b)
           }
         amax= zero;
         l=0;
-        for(k=1;k<=fls;k++)
+        for(k=1;k<=n_rows;k++)
           {
             if(piv(k)) continue;
             r= std::abs(a(k,k));
@@ -71,7 +71,7 @@ void GaussJordan(matsimZ<treal> &a,matrizZ<treal> &x,matrizZ<treal> &b)
         piv(l)= 1;
         ipx(j)= l;
         r=a(l,l);
-        //Transformacion de la fila del pivote
+        //Transformation of pivot's row
         for(k=1;k<=n;k++)
           {
             if(piv(k)) continue;
@@ -84,21 +84,21 @@ void GaussJordan(matsimZ<treal> &a,matrizZ<treal> &x,matrizZ<treal> &b)
             if (piv(i)) continue;
             q= a(i,l) * r;
             if(std::abs(q)<zero) continue;
-            for(k=1;k<=fls;k++)
+            for(k=1;k<=n_rows;k++)
               if(!(piv(k))) a(i,k)-= q * a(l,k);
             b(i)-= q * b(l);
             piv(i)= 1;
           }  
       }
     //Solucion del sistema triangular.
-    for(i=1;i<=fls;i++)
+    for(i=1;i<=n_rows;i++)
       {
         j= n1-i;
         l= ipx(j); //Incognita a despejar.
         x(l)= b(l);
         if(i==1) continue;
         j1= j+1;
-        for(k=j1;k<=fls;k++)
+        for(k=j1;k<=n_rows;k++)
           {
             m= ipx(k);
             x(l)-= x(m)*a(l,m);
@@ -106,14 +106,12 @@ void GaussJordan(matsimZ<treal> &a,matrizZ<treal> &x,matrizZ<treal> &b)
       }
   }
 
+//b: Vector de tErminos independientes.
 template <class treal>
 matrizZ<treal> GaussJordan(matsimZ<treal> &a,matrizZ<treal> &b)
-//b: Vector de tErminos independientes.
-//l: Fila del pivote.
-//k: Indice de columna.
   {
-    matrizZ<treal>::size_type fls= a.getNumFilas();  
-    matrizZ<treal> x(fls,1,0.0);
+    matrizZ<treal>::size_type n_rows= a.getNumberOfRows();  
+    matrizZ<treal> x(n_rows,1,0.0);
     GaussJordan(a,x,b);
     return x;
   }
@@ -123,9 +121,10 @@ matrizZ<treal> operator /(matsimZ<treal> b, matrizZ<treal> a)
 //Se le pasan copias de los valores de b y a.
   {
     matrizZ<treal> cociente(b);
-    if (b.getNumFilas() != a.getNumFilas())
+    if (b.getNumberOfRows() != a.getNumberOfRows())
       {
-        std::cerr << "Matrices de dimensiones incompatibles en operador /" << std::endl;
+        std::cerr << "Matrices de dimensiones incompatibles en operador /"
+		  << std::endl;
         abort();      
       }
     cociente= GaussJordan(a,b);

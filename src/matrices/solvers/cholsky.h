@@ -49,7 +49,7 @@ treal prod( const size_t &i,
 template <class treal>
 void colum(const size_t &j,matsimZ<treal> &a)
   {
-    size_t i,n= a.getNumFilas();
+    size_t i,n= a.getNumberOfRows();
     treal s= sqrt(a(j,j)); a(j,j)=s; i=j+1;
     while(i<=n)
       { a(i,j)= prod(i,j,a)/s; i++; }
@@ -58,7 +58,7 @@ void colum(const size_t &j,matsimZ<treal> &a)
 template <class treal>
 matrizZ<treal> calcularx(const matsimZ<treal> &a, const matrizZ<treal> &b)
   {
-    size_t i,k,n= a.getNumFilas();
+    size_t i,k,n= a.getNumberOfRows();
     matrizZ<treal> x(n,1,0.0);
     for(i= 1;i<=n;i++)          //primer sistema
       {
@@ -86,7 +86,7 @@ matrizZ<treal> calcularx(const matsimZ<treal> &a, const matrizZ<treal> &b)
 template <class treal>
 matrizZ<treal> cholesky(matsimZ<treal> &a,matrizZ<treal> &b,int &defpos)
   {
-    defpos= 1; size_t j=0,n= a.getNumFilas();
+    defpos= 1; size_t j=0,n= a.getNumberOfRows();
     while(defpos && (j<n))
       {
         j++; a(j,j)= prod(j,j,a);

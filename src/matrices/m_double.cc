@@ -22,7 +22,7 @@
 
 #include "m_double.h"
 
-//! @brief Devuelve la matriz identidad.
+//! @brief Return the identity matrix.
 m_double identidad(const m_double &m)
   {
     m_double retval(m);
@@ -30,10 +30,10 @@ m_double identidad(const m_double &m)
     return retval;
   }
 
-//! @brief Devuelve la matriz identidad.
-m_double identidad(const size_t &fls,const size_t &cls)
+//! @brief Return the identity matrix.
+m_double identidad(const size_t &n_rows,const size_t &n_columns)
   {
-    m_double retval(fls,cls);
+    m_double retval(n_rows,n_columns);
     retval.Idn();
     return retval;
   }
