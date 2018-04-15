@@ -60,7 +60,7 @@ size_t TritrizIndices::getNumberOfColumns(void) const
 //! @brief Inserta el objeto en el stream de salida.
 inline std::ostream &operator<<(std::ostream &os,const TritrizIndices &t)
   {
-    const size_t ncapas= t.GetCapas();
+    const size_t ncapas= t.getNumberOfLayers();
     for(size_t i=1;i<=ncapas;i++)
       os << t(i);
     return os;
@@ -70,7 +70,7 @@ inline std::ostream &operator<<(std::ostream &os,const TritrizIndices &t)
 //! que is being passed as parameter.
 void TritrizIndices::Offset(const VIndices &vi)
   {
-    const size_t nCapas= GetCapas();
+    const size_t nCapas= getNumberOfLayers();
     for(size_t i= 1;i<= nCapas;i++)
       get_capa(i).Offset(vi);
   }

@@ -44,7 +44,7 @@ class TritrizIndices: public std::vector<MatrizIndices >
       { return (*this)[capa-1]; }
   public:
     TritrizIndices(const size_t &capas= 1,const size_t &n_rows= 1,const size_t &n_cols= 1);
-    inline size_t GetCapas(void) const
+    inline size_t getNumberOfLayers(void) const
       { return this->size(); }
     size_t getNumberOfRows(void) const;
     size_t getNumberOfColumns(void) const;
