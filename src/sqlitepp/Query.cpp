@@ -21,10 +21,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
-#ifdef _WIN32
-#pragma warning(disable:4786)
-#endif
-
 #include <string>
 #include <map>
 #include <cstdio>
@@ -521,7 +517,7 @@ double Query::get_num(const std::string& sql)
 
 
 long Query::get_count(const std::string& sql)
-{
+  {
         long l = 0;
         if (get_result(sql))
         {
@@ -530,19 +526,19 @@ long Query::get_count(const std::string& sql)
                 free_result();
         }
         return l;
-}
+  }
 
 
 const char *Query::get_string(const std::string &sql)
   {
-    bool found= false;
+    //bool found= false;
     m_tmpstr= "";
     if(get_result(sql))
       {
         if(fetch_row())
           {
             m_tmpstr= getstr();
-            found= true;
+            //found= true;
           }
         free_result();
       }
