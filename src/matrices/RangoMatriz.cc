@@ -32,10 +32,10 @@ void RangoMatriz::Print(std::ostream &os) const
 
 //! @brief Reduce los valores del rango de manera que ambos sean menores que
 //! los being passed as parameter.
-void RangoMatriz::Recorta(const size_t &fmax,const size_t &cmax)
+void RangoMatriz::Clip(const size_t &fmax,const size_t &cmax)
   {
-    row_range.Recorta(fmax);
-    column_range.Recorta(cmax);
+    row_range.Clip(fmax);
+    column_range.Clip(cmax);
   }
 
 //! @brief Asigna a ESTE la intersección de ambos rangos.
@@ -59,10 +59,10 @@ std::ostream &operator<<(std::ostream &os,const RangoMatriz &rango)
     return os;
   }
 
-RangoMatriz recorta(const RangoMatriz &r,const size_t &fmax,const size_t &cmax)
+RangoMatriz clip(const RangoMatriz &r,const size_t &fmax,const size_t &cmax)
   {
     RangoMatriz retval(r);
-    retval.Recorta(fmax,cmax);
+    retval.Clip(fmax,cmax);
     return retval;
   }
 

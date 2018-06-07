@@ -49,7 +49,7 @@ void RangoIndice::SetInfSup(const size_t &imin,const size_t &imax)
 
 //! @brief Reduce los valores del rango de manera que ambos sean menores que
 //! el que se pasa como parámetro.
-void RangoIndice::Recorta(const size_t &imax)
+void RangoIndice::Clip(const size_t &imax)
   {
     mn= std::min(mn,imax);
     mx= std::min(mx,imax);
@@ -76,10 +76,10 @@ std::ostream &operator<<(std::ostream &os,const RangoIndice &rango)
     return os;
   }
 
-RangoIndice recorta(const RangoIndice &r,const size_t &mx)
+RangoIndice clip(const RangoIndice &r,const size_t &mx)
   {
     RangoIndice retval(r);
-    retval.Recorta(mx);
+    retval.Clip(mx);
     return retval;
   }
 

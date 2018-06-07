@@ -56,16 +56,16 @@ class RangoMatriz
     bool Vacio(void) const;
     inline static const char &Separador(void)
       { return RangoIndice::Separador(); }
-    void Recorta(const size_t &fmax,const size_t &cmax);
+    void Clip(const size_t &fmax,const size_t &cmax);
     void Intersec(const RangoMatriz &otro);
     RangoMatriz Intersec(const RangoMatriz &otro) const;
     void Print(std::ostream &os) const;
   };
 
-RangoMatriz recorta(const RangoMatriz &r,const size_t &fmax,const size_t &cmax);
+RangoMatriz clip(const RangoMatriz &r,const size_t &fmax,const size_t &cmax);
 RangoMatriz intersec(const RangoMatriz &,const RangoMatriz &);
 template <class M>
-RangoMatriz recorta(const RangoMatriz &,const M &);
+RangoMatriz clip(const RangoMatriz &,const M &);
 std::ostream &operator<<(std::ostream &os,const RangoMatriz &rango);
 
 //! @brief Constructor a partir de una matriz.
@@ -75,6 +75,6 @@ RangoMatriz::RangoMatriz(const M &m)
 
 //! @brief Recorte de los intervalos del rango a partir de una matriz.
 template <class M>
-RangoMatriz recorta(const RangoMatriz &rm,const M &m)
+RangoMatriz clip(const RangoMatriz &rm,const M &m)
   { return rm.Intersec(RangoMatriz(m)); }
 #endif

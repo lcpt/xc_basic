@@ -54,13 +54,13 @@ class RangoIndice
       { return (mx<mn); }
     inline static const char &Separador(void)
       { return sep; }
-    void Recorta(const size_t &imax);
+    void Clip(const size_t &imax);
     void Intersec(const RangoIndice &otro);
     RangoIndice Intersec(const RangoIndice &otro) const;
     void Print(std::ostream &os) const;
   };
 
-RangoIndice recorta(const RangoIndice &,const size_t &);
+RangoIndice clip(const RangoIndice &,const size_t &);
 RangoIndice intersec(const RangoIndice &,const RangoIndice &);
 
 std::ostream &operator<<(std::ostream &os,const RangoIndice &rango);
