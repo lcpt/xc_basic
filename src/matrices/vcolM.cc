@@ -24,9 +24,9 @@
 
 //! @brief Constructor.
 //!
-//! @param dim: Dimensiones de rows and columns (matriz cuadrada).
+//! @param dim: Dimensiones de rows and columns (square matrix).
 vcolM::vcolM(const std::vector<size_t> &dim)
-  : matrizM(dim.size(),1)
+  : MMatrix(dim.size(),1)
   {
     const size_t num_gdl= dim.size();
     vcolM retval(num_gdl,m_double(1,1,0.0));
@@ -34,8 +34,8 @@ vcolM::vcolM(const std::vector<size_t> &dim)
       (*this)(i+1)= m_double(dim[i],1,0.0); //Inicializamos el vector.
   }
 //! @brief Constructor.
-vcolM::vcolM(const matrizM &m,const size_type &c)
-  : matrizM(m.getNumberOfRows(),1)
+vcolM::vcolM(const MMatrix &m,const size_type &c)
+  : MMatrix(m.getNumberOfRows(),1)
   {
     const size_type nf= m.getNumberOfRows();
     for(register size_type i=1;i<=nf;i++)
@@ -48,12 +48,12 @@ vcolM &vcolM::operator*=(const m_double &m)
   }
 vcolM &vcolM::operator*=(const double &d)
   {
-    matrizM::operator*=(d);
+    MMatrix::operator*=(d);
     return *this;
   }
-vcolM operator*(const matrizM &a,const vcolM &b)
+vcolM operator*(const MMatrix &a,const vcolM &b)
   {
-    matrizM tmp(a);
+    MMatrix tmp(a);
     tmp*=b;
     return vcolM(tmp,1);
   }

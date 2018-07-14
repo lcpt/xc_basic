@@ -26,17 +26,17 @@
 #define CALCULARX_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include <set>
 #include "xc_basic/src/matrices/solvers/gj_aux.h"
 
 template <class treal>
-matrizZ<treal> calcularx( const matrizZ<treal> &a,
-                          const matrizZ<treal> &b,
+ZMatrix<treal> calcularx( const ZMatrix<treal> &a,
+                          const ZMatrix<treal> &b,
                           size_t *pivot)
   {
     size_t j,l,k,n= a.getNumberOfRows(),m= b.getNumberOfColumns();
-    matrizZ<treal> x(n,m,0.0);
+    ZMatrix<treal> x(n,m,0.0);
     for(j=n;j>=1;j--)
       {
         l=pivot[j-1];

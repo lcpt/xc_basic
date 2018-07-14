@@ -19,23 +19,24 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//MatrizIndices.cc
+//IndicesMatrix.cc
 
-#include "MatrizIndices.h"
+#include "IndicesMatrix.h"
 
-MatrizIndices::MatrizIndices(const MatrizIndices &mp, size_t &f1, size_t &c1, size_t &f2, size_t &c2)
+IndicesMatrix::IndicesMatrix(const IndicesMatrix &mp, size_t &f1, size_t &c1, size_t &f2, size_t &c2)
  : m_indices(mp,f1,c1,f2,c2) {}
 
-MatrizIndices::MatrizIndices(const size_t &f,const size_t &c,const VIndices &p)
+IndicesMatrix::IndicesMatrix(const size_t &f,const size_t &c,const VIndices &p)
   : m_indices(f,c,p) {}
 
 //! @brief Constructor.
-//! @param posiciones: Matriz en la que cada i row es un vector [j,k] que indica la
-//! posición (row= j, column= k) del vector que ocupa la i row en indices, es decir
+//! @param posiciones: matrix in which each row is a vector [j,k] that points to
+//! the position (row= j, column= k) of the vector that occupies the i row
+//! in indices, stated otherwise
 //! (*this)(j,k)= indices[i].
-//! @param indices: Matrix wich rows are the indexes vectors the are disposed
+//! @param indices: matrix wich rows are the indexes vectors the are disposed
 //! in this matrix.
-MatrizIndices::MatrizIndices(const m_int &posiciones,const std::vector<VIndices> &indices)
+IndicesMatrix::IndicesMatrix(const m_int &posiciones,const std::vector<VIndices> &indices)
   : m_indices(posiciones.column_maximum(1),posiciones.column_maximum(2)) 
   {
     const size_t sz= indices.size();
@@ -51,25 +52,26 @@ MatrizIndices::MatrizIndices(const m_int &posiciones,const std::vector<VIndices>
           }
       }
     else
-      std::cerr << "MatrizIndices; se paso una matriz con un"
-                << " number of rows (" << sz << ") insuficiente"
+      std::cerr << "IndicesMatrix; " << __FUNCTION__
+	        << " argument matrix has a "
+                << " number of rows (" << sz << ") too small"
 		<< " (<" << nf*nc << ").\n";
   }
-//! @brief Retunr the row cuyos índices is being passed as parameter.
-MatrizIndices MatrizIndices::GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
-  { return MatrizIndices(*this,f1,c1,f2,c2); }
+//! @brief Return the row cuyos índices is being passed as parameter.
+IndicesMatrix IndicesMatrix::GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
+  { return IndicesMatrix(*this,f1,c1,f2,c2); }
 
 //! @brief Return the iRow-th row.
-MatrizIndices MatrizIndices::getRow(size_t iRow) const
+IndicesMatrix IndicesMatrix::getRow(size_t iRow) const
   { return GetCaja(iRow,1,iRow,this->n_columns); }
 
 //! @brief Retunr the iCol-th column.
-MatrizIndices MatrizIndices::getColumn(size_t iColumn) const
+IndicesMatrix IndicesMatrix::getColumn(size_t iColumn) const
   { return GetCaja(1,iColumn,this->n_rows,iColumn); }
 
 //! @brief Agrega a todos los miembros el valor
 //! que is being passed as parameter.
-void MatrizIndices::Offset(const VIndices &vi)
+void IndicesMatrix::Offset(const VIndices &vi)
   {
     const size_t n_rows= getNumberOfRows();
     const size_t nCols= getNumberOfColumns();

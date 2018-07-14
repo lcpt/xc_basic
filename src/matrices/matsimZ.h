@@ -24,15 +24,15 @@
 #ifndef MATSIMZ_H
 #define MATSIMZ_H
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 #include <algorithm>
 
 template <class numero>
-class matsimZ : public matrizZ<numero>
+class matsimZ : public ZMatrix<numero>
   {
   public:
-    typedef matrizZ<numero> matrizZ_numero;
-    typedef typename matrizZ_numero::size_type size_type;
+    typedef ZMatrix<numero> ZMatrix_number;
+    typedef typename ZMatrix_number::size_type size_type;
   protected:
     //Multiplica a los elementos del triangulo inferior
     //sirve para matrices hemisimEtricas.
@@ -47,34 +47,34 @@ class matsimZ : public matrizZ<numero>
         return (c-1)*(2*this->n_rows-c)/2+f-1;
       }
   public:
-    matsimZ(void) : matrizZ_numero (1,1) {}
-    matsimZ(size_type dim) : matrizZ_numero(1,Tam(dim,dim))
+    matsimZ(void) : ZMatrix_number (1,1) {}
+    matsimZ(size_type dim) : ZMatrix_number(1,Tam(dim,dim))
       { PutDim(dim,dim); }
-    matsimZ(size_type dim,numero val) : matrizZ_numero(1,Tam(dim,dim),val)
+    matsimZ(size_type dim,numero val) : ZMatrix_number(1,Tam(dim,dim),val)
       { PutDim(dim,dim); }
-    matsimZ(const matsimZ<numero> &otra) : matrizZ_numero(otra)
+    matsimZ(const matsimZ<numero> &otra) : ZMatrix_number(otra)
       { PutDim(otra.n_rows,otra.n_columns); }
     matsimZ<numero>& operator =(const matsimZ<numero> &m)
       {
-        matrizZ_numero::operator =(m);
+        ZMatrix_number::operator =(m);
         return *this;
       }
     matsimZ<numero>& operator +=(const matsimZ<numero> &m)
       {
-        matrizZ_numero::Suma(m);
+        ZMatrix_number::Suma(m);
         return *this;
       }
     matsimZ<numero>& operator -=(const matsimZ<numero> &m)
       {
-        matrizZ_numero::Resta(m);
+        ZMatrix_number::Resta(m);
         return *this;
       }
     inline void Trn(void) {}
     inline bool Cuadrada(void) const
       { return 1; }
-    matrizZ_numero GetCompleta(void) const
+    ZMatrix_number GetCompleta(void) const
       {
-        matrizZ_numero retval(this->n_rows,this->n_columns);
+        ZMatrix_number retval(this->n_rows,this->n_columns);
         for(size_t i=1;i<=this->n_rows;i++)
           for(size_t j=1;j<=this->n_columns;j++)
             retval(i,j)= (*this)(i,j);
@@ -103,11 +103,11 @@ class matsimZ : public matrizZ<numero>
         return resta;
       }
     friend std::ostream &operator << (std::ostream &stream,const matsimZ<numero> &m)
-      { return ::operator <<(stream,(const matrizZ_numero &) m); }
+      { return ::operator <<(stream,(const ZMatrix_number &) m); }
     friend std::istream &operator >> (std::istream &stream,matsimZ<numero> &m)
-      { return ::operator >>(stream,(matrizZ_numero &) m); }
+      { return ::operator >>(stream,(ZMatrix_number &) m); }
     friend bool operator ==(const matsimZ<numero> &m1,const matsimZ<numero> &m2)
-      { return ((const matrizZ_numero &) m1 == (const matrizZ_numero &) m2); }
+      { return ((const ZMatrix_number &) m1 == (const ZMatrix_number &) m2); }
   };
 
 #endif

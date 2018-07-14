@@ -74,7 +74,7 @@ double baja_hasta( const double &a,const double &b,const double &umbral,
     double ab = b - a;
     double valor= 0;
     m_double x= extremo_calcx(a,b,ab);
-    m_double y= ArgMatriz(f,x);
+    m_double y= matrix_argument(f,x);
 
     while (ab > dx)
       {
@@ -133,7 +133,7 @@ class NewtonRaphson
       {
         m_double retval(residuo);
         // solve for the guess refinement vector
-        solver.PutMatriz(J);
+        solver.putMatrix(J);
         if(!solver.Decomp()) //Jacobiano singular.
           {
             error= 0;
@@ -181,8 +181,8 @@ m_double NewtonRaphson<MF>::Itera( const MF &F,const m_double &Xguess,
     m_double delta_X(X); //Incremento de X.
     size_t numEqns= X.getNumberOfRows();
 
-    m_double J(numEqns,numEqns); //Matriz para el jacobiano.
-    m_double residuo(numEqns,1); //Vector para el residuo.
+    m_double J(numEqns,numEqns); //Matrix for the jacobian.
+    m_double residuo(numEqns,1); //Residual vector.
     double lambda= 1.0;
     SolverLU<m_double,m_double> solver(verbosity);
     do

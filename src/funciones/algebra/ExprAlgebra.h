@@ -31,7 +31,7 @@ class Intervalo1D;
 //! @brief Expresión algebraica.
 class ExprAlgebra : public ArbolExpr
   {
-    friend class matrizExpr;
+    friend class ExpressionMatrix;
     inline void eval(void)
       {
         expand();

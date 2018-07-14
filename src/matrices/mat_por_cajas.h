@@ -23,12 +23,12 @@
 #ifndef MAT_POR_CAJAS_H
 #define MAT_POR_CAJAS_H
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 
-//! @brief Matriz por cajas.
+//! @brief Matrix por cajas.
 //! E es la clase de las cajas.
 template <class TCAJA>
-class MatPorCajas: public matrizZ<TCAJA>
+class MatPorCajas: public ZMatrix<TCAJA>
   {
   protected:
     size_t get_rows_row(const size_t &f) const;
@@ -37,7 +37,7 @@ class MatPorCajas: public matrizZ<TCAJA>
     std::vector<size_t> get_dim_columns(void) const;
     
   public:
-    typedef matrizZ<TCAJA> m_cajas;
+    typedef ZMatrix<TCAJA> m_cajas;
     typedef typename m_cajas::size_type size_type;
     typedef typename TCAJA::value_type value_type;
     typedef typename m_cajas::iterator iterator;
@@ -79,7 +79,7 @@ MatPorCajas<TCAJA>::MatPorCajas(size_type n_rows,size_type n_columns,const TCAJA
 
 //! @brief Constructor.
 //!
-//! @param dim: Dimensiones de rows and columns (matriz cuadrada).
+//! @param dim: Dimensiones de rows and columns (square matrix).
 template <class TCAJA>
 MatPorCajas<TCAJA>::MatPorCajas(const std::vector<size_t> &dim)
   :  m_cajas(dim.size(),dim.size())
@@ -107,7 +107,7 @@ template <class TCAJA>
 MatPorCajas<TCAJA>::MatPorCajas(const MatPorCajas &otra)
   : m_cajas(otra) {}
 
-//! @brief Operador asignación.
+//! @brief Assignment operator.
 template <class TCAJA>
 MatPorCajas<TCAJA> &MatPorCajas<TCAJA>::operator=(const MatPorCajas<TCAJA> &m)
   {
@@ -192,7 +192,7 @@ void MatPorCajas<TCAJA>::Con(const value_type &d)
     for(iterator i= this->begin();i!=this->end();i++)
       (*i).Con(d);
   }
-//! @brief Traspone la matriz.
+//! @brief Traspose the matrix.
 template <class TCAJA>
 MatPorCajas<TCAJA> &MatPorCajas<TCAJA>::Trn(void)
   {
@@ -201,7 +201,7 @@ MatPorCajas<TCAJA> &MatPorCajas<TCAJA>::Trn(void)
       (*i).Trn();
     return *this;
   }
-//! @brief Return la traspuesta.
+//! @brief Return transposed.
 template <class TCAJA>
 MatPorCajas<TCAJA> MatPorCajas<TCAJA>::GetTrn(void) const
   {

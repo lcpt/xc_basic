@@ -24,16 +24,16 @@
 #define POTITER_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 #include "xc_basic/src/matrices/norm.h"
 
 template <class treal>
-treal valorp(const matrizZ<treal> &a)
+treal valorp(const ZMatrix<treal> &a)
   {
     const treal epsi = 1e-5;
     size_t n= a.getNumberOfRows();
-    matrizZ<treal> v(n,1,1.0),va(n,1);
+    ZMatrix<treal> v(n,1,1.0),va(n,1);
     treal ln=10*epsi,la= 0.0;
     while (gj_abs(la-ln)>epsi)
       {

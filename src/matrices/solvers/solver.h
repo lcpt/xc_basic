@@ -60,12 +60,12 @@ class SolverM: public Solver
 
     virtual bool decomp(void)= 0;
 
-    inline int check_matriz(void) const
+    inline int check_matrix(void) const
       {
         if(A->getNumberOfColumns() != A->getNumberOfRows())
           {
 	    if(verbosity)
-              std::cerr << "La matriz no es cuadrada" << std::endl;
+              std::cerr << "Not a square matrix" << std::endl;
 	    return 0;
           }
         return 1;
@@ -74,7 +74,7 @@ class SolverM: public Solver
     template <class V>
     inline int check_backsub(const V &B) const
       {
-        if(!check_matriz()) return 0;
+        if(!check_matrix()) return 0;
         if(B.getNumberOfRows()!=A->getNumberOfRows() || B.getNumberOfColumns()!=1)
           {
 	    if(verbosity)
@@ -87,7 +87,7 @@ class SolverM: public Solver
       }
   public:
     SolverM(const size_t &vrbrr= 1): Solver(vrbrr), A(NULL) {}
-    void PutMatriz(M &m)
+    void putMatrix(M &m)
       {
         A= &m;
         n= A->getNumberOfColumns();
@@ -98,7 +98,7 @@ class SolverM: public Solver
         if(!A)
           {
 	    if(verbosity)
-	      std::cerr << "No hay matriz que descomponer." << std::endl;
+	      std::cerr << "There is no matrix to decompose." << std::endl;
             return false;
           }
         if(!desc)

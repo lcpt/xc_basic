@@ -18,49 +18,49 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//MatrizM.cc
+//MExpressionMatrix.cc
 
-#include "matrizMExpr.h"
-#include "matrizM.h"
+#include "MExpressionMatrix.h"
+#include "MMatrix.h"
 
-void matrizMExpr::eval(void)
+void MExpressionMatrix::eval(void)
   {
     for(size_type i=1;i<=n_rows;i++)
       for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval();
   }
-void matrizMExpr::eval(const char *palabra,const ExprAlgebra &a)
+void MExpressionMatrix::eval(const char *palabra,const ExprAlgebra &a)
   {
     for(size_type i=1;i<=n_rows;i++)
       for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval(palabra,a);
   }
-void matrizMExpr::eval(const char *palabra,const double &d)
+void MExpressionMatrix::eval(const char *palabra,const double &d)
   {
     for(size_type i=1;i<=n_rows;i++)
       for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval(palabra,d);
   }
 
-matrizMExpr matrizMExpr::Eval(void) const
+MExpressionMatrix MExpressionMatrix::Eval(void) const
   {
-    matrizMExpr retval(*this);
+    MExpressionMatrix retval(*this);
     retval.eval();
     return retval;
   }
-matrizMExpr matrizMExpr::Eval(const char *palabra,const ExprAlgebra &a)
+MExpressionMatrix MExpressionMatrix::Eval(const char *palabra,const ExprAlgebra &a)
   {
-    matrizMExpr retval(*this);
+    MExpressionMatrix retval(*this);
     retval.eval(palabra,a);
     return retval;
   }
-matrizMExpr matrizMExpr::Eval(const char *palabra,const double &d)
+MExpressionMatrix MExpressionMatrix::Eval(const char *palabra,const double &d)
   {
-    matrizMExpr retval(*this);
+    MExpressionMatrix retval(*this);
     retval.eval(palabra,d);
     return retval;
   }
-bool matrizMExpr::Evaluable(void) const
+bool MExpressionMatrix::Evaluable(void) const
   {
     for(size_type i=1;i<=n_rows;i++)
       for(size_type j=1;j<=n_columns;j++)
@@ -68,76 +68,78 @@ bool matrizMExpr::Evaluable(void) const
           return false;
     return true;
   }
-matrizM matrizMExpr::ToNum(void) const
+MMatrix MExpressionMatrix::ToNum(void) const
   {
-    matrizM retval(n_rows,n_columns);
+    MMatrix retval(n_rows,n_columns);
     if(!Evaluable())
-      std::cerr << "matrizExpr::ToNum: no se pudo evaluar la matriz de expresiones" << std::endl;
+      std::cerr << "ExpressionMatrix::" << __FUNCTION__
+	        << "cant evaluate the expression matrix" << std::endl;
     else
       for(size_type i=1;i<=n_rows;i++)
         for(size_type j=1;j<=n_columns;j++)
           retval(i,j)= (*this)(i,j).ToNum();
     return retval;
   }
-matrizM matrizMExpr::ToNum(const char *palabra,const double &d) const
+MMatrix MExpressionMatrix::ToNum(const char *palabra,const double &d) const
   {
-    matrizM retval(n_rows,n_columns);
+    MMatrix retval(n_rows,n_columns);
     if(!Evaluable())
-      std::cerr << "matrizExpr::ToNum: no se pudo evaluar la matriz de expresiones" << std::endl;
+      std::cerr << "ExpressionMatrix::" << __FUNCTION__
+	        << "cant evaluate the expression matrix" << std::endl;
     else
       for(size_type i=1;i<=n_rows;i++)
         for(size_type j=1;j<=n_columns;j++)
           retval(i,j)= (*this)(i,j).ToNum(palabra,d);
     return retval;
   }
-matrizMExpr &matrizMExpr::operator*=(const matrizExpr &m)
+MExpressionMatrix &MExpressionMatrix::operator*=(const ExpressionMatrix &m)
   {
-    m_matriz_expr::operator*=(m);
+    m_expression_matrix::operator*=(m);
     return *this;
   }
-matrizMExpr &matrizMExpr::operator*=(const double &d)
+MExpressionMatrix &MExpressionMatrix::operator*=(const double &d)
   {
     size_type i,sz= size();      
     for(i= 0;i<sz;i++)
       (*this)[i]*=d;
     return *this;
   }
-matrizMExpr &matrizMExpr::operator*=(const matrizMExpr &m)
+MExpressionMatrix &MExpressionMatrix::operator*=(const MExpressionMatrix &m)
   {
-    m_matriz_expr::operator*=(m);
+    m_expression_matrix::operator*=(m);
     return *this;
   }
-matrizMExpr operator*(const matrizMExpr &m1,const matrizMExpr &m2)
+MExpressionMatrix operator*(const MExpressionMatrix &m1,const MExpressionMatrix &m2)
   {
-    matrizMExpr producto(m1);
+    MExpressionMatrix producto(m1);
     producto*=(m2);
     return producto;
   }
 
-matrizMExpr operator+(const matrizMExpr &m1,const matrizMExpr &m2)
+MExpressionMatrix operator+(const MExpressionMatrix &m1,const MExpressionMatrix &m2)
   {
-    matrizMExpr retval(m1);
+    MExpressionMatrix retval(m1);
     retval+=m2;
     return retval;
   }
 
-matrizMExpr operator-(const matrizMExpr &m1,const matrizMExpr &m2)
+MExpressionMatrix operator-(const MExpressionMatrix &m1,const MExpressionMatrix &m2)
   {
-    matrizMExpr retval(m1);
+    MExpressionMatrix retval(m1);
     retval-=m2;
     return retval;
   }
 
-matrizMExpr operator*(const matrizMExpr &m,const double &d)
+MExpressionMatrix operator*(const MExpressionMatrix &m,const double &d)
   {
-    matrizMExpr retval(m);
+    MExpressionMatrix retval(m);
     retval*=d;
     return retval;
   }
 
-matrizMExpr operator*(const matrizExpr &m,const matrizMExpr &mM)
+MExpressionMatrix operator*(const ExpressionMatrix &m,const MExpressionMatrix &mM)
   {
-    matrizMExpr retval(mM); retval*=m;
+    MExpressionMatrix retval(mM); retval*=m;
     return retval;
   }
 

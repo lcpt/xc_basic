@@ -18,54 +18,54 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//RangoMatriz.cc
+//MatrixRange.cc
 
-#include "RangoMatriz.h"
+#include "MatrixRange.h"
 
 //! @brief Return verdadero si el rango no contiene ningún índice.
-bool RangoMatriz::Vacio(void) const
+bool MatrixRange::Vacio(void) const
 { return (row_range.Vacio() || column_range.Vacio()); }
 
 //! @brief Imprime el rango.
-void RangoMatriz::Print(std::ostream &os) const
+void MatrixRange::Print(std::ostream &os) const
   { os << row_range << ',' << column_range; }
 
 //! @brief Reduce los valores del rango de manera que ambos sean menores que
 //! los being passed as parameter.
-void RangoMatriz::Clip(const size_t &fmax,const size_t &cmax)
+void MatrixRange::Clip(const size_t &fmax,const size_t &cmax)
   {
     row_range.Clip(fmax);
     column_range.Clip(cmax);
   }
 
 //! @brief Asigna a ESTE la intersección de ambos rangos.
-void RangoMatriz::Intersec(const RangoMatriz &otro)
+void MatrixRange::Intersec(const MatrixRange &otro)
   {
     row_range.Intersec(otro.row_range);
     column_range.Intersec(otro.column_range);
   }
 
 //! @brief Return la intersección de ambos rangos.
-RangoMatriz RangoMatriz::Intersec(const RangoMatriz &otro) const
+MatrixRange MatrixRange::Intersec(const MatrixRange &otro) const
   {
-    RangoMatriz retval(*this);
+    MatrixRange retval(*this);
     retval.Intersec(otro);
     return retval;
   }
 
-std::ostream &operator<<(std::ostream &os,const RangoMatriz &rango)
+std::ostream &operator<<(std::ostream &os,const MatrixRange &rango)
   {
     rango.Print(os);
     return os;
   }
 
-RangoMatriz clip(const RangoMatriz &r,const size_t &fmax,const size_t &cmax)
+MatrixRange clip(const MatrixRange &r,const size_t &fmax,const size_t &cmax)
   {
-    RangoMatriz retval(r);
+    MatrixRange retval(r);
     retval.Clip(fmax,cmax);
     return retval;
   }
 
 //! @brief Return la intersección de ambos rangos.
-RangoMatriz intersec(const RangoMatriz &r1,const RangoMatriz &r2)
+MatrixRange intersec(const MatrixRange &r1,const MatrixRange &r2)
   { return r1.Intersec(r2); }

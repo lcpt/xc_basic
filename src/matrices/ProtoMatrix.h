@@ -18,14 +18,14 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//ProtoMatriz.h 
-#ifndef PROTOMATRIZ_H
-#define PROTOMATRIZ_H
+//ProtoMatrix.h 
+#ifndef PROTOMATRIX_H
+#define PROTOMATRIX_H
 
 #include <string>
 #include <iostream>
 
-class ProtoMatriz
+class ProtoMatrix
   {
   protected:
     size_t n_rows; //number of rows.
@@ -39,7 +39,7 @@ class ProtoMatriz
       { PutDim(n_rows,n_columns); }
     inline virtual bool check_range(const size_t &iRow,const size_t &col) const
       { return ((iRow<=n_rows) && (col<=n_columns)); }
-    inline void check_put_caja(size_t f,size_t c,const ProtoMatriz &caja) const
+    inline void check_put_caja(size_t f,size_t c,const ProtoMatrix &caja) const
       {
         if(((f+caja.getNumberOfRows())>(n_rows+1)) || ((c+caja.getNumberOfColumns())>(n_columns+1)))
           std::cerr << "Indices erróneos en función PutCaja." << std::endl;
@@ -49,14 +49,14 @@ class ProtoMatriz
         if ( (f2 < f1) || (c2 < c1) )
           std::cerr << "Indices erróneos en función GetCaja." << std::endl;
       }
-    inline void check_sto_sum(const ProtoMatriz &m) const
+    inline void check_sto_sum(const ProtoMatrix &m) const
       {
         if (!CompDim(*this,m))
           std::cerr << "Matrices de dimensiones distintas en operador += " << std::endl
                     << "  this: " << " (" << n_rows << 'x' << n_columns << ')' << std::endl
                     << "  m= " << " (" << m.n_rows << 'x' << m.n_columns << ')' << std::endl;
       }
-    inline void check_sto_dif(const ProtoMatriz &m) const
+    inline void check_sto_dif(const ProtoMatrix &m) const
       {
         if (!CompDim(*this,m))
           std::cerr << "Matrices de dimensiones distintas en operador -="  << std::endl
@@ -66,9 +66,9 @@ class ProtoMatriz
     inline void check_traza(void) const
       {
         if(!Cuadrada())
-          std::cerr << "La matriz no es cuadrada." << std::endl;
+          std::cerr << "Not a square matrix." << std::endl;
       }
-    inline friend int check_dot(const ProtoMatriz &v1,const ProtoMatriz &v2)
+    inline friend int check_dot(const ProtoMatrix &v1,const ProtoMatrix &v2)
       {
         if (!v1.isRow())
           std::cerr << "First matrix of scalar product is not a row matrix."
@@ -83,7 +83,7 @@ class ProtoMatriz
                     << std::endl;
         return 1;
       }
-    inline friend int check_sum(const ProtoMatriz &m1,const ProtoMatriz &m2)
+    inline friend int check_sum(const ProtoMatrix &m1,const ProtoMatrix &m2)
       {
         if (!CompDim(m1,m2))
           {
@@ -93,7 +93,7 @@ class ProtoMatriz
           }
         return 1;
       }
-    inline friend int check_dif(const ProtoMatriz &m1,const ProtoMatriz &m2)
+    inline friend int check_dif(const ProtoMatrix &m1,const ProtoMatrix &m2)
       {
         if (!CompDim(m1,m2))
           {
@@ -103,7 +103,7 @@ class ProtoMatriz
           }
         return 1;
       }
-    inline friend int check_prod(const ProtoMatriz &m1,const ProtoMatriz &m2)
+    inline friend int check_prod(const ProtoMatrix &m1,const ProtoMatrix &m2)
       {
         if (m1.n_columns != m2.n_rows)
           {
@@ -115,16 +115,16 @@ class ProtoMatriz
         return 1;
       }
   public:
-    ProtoMatriz(size_t n_rows= 1,size_t n_columns= 1)
+    ProtoMatrix(size_t n_rows= 1,size_t n_columns= 1)
       { inic(n_rows,n_columns); }
-    ProtoMatriz(const ProtoMatriz &otra)
+    ProtoMatrix(const ProtoMatrix &otra)
       { inic(otra.n_rows,otra.n_columns); }
-    ProtoMatriz& operator =(const ProtoMatriz &m)
+    ProtoMatrix& operator =(const ProtoMatrix &m)
       {
         inic(m.n_rows,m.n_columns);
         return *this;
       }
-    virtual ~ProtoMatriz(void) {}
+    virtual ~ProtoMatrix(void) {}
     inline virtual void resize(size_t n_rows,size_t n_columns)
       { inic(n_rows,n_columns); }
     inline virtual size_t Tam(void)
@@ -135,8 +135,8 @@ class ProtoMatriz
       { return n_columns; }
     inline bool CheckIndices(const size_t &f,const size_t &c) const
       { return check_range(f,c);; }
-    //! @brief Return verdadero si los índices corresponden a un elemento
-    //! "interior" de la matriz.
+    //! @brief Return true if the indices correspond to a component
+    //" of the matrix "interior".
     inline bool interior(const size_t &i,const size_t &j) const
       { return ( (i>1) && (j>1) && (i<n_rows) && (j<n_columns) ); }
     inline int Cuadrada(void) const
@@ -146,13 +146,13 @@ class ProtoMatriz
     inline bool isColumn(void) const
       { return (n_columns == 1); }
     virtual void Print(std::ostream &os) const=0;
-    friend inline bool compareRowNumber(const ProtoMatriz &m1,const ProtoMatriz &m2)
+    friend inline bool compareRowNumber(const ProtoMatrix &m1,const ProtoMatrix &m2)
       { return (m1.n_rows == m2.n_rows); }
-    friend inline bool compareColumnNumber(const ProtoMatriz &m1,const ProtoMatriz &m2)
+    friend inline bool compareColumnNumber(const ProtoMatrix &m1,const ProtoMatrix &m2)
       { return (m1.n_columns == m2.n_columns); }
-    friend inline bool CompDim(const ProtoMatriz &m1,const ProtoMatriz &m2)
+    friend inline bool CompDim(const ProtoMatrix &m1,const ProtoMatrix &m2)
       { return (compareRowNumber(m1,m2) && compareColumnNumber(m1,m2)); }
-    friend inline std::ostream &operator<<(std::ostream &os,const ProtoMatriz &m)
+    friend inline std::ostream &operator<<(std::ostream &os,const ProtoMatrix &m)
       {
         m.Print(os);
         return os;

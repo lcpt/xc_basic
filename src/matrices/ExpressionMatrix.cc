@@ -18,54 +18,54 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//matrizExpr.cc
+//ExpressionMatrix.cc
 
-#include "matrizExpr.h"
+#include "ExpressionMatrix.h"
 
-matrizExpr::matrizExpr(const m_double &m)
-  : expr_matriz(m.getNumberOfRows(),m.getNumberOfColumns())
+ExpressionMatrix::ExpressionMatrix(const m_double &m)
+  : expression_matrix(m.getNumberOfRows(),m.getNumberOfColumns())
   {
     for(size_type i=1;i<=n_rows;i++)
       for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= ExprAlgebra(m(i,j));
   }
-void matrizExpr::eval(void)
+void ExpressionMatrix::eval(void)
   {
     for(size_type i=1;i<=n_rows;i++)
       for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval();
   }
-void matrizExpr::eval(const char *palabra,const ExprAlgebra &a)
+void ExpressionMatrix::eval(const char *palabra,const ExprAlgebra &a)
   {
     for(size_type i=1;i<=n_rows;i++)
       for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval(palabra,a);
   }
-void matrizExpr::eval(const char *palabra,const double &d)
+void ExpressionMatrix::eval(const char *palabra,const double &d)
   {
     for(size_type i=1;i<=n_rows;i++)
       for(size_type j=1;j<=n_columns;j++)
         (*this)(i,j).eval(palabra,d);
   }
-matrizExpr matrizExpr::Eval(void) const
+ExpressionMatrix ExpressionMatrix::Eval(void) const
   {
-    matrizExpr retval(*this);
+    ExpressionMatrix retval(*this);
     retval.eval();
     return retval;
   }
-matrizExpr matrizExpr::Eval(const char *palabra,const ExprAlgebra &a)
+ExpressionMatrix ExpressionMatrix::Eval(const char *palabra,const ExprAlgebra &a)
   {
-    matrizExpr retval(*this);
+    ExpressionMatrix retval(*this);
     retval.eval(palabra,a);
     return retval;
   }
-matrizExpr matrizExpr::Eval(const char *palabra,const double &d)
+ExpressionMatrix ExpressionMatrix::Eval(const char *palabra,const double &d)
   {
-    matrizExpr retval(*this);
+    ExpressionMatrix retval(*this);
     retval.eval(palabra,d);
     return retval;
   }
-bool matrizExpr::Evaluable(void) const
+bool ExpressionMatrix::Evaluable(void) const
   {
     for(size_type i=1;i<=n_rows;i++)
       for(size_type j=1;j<=n_columns;j++)
@@ -73,54 +73,56 @@ bool matrizExpr::Evaluable(void) const
           return false;
     return true;
   }
-m_double matrizExpr::ToNum(void) const
+m_double ExpressionMatrix::ToNum(void) const
   {
     m_double retval(n_rows,n_columns,0.0);
     if(!Evaluable())
-      std::cerr << "matrizExpr::ToNum: no se pudo evaluar la matriz de expresiones" << std::endl;
+      std::cerr << "ExpressionMatrix::" << __FUNCTION__
+	        << " can't eval the matrix expression." << std::endl;
     else
       for(size_type i=1;i<=n_rows;i++)
         for(size_type j=1;j<=n_columns;j++)
           retval(i,j)= (*this)(i,j).ToNum();
     return retval;  
   }
-m_double matrizExpr::ToNum(const char *palabra,const double &d) const
+m_double ExpressionMatrix::ToNum(const char *palabra,const double &d) const
   {
     m_double retval(n_rows,n_columns,0.0);
     if(!Evaluable())
-      std::cerr << "matrizExpr::ToNum: no se pudo evaluar la matriz de expresiones" << std::endl;
+      std::cerr << "ExpressionMatrix::" << __FUNCTION__
+	        << " can't eval the matrix expression." << std::endl;
     else
       for(size_type i=1;i<=n_rows;i++)
         for(size_type j=1;j<=n_columns;j++)
           retval(i,j)= (*this)(i,j).ToNum(palabra,d);
     return retval;  
   }
-matrizExpr &matrizExpr::Trn(void)
+ExpressionMatrix &ExpressionMatrix::Trn(void)
   {
-    expr_matriz::Trn();
+    expression_matrix::Trn();
     return *this;
   }
-matrizExpr matrizExpr::GetTrn(void) const
+ExpressionMatrix ExpressionMatrix::GetTrn(void) const
   {
-    matrizExpr m= *this;
+    ExpressionMatrix m= *this;
     m.Trn();
     return m;
   }
-matrizExpr &matrizExpr::operator*=(const double &d)
+ExpressionMatrix &ExpressionMatrix::operator*=(const double &d)
   {
     size_type i,sz= size();      
     for(i= 0;i<sz;i++)
       (*this)[i]*= ExprAlgebra(d);
     return *this;
   }
-matrizExpr &matrizExpr::operator*=(const matrizExpr &m)
+ExpressionMatrix &ExpressionMatrix::operator*=(const ExpressionMatrix &m)
   {
     *this= (*this)*m;
     return *this;
   }
-matrizExpr operator*(const matrizExpr &m1,const matrizExpr &m2)
+ExpressionMatrix operator*(const ExpressionMatrix &m1,const ExpressionMatrix &m2)
   {
-    matrizExpr producto(m1.n_rows,m2.n_columns);
+    ExpressionMatrix producto(m1.n_rows,m2.n_columns);
     if (m1.n_columns != m2.n_rows)
       {
         std::cerr << "Matrices de dimensiones incompatibles en producto." << std::endl;
@@ -128,7 +130,7 @@ matrizExpr operator*(const matrizExpr &m1,const matrizExpr &m2)
         std::cerr << "  m2= " << m2 << std::endl;
         return producto;
       }
-    matrizExpr::size_type i=1,j=1;
+    ExpressionMatrix::size_type i=1,j=1;
     for (i= 1;i<=m1.n_rows;i++)
       for (j= 1;j<=m2.n_columns;j++)
         producto(i,j)= dot(m1.getRow(i),m2.getColumn(j));
@@ -138,10 +140,11 @@ matrizExpr operator*(const matrizExpr &m1,const matrizExpr &m2)
 
 
 
-//! @brief Convierte un string (por ejemplo: [[1.0+x^2,0.0][0.0,1.0-x]]) a una matriz.
-matrizExpr string_to_matrizExpr(const std::string &str)
+//! @brief Converts a string (i.e.: [[1.0+x^2,0.0][0.0,1.0-x]]) into
+//! a matrix.
+ExpressionMatrix string_to_expression_matrix(const std::string &str)
   {
-    matrizExpr retval(1,1);
+    ExpressionMatrix retval(1,1);
     retval.Input(str);
     return retval;
   }

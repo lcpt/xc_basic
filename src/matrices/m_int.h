@@ -23,8 +23,8 @@
 #ifndef M_INT_H
 #define M_INT_H
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 
-typedef matrizZ<int> m_int;
+typedef ZMatrix<int> m_int;
 
 #endif

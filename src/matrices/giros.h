@@ -24,16 +24,16 @@
 #ifndef GIROS_H
 #define GIROS_H
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 
 //En dos dimensiones.
-matrizZ<double> Giro2D(double ang);
+ZMatrix<double> Giro2D(double ang);
 
 //En tres dimensiones
-matrizZ<double> GiroX(double ang);
-matrizZ<double> GiroY(double ang);
-matrizZ<double> GiroZ(double ang);
-matrizZ<double> GiroXYZ(double rx,double ry,double rz);
+ZMatrix<double> GiroX(double ang);
+ZMatrix<double> GiroY(double ang);
+ZMatrix<double> GiroZ(double ang);
+ZMatrix<double> GiroXYZ(double rx,double ry,double rz);
 
 
 #endif

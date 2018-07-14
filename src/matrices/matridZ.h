@@ -25,17 +25,16 @@
 #ifndef MATRIDZ_H
 #define MATRIDZ_H
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 
 template <class numero>
-class matridZ : public matrizZ<numero>
+class matridZ : public ZMatrix<numero>
   {
   public:
-    typedef matrizZ<numero> matrizZ_numero;  
-    //typedef typename matrizZ<numero>::matrizZ_allocator matridZ_allocator;
-    typedef typename matrizZ_numero::reference reference;
-    typedef typename matrizZ_numero::const_reference const_reference;
-    typedef typename matrizZ_numero::size_type size_type;
+    typedef ZMatrix<numero> ZMatrix_number;  
+    typedef typename ZMatrix_number::reference reference;
+    typedef typename ZMatrix_number::const_reference const_reference;
+    typedef typename ZMatrix_number::size_type size_type;
   protected:
     inline virtual size_type Tam(size_type n_rows,size_type cols) const
       { return (3*n_rows-1); }
@@ -50,27 +49,27 @@ class matridZ : public matrizZ<numero>
           return ((iRow-1)*3+col-iRow+1);
       }
   public:
-    matridZ(void) : matrizZ_numero (1,1)
+    matridZ(void) : ZMatrix_number (1,1)
       { vectorZ_numero::operator[](0)= 0.0; }
-    matridZ(const size_type &dim) : matrizZ_numero(1,Tam(dim,dim))
+    matridZ(const size_type &dim) : ZMatrix_number(1,Tam(dim,dim))
       { PutDim(dim,dim); vectorZ_numero::operator[](0)= 0.0; }
-    matridZ(const size_type &dim,const numero &val) : matrizZ_numero(1,Tam(dim,dim))
+    matridZ(const size_type &dim,const numero &val) : ZMatrix_number(1,Tam(dim,dim))
       { PutDim(dim,dim); vectorZ_numero::operator[](0)= 0.0; }
-    matridZ(const matridZ<numero> &otra) : matrizZ_numero(otra)
+    matridZ(const matridZ<numero> &otra) : ZMatrix_number(otra)
       { PutDim(otra.n_rows,otra.n_columns); vectorZ_numero::operator[](0)= 0.0; }
     matridZ<numero>& operator =(const matridZ<numero> &m)
       {
-        matrizZ_numero::operator =(m);
+        ZMatrix_number::operator =(m);
         return *this;
       }
     matridZ<numero>& operator +=(const matridZ<numero> &m)
       {
-        matrizZ_numero::Suma(m);
+        ZMatrix_number::Suma(m);
         return *this;
       }
     matridZ<numero>& operator -=(const matridZ<numero> &m)
       {
-        matrizZ_numero::Resta(m);
+        ZMatrix_number::Resta(m);
         return *this;
       }
     inline void Trn(void) {}
@@ -87,7 +86,7 @@ class matridZ : public matrizZ<numero>
     friend matridZ<numero> operator +(const matridZ<numero> &m1,const matridZ<numero> &m2)
       {
         if (!CompDim(m1,m2))
-          matrizZError("Matrices de dimensiones distintas en operador +");
+          ZMatrixError("Matrices de dimensiones distintas en operador +");
         matridZ<numero> suma(m1.n_rows);
         suma.Suma(m1,m2);
         return suma;
@@ -95,17 +94,17 @@ class matridZ : public matrizZ<numero>
     friend matridZ<numero> operator -(const matridZ<numero> &m1,const matridZ<numero> &m2)
       {
         if (!CompDim(m1,m2)) 
-          matrizZError("Matrices de dimensiones distintas en operador -");
+          ZMatrixError("Matrices de dimensiones distintas en operador -");
         matridZ<numero> resta(m1.n_rows,m1.n_columns);
         resta.Resta(m1,m2);
         return resta;
       }
     friend std::ostream &operator << (std::ostream &stream,const matridZ<numero> &m)
-      { return ::operator <<(stream,(const matrizZ_numero &) m); }
+      { return ::operator <<(stream,(const ZMatrix_number &) m); }
     friend std::istream &operator >> (std::istream &stream,matridZ<numero> &m)
-      { return ::operator >>(stream,(matrizZ_numero &) m); }
+      { return ::operator >>(stream,(ZMatrix_number &) m); }
     friend bool operator ==(const matridZ<numero> &m1,const matridZ<numero> &m2)
-      { return ((const matrizZ_numero &) m1 == (const matrizZ_numero &) m2); }
+      { return ((const ZMatrix_number &) m1 == (const ZMatrix_number &) m2); }
   };
 
 #endif

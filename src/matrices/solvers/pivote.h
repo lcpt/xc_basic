@@ -26,7 +26,7 @@
 #define PIVOTE_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include <set>
 #include "xc_basic/src/matrices/solvers/gj_aux.h"
 
@@ -43,7 +43,7 @@ inline int In(const set_szt &fp,const size_t &i)
   }
 
 template <class treal>
-size_t pivote(const size_t &j,const matrizZ<treal> &a,const set_szt &fp)
+size_t pivote(const size_t &j,const ZMatrix<treal> &a,const set_szt &fp)
   {
     size_t i,k=0,n= a.getNumberOfRows();
     treal amax=zero;

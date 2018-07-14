@@ -19,19 +19,19 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //rust.h
-//Procedimiento de Rustihauser para la obtencion de la ecuacion caracterIstica
-//de una matriz.
+// Computation of the characteristic equation of a matrix using the Rustihauser
+// procedure.
 
 #ifndef RUST_H
 #define RUST_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/matrices/util/matem.h"
 
 
 template <class treal>
-void rust(matrizZ<treal> &a,treal &epsi)
+void rust(ZMatrix<treal> &a,treal &epsi)
   {
     const int maxiter = 500;
     int j;

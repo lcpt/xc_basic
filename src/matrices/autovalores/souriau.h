@@ -19,39 +19,38 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //souriau.h
-//Procedimiento de Souriau para la obtencion de la ecuacion caracterIstica
-//de una matriz.
+// Computation of the characteristic equation of a matrix using the Souriau
+// procedure.
 
 #ifndef SOURIAU_H
 #define SOURIAU_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 
 template <class treal>
-matrizZ<treal> calbk(const matrizZ<treal> &ak,const treal &tk)
+ZMatrix<treal> calbk(const ZMatrix<treal> &ak,const treal &tk)
   {
     size_t n= ak.getNumberOfRows();
-    matrizZ<treal> b(ak);
+    ZMatrix<treal> b(ak);
     for(size_t i=1;i<=n;i++)
       b(i,i)+=tk;
     return b;  
   }
 
 template <class treal>  
-vectorZ<treal> souriau(matrizZ<treal> &a)
-//Procedimiento de Souriau para la obtenciOn de la ecuaciOn caracterIstica
-//de una matriz.
+vectorZ<treal> souriau(ZMatrix<treal> &a)
+//Souriau procedure to compute the characteristic equation of a matrix.
 //Devuelve un 
-//	a:	Matriz de la que se obtiene la ecuaciOn caracterIstica.
+//	a:	matrix to obtain the characteristic equation of.
 //	Valor devuelto:
 //		vector en el que el elemento de Indice (k,1) es el
 //		coeficiente de grado n-k del polinomio.
   {
     size_t n= a.getNumberOfRows();
     vectorZ<treal> t(n+1,1);    
-    matrizZ<treal>  ak(n,n,0.0),b(n,n);
+    ZMatrix<treal>  ak(n,n,0.0),b(n,n);
     t[0]= 1;
     for(size_t k=1;k<=n;k++)
       {

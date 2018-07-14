@@ -19,8 +19,8 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //Cholesky.h
-//Procedimiento de Cholesky para la solucion de un sistema
-//de ecuaciones lineal cuya matriz es SIMETRICA Y DEFINIDA POSITIVA.
+//Cholesky procedure to solve a linear system of equations with a symmetric
+//and positive definite coefficient matrix.
 
 #ifndef CHOLESKY_H
 #define CHOLESKY_H
@@ -56,10 +56,10 @@ void colum(const size_t &j,matsimZ<treal> &a)
   }
 
 template <class treal>
-matrizZ<treal> calcularx(const matsimZ<treal> &a, const matrizZ<treal> &b)
+ZMatrix<treal> calcularx(const matsimZ<treal> &a, const ZMatrix<treal> &b)
   {
     size_t i,k,n= a.getNumberOfRows();
-    matrizZ<treal> x(n,1,0.0);
+    ZMatrix<treal> x(n,1,0.0);
     for(i= 1;i<=n;i++)          //primer sistema
       {
         x(i,1)= b(i,1); k=1;
@@ -84,7 +84,7 @@ matrizZ<treal> calcularx(const matsimZ<treal> &a, const matrizZ<treal> &b)
   }
 
 template <class treal>
-matrizZ<treal> cholesky(matsimZ<treal> &a,matrizZ<treal> &b,int &defpos)
+ZMatrix<treal> cholesky(matsimZ<treal> &a,ZMatrix<treal> &b,int &defpos)
   {
     defpos= 1; size_t j=0,n= a.getNumberOfRows();
     while(defpos && (j<n))
@@ -93,7 +93,7 @@ matrizZ<treal> cholesky(matsimZ<treal> &a,matrizZ<treal> &b,int &defpos)
         defpos= (a(j,j)>zero);
         if(defpos) colum(j,a);
       }
-     matrizZ<treal> x;
+     ZMatrix<treal> x;
      if(defpos) x= calcularx(a,b);
      return x;
   }

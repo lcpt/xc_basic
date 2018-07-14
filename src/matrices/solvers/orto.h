@@ -26,12 +26,12 @@
 #define ORTO_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 #include "xc_basic/src/matrices/solvers/gj_aux.h"
 
 template <class treal>
-treal escalar(const size_t &i,const size_t &j,const matrizZ<treal> &a)
+treal escalar(const size_t &i,const size_t &j,const ZMatrix<treal> &a)
   {
     treal s=0.0,n= a.getNumberOfRows();
     for(size_t k=1;k<=n;k++) s+=a(i,k)*a(j,k);
@@ -39,12 +39,12 @@ treal escalar(const size_t &i,const size_t &j,const matrizZ<treal> &a)
   }
 
 template <class treal>
-matrizZ<treal> calcularx( const matrizZ<treal> &a,
-                          matrizZ<treal> &b,
-                          const matrizZ<treal> &r)
+ZMatrix<treal> calcularx( const ZMatrix<treal> &a,
+                          ZMatrix<treal> &b,
+                          const ZMatrix<treal> &r)
   {
     size_t i,n= a.getNumberOfRows();
-    matrizZ<treal> x(n,1,0.0);
+    ZMatrix<treal> x(n,1,0.0);
     for(i=1;i<=n;i++) b(i,1)*=r(i,1);
     for(i=1;i<=n;i++)
       for(size_t k=1;k<=n;k++) x(i)+= a(k,i)*b(k,1);
@@ -52,10 +52,10 @@ matrizZ<treal> calcularx( const matrizZ<treal> &a,
   }
 
 template <class treal>
-matrizZ<treal> ortoresol(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
+ZMatrix<treal> ortoresol(ZMatrix<treal> &a,ZMatrix<treal> &b,int &regular)
   {
     size_t   i=0,l=0,n= a.getNumberOfRows();
-    matrizZ<treal> r(n,1,0.0),landa(n,1,0.0);
+    ZMatrix<treal> r(n,1,0.0),landa(n,1,0.0);
     regular=1;
     while( regular && (l<n))
       {
@@ -76,7 +76,7 @@ matrizZ<treal> ortoresol(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
         regular= (gj_abs(r(l,1)) > zero);
         if(regular) r(l,1)= gj_inv(r(l,1));
       }
-    matrizZ<treal> x;
+    ZMatrix<treal> x;
     if(regular) x= calcularx(a,b,r);
     return x;
   }

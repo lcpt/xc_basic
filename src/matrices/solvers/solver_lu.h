@@ -25,7 +25,7 @@
 
 #include "xc_basic/src/matrices/solvers/solver.h"
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 #include "xc_basic/src/matrices/matsimZ.h"
 #include "xc_basic/src/matrices/matdispZ.h"
@@ -91,7 +91,8 @@ class SolverLU: public SolverM<M>
             if ((*this->A)(this->P(k),k) == solver_m::CERO) //If the pivot of this column is zero.
               {
                 v = -1;
-                if(this->verbosity) std::cerr << "Matriz singular" << std::endl;
+                if(this->verbosity)
+		  std::cerr << "Singular matrix" << std::endl;
                 return false;
               }
             aplica_pivote(k);
@@ -161,23 +162,23 @@ class SolverConstLU: public SolverLU<M,V>
     M a;
   public:
     SolverConstLU(const size_t &verbosity): SolverLU<M,V>(verbosity), a(0,0){}
-    void PutMatriz(const M &m)
+    void putMatrix(const M &m)
       {
         a= m;
-        SolverLU<M,V>::PutMatriz(a);
+        SolverLU<M,V>::putMatrix(a);
       }
   };
 
 
 template <class treal,class V>
-class SolverSimLU: public SolverConstLU<matrizZ<treal>,V>
+class SolverSimLU: public SolverConstLU<ZMatrix<treal>,V>
   {
   public:
     SolverSimLU(const size_t &verbosity)
-      : SolverConstLU<matrizZ<treal>,V>(verbosity)
+      : SolverConstLU<ZMatrix<treal>,V>(verbosity)
       {}
-    void PutMatriz(const matsimZ<treal> &m)
-      { SolverConstLU<matrizZ<treal>,V>::PutMatriz(m.GetCompleta()); }
+    void putMatrix(const matsimZ<treal> &m)
+      { SolverConstLU<ZMatrix<treal>,V>::putMatrix(m.GetCompleta()); }
   };
 
 template <class treal,class V>
@@ -221,10 +222,10 @@ class SolverDispLU: public SolverLU<matdispZ<treal>,V>
             if(dd!=solver_lu::CERO) rest_of_row(this->P(i),k,dd);
           }
       }
+    //! Return true if it can decompose the matrix.
     bool decomp(void)
-      //Return verdadero si puede descomponer la matriz.
       {
-        std::cout << "parece que falla" << std::endl;
+        std::cout << "seems to fail" << std::endl;
         const_f_iterator maxi; //pivot row.
         tipo_val c; //Valor del pivote.
         size_t p= 1;
@@ -244,7 +245,7 @@ class SolverDispLU: public SolverLU<matdispZ<treal>,V>
               {
                 this->v = -1;
                 if(this->verbosity)
-		  std::cerr << "Matriz singular" << std::endl;
+		  std::cerr << "Singular matrix" << std::endl;
                 return false;
               }
             //aplica_pivote(ic->first);

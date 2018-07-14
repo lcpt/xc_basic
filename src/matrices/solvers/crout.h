@@ -25,15 +25,15 @@
 #define CROUT_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 #include "xc_basic/src/matrices/solvers/pivote.h"
 #include "xc_basic/src/matrices/solvers/calcularx.h"
 
 template <class treal>
 void row( const size_t &j,
-           matrizZ<treal> &a,
-           matrizZ<treal> &b,
+           ZMatrix<treal> &a,
+           ZMatrix<treal> &b,
            const set_szt &fp,
            size_t *pivot)
   {
@@ -60,8 +60,8 @@ void row( const size_t &j,
 
 template <class treal>
 void column( const size_t &j,
-            matrizZ<treal> &a,
-            matrizZ<treal> &b,
+            ZMatrix<treal> &a,
+            ZMatrix<treal> &b,
             const set_szt &fp,
             size_t *pivot)
   {
@@ -77,10 +77,10 @@ void column( const size_t &j,
   }
 
 template <class treal>
-matrizZ<treal> crout(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
+ZMatrix<treal> crout(ZMatrix<treal> &a,ZMatrix<treal> &b,int &regular)
   {
-    //Dimensionamos la matriz de indices de pivote.
-    typedef typename matrizZ<treal>::size_type size_type;
+    //Dimensions of the pivot indices matrix.
+    typedef typename ZMatrix<treal>::size_type size_type;
     const size_type n= a.getNumberOfRows();
     size_type *pivot= new size_type[n];
     set_szt fp;
@@ -96,7 +96,7 @@ matrizZ<treal> crout(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
             row(j,a,b,fp,pivot); column(j+1,a,b,fp,pivot);
           }
       }
-    matrizZ<treal> x;
+    ZMatrix<treal> x;
     if(regular) x= calcularx(a,b,pivot);
     delete[] pivot;
     return x;

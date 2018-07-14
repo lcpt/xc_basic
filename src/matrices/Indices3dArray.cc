@@ -19,28 +19,28 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//TritrizIndices.cc
+//Indices3dArray.cc
 
-#include "TritrizIndices.h"
+#include "Indices3dArray.h"
 
-TritrizIndices::TritrizIndices(const size_t &capas,const size_t &n_rows,const size_t &n_columns)
-  : std::vector<MatrizIndices>(capas,MatrizIndices(n_rows,n_columns)) {}
+Indices3dArray::Indices3dArray(const size_t &capas,const size_t &n_rows,const size_t &n_columns)
+  : std::vector<IndicesMatrix>(capas,IndicesMatrix(n_rows,n_columns)) {}
 
-//! @brief Return el número de elementos de la tritriz.
-size_t TritrizIndices::NumIndices(void) const
+//! @brief Return the number of elements of the array.
+size_t Indices3dArray::NumIndices(void) const
   {
     const size_t sz= this->size();
     if(sz<1)
       return 0;
     else
       {
-        const MatrizIndices &capa= (*this)(1); 
+        const IndicesMatrix &capa= (*this)(1); 
         return sz*capa.getNumberOfRows()*capa.getNumberOfColumns();
       }
   }
 
-//! @brief Return el number of rows de la tritriz.
-size_t TritrizIndices::getNumberOfRows(void) const
+//! @brief Return the number of rows of the array.
+size_t Indices3dArray::getNumberOfRows(void) const
   {
     size_t retval= 0;
     if(this->size())
@@ -48,8 +48,8 @@ size_t TritrizIndices::getNumberOfRows(void) const
     return retval;
   }
 
-//! @brief Return el number of columns de la tritriz.
-size_t TritrizIndices::getNumberOfColumns(void) const
+//! @brief Return the number of columns of the array.
+size_t Indices3dArray::getNumberOfColumns(void) const
   {
     size_t retval= 0;
     if(this->size())
@@ -58,7 +58,7 @@ size_t TritrizIndices::getNumberOfColumns(void) const
   }
 
 //! @brief Inserta el objeto en el stream de salida.
-inline std::ostream &operator<<(std::ostream &os,const TritrizIndices &t)
+inline std::ostream &operator<<(std::ostream &os,const Indices3dArray &t)
   {
     const size_t ncapas= t.getNumberOfLayers();
     for(size_t i=1;i<=ncapas;i++)
@@ -68,7 +68,7 @@ inline std::ostream &operator<<(std::ostream &os,const TritrizIndices &t)
 
 //! @brief Agrega a todos los elementos el valor
 //! que is being passed as parameter.
-void TritrizIndices::Offset(const VIndices &vi)
+void Indices3dArray::Offset(const VIndices &vi)
   {
     const size_t nCapas= getNumberOfLayers();
     for(size_t i= 1;i<= nCapas;i++)

@@ -38,7 +38,7 @@ m_double identidad(const size_t &n_rows,const size_t &n_columns)
     return retval;
   }
 
-//! @brief Convierte un string (por ejemplo: [[1.0,0.0][0.0,1.0]]) a una matriz.
+//! @brief Convert a string (i. e.: [[1.0,0.0][0.0,1.0]]) into a matrix.
 m_double string_to_m_double(const std::string &str)
   {
     m_double retval(1,1);

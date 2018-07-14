@@ -78,7 +78,7 @@ SET(util util/cmd_args util/memoria util/inercia util/print_trace)
 
 SET(sqlitepp sqlitepp/Database  sqlitepp/Query  sqlitepp/StderrLog  sqlitepp/SysLog)
 
-SET(matrices matrices/matrizM matrices/vcolM matrices/RangoIndice matrices/RangoMatriz matrices/ConstRefCaja matrices/matrizExpr matrices/matrizMExpr matrices/matrizPolmio matrices/m_double matrices/m_int matrices/m_sizet matrices/m_string matrices/giros matrices/op_tensor matrices/solvers/solver matrices/MatrizIndices matrices/TritrizIndices)
+SET(matrices matrices/MMatrix matrices/vcolM matrices/RangoIndice matrices/MatrixRange matrices/ConstRefCaja matrices/ExpressionMatrix matrices/MExpressionMatrix matrices/PolynomialMatrix matrices/m_double matrices/m_int matrices/m_sizet matrices/m_string matrices/giros matrices/op_tensor matrices/solvers/solver matrices/IndicesMatrix matrices/Indices3dArray)
 
 SET(skypack skypack/skypri.f skypack/skypds.f skypack/skyscf.f skypack/skyssb.f skypack/mtrxys.f skypack/skyssf.f skypack/skypsb.f skypack/skypdc.f skypack/skypf1.f skypack/skysdc.f skypack/skypsp.f skypack/skypcf.f skypack/skymef.f skypack/skyssd.f skypack/skyss.f skypack/skysf1.f skypack/skypf2.f skypack/mtrxy.f skypack/mtrxyd.f skypack/skysf2.f skypack/skypci.f)
 

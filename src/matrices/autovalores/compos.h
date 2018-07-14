@@ -19,18 +19,18 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //compos.h
-//Obtencion de la matriz producto de dos matrices triangulares.
+//Computing the product of two triangular matrices.
 
 #ifndef COMPOS_H
 #define COMPOS_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 #include "xc_basic/src/matrices/solvers/gj_aux.h"
 
 template <class treal>
-void compos(matrizZ<treal> &a,treal &max)
+void compos(ZMatrix<treal> &a,treal &max)
   {
     size_t i,j,k,l,n= a.getNumberOfRows();
     treal s,xx;

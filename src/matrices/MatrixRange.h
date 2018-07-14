@@ -18,23 +18,23 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//RangoMatriz.h
+//MatrixRange.h
 
-#ifndef RANGOMATRIZ_H
-#define RANGOMATRIZ_H
+#ifndef MATRIXRANGE_H
+#define MATRIXRANGE_H
 
 #include "RangoIndice.h"
 
 //! @brief Rango de variación de un índice, se emplea en ConstRefCaja.
-class RangoMatriz
+class MatrixRange
   {
     RangoIndice row_range; //!< row range.
     RangoIndice column_range; //!< column range.
   public:
-    RangoMatriz(const RangoIndice &rf,const RangoIndice &rc)
+    MatrixRange(const RangoIndice &rf,const RangoIndice &rc)
       :row_range(rf),column_range(rc) {}
     template <class M>
-    RangoMatriz(const M &);
+    MatrixRange(const M &);
     size_t getNumberOfRows(void) const
       { return row_range.Size(); }
     size_t getNumberOfColumns(void) const
@@ -57,24 +57,24 @@ class RangoMatriz
     inline static const char &Separador(void)
       { return RangoIndice::Separador(); }
     void Clip(const size_t &fmax,const size_t &cmax);
-    void Intersec(const RangoMatriz &otro);
-    RangoMatriz Intersec(const RangoMatriz &otro) const;
+    void Intersec(const MatrixRange &otro);
+    MatrixRange Intersec(const MatrixRange &otro) const;
     void Print(std::ostream &os) const;
   };
 
-RangoMatriz clip(const RangoMatriz &r,const size_t &fmax,const size_t &cmax);
-RangoMatriz intersec(const RangoMatriz &,const RangoMatriz &);
+MatrixRange clip(const MatrixRange &r,const size_t &fmax,const size_t &cmax);
+MatrixRange intersec(const MatrixRange &,const MatrixRange &);
 template <class M>
-RangoMatriz clip(const RangoMatriz &,const M &);
-std::ostream &operator<<(std::ostream &os,const RangoMatriz &rango);
+MatrixRange clip(const MatrixRange &,const M &);
+std::ostream &operator<<(std::ostream &os,const MatrixRange &rango);
 
-//! @brief Constructor a partir de una matriz.
+//! @brief Constructor from a matrix.
 template <class M>
-RangoMatriz::RangoMatriz(const M &m)
+MatrixRange::MatrixRange(const M &m)
   : row_range(1,m.getNumberOfRows()),column_range(1,m.getNumberOfColumns()) {}
 
-//! @brief Recorte de los intervalos del rango a partir de una matriz.
+//! @brief Clipping of the range intervals from a matrix.
 template <class M>
-RangoMatriz clip(const RangoMatriz &rm,const M &m)
-  { return rm.Intersec(RangoMatriz(m)); }
+MatrixRange clip(const MatrixRange &rm,const M &m)
+  { return rm.Intersec(MatrixRange(m)); }
 #endif

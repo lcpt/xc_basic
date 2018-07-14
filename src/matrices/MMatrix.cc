@@ -18,74 +18,74 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//MatrizM.cc
+//MMatrix.cc
 
-#include "matrizM.h"
+#include "MMatrix.h"
 #include "vcolM.h"
 
 //! @brief Constructor.
 //!
-//! @param dim: Dimensiones de rows and columns (matriz cuadrada).
-matrizM::matrizM(const std::vector<size_t> &dim)
-  :  m_matriz(dim) {}
+//! @param dim: Dimensiones de rows and columns (square matrix).
+MMatrix::MMatrix(const std::vector<size_t> &dim)
+  :  m_matrix(dim) {}
 
 //! @brief Constructor.
 //!
 //! @param dim_rows: row dimension.
 //! @param dim_columns: column dimension.
-matrizM::matrizM(const std::vector<size_t> &dim_rows,const std::vector<size_t> &dim_columns)
-  :  m_matriz(dim_rows,dim_columns) {}
+MMatrix::MMatrix(const std::vector<size_t> &dim_rows,const std::vector<size_t> &dim_columns)
+  :  m_matrix(dim_rows,dim_columns) {}
 
 //! @brief Operador *=
-matrizM &matrizM::operator*=(const m_double &m)
+MMatrix &MMatrix::operator*=(const m_double &m)
   {
-    m_matriz::operator*=(m);
+    m_matrix::operator*=(m);
     return *this;
   }
 
 //! @brief Operador *=
-matrizM &matrizM::operator*=(const double &d)
+MMatrix &MMatrix::operator*=(const double &d)
   {
-    m_matriz::operator*=(d);
+    m_matrix::operator*=(d);
     return *this;
   }
 //! @brief Operador *=
-matrizM &matrizM::operator*=(const matrizM &m)
+MMatrix &MMatrix::operator*=(const MMatrix &m)
   {
-    m_matriz::operator*=(m);
+    m_matrix::operator*=(m);
     return *this;
   }
 
 //! @brief Operador *=
-matrizM &matrizM::operator*=(const vcolM &v)
+MMatrix &MMatrix::operator*=(const vcolM &v)
   {
-    m_matriz::operator*=((const matrizM &)v);
+    m_matrix::operator*=((const MMatrix &)v);
     return *this;
   }
 
-matrizM operator*(const matrizM &m1,const matrizM &m2)
+MMatrix operator*(const MMatrix &m1,const MMatrix &m2)
   {
-    matrizM producto(m1);
+    MMatrix producto(m1);
     producto*=m2;
     return producto;
   }
 
 //! @brief Return the transposed matrix.
-matrizM matrizM::GetTrn(void) const
+MMatrix MMatrix::GetTrn(void) const
   {
-    matrizM m= *this;
+    MMatrix m= *this;
     m.Trn();
     return m;
   }
 
-//! @brief Convierte en una matriz de bloques, la que is being passed as parameter.
+//! @brief Convert the argument matrix in a block matrix.
 //!
 //! @param dim_rows: row dimension.
 //! @param dim_columns: column dimension.
-//! @param a: Matriz que se convertirá a bloques.
-matrizM a_cajas(const std::vector<size_t> dim_rows,const std::vector<size_t> dim_columns,const m_double &a)
+//! @param a: matrix that will be converted.
+MMatrix a_cajas(const std::vector<size_t> dim_rows,const std::vector<size_t> dim_columns,const m_double &a)
   {
-    matrizM retval(dim_rows,dim_columns);
+    MMatrix retval(dim_rows,dim_columns);
     //Comprobamos dimensiones.
     assert(retval.getTotalNumberOfRows()==a.getNumberOfRows()); 
     assert(retval.getTotalNumberOfColumns()==a.getNumberOfColumns());
@@ -110,11 +110,12 @@ matrizM a_cajas(const std::vector<size_t> dim_rows,const std::vector<size_t> dim
     return retval;
   }
 
-//! @brief Convierte en una matriz de bloques, la que is being passed as parameter.
+//! @brief Convert the argument matrix in a block matrix.
 //!
-//! @param muestra: Matriz de muestra cuyos bloques sirven para definir la nueva.
-//! @param a: Matriz que se convertirá a bloques.
-matrizM a_cajas(const matrizM &muestra,const m_double &a)
+//! @param muestra: template matrix which blocks dimensions will be used
+//! to define the blocks of the new matrix.
+//! @param a: matrix that will be converted.
+MMatrix a_cajas(const MMatrix &muestra,const m_double &a)
   {
     const std::vector<size_t> dim_rows= muestra.get_dim_rows();
     const std::vector<size_t> dim_columns= muestra.get_dim_columns();

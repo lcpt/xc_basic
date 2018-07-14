@@ -24,9 +24,9 @@
 #define M_DOUBLE_H
 
 #include "xc_basic/src/util/matem.h"
-#include "matrizZ.h"
+#include "ZMatrix.h"
 
-typedef matrizZ<double> m_double;
+typedef ZMatrix<double> m_double;
 
 m_double identidad(const m_double &);
 m_double identidad(const size_t &,const size_t &);

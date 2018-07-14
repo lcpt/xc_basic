@@ -46,7 +46,7 @@ class Parametriza
   };
 
 template <class F>
-inline m_double ArgMatriz(const F &f,const m_double &m)
+inline m_double matrix_argument(const F &f,const m_double &m)
   {
     m_double retval(m.getNumberOfRows(),m.getNumberOfColumns());
     for(size_t k= 1; k <= m.getNumberOfRows(); k++)

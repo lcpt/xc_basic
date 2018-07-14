@@ -18,12 +18,12 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//MatrizT.h 
-#ifndef MATRIZT_H
-#define MATRIZT_H
+//TMatrix.h 
+#ifndef TMATRIX_H
+#define TMATRIX_H
 
 #include <iostream>
-#include "ProtoMatriz.h"
+#include "ProtoMatrix.h"
 #include "ConstRefCaja.h"
 #include "RowConstRef.h"
 #include "ColumnConstRef.h"
@@ -34,13 +34,13 @@
 //T Elementos a almacenar.
 //STO Objeto para almacenamiento.
 template <class T, class STO>
-class MatrizT : public ProtoMatriz, public STO
+class TMatrix: public ProtoMatrix, public STO
   {
   protected:
     inline virtual size_t Indice(const size_t &iRow,const size_t &iCol) const
       { return iRow*n_columns-n_columns+iCol-1; }
-    bool igual_a(const MatrizT<T,STO> &m2) const;
-    MatrizT(const MatrizT<T,STO> &orig,size_t f1, size_t c1, size_t f2, size_t c2);
+    bool igual_a(const TMatrix<T,STO> &m2) const;
+    TMatrix(const TMatrix<T,STO> &orig,size_t f1, size_t c1, size_t f2, size_t c2);
   public:
     typedef std::list<T> lst_T;
     typedef typename STO::iterator iterator;
@@ -48,17 +48,17 @@ class MatrizT : public ProtoMatriz, public STO
     typedef typename STO::value_type value_type;
     typedef typename STO::reference reference;
     typedef typename STO::const_reference const_reference;
-    typedef ConstRefCaja<MatrizT<T,STO> > const_ref_caja;
-    typedef RowConstRef<MatrizT<T,STO> > row_const_ref;
-    typedef ColumnConstRef<MatrizT<T,STO> > const_ref_col;
+    typedef ConstRefCaja<TMatrix<T,STO> > const_ref_caja;
+    typedef RowConstRef<TMatrix<T,STO> > row_const_ref;
+    typedef ColumnConstRef<TMatrix<T,STO> > const_ref_col;
 
-    MatrizT(size_t rows= 1,size_t n_columns= 1);
-    MatrizT(size_t n_rows,size_t n_columns,T val);
+    TMatrix(size_t rows= 1,size_t n_columns= 1);
+    TMatrix(size_t n_rows,size_t n_columns,T val);
     template <class InputIterator>
-    MatrizT(const size_t &n_rows,const size_t &n_columns,InputIterator b,InputIterator e);
-    MatrizT(const MatrizT<T,STO> &otra);
-    MatrizT<T,STO>& operator=(const MatrizT<T,STO> &m);
-    MatrizT<T,STO>& operator=(const T &n)
+    TMatrix(const size_t &n_rows,const size_t &n_columns,InputIterator b,InputIterator e);
+    TMatrix(const TMatrix<T,STO> &otra);
+    TMatrix<T,STO>& operator=(const TMatrix<T,STO> &m);
+    TMatrix<T,STO>& operator=(const T &n)
       { return Con(n); }
 
     void resize(size_t n_rows,size_t n_columns,T val);
@@ -83,7 +83,7 @@ class MatrizT : public ProtoMatriz, public STO
       { return STO::end(); }
     inline iterator end()
       { return STO::end(); }
-    MatrizT<T,STO>& Con(const T &t);
+    TMatrix<T,STO>& Con(const T &t);
     virtual reference operator()(size_t iRow=1,size_t col=1)
       { return STO::operator[](Indice(iRow,col)); }
     virtual const_reference operator()(size_t iRow=1,size_t col=1) const
@@ -94,22 +94,22 @@ class MatrizT : public ProtoMatriz, public STO
       { return STO::at(Indice(iRow,col)); }
     void Swap(size_t f1,size_t c1,size_t f2, size_t c2)
       { std::swap((*this)(f1,c1),(*this)(f2,c2)); }    
-    MatrizT<T,STO> &Trn(void)
+    TMatrix<T,STO> &Trn(void)
       {
-        MatrizT<T,STO> temp= GetTrn();
+        TMatrix<T,STO> temp= GetTrn();
         (*this)= temp;
         return *this;
       }
-    MatrizT<T,STO> GetTrn(void) const;
-    MatrizT<T,STO> GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
-      { return MatrizT<T,STO>(*this,f1,c1,f2,c2); }
+    TMatrix<T,STO> GetTrn(void) const;
+    TMatrix<T,STO> GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
+      { return TMatrix<T,STO>(*this,f1,c1,f2,c2); }
     const_ref_caja GetConstRefCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
       { return const_ref_caja(*this,f1,c1,f2,c2); }
     const_ref_caja GetConstRefCaja(const RangoIndice &row_range,const RangoIndice &column_range) const
       { return const_ref_caja(*this,row_range,column_range); }
     const_ref_caja GetConstRefCaja(size_t f=1, size_t c=1) const
       { return const_ref_caja(*this,f,c); }
-    MatrizT<T,STO> getRow(size_t iRow) const
+    TMatrix<T,STO> getRow(size_t iRow) const
       { return GetCaja(iRow,1,iRow,n_columns); }
     row_const_ref getRowConstRef(size_t f, size_t c1, size_t c2) const
       { return row_const_ref(*this,f,c1,c2); }
@@ -123,30 +123,30 @@ class MatrizT : public ProtoMatriz, public STO
       { return const_ref_col(*this,row_range,c); }
     const_ref_col getColumnConstRef(size_t c=1, size_t f=1) const
       { return const_ref_col(*this,c,f); }
-    MatrizT<T,STO> getColumn(size_t col) const
+    TMatrix<T,STO> getColumn(size_t col) const
       { return GetCaja(1,col,n_rows,col); }
-    MatrizT<T,STO> GetMenor(size_t f,size_t c) const;
-    void PutCaja(size_t f,size_t c,const MatrizT<T,STO> &caja);      
-    void putRow(size_t iRow,const MatrizT<T,STO> &f)
+    TMatrix<T,STO> GetMenor(size_t f,size_t c) const;
+    void PutCaja(size_t f,size_t c,const TMatrix<T,STO> &caja);      
+    void putRow(size_t iRow,const TMatrix<T,STO> &f)
       {
         if (!compareColumnNumber(*this,f)) return;
         PutCaja(iRow,1,f);
       }
-    void PutCol(size_t col,const MatrizT<T,STO> &c)
+    void PutCol(size_t col,const TMatrix<T,STO> &c)
       {
         if (!compareRowNumber(*this,c)) return;
         PutCaja(1,col,c);
       }
-    void OrlaCol(const MatrizT<T,STO> &c)
+    void OrlaCol(const TMatrix<T,STO> &c)
       {
-        MatrizT<T,STO> m(n_rows,n_columns+1);
+        TMatrix<T,STO> m(n_rows,n_columns+1);
         m.PutCaja(1,1,*this);
         m.PutCol(n_columns+1,c);
         *this= m;
       }
-    void decorateRow(const MatrizT<T,STO> &f)
+    void decorateRow(const TMatrix<T,STO> &f)
       {
-        MatrizT<T,STO> m(n_rows+1,n_columns);
+        TMatrix<T,STO> m(n_rows+1,n_columns);
         m.PutCaja(1,1,*this);
         m.putRow(n_rows+1,f);
         *this= m;
@@ -156,56 +156,58 @@ class MatrizT : public ProtoMatriz, public STO
     virtual void Print(std::ostream &) const;
     virtual void Input(std::istream &);
     virtual void Input(const std::string &);
-    inline friend bool operator==(const MatrizT<T,STO> &m1,const MatrizT<T,STO> &m2)
+    inline friend bool operator==(const TMatrix<T,STO> &m1,const TMatrix<T,STO> &m2)
       { return m1.igual_a(m2); }
-    virtual ~MatrizT(void) {}
+    virtual ~TMatrix(void) {}
   };
 
 //! @brief Constructor por defecto.
 template <class T,class STO>
-MatrizT<T,STO>::MatrizT(size_t n_rows,size_t n_columns)
-  : ProtoMatriz(n_rows,n_columns), STO(Tam()) {}
+TMatrix<T,STO>::TMatrix(size_t n_rows,size_t n_columns)
+  : ProtoMatrix(n_rows,n_columns), STO(Tam()) {}
 //! @brief Constructor.
 template <class T,class STO>
-MatrizT<T,STO>::MatrizT(size_t n_rows,size_t n_columns,T val)
-  : ProtoMatriz(n_rows,n_columns), STO(Tam(),val) {}
+TMatrix<T,STO>::TMatrix(size_t n_rows,size_t n_columns,T val)
+  : ProtoMatrix(n_rows,n_columns), STO(Tam(),val) {}
 //! @brief Constructor de copia.
 template <class T,class STO>
-MatrizT<T,STO>::MatrizT(const MatrizT<T,STO> &otra) 
-  : ProtoMatriz(otra),STO(otra) {}
+TMatrix<T,STO>::TMatrix(const TMatrix<T,STO> &otra) 
+  : ProtoMatrix(otra),STO(otra) {}
 
 //! @brief Constructor con lista inicialización.
 template <class T,class STO> template<class InputIterator>
-MatrizT<T,STO>::MatrizT(const size_t &n_rows,const size_t &n_columns,InputIterator b,InputIterator e)
-  : ProtoMatriz(n_rows,n_columns), STO(b,e)
+TMatrix<T,STO>::TMatrix(const size_t &n_rows,const size_t &n_columns,InputIterator b,InputIterator e)
+  : ProtoMatrix(n_rows,n_columns), STO(b,e)
   {
     if(STO::size()!=(n_rows*n_columns))
-      std::cerr << "MatrizT; el número de elementos de la lista es distinto del de la matriz" << std::endl;
+      std::cerr << "TMatrix; the number of elements of the list"
+	        << " is not equal to the number of elements of the"
+	        << " matrix." << std::endl;
   }
 
 
-//! @brief Operador asignación.
+//! @brief Assignment operator.
 template <class T,class STO>
-MatrizT<T,STO>& MatrizT<T,STO>::operator=(const MatrizT<T,STO> &m)
+TMatrix<T,STO>& TMatrix<T,STO>::operator=(const TMatrix<T,STO> &m)
   {
-    ProtoMatriz::operator=(m);
+    ProtoMatrix::operator=(m);
     STO::operator=(m);
     return *this;
   }
 
-//! @brief Operador asignación.
+//! @brief Assignment operator.
 template <class T,class STO>
-void MatrizT<T,STO>::resize(size_t n_rows,size_t n_columns,T val)
+void TMatrix<T,STO>::resize(size_t n_rows,size_t n_columns,T val)
   {
-    ProtoMatriz::resize(n_rows,n_columns);
+    ProtoMatrix::resize(n_rows,n_columns);
     STO::resize(Tam());
   }
 
 template <class MATR>
-MATR GetMenor(const MATR &matriz,const size_t &f,const size_t &c)
+MATR GetMenor(const MATR &matrix,const size_t &f,const size_t &c)
   {
-    const size_t fl= matriz.getNumberOfRows();
-    const size_t cl= matriz.getNumberOfColumns();
+    const size_t fl= matrix.getNumberOfRows();
+    const size_t cl= matrix.getNumberOfColumns();
     MATR menor(fl-1,cl-1);
     register size_t m,m1,p,p1;
     for(m= m1= 1; m<=fl;m++)
@@ -214,7 +216,7 @@ MATR GetMenor(const MATR &matriz,const size_t &f,const size_t &c)
         for(p= p1= 1;p<=cl;p++)
           {
             if (p == c) continue;
-            menor(m1,p1)= matriz(m,p);
+            menor(m1,p1)= matrix(m,p);
             p1++;
           }
         m1++;
@@ -222,25 +224,25 @@ MATR GetMenor(const MATR &matriz,const size_t &f,const size_t &c)
     return menor;
   }
 
-//! @brief Return el menor de la matriz correspondiente to the row and the
-//! column being passed as parameter.
+//! @brief Return the minor of the matrix that corresponds to the
+//! row and the column arguments.
 template <class T,class STO>
-MatrizT<T,STO> MatrizT<T,STO>::GetMenor(size_t f,size_t c) const
+TMatrix<T,STO> TMatrix<T,STO>::GetMenor(size_t f,size_t c) const
   { return ::GetMenor(*this,f,c); }
 
-//! @brief Coloca la caja en la posición (f,c) de esta matriz.
+//! @brief Put the box int the position (f,c) of this matrix.
 template <class T,class STO>
-void MatrizT<T,STO>::PutCaja(size_t f,size_t c,const MatrizT<T,STO> &caja)
+void TMatrix<T,STO>::PutCaja(size_t f,size_t c,const TMatrix<T,STO> &caja)
   {
     check_put_caja(f,c,caja);
     for(register size_t i=1;i<=caja.n_rows;i++)
       for(register size_t j=1;j<=caja.n_columns;j++)
-        MatrizT<T,STO>::operator()(i+f-1,j+c-1)= caja(i,j);
+        TMatrix<T,STO>::operator()(i+f-1,j+c-1)= caja(i,j);
   }
 
 //! @brief Operador salida.
 template <class T,class STO>
-std::ostream &operator<<(std::ostream &os,const MatrizT<T,STO> &m)
+std::ostream &operator<<(std::ostream &os,const TMatrix<T,STO> &m)
   {
     m.Print(os);
     return os;
@@ -248,22 +250,22 @@ std::ostream &operator<<(std::ostream &os,const MatrizT<T,STO> &m)
 
 //! @brief Lectura desde istream.
 template <class T,class STO>
-void MatrizT<T,STO>::Input(std::istream &is)
+void TMatrix<T,STO>::Input(std::istream &is)
   {
-    std::cerr << "MatrizT<T,STO>::Input no implementada." << std::endl;
+    std::cerr << "TMatrix<T,STO>::Input no implementada." << std::endl;
     return;
   }
 
 //! @brief Lectura desde string.
 template <class T,class STO>
-void MatrizT<T,STO>::Input(const std::string &str)
+void TMatrix<T,STO>::Input(const std::string &str)
   {
     std::istringstream iss(str);
     Input(iss);
   }
 
 template <class T,class STO>
-std::istream &operator >> (std::istream &is,MatrizT<T,STO> &m)
+std::istream &operator >> (std::istream &is,TMatrix<T,STO> &m)
   {
     m.Input(is);
     return is;
@@ -274,7 +276,7 @@ inline M traspuesta(const M &m)
   { return m.GetTrn(); }
 
 template<class T,class STO>
-MatrizT<T,STO>::MatrizT(const MatrizT<T,STO> &orig,size_t f1, size_t c1, size_t f2, size_t c2): ProtoMatriz(f2-f1+1,c2-c1+1), STO(Tam()) 
+TMatrix<T,STO>::TMatrix(const TMatrix<T,STO> &orig,size_t f1, size_t c1, size_t f2, size_t c2): ProtoMatrix(f2-f1+1,c2-c1+1), STO(Tam()) 
   {
     orig.check_get_caja(f1,c1,f2,c2);
     for(register size_t i=1;i<=n_rows;i++)
@@ -283,7 +285,7 @@ MatrizT<T,STO>::MatrizT(const MatrizT<T,STO> &orig,size_t f1, size_t c1, size_t 
   }
 
 template<class T,class STO>
-MatrizT<T,STO>& MatrizT<T,STO>::Con(const T &t)
+TMatrix<T,STO>& TMatrix<T,STO>::Con(const T &t)
   {
     for(register size_t i=1;i<=n_rows;i++)
       for(register size_t j=1;j<=n_columns;j++)
@@ -292,22 +294,22 @@ MatrizT<T,STO>& MatrizT<T,STO>::Con(const T &t)
   }
 
 template<class T,class STO>
-MatrizT<T,STO> MatrizT<T,STO>::GetTrn(void) const
+TMatrix<T,STO> TMatrix<T,STO>::GetTrn(void) const
   {
-    MatrizT<T,STO> retval(n_columns,n_rows);
+    TMatrix<T,STO> retval(n_columns,n_rows);
     for(register size_t i=1;i<=n_rows;i++)
       for(register size_t j=1;j<=n_columns;j++)
         retval(j,i)= (*this)(i,j); 
     return retval;
   }
 template<class T,class STO>
-void MatrizT<T,STO>::swapRows(size_t f1,size_t f2)
+void TMatrix<T,STO>::swapRows(size_t f1,size_t f2)
   { for(register size_t c=1;c<=n_columns;c++) Swap(f1,c,f2,c); }
 template<class T,class STO>
-void MatrizT<T,STO>::swapColumns(size_t c1,size_t c2)
+void TMatrix<T,STO>::swapColumns(size_t c1,size_t c2)
   { for(register size_t f=1;f<=n_rows;f++) Swap(f,c1,f,c2); }
 template<class T,class STO>
-void MatrizT<T,STO>::Print(std::ostream &os) const
+void TMatrix<T,STO>::Print(std::ostream &os) const
   {
     os << '[';
     const size_t n_rows= getNumberOfRows(),n_columns= getNumberOfColumns();
@@ -322,7 +324,7 @@ void MatrizT<T,STO>::Print(std::ostream &os) const
     os << ']';
   }
 template<class T,class STO>
-bool MatrizT<T,STO>::igual_a(const MatrizT<T,STO> &m2) const
+bool TMatrix<T,STO>::igual_a(const TMatrix<T,STO> &m2) const
   {
     if (!CompDim(*this,m2)) return false;
     for(register size_t i=1;i<=n_rows;i++)
@@ -334,15 +336,15 @@ bool MatrizT<T,STO>::igual_a(const MatrizT<T,STO> &m2) const
 //! @brief Return a column matrix which components are those 
 //! indentified by the row indexes of the integer vector argument 
 //! being passed as parameter.
-//! @param matriz: Matriz de la que se extraen los valores.
+//! @param matrix: Matrix to extract the values of.
 //! @param row_indexes: row indexes of the components to be extracted.
 //! @param icol: Indice de the column de los elementos a extraer.
 template <class MATRV,class MATRI>
-MATRV ExtraeValores(const MATRV &matriz,const MATRI &row_indexes,const size_t &icol= 1)
+MATRV ExtraeValores(const MATRV &matrix,const MATRI &row_indexes,const size_t &icol= 1)
   {
     MATRV retval(row_indexes.getNumberOfRows(),1);
     for(register size_t iRow=1;iRow<=retval.getNumberOfRows();iRow++)
-      retval(iRow,1)= matriz(row_indexes(iRow),icol);
+      retval(iRow,1)= matrix(row_indexes(iRow),icol);
     return retval;
   }
 

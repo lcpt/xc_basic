@@ -24,21 +24,21 @@
 #define NORMALIZA_H
 
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 
 template<class treal>
-inline void Normaliza(matrizZ<treal> &m)
-//Divide las componentes de la matriz por su modulo.
+//! @brief Divide the components of the matrix by its norm.
+inline void Normaliza(ZMatrix<treal> &m)
   {
     const treal vabs= Abs(m);
     if(vabs>0) m*= 1.0/vabs;
   }
 
 template<class treal>
-inline matrizZ<treal> Normaliza(const matrizZ<treal> &m)
-//Divide las componentes de la matriz por su modulo.
+//! @brief Divide the components of the matrix by its norm.
+inline ZMatrix<treal> Normaliza(const ZMatrix<treal> &m)
   {
-    matrizZ<treal> retval(m);
+    ZMatrix<treal> retval(m);
     Normaliza(retval);
     return retval;
   }

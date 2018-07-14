@@ -24,16 +24,16 @@
 #ifndef MATDISPZ_H
 #define MATDISPZ_H
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 #include <map>
 #include <algorithm>
 
 template <class numero>
-class matdispZ : public matrizZ<numero>
+class matdispZ : public ZMatrix<numero>
   {
   public:
-    typedef matrizZ<numero> matrizZ_numero;
-    typedef typename matrizZ_numero::size_type size_type;
+    typedef ZMatrix<numero> ZMatrix_number;
+    typedef typename ZMatrix_number::size_type size_type;
     typedef std::map<size_type,numero> map_elem;
 
     class sp_vector: public map_elem
@@ -49,7 +49,7 @@ class matdispZ : public matrizZ<numero>
         sp_vector &operator+=(const sp_vector &v);
         sp_vector &operator-=(const sp_vector &v);
         void QuitaElem(const numero &n);
-        void PutCol(const typename sp_vector::size_type c,matrizZ_numero &m) const;
+        void PutCol(const typename sp_vector::size_type c,ZMatrix_number &m) const;
         sp_vector getNumberOfRows(const typename sp_vector::size_type f1,const typename sp_vector::size_type f2) const;
         size_t ndiagL(const size_t &icol) const;
         size_t ndiagU(const size_t &icol) const;
@@ -73,7 +73,7 @@ class matdispZ : public matrizZ<numero>
     inline bool hasColumn(const size_type &c) const
       { return (columns.find(c)!=columns.end()); }
     inline const numero &PorDefecto(void) const
-      { return (matrizZ_numero::operator()(1,1)); }
+      { return (ZMatrix_number::operator()(1,1)); }
     bool IgualA(const matdispZ<numero> &otra) const;
 
     template<class M>
@@ -84,14 +84,14 @@ class matdispZ : public matrizZ<numero>
   public:
 
     matdispZ(size_type n_rows=1,size_type n_columns= 1)
-      : matrizZ_numero(1,1,numero())
+      : ZMatrix_number(1,1,numero())
       { this->PutDim(n_rows,n_columns); }
     matdispZ(const matdispZ<numero> &otra)
-      : matrizZ_numero(otra), columns(otra.columns)
+      : ZMatrix_number(otra), columns(otra.columns)
       { this->PutDim(otra.n_rows,otra.n_columns); }
     matdispZ<numero>& operator =(const matdispZ<numero> &m)
       {
-        matrizZ_numero::operator =(m);
+        ZMatrix_number::operator =(m);
         columns= m.columns;
         return *this;
       }
@@ -162,7 +162,7 @@ class matdispZ : public matrizZ<numero>
       { return GetCaja(1,col,this->n_rows,col); }
     void PutCaja(size_t f,size_t c,const matdispZ<numero> &caja);
     numero Traza(void) const;
-    matrizZ_numero GetCompleta(void) const;
+    ZMatrix_number GetCompleta(void) const;
 
     void writeCpp(std::ostream &os) const;
 
@@ -204,7 +204,7 @@ class matdispZ : public matrizZ<numero>
     //v2: column vector.
     friend numero dot(const matdispZ<numero> &v1,const matdispZ<numero> &v2)
       { return v1.dot(v2); }
-    friend numero dot(const matdispZ<numero> &v1,const matrizZ<numero> &v2)
+    friend numero dot(const matdispZ<numero> &v1,const ZMatrix<numero> &v2)
       { return v1.dot(v2); }
     friend matdispZ<numero> operator*(const matdispZ<numero> &m1,const matdispZ<numero> &m2)
       {
@@ -212,14 +212,14 @@ class matdispZ : public matrizZ<numero>
         matdispZ<numero> producto(m1.Post(m2));
         return producto;
       }
-    friend matdispZ<numero> operator*(const matdispZ<numero> &m1,const matrizZ<numero> &m2)
+    friend matdispZ<numero> operator*(const matdispZ<numero> &m1,const ZMatrix<numero> &m2)
       {
         check_prod(m1,m2);
         matdispZ<numero> producto(m1.Post(m2));
         return producto;
       }
     /*
-    friend matdispZ<numero> operator*(const matdispZ<numero> &m1,const matrizZ<numero> &m2)
+    friend matdispZ<numero> operator*(const matdispZ<numero> &m1,const ZMatrix<numero> &m2)
       {
         check_prod(m1,m2);
         matdispZ<numero> producto(m1.n_rows,m2.getNumberOfColumns());
@@ -241,7 +241,7 @@ class matdispZ : public matrizZ<numero>
       { return m*p; }
 
     friend std::istream &operator >> (std::istream &stream,matdispZ<numero> &m)
-      { return ::operator >>(stream,(matrizZ_numero &) m); }
+      { return ::operator >>(stream,(ZMatrix_number &) m); }
     */
   };
 
@@ -277,7 +277,7 @@ void matdispZ<numero>::sp_vector::QuitaElem(const numero &n)
         this->erase(f);
   }
 template<class numero>
-void matdispZ<numero>::sp_vector::PutCol(const typename sp_vector::size_type c,matrizZ_numero &m) const
+void matdispZ<numero>::sp_vector::PutCol(const typename sp_vector::size_type c,ZMatrix_number &m) const
   {
     const_iterator f;
     for(f= this->begin();f!=this->end();f++)
@@ -449,7 +449,7 @@ void matdispZ<numero>::Identity(void)
 template <class numero>
 matdispZ<numero> &matdispZ<numero>::Trn(void)
   {
-    matrizZ_numero::Trn();
+    ZMatrix_number::Trn();
     const_c_iterator c;
     const_f_iterator f;
     for(c= columns.begin();c!=columns.end();c++)
@@ -489,7 +489,7 @@ void matdispZ<numero>::FillVectorBanda(numero *vptr) const
       c->second.PutColBanda(ancho_banda,c->first,ndiagu,vptr);
   }
 
-//! @brief Escribe la matriz en formato de C++ (sólo los elementos no nulos.
+//! @brief Writes the matrix in C++ format (only non-zero components).
 template<class numero>
 void matdispZ<numero>::writeCpp(std::ostream &os) const
   {
@@ -539,9 +539,9 @@ numero matdispZ<numero>::Traza(void) const
   }
 
 template<class numero>
-typename matdispZ<numero>::matrizZ_numero matdispZ<numero>::GetCompleta(void) const
+typename matdispZ<numero>::ZMatrix_number matdispZ<numero>::GetCompleta(void) const
   {
-    matrizZ_numero retval(this->n_rows,this->n_columns,PorDefecto());
+    ZMatrix_number retval(this->n_rows,this->n_columns,PorDefecto());
     const_c_iterator c;
     for(c= columns.begin();c!=columns.end();c++)
       c->second.PutCol(c->first,retval);
@@ -563,9 +563,8 @@ bool matdispZ<numero>::IgualA(const matdispZ<numero> &otra) const
   }
 
 template<class numero>
+//Return the product of this matrix by the matrix argument.
 matdispZ<numero> matdispZ<numero>::Post(const matdispZ<numero> &b) const
-//Return el producto de esta matriz por
-//la matriz b.
   {
     check_prod(*this,b);
     matdispZ<numero> ret(this->getNumberOfRows(),b.getNumberOfColumns());
@@ -581,9 +580,8 @@ matdispZ<numero> matdispZ<numero>::Post(const matdispZ<numero> &b) const
 
 template<class numero>
 template<class M>
+//Return the product of this matrix by the matrix argument.
 matdispZ<numero> matdispZ<numero>::Post(const M &b) const
-//Return el producto de esta matriz por
-//la matriz b.
   {
     check_prod(*this,b);
     matdispZ<numero> ret(this->getNumberOfRows(),b.getNumberOfColumns());

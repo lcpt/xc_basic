@@ -90,9 +90,9 @@ m_double Seg_lin::get_N_vec(const m_double &natcor) const
 
 //! @brief Devuelve el jacobiano de la transformación.
 
-//! Devuelve los valores de las derivadas parciales de las funciones de 
-//! forma en el punto cuyas coordenadas naturales se pasan como parámetro.
-//! El elemento (i,j) de la matriz es igual a d(Nj)/d(xi)
+//! Return the values of the partial derivatives of the shape functions
+//! at the point wich natural coordinates are being passed as parameter.
+//! The (i,j) component of the matrix is equal to d(Nj)/d(xi)
 m_double Seg_lin::getPartialDerivatives(const m_double &natcor) const
   {
     m_double P(1,2);

@@ -23,26 +23,26 @@
 #ifndef CONSTREFCAJA_H
 #define CONSTREFCAJA_H
 
-#include "ProtoMatriz.h"
+#include "ProtoMatrix.h"
 #include "RangoIndice.h"
 
-//! @brief Base para las referencias a una caja de una matriz.
-class BaseRefCaja: public ProtoMatriz
+//! @brief Base class for the references to a matrix box.
+class BaseRefCaja: public ProtoMatrix
   {
   protected:
     size_t offset_f; //!< row offset.
     size_t offset_c; //!< column offset.
   public:
-    BaseRefCaja(const ProtoMatriz &m,const size_t &f1= 1,const size_t &c1= 1);
-    BaseRefCaja(const ProtoMatriz &m,const size_t &,const size_t &,const size_t &,const size_t &);
-    BaseRefCaja(const ProtoMatriz &mat,const RangoIndice &row_range,const RangoIndice &column_range);
-    BaseRefCaja(const ProtoMatriz &mat,const RangoIndice &,const size_t &);
-    BaseRefCaja(const ProtoMatriz &mat,const size_t &,const RangoIndice &);
+    BaseRefCaja(const ProtoMatrix &m,const size_t &f1= 1,const size_t &c1= 1);
+    BaseRefCaja(const ProtoMatrix &m,const size_t &,const size_t &,const size_t &,const size_t &);
+    BaseRefCaja(const ProtoMatrix &mat,const RangoIndice &row_range,const RangoIndice &column_range);
+    BaseRefCaja(const ProtoMatrix &mat,const RangoIndice &,const size_t &);
+    BaseRefCaja(const ProtoMatrix &mat,const size_t &,const RangoIndice &);
     RangoIndice getRowRange(void) const;
     RangoIndice getColumnRange(void) const;
   };
 
-//! @brief Referencia a una caja de una matriz.
+//! @brief Reference to a matrix box.
 template <class MAT>
 class ConstRefCaja: public BaseRefCaja
   {

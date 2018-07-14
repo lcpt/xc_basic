@@ -35,7 +35,7 @@ double Q(const double &x)
     double sum; //sumatorio.
     double xp; //x elevado a una potencia entera.
     double tempo;
-    //Matriz de coeficientes.
+    //Coefficient matrix.
     double b[5] = { 0.319381530, -0.356563782,1.781477937, -1.821255978,1.330274429 };
 
     tempo = 1.0 / ( 1.0 + 0.2316419 * fabs(x));
@@ -126,7 +126,7 @@ double TInv(double x, double df)
     xq = QInv(x);
     Pwr[1] = xq;
 
-    //Bucle para obtener la matriz de potencias.
+    //Loop to compute matrix of powers.
     for(i = 2; i <= 9; i++)
       Pwr[i] = Pwr[i-1] * xq;
 

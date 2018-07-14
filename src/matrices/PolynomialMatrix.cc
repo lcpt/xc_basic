@@ -18,138 +18,138 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//matrizPolmio.cc
+//PolynomialMatrix.cc
 
-#include "matrizPolmio.h"
+#include "PolynomialMatrix.h"
 #include "m_double.h"
 
-matrizPolmio::matrizPolmio(const m_double &m)
-  : polmio_matriz(m.getNumberOfRows(),m.getNumberOfColumns())
+PolynomialMatrix::PolynomialMatrix(const m_double &m)
+  : polynomial_matrix(m.getNumberOfRows(),m.getNumberOfColumns())
   {
     for(register size_type i=1;i<=n_rows;i++)
       for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= Polinomio(m(i,j));
   }
-void matrizPolmio::eval(short unsigned int k,const double &val)
+void PolynomialMatrix::eval(short unsigned int k,const double &val)
   {
     for(register size_type i=1;i<=n_rows;i++)
       for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Eval(k,val);
   }
-void matrizPolmio::eval(short unsigned int k,const Polinomio &val)
+void PolynomialMatrix::eval(short unsigned int k,const Polinomio &val)
   {
     for(register size_type i=1;i<=n_rows;i++)
       for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Eval(k,val);
   }
-void matrizPolmio::eval(const vZ_double &v)
+void PolynomialMatrix::eval(const vZ_double &v)
   {
     for(register size_type i=1;i<=n_rows;i++)
       for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Eval(v);
   }
-void matrizPolmio::eval(const mZ_double &v)
+void PolynomialMatrix::eval(const mZ_double &v)
   {
     for(register size_type i=1;i<=n_rows;i++)
       for(register size_type j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Eval(v);
   }
-matrizPolmio matrizPolmio::Eval(short unsigned int j,const double &val) const
+PolynomialMatrix PolynomialMatrix::Eval(short unsigned int j,const double &val) const
   {
-    matrizPolmio retval(*this);
+    PolynomialMatrix retval(*this);
     retval.eval(j,val);
     return retval;
   }
-matrizPolmio matrizPolmio::Eval(short unsigned int j,const Polinomio &val) const
+PolynomialMatrix PolynomialMatrix::Eval(short unsigned int j,const Polinomio &val) const
   {
-    matrizPolmio retval(*this);
+    PolynomialMatrix retval(*this);
     retval.eval(j,val);
     return retval;
   }
-matrizPolmio matrizPolmio::Eval(const vZ_double &v) const
+PolynomialMatrix PolynomialMatrix::Eval(const vZ_double &v) const
   {
-    matrizPolmio retval(*this);
+    PolynomialMatrix retval(*this);
     retval.eval(v);
     return retval;
   }
-matrizPolmio matrizPolmio::Eval(const mZ_double &v) const
+PolynomialMatrix PolynomialMatrix::Eval(const mZ_double &v) const
   {
-    matrizPolmio retval(*this);
+    PolynomialMatrix retval(*this);
     retval.eval(v);
     return retval;
   }
-matrizPolmio &matrizPolmio::Trn(void)
+PolynomialMatrix &PolynomialMatrix::Trn(void)
   {
-    polmio_matriz::Trn();
+    polynomial_matrix::Trn();
     return *this;
   }
-matrizPolmio matrizPolmio::GetTrn(void) const
+PolynomialMatrix PolynomialMatrix::GetTrn(void) const
   {
-    matrizPolmio m= *this;
+    PolynomialMatrix m= *this;
     m.Trn();
     return m;
   }
-matrizPolmio &matrizPolmio::operator*=(const double &d)
+PolynomialMatrix &PolynomialMatrix::operator*=(const double &d)
   {
     const size_type sz= size();      
     for(register size_type i= 0;i<sz;i++)
       (*this)[i]*=d;
     return *this;
   }
-matrizPolmio &matrizPolmio::operator+=(const m_double &m)
+PolynomialMatrix &PolynomialMatrix::operator+=(const m_double &m)
   {
     if (!CompDim(*this,m))
       {
         std::cerr << "Matrices de dimensiones distintas en operador +=" << std::endl;
         abort();
       }
-    matrizPolmio::size_type n_rows= getNumberOfRows(), n_columns= getNumberOfColumns();
-    register matrizPolmio::size_type i,j;
+    PolynomialMatrix::size_type n_rows= getNumberOfRows(), n_columns= getNumberOfColumns();
+    register PolynomialMatrix::size_type i,j;
     for (i=1;i<=n_rows;i++)
       for (j=1;j<=n_columns;j++)
         (*this)(i,j)+= m(i,j);
     return *this;
   }
-matrizPolmio &matrizPolmio::operator-=(const m_double &m)
+PolynomialMatrix &PolynomialMatrix::operator-=(const m_double &m)
   {
     if (!CompDim(*this,m))
       {
         std::cerr << "Matrices de dimensiones distintas en operador +=" << std::endl;
         abort();
       }
-    matrizPolmio::size_type n_rows= getNumberOfRows(), n_columns= getNumberOfColumns();
-    register matrizPolmio::size_type i,j;
+    PolynomialMatrix::size_type n_rows= getNumberOfRows(), n_columns= getNumberOfColumns();
+    register PolynomialMatrix::size_type i,j;
     for (i=1;i<=n_rows;i++)
       for (j=1;j<=n_columns;j++)
         (*this)(i,j)-= m(i,j);
     return *this;
   }
 
-matrizPolmio &matrizPolmio::Primitiva(short unsigned int k)
+PolynomialMatrix &PolynomialMatrix::Primitiva(short unsigned int k)
   {
-    const matrizPolmio::size_type n_rows= getNumberOfRows();
-    const matrizPolmio::size_type n_columns= getNumberOfColumns();
-    matrizPolmio::size_type i,j;
+    const PolynomialMatrix::size_type n_rows= getNumberOfRows();
+    const PolynomialMatrix::size_type n_columns= getNumberOfColumns();
+    PolynomialMatrix::size_type i,j;
     for (i=1;i<=n_rows;i++)
       for (j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Primitiva(k);
     return *this;
   }
 
-matrizPolmio &matrizPolmio::Diferencial(short unsigned int k)
+PolynomialMatrix &PolynomialMatrix::Diferencial(short unsigned int k)
   {
-    const matrizPolmio::size_type n_rows= getNumberOfRows();
-    const matrizPolmio::size_type n_columns= getNumberOfColumns();
-    matrizPolmio::size_type i,j;
+    const PolynomialMatrix::size_type n_rows= getNumberOfRows();
+    const PolynomialMatrix::size_type n_columns= getNumberOfColumns();
+    PolynomialMatrix::size_type i,j;
     for (i=1;i<=n_rows;i++)
       for (j=1;j<=n_columns;j++)
         (*this)(i,j)= (*this)(i,j).Parcial(k);
     return *this;
   }
 
-matrizPolmio operator*(const matrizPolmio &m1,const matrizPolmio &m2)
+PolynomialMatrix operator*(const PolynomialMatrix &m1,const PolynomialMatrix &m2)
   {
-    matrizPolmio producto(m1.n_rows,m2.n_columns);
+    PolynomialMatrix producto(m1.n_rows,m2.n_columns);
     if (m1.n_columns != m2.n_rows)
       {
         std::cerr << "Matrices de dimensiones incompatibles en producto." << std::endl;
@@ -157,48 +157,48 @@ matrizPolmio operator*(const matrizPolmio &m1,const matrizPolmio &m2)
         std::cerr << "  m2= " << m2 << std::endl;
         return producto;
       }
-    matrizPolmio::size_type i=1,j=1;
+    PolynomialMatrix::size_type i=1,j=1;
     for (i= 1;i<=m1.n_rows;i++)
       for (j= 1;j<=m2.n_columns;j++)
         producto(i,j) = dot(m1.getRow(i),m2.getColumn(j));
     return producto;
   }
-matrizPolmio operator+(const matrizPolmio &m1,const matrizPolmio &m2)
+PolynomialMatrix operator+(const PolynomialMatrix &m1,const PolynomialMatrix &m2)
   {
-    matrizPolmio retval(m1);
+    PolynomialMatrix retval(m1);
     retval+=(m2);
     return retval;
   }
-matrizPolmio operator-(const matrizPolmio &m1,const matrizPolmio &m2)
+PolynomialMatrix operator-(const PolynomialMatrix &m1,const PolynomialMatrix &m2)
   {
-    matrizPolmio retval(m1);
+    PolynomialMatrix retval(m1);
     retval+=(m2);
     return retval;
   }
-matrizPolmio operator+(const matrizPolmio &m1,const m_double &m2)
+PolynomialMatrix operator+(const PolynomialMatrix &m1,const m_double &m2)
   {
-    matrizPolmio retval(m1);
+    PolynomialMatrix retval(m1);
     retval+=(m2);
     return retval;
   }
-matrizPolmio operator-(const matrizPolmio &m1,const m_double &m2)
+PolynomialMatrix operator-(const PolynomialMatrix &m1,const m_double &m2)
   {
-    matrizPolmio retval(m1);
+    PolynomialMatrix retval(m1);
     retval-=(m2);
     return retval;
   }
-matrizPolmio operator-(const m_double &m1,const matrizPolmio &m2)
-  { return matrizPolmio(m1)-m2; }
+PolynomialMatrix operator-(const m_double &m1,const PolynomialMatrix &m2)
+  { return PolynomialMatrix(m1)-m2; }
 
-matrizPolmio operator-(const matrizPolmio &m)
+PolynomialMatrix operator-(const PolynomialMatrix &m)
   {
-    matrizPolmio retval(m);
+    PolynomialMatrix retval(m);
     retval.Neg();
     return retval;
   }
 
 //Return el valor del polinomio en el punto vp.
-Polinomio Eval(const Polinomio &p,const matrizPolmio &vp)
+Polinomio Eval(const Polinomio &p,const PolynomialMatrix &vp)
   {
     Polinomio result= p;
     size_t i,sz= vp.getNumberOfRows();
@@ -206,46 +206,46 @@ Polinomio Eval(const Polinomio &p,const matrizPolmio &vp)
     return result;
   }
 
-m_double Eval(const matrizPolmio &p,const m_double &x)
+m_double Eval(const PolynomialMatrix &p,const m_double &x)
   {
-    matrizPolmio::size_type n_rows= p.getNumberOfRows();
-    matrizPolmio::size_type n_columns= p.getNumberOfColumns();
+    PolynomialMatrix::size_type n_rows= p.getNumberOfRows();
+    PolynomialMatrix::size_type n_columns= p.getNumberOfColumns();
     m_double f(n_rows,n_columns);
-    matrizPolmio::size_type i,j;
+    PolynomialMatrix::size_type i,j;
     for (i=1;i<=n_rows;i++)
       for (j=1;j<=n_columns;j++)
         f(i,j)= p(i,j).Eval(x);
     return f;
   }
 
-matrizPolmio Eval(const matrizPolmio &m1,const matrizPolmio &m2)
+PolynomialMatrix Eval(const PolynomialMatrix &m1,const PolynomialMatrix &m2)
   {
-    matrizPolmio::size_type n_rows= m1.getNumberOfRows();
-    matrizPolmio::size_type n_columns= m1.getNumberOfColumns();
-    matrizPolmio f(n_rows,n_columns);
-    matrizPolmio::size_type i,j;
+    PolynomialMatrix::size_type n_rows= m1.getNumberOfRows();
+    PolynomialMatrix::size_type n_columns= m1.getNumberOfColumns();
+    PolynomialMatrix f(n_rows,n_columns);
+    PolynomialMatrix::size_type i,j;
     for (i=1;i<=n_rows;i++)
       for (j=1;j<=n_columns;j++)
         f(i,j)= Eval(m1(i,j),m2);
     return f;
   }
-Polinomio dot(const matrizPolmio &v1,const m_double &v2)
+Polinomio dot(const PolynomialMatrix &v1,const m_double &v2)
 //Producto escalar de dos vectores.
 //v1: row vector.
 //v2: column vector.
   {
-    const matrizPolmio::size_type n_columns= v1.getNumberOfColumns();
+    const PolynomialMatrix::size_type n_columns= v1.getNumberOfColumns();
     if (n_columns != v2.getNumberOfRows())
       {
         std::cerr << "Matrices de dimensiones incompatibles en producto escalar." << std::endl;
         abort();      
       }
     Polinomio retval= Polinomio::neutro_suma();
-    for(register matrizPolmio::size_type i=1;i<=n_columns;i++)
+    for(register PolynomialMatrix::size_type i=1;i<=n_columns;i++)
       retval+= v1(1,i) * v2(i,1);
     return retval;
   }
-Polinomio dot(const m_double &v1,const matrizPolmio &v2)
+Polinomio dot(const m_double &v1,const PolynomialMatrix &v2)
 //Producto escalar de dos vectores.
 //v1: row vector.
 //v2: column vector.
@@ -259,62 +259,62 @@ Polinomio dot(const m_double &v1,const matrizPolmio &v2)
         abort();
       }
     Polinomio retval= Polinomio::neutro_suma();
-    for(register matrizPolmio::size_type i=1;i<=n_columns;i++)
+    for(register PolynomialMatrix::size_type i=1;i<=n_columns;i++)
       retval+= v1(1,i) * v2(i,1);
     return retval;  
   }
-matrizPolmio operator*(const Polinomio &p,const m_double &m)
+PolynomialMatrix operator*(const Polinomio &p,const m_double &m)
   {
     const m_double::size_type n_rows= m.getNumberOfRows();
     const m_double::size_type n_columns= m.getNumberOfColumns();
-    matrizPolmio prod(n_rows,n_columns);
-    for(register matrizPolmio::size_type i= 1;i<=n_rows;i++)
-      for(register matrizPolmio::size_type j= 1;j<=n_columns;j++)
+    PolynomialMatrix prod(n_rows,n_columns);
+    for(register PolynomialMatrix::size_type i= 1;i<=n_rows;i++)
+      for(register PolynomialMatrix::size_type j= 1;j<=n_columns;j++)
         prod(i,j)= m(i,j) * p;
     return prod;
   }
-matrizPolmio operator*(const matrizPolmio &m,const double &d)
+PolynomialMatrix operator*(const PolynomialMatrix &m,const double &d)
   {
-    matrizPolmio retval(m);
+    PolynomialMatrix retval(m);
     retval*=(d);
     return retval;
   }
 
-matrizPolmio Primitiva(const matrizPolmio &m,short unsigned int k)
+PolynomialMatrix Primitiva(const PolynomialMatrix &m,short unsigned int k)
   {
-    matrizPolmio retval(m);
+    PolynomialMatrix retval(m);
     retval.Primitiva(k);
     return k;
   }
 
-matrizPolmio Diferencial(const matrizPolmio &m, short unsigned int k)
+PolynomialMatrix Diferencial(const PolynomialMatrix &m, short unsigned int k)
   {
-    matrizPolmio retval(m);
+    PolynomialMatrix retval(m);
     retval.Diferencial(k);
     return k;
   }
 
-matrizPolmio Integral(const matrizPolmio &m,short unsigned int j,const double &x0,const double &x1)
+PolynomialMatrix Integral(const PolynomialMatrix &m,short unsigned int j,const double &x0,const double &x1)
   {
-    matrizPolmio p= Primitiva(m,j);
+    PolynomialMatrix p= Primitiva(m,j);
     return Eval(p,j,x1) - Eval(p,j,x0);
   }
-matrizPolmio Integral(const matrizPolmio &m,short unsigned int j,const Polinomio &x0,const Polinomio &x1)
+PolynomialMatrix Integral(const PolynomialMatrix &m,short unsigned int j,const Polinomio &x0,const Polinomio &x1)
   {
-    matrizPolmio p= Primitiva(m,j);
+    PolynomialMatrix p= Primitiva(m,j);
     return Eval(p,j,x1) - Eval(p,j,x0);
   }
-matrizPolmio Integral(const matrizPolmio &m,short unsigned int j,const Polinomio &x0,const double &x1)
+PolynomialMatrix Integral(const PolynomialMatrix &m,short unsigned int j,const Polinomio &x0,const double &x1)
   {
-    matrizPolmio p= Primitiva(m,j);
+    PolynomialMatrix p= Primitiva(m,j);
     return Eval(p,j,x1) - Eval(p,j,x0);
   }
-matrizPolmio Integral(const matrizPolmio &m,short unsigned int j,const double &x0,const Polinomio &x1)
+PolynomialMatrix Integral(const PolynomialMatrix &m,short unsigned int j,const double &x0,const Polinomio &x1)
   {
-    matrizPolmio p= Integral(m,j,x1,x0);
+    PolynomialMatrix p= Integral(m,j,x1,x0);
     return -p;
   }
-matrizPolmio Derivada(const matrizPolmio &m,short unsigned int j,const double &x)
+PolynomialMatrix Derivada(const PolynomialMatrix &m,short unsigned int j,const double &x)
   { return Eval(Diferencial(m,j),j,x); }
-matrizPolmio Derivada(const matrizPolmio &m,short unsigned int j,const Polinomio &x)
+PolynomialMatrix Derivada(const PolynomialMatrix &m,short unsigned int j,const Polinomio &x)
   { return Eval(Diferencial(m,j),j,x); }

@@ -18,58 +18,58 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//matrizExpr.h
-//Matriz de expresiones
+//ExpressionMatrix.h
+//Matrix of expressions
 
-#ifndef MATRIZEXPR_H
-#define MATRIZEXPR_H
+#ifndef EXPRESSIONMATRIX_H
+#define EXPRESSIONMATRIX_H
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 #include "xc_basic/src/funciones/algebra/ExprAlgebra.h"
 #include "m_double.h"
 
-typedef matrizZ<ExprAlgebra> expr_matriz;
+typedef ZMatrix<ExprAlgebra> expression_matrix;
 
-class matrizExpr: public expr_matriz
+class ExpressionMatrix: public expression_matrix
   {
-    friend class matrizMExpr;
+    friend class MExpressionMatrix;
 
     void eval(void);
     void eval(const char *palabra,const ExprAlgebra &a);
     void eval(const char *palabra,const double &d);
   public:
-    matrizExpr(size_type n_rows=1,size_type cols=1,const ExprAlgebra &val=ExprAlgebra())
-      : expr_matriz(n_rows,cols,val) {}
-    matrizExpr(const matrizExpr &otra) : expr_matriz(otra) {}
-    matrizExpr &operator=(const matrizExpr &m)
+    ExpressionMatrix(size_type n_rows=1,size_type cols=1,const ExprAlgebra &val=ExprAlgebra())
+      : expression_matrix(n_rows,cols,val) {}
+    ExpressionMatrix(const ExpressionMatrix &otra) : expression_matrix(otra) {}
+    ExpressionMatrix &operator=(const ExpressionMatrix &m)
       {
-	expr_matriz::operator=(m);
+	expression_matrix::operator=(m);
         return *this;
       }
-    explicit matrizExpr(const m_double &m);
+    explicit ExpressionMatrix(const m_double &m);
     static LexAlgebra &LexA(void)
       { return ExprAlgebra::LexA(); }
-    matrizExpr &Trn(void);
-    matrizExpr GetTrn(void) const;
+    ExpressionMatrix &Trn(void);
+    ExpressionMatrix GetTrn(void) const;
     bool Evaluable(void) const;
-    matrizExpr Eval(void) const;
-    matrizExpr Eval(const char *palabra,const ExprAlgebra &a);
-    matrizExpr Eval(const char *palabra,const double &d);
+    ExpressionMatrix Eval(void) const;
+    ExpressionMatrix Eval(const char *palabra,const ExprAlgebra &a);
+    ExpressionMatrix Eval(const char *palabra,const double &d);
     m_double ToNum(void) const;
     m_double ToNum(const char *palabra,const double &d) const;
-    matrizExpr &operator*=(const double &d);
-    matrizExpr &operator*=(const matrizExpr &m);
-    friend matrizExpr operator*(const matrizExpr &m1,const matrizExpr &m2);
-    friend matrizExpr operator*(const m_double &m,const matrizExpr &mE)
+    ExpressionMatrix &operator*=(const double &d);
+    ExpressionMatrix &operator*=(const ExpressionMatrix &m);
+    friend ExpressionMatrix operator*(const ExpressionMatrix &m1,const ExpressionMatrix &m2);
+    friend ExpressionMatrix operator*(const m_double &m,const ExpressionMatrix &mE)
       {
-        matrizExpr retval= mE*matrizExpr(m);
+        ExpressionMatrix retval= mE*ExpressionMatrix(m);
         return retval;
       }
-    friend matrizExpr operator*(const matrizExpr &mE, const m_double &m)
+    friend ExpressionMatrix operator*(const ExpressionMatrix &mE, const m_double &m)
       { return m*mE; }
   };
 
 
-matrizExpr string_to_matrizExpr(const std::string &str);
+ExpressionMatrix string_to_expression_matrix(const std::string &str);
 
 #endif

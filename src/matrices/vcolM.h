@@ -23,39 +23,39 @@
 #ifndef VCOLM_H
 #define VCOLM_H
 
-#include "matrizM.h"
+#include "MMatrix.h"
 
 
-//! column vector de matrices.
-class vcolM: public matrizM
+//! column vector with components are matrix.
+class vcolM: public MMatrix
   {
   private:
     inline m_double &operator()(const size_t &iRow,const size_t &)
-      { return matrizM::operator()(iRow,1); }
+      { return MMatrix::operator()(iRow,1); }
     inline const m_double &operator()(const size_t &iRow,const size_t &) const
-      { return matrizM::operator()(iRow,1); }
+      { return MMatrix::operator()(iRow,1); }
   public:
     //! Constructor por defecto.
     vcolM(const size_type &n_rows= 1)
-      : matrizM(n_rows,1) {}
+      : MMatrix(n_rows,1) {}
     //! Constructor.
     vcolM(const size_type &n_rows,const m_double &val)
-      : matrizM(n_rows,1,val) {}
+      : MMatrix(n_rows,1,val) {}
     vcolM(const std::vector<size_t> &dim);
-    vcolM(const matrizM &m,const size_type &c);
+    vcolM(const MMatrix &m,const size_type &c);
     //! Constructor de copia.
     vcolM(const vcolM &otra) 
-      : matrizM(otra) {}
+      : MMatrix(otra) {}
     //! Operador asignacion.
     vcolM &operator=(const vcolM &m)
       {
-	matrizM::operator=(m);
+	MMatrix::operator=(m);
         return *this;
       }
     m_double &operator()(const size_t &iRow=1)
-      { return matrizM::operator()(iRow,1); }
+      { return MMatrix::operator()(iRow,1); }
     const m_double &operator()(const size_t &iRow=1) const
-      { return matrizM::operator()(iRow,1); }
+      { return MMatrix::operator()(iRow,1); }
 
     vcolM &operator*=(const m_double &m);
     vcolM &operator*=(const double &d);
@@ -70,4 +70,4 @@ class vcolM: public matrizM
   };
 #endif
 
-vcolM operator*(const matrizM &a,const vcolM &b);
+vcolM operator*(const MMatrix &a,const vcolM &b);

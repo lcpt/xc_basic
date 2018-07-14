@@ -19,8 +19,8 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //Gauss.h
-//Procedimiento de Gauss para la soluciOn de un sistema de ecuaciones lineal
-//cuya matriz de coeficientes es simétrica.
+//Gauss procedure to solve a linear system of equations with a symmetric
+//coefficient matrix.
 
 #ifndef GAUSIM_H
 #define GAUSIM_H
@@ -32,7 +32,7 @@
 
 template <class treal>
 void elim( matsimZ<treal> &a,
-           matrizZ<treal> &b,
+           ZMatrix<treal> &b,
            const size_t &j)
   {
     size_t i,n= a.getNumberOfRows();
@@ -51,11 +51,11 @@ void elim( matsimZ<treal> &a,
   }
 
 template <class treal>
-matrizZ<treal> calcularx( const matsimZ<treal> &a,
-                          const matrizZ<treal> &b)
+ZMatrix<treal> calcularx( const matsimZ<treal> &a,
+                          const ZMatrix<treal> &b)
   {
     size_t l,k,n= a.getNumberOfRows();
-    matrizZ<treal> x(n,1,0.0);
+    ZMatrix<treal> x(n,1,0.0);
     for(l=n;l>=1;l--)
       {
         k= l; x(l)=b(l);
@@ -69,7 +69,7 @@ matrizZ<treal> calcularx( const matsimZ<treal> &a,
   }
 
 template <class treal>
-matrizZ<treal> gausim(matsimZ<treal> &a,matrizZ<treal> &b,int &simreg)
+ZMatrix<treal> gausim(matsimZ<treal> &a,ZMatrix<treal> &b,int &simreg)
   {
     size_t j= 0,n= a.getNumberOfRows();
     simreg=1;
@@ -79,7 +79,7 @@ matrizZ<treal> gausim(matsimZ<treal> &a,matrizZ<treal> &b,int &simreg)
         simreg= (gj_abs(a(j,j))>zero);
         if(simreg) elim(a,b,j);
       }
-    matrizZ<treal> x;
+    ZMatrix<treal> x;
     if(simreg) x= calcularx(a,b);
     return x;
   }

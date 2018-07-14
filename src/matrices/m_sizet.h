@@ -23,8 +23,8 @@
 #ifndef M_SIZET_H
 #define M_SIZET_H
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 
-typedef matrizZ<size_t> m_sizet;
+typedef ZMatrix<size_t> m_sizet;
 
 #endif

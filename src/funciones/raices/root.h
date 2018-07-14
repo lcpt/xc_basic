@@ -142,7 +142,7 @@ int NewtonSimNLE(m_double &X, double tolerance,int maxIter, const MF &f)
 	//        cout << "J= " << J << endl;
         // solve for the guess refinement vector
         SolverLU<m_double,m_double> solver;
-        solver.PutMatriz(J);
+        solver.putMatrix(J);
         solver.Decomp();
         Fvector= solver.BackSub(Fvector);
 

@@ -23,9 +23,9 @@
 #ifndef M_STRING_H
 #define M_STRING_H
 
-#include "matrizT.h"
+#include "TMatrix.h"
 #include <string>
 
-typedef MatrizT<std::string,std::vector<std::string> > m_string;
+typedef TMatrix<std::string,std::vector<std::string> > m_string;
 
 #endif

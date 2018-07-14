@@ -28,7 +28,7 @@
 
 
 template <class treal>
-void GaussJordan(matsimZ<treal> &a,matrizZ<treal> &x,matrizZ<treal> &b)
+void GaussJordan(matsimZ<treal> &a,ZMatrix<treal> &x,ZMatrix<treal> &b)
 //GaussJordan para matrices simEtricas.
 //b: Vector de terminos independientes.
 //x: Vector soluciOn.
@@ -41,12 +41,12 @@ void GaussJordan(matsimZ<treal> &a,matrizZ<treal> &x,matrizZ<treal> &b)
     const zero= 1.0E-8;
     matsimZ<treal>::size_type n_rows= a.getNumberOfRows();
     //Dimensionamos las matrices ipx y piv.
-    matrizZ<size_t> ipx(n_rows,1);
+    ZMatrix<size_t> ipx(n_rows,1);
     size_t n1= n_rows + 1;
-    matrizZ<short int> piv(n1,1,0); //inicializamos a cero.
+    ZMatrix<short int> piv(n1,1,0); //inicializamos a cero.
     //Dimensionamos el vector soluciOn.
-    x= matrizZ<treal>(n_rows,1,0.0);
-    matrizZ<treal>::size_type j,k;
+    x= ZMatrix<treal>(n_rows,1,0.0);
+    ZMatrix<treal>::size_type j,k;
     for(j=1;j<=n_rows;j++)
       {
         //Busqueda de pivote en la diagonal principal
@@ -78,7 +78,7 @@ void GaussJordan(matsimZ<treal> &a,matrizZ<treal> &x,matrizZ<treal> &b)
             a(l,k)/= r;
           }
         b(l)/= r; //Termino independiente
-        //Transformacion del resto de la matriz.
+        //Transformation of the rest of the matrix.
         for(i=1;i<=n;i++)
           {
             if (piv(i)) continue;
@@ -108,19 +108,19 @@ void GaussJordan(matsimZ<treal> &a,matrizZ<treal> &x,matrizZ<treal> &b)
 
 //b: Vector de tErminos independientes.
 template <class treal>
-matrizZ<treal> GaussJordan(matsimZ<treal> &a,matrizZ<treal> &b)
+ZMatrix<treal> GaussJordan(matsimZ<treal> &a,ZMatrix<treal> &b)
   {
-    matrizZ<treal>::size_type n_rows= a.getNumberOfRows();  
-    matrizZ<treal> x(n_rows,1,0.0);
+    ZMatrix<treal>::size_type n_rows= a.getNumberOfRows();  
+    ZMatrix<treal> x(n_rows,1,0.0);
     GaussJordan(a,x,b);
     return x;
   }
 
 template <class treal>  
-matrizZ<treal> operator /(matsimZ<treal> b, matrizZ<treal> a)
+ZMatrix<treal> operator /(matsimZ<treal> b, ZMatrix<treal> a)
 //Se le pasan copias de los valores de b y a.
   {
-    matrizZ<treal> cociente(b);
+    ZMatrix<treal> cociente(b);
     if (b.getNumberOfRows() != a.getNumberOfRows())
       {
         std::cerr << "Matrices de dimensiones incompatibles en operador /"
@@ -132,7 +132,7 @@ matrizZ<treal> operator /(matsimZ<treal> b, matrizZ<treal> a)
   }
 
 template <class treal>
-matrizZ<treal> operator /(const matsimZ<treal> &m,const treal &d)
+ZMatrix<treal> operator /(const matsimZ<treal> &m,const treal &d)
   {
     return m*(1.0/d);
   }

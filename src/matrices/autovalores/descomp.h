@@ -19,17 +19,17 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //descomp.h
-//Descomposicion de una matriz en dos matrices triangulares.
+//Decomposition of a matrix in two triangular matrices.
 
 #ifndef DESCOMP_H
 #define DESCOMP_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 
 template <class treal>
-void descomp(matrizZ<treal> &a)
+void descomp(ZMatrix<treal> &a)
   {
    size_t i,j,k;
    const size_t n= a.getNumberOfRows();

@@ -19,13 +19,13 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//MatrizIndices.h
-//Matriz de puntos
+//IndicesMatrix.h
+//Matrix of indices
 
-#ifndef MATRIZINDICES_H
-#define MATRIZINDICES_H
+#ifndef INDICESMATRIX_H
+#define INDICESMATRIX_H
 
-#include "xc_basic/src/matrices/matrizT.h"
+#include "xc_basic/src/matrices/TMatrix.h"
 #include "xc_basic/src/matrices/vectorZ.h"
 #include "m_int.h"
 
@@ -33,23 +33,23 @@ typedef vectorZ<int> VIndices;
 
 //! @ingroup GEOM
 //
-//! @brief Matriz de índices. Sirve para expresar una
-//! serie de posiciones por sus índices, por ejemplo:
+//! @brief Matrix of indices. I'ts used to express a
+//! set of positions by its indices, i. e. :
 //! [[1,2][2,2][3,2]
 //!  [1,1][2,1][2,3]]
-class MatrizIndices: public MatrizT<VIndices,std::vector<VIndices > >
+class IndicesMatrix: public TMatrix<VIndices,std::vector<VIndices > >
   {
   public:
-    typedef MatrizT<VIndices,std::vector<VIndices > > m_indices;
+    typedef TMatrix<VIndices,std::vector<VIndices > > m_indices;
   protected:
-    MatrizIndices(const MatrizIndices &mp, size_t &f1, size_t &c1, size_t &f2, size_t &c2);
+    IndicesMatrix(const IndicesMatrix &mp, size_t &f1, size_t &c1, size_t &f2, size_t &c2);
   public:
-    MatrizIndices(const size_t &f=1,const size_t &c=1,const VIndices &p= VIndices());
-    MatrizIndices(const m_int &,const std::vector<VIndices > &);
+    IndicesMatrix(const size_t &f=1,const size_t &c=1,const VIndices &p= VIndices());
+    IndicesMatrix(const m_int &,const std::vector<VIndices > &);
 
-    MatrizIndices GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const;
-    MatrizIndices getRow(size_t ) const;
-    MatrizIndices getColumn(size_t ) const;
+    IndicesMatrix GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const;
+    IndicesMatrix getRow(size_t ) const;
+    IndicesMatrix getColumn(size_t ) const;
 
     void Offset(const VIndices &);
   };

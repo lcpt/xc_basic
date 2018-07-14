@@ -25,13 +25,13 @@
 #define JORDAN_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 #include "xc_basic/src/matrices/solvers/pivote.h"
 
 template <class treal>
-void eliminar( matrizZ<treal> &a,
-               matrizZ<treal> &b,
+void eliminar( ZMatrix<treal> &a,
+               ZMatrix<treal> &b,
                const size_t &j,size_t *pivot)
   {
     size_t i,k,l,n= a.getNumberOfRows(),m= b.getNumberOfColumns();
@@ -47,23 +47,23 @@ void eliminar( matrizZ<treal> &a,
   }
 
 template <class treal>
-matrizZ<treal> calcularx( const matrizZ<treal> &a,
-                          const matrizZ<treal> &b,
+ZMatrix<treal> calcularx( const ZMatrix<treal> &a,
+                          const ZMatrix<treal> &b,
                           size_t *pivot)
   {
     size_t n= a.getNumberOfRows(),m=b.getNumberOfColumns();
-    matrizZ<treal> x(n,m,0.0);
+    ZMatrix<treal> x(n,m,0.0);
     for(size_t j=1;j<= n;j++)
       for(size_t k=1;k<=m;k++) x(j,k)= b(pivot[j],k);
     return x;
   }
 
 template <class treal>
-matrizZ<treal> jordan(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
+ZMatrix<treal> jordan(ZMatrix<treal> &a,ZMatrix<treal> &b,int &regular)
   {
     size_t j;
-    //Dimensionamos la matriz de indices de pivote.
-    typedef typename matrizZ<treal>::size_type size_type;
+    //Dimension of the pivot indices matrix.
+    typedef typename ZMatrix<treal>::size_type size_type;
     const size_type n= a.getNumberOfRows();
     size_type *pivot= new size_type[n];
     set_szt fp;
@@ -79,21 +79,21 @@ matrizZ<treal> jordan(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
             eliminar(a,b,j,pivot);
           }
       }
-     matrizZ<treal> x;
+     ZMatrix<treal> x;
      if(regular) x= calcularx(a,b,pivot);
      delete[] pivot;
      return x;
   }
 
 template <class treal>
-matrizZ<treal> jordan_const(const matrizZ<treal> &a,const matrizZ<treal> &b,int &regular)
+ZMatrix<treal> jordan_const(const ZMatrix<treal> &a,const ZMatrix<treal> &b,int &regular)
   {
-    matrizZ<treal> c=a,d=b;
+    ZMatrix<treal> c=a,d=b;
     return jordan(c,d,regular);
   }
 
 template <class treal>  
-matrizZ<treal> operator /(const matrizZ<treal> &b, const matrizZ<treal> &a)
+ZMatrix<treal> operator /(const ZMatrix<treal> &b, const ZMatrix<treal> &a)
 //Se le pasan copias de los valores de b y a.
   {
     if (b.getNumberOfRows() != a.getNumberOfRows())
@@ -102,13 +102,13 @@ matrizZ<treal> operator /(const matrizZ<treal> &b, const matrizZ<treal> &a)
         abort();      
       }
     int regular;
-    matrizZ<treal> x= jordan_const(a,b,regular);
-    if (!regular) std::cerr << " matriz singular" << std::endl;
+    ZMatrix<treal> x= jordan_const(a,b,regular);
+    if (!regular) std::cerr << " singular matrix" << std::endl;
     return x;
   }
 
 template <class treal>
-matrizZ<treal> operator /(const matrizZ<treal> &m,const treal &d)
+ZMatrix<treal> operator /(const ZMatrix<treal> &m,const treal &d)
   { return m*gj_inv(d); }
 
 #endif

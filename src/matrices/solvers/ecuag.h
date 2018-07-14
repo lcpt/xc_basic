@@ -25,7 +25,7 @@
 #define ECUAG_H
 
 #include "math.h"
-#include "matrizZ.h"
+#include "ZMatrix.h"
 #include "matem.h"
 #include "gj_aux.h"
 
@@ -98,13 +98,13 @@ void resultados(void)
 template<class treal>
 void resolver( const size_t &m,
                const szie_t &n,
-               matrizZ<treal> &a,
+               ZMatrix<treal> &a,
                int compatible)
   {
     size_t i,j,k,l,rmax,rango;
-    //Dimensionamos la matriz de indices de pivote.
-    matrizZ<treal>::size_type n= a.getNumberOfRows();
-    matrizZ<treal>::size_type *pivot= new matrizZ<treal>::size_type[mmax];
+    //Dimensioning the matrix for the indices of the pivot.
+    ZMatrix<treal>::size_type n= a.getNumberOfRows();
+    ZMatrix<treal>::size_type *pivot= new ZMatrix<treal>::size_type[mmax];
     set_szt fp;
     set_szt cp;
     k=0;rango=0;         (* resolver *)
@@ -130,8 +130,8 @@ void resolver( const size_t &m,
   }//resolver
 
 template <class treal>
+//! Pre-multiply by transpose.
 void multrasp(void)
-//premultiplicacion de la matriz por su traspuesta
   {
     size_t i,j,k;
     for(i=1;i<=m;i++)
@@ -161,8 +161,8 @@ treal errorcuad(void)
 template <class treal>
 void ecuag(const size_t &m,
            const size_t &n,
-           matrizZ<treal> &a,
-           matrizZ<treal> &x,
+           ZMatrix<treal> &a,
+           ZMatrix<treal> &x,
            var libres:indices,
            int holgura,
            const treal &error,
@@ -172,7 +172,7 @@ void ecuag(const size_t &m,
 //         n        = numero de incognitas mas uno
 //         a        = matrix of the coefficients
 //                          termino independiente in column n
-//         x        = matriz solucion
+//         x        = solution matrix
 //                        column 1 variables dependientes
 //                               2 a holguras+1 independientes
 //         libres   = indices de variables libres
@@ -181,7 +181,7 @@ void ecuag(const size_t &m,
 //                             error cuadratico medio
   {
     int compa;
-    matrizZ<treal> b=a; //ecuag
+    ZMatrix<treal> b=a; //ecuag
     resolver(m,n,b,compatible);
     if(!compatible)
       {

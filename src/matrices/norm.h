@@ -24,11 +24,11 @@
 #define NORM_H
 
 #include "math.h"
-#include "matrizZ.h"
+#include "ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 
 template <class treal>
-treal norm(const matrizZ<treal> &x)
+treal norm(const ZMatrix<treal> &x)
   {
     treal r;
     size_t n= x.getNumberOfRows();

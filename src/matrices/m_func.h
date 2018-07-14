@@ -25,27 +25,26 @@
 #ifndef M_FUNC_H
 #define M_FUNC_H
 
-#include "matrizZ.h"
+#include "ZMatrix.h"
 #include "m_double.h"
 
 template<class F>
-class MatrizF: public matrizZ<F>
-//Matriz de cosas que operan (::operator())
-//sobre una matriz de doubles y
-//returnn un double.
+//! @brief Matrix of objects that have a () operator (::operator())
+//! that receives a double matrix and return a double.
+class FMatrix: public ZMatrix<F>
   {
   public:
-    typedef matrizZ<F> matriz_f;
-    typedef typename matriz_f::size_type size_type;
+    typedef ZMatrix<F> f_matrix;
+    typedef typename f_matrix::size_type size_type;
 
-    MatrizF(void) : matriz_f(1,1) {}
-    MatrizF(size_type n_rows,size_type cols) : matriz_f(n_rows,cols) {}
-    MatrizF(const MatrizF<F> &otra) : matriz_f(otra) {}
+    FMatrix(void) : f_matrix(1,1) {}
+    FMatrix(size_type n_rows,size_type cols) : f_matrix(n_rows,cols) {}
+    FMatrix(const FMatrix<F> &otra) : f_matrix(otra) {}
     m_double Eval(const m_double &d) const;
   };
 
 template <class F>
-m_double MatrizF<F>::Eval(const m_double &d) const
+m_double FMatrix<F>::Eval(const m_double &d) const
   {
     size_t sz= this->size();
     m_double retval(sz,1);
@@ -55,6 +54,6 @@ m_double MatrizF<F>::Eval(const m_double &d) const
   }
 
 typedef double (*tipo_m_func)(const m_double &);
-typedef MatrizF<tipo_m_func> m_func;
+typedef FMatrix<tipo_m_func> m_func;
 
 #endif

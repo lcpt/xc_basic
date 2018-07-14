@@ -27,13 +27,13 @@
 #include "gauss.h"
 
 template <class treal>
-matrizZ<treal> inversa(matrizZ<treal> &m,int &regular)
+ZMatrix<treal> inversa(ZMatrix<treal> &m,int &regular)
   {
-    if (!m.Cuadrada()) matrizZError("La matriz no es cuadrada.");
+    if (!m.Cuadrada()) ZMatrixError("Not a square matrix.");
     if(m.getNumberOfRows()<2)
       {
         //invierte kii
-        matrizZ<treal> t(m);
+        ZMatrix<treal> t(m);
         treal det= t(1,1)*t(2,2)-t(2,1)*t(1,2);
         if(det == 0.0)
           regular= 0;

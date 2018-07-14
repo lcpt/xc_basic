@@ -26,7 +26,7 @@
 #include "IndPol.h"
 #include <map>
 #include "xc_basic/src/util/matem.h"
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 
 
 size_t GetNumCoefs(char m,short unsigned int n);
@@ -36,7 +36,7 @@ inline size_t GetNumCoefs(char m,const char *vars)
 
 typedef std::map< IndPol, double, std::less<IndPol> > mapPol;
 typedef vectorZ<double> vZ_double;
-typedef matrizZ<double> mZ_double;
+typedef ZMatrix<double> mZ_double;
 
 class Polinomio : public Funcion, public mapPol
   {

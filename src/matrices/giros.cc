@@ -24,53 +24,53 @@
 #include <cmath>
 
 //En dos dimensiones.
-matrizZ<double> Giro2D(double ang)
+ZMatrix<double> Giro2D(double ang)
   {
     const double c= cos(ang);
     const double s= sin(ang);
-    matrizZ<double> giro(2,2,0.0);
+    ZMatrix<double> giro(2,2,0.0);
     giro(1,1)=c;  giro(1,2)=s;
     giro(2,1)=-s; giro(2,2)=c;
     return giro;
   }
 
 //En tres dimensiones
-matrizZ<double> GiroX(double ang)
+ZMatrix<double> GiroX(double ang)
   {
     const double c= cos(ang);
     const double s= sin(ang);
-    matrizZ<double> giro(3,3,0.0);
+    ZMatrix<double> giro(3,3,0.0);
     giro(1,1)= 1.0;
     giro(2,2)=c;  giro(2,3)=s;
     giro(3,2)=-s; giro(3,3)=c;
     return giro;
   }
 
-matrizZ<double> GiroY(double ang)
+ZMatrix<double> GiroY(double ang)
   {
     const double c= cos(ang);
     const double s= sin(ang);
-    matrizZ<double> giro(3,3,0.0);
+    ZMatrix<double> giro(3,3,0.0);
     giro(1,1)=c;  giro(1,3)=s;
     giro(2,2)= 1.0;
     giro(3,1)=-s; giro(3,3)=c;
     return giro;
   }
 
-matrizZ<double> GiroZ(double ang)
+ZMatrix<double> GiroZ(double ang)
   {
     const double c= cos(ang);
     const double s= sin(ang);
-    matrizZ<double> giro(3,3,0.0);
+    ZMatrix<double> giro(3,3,0.0);
     giro(1,1)=c;  giro(1,2)=s;
     giro(2,1)=-s; giro(2,2)=c;
     giro(3,3)= 1.0;
     return giro;
   }
 
-matrizZ<double> GiroXYZ(double rx,double ry,double rz)
+ZMatrix<double> GiroXYZ(double rx,double ry,double rz)
   {
-    matrizZ<double> giro(3,3,0.0);
+    ZMatrix<double> giro(3,3,0.0);
     giro= GiroZ(rz) * GiroY(ry) * GiroX(rx);
     return giro;
   }

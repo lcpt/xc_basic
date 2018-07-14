@@ -25,14 +25,14 @@
 #define GAUSS_H
 
 #include <cmath>
-#include "xc_basic/src/matrices/matrizZ.h"
+#include "xc_basic/src/matrices/ZMatrix.h"
 #include "xc_basic/src/util/matem.h"
 #include "xc_basic/src/matrices/solvers/pivote.h"
 #include "xc_basic/src/matrices/solvers/calcularx.h"
 
 template <class treal>
-void eliminar( matrizZ<treal> &a,
-               matrizZ<treal> &b,
+void eliminar( ZMatrix<treal> &a,
+               ZMatrix<treal> &b,
                const size_t &j,
                size_t *pivot,
                const set_szt &fp)
@@ -50,12 +50,12 @@ void eliminar( matrizZ<treal> &a,
   }
 
 template <class treal>
-matrizZ<treal> gauss(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
+ZMatrix<treal> gauss(ZMatrix<treal> &a,ZMatrix<treal> &b,int &regular)
   {
     size_t j;
-    //Dimensionamos la matriz de indices de pivote.
-    typename matrizZ<treal>::size_type n= a.getNumberOfRows();
-    typename matrizZ<treal>::size_type *pivot= new typename matrizZ<treal>::size_type[n];
+    //Dimension of the pivot indices matrix.
+    typename ZMatrix<treal>::size_type n= a.getNumberOfRows();
+    typename ZMatrix<treal>::size_type *pivot= new typename ZMatrix<treal>::size_type[n];
     set_szt fp;
     regular=1; j=0;
     while (regular && (j<n))
@@ -69,21 +69,21 @@ matrizZ<treal> gauss(matrizZ<treal> &a,matrizZ<treal> &b,int &regular)
             eliminar(a,b,j,pivot,fp);
           }
       }
-    matrizZ<treal> x;
+    ZMatrix<treal> x;
     if(regular) x= calcularx(a,b,pivot);
     delete[] pivot;
     return x;
   }
 
 template <class treal>
-matrizZ<treal> gauss_const(const matrizZ<treal> &a,const matrizZ<treal> &b,int &regular)
+ZMatrix<treal> gauss_const(const ZMatrix<treal> &a,const ZMatrix<treal> &b,int &regular)
   {
-    matrizZ<treal> c=a,d=b;
+    ZMatrix<treal> c=a,d=b;
     return gauss(c,d,regular);
   }
 
 template <class treal>  
-matrizZ<treal> operator /(const matrizZ<treal> &b, const matrizZ<treal> &a)
+ZMatrix<treal> operator /(const ZMatrix<treal> &b, const ZMatrix<treal> &a)
 //Se le pasan copias de los valores de b y a.
   {
     if (b.getNumberOfRows() != a.getNumberOfRows())
@@ -92,22 +92,22 @@ matrizZ<treal> operator /(const matrizZ<treal> &b, const matrizZ<treal> &a)
         abort();      
       }
     int regular;
-    matrizZ<treal> x= gauss_const(a,b,regular);
-    if (!regular) std::cerr << " matriz singular" << std::endl;
+    ZMatrix<treal> x= gauss_const(a,b,regular);
+    if (!regular) std::cerr << " singular matrix" << std::endl;
     return x;
   }
 
 template <class treal>
-matrizZ<treal> operator /(const matrizZ<treal> &m,const treal &d)
+ZMatrix<treal> operator /(const ZMatrix<treal> &m,const treal &d)
   { return m*gj_inv(d); }
 
-//! @brief Devuelve la matriz inversa.
+//! @brief Return inverse matrix.
 template <class treal>
-matrizZ<treal> gauss_invierte(const matrizZ<treal> &a,int &regular)
+ZMatrix<treal> gauss_invierte(const ZMatrix<treal> &a,int &regular)
   {
-    matrizZ<treal> b(a.getNumberOfRows(),a.getNumberOfColumns());
+    ZMatrix<treal> b(a.getNumberOfRows(),a.getNumberOfColumns());
     b.Idn();
-    matrizZ<treal> x= gauss_const(a,b,regular);
+    ZMatrix<treal> x= gauss_const(a,b,regular);
     return x;
   }
 

@@ -58,7 +58,7 @@ double extremo( const double &a,const double &b,bool minimo,
 
     double ab = b - a;
     m_double x= extremo_calcx(a,b,ab);
-    m_double y= ArgMatriz(f,x);
+    m_double y= matrix_argument(f,x);
 
     while (ab > dx)
       {
