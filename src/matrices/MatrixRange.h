@@ -25,7 +25,7 @@
 
 #include "RangoIndice.h"
 
-//! @brief Rango de variación de un índice, se emplea en ConstRefCaja.
+//! @brief Rango de variación de un índice, se emplea en BoxConstRef.
 class MatrixRange
   {
     RangoIndice row_range; //!< row range.

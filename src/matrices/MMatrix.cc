@@ -83,7 +83,7 @@ MMatrix MMatrix::GetTrn(void) const
 //! @param dim_rows: row dimension.
 //! @param dim_columns: column dimension.
 //! @param a: matrix that will be converted.
-MMatrix a_cajas(const std::vector<size_t> dim_rows,const std::vector<size_t> dim_columns,const m_double &a)
+MMatrix to_boxes(const std::vector<size_t> dim_rows,const std::vector<size_t> dim_columns,const m_double &a)
   {
     MMatrix retval(dim_rows,dim_columns);
     //Comprobamos dimensiones.
@@ -94,16 +94,16 @@ MMatrix a_cajas(const std::vector<size_t> dim_rows,const std::vector<size_t> dim
     const size_t n_columns= retval.getNumberOfColumns();
 
     size_t row_box= 1; //Row where the box starts.
-    size_t col_caja= 1; //Column where the box starts.
+    size_t col_box= 1; //Column where the box starts.
     for(size_t i=1;i<=n_rows;i++)
       {
-        col_caja= 1;
+        col_box= 1;
         const size_t fbloque= dim_rows[i-1]; //Rows of i-th row.
         for(size_t j=1;j<=n_columns;j++)
           {
             const size_t cbloque= dim_columns[j-1]; //Columns of j-th column.
-            retval(i,j)= a.GetCaja(row_box,col_caja,row_box+fbloque-1,col_caja+cbloque-1);
-            col_caja+=cbloque; //Next column.
+            retval(i,j)= a.getBox(row_box,col_box,row_box+fbloque-1,col_box+cbloque-1);
+            col_box+=cbloque; //Next column.
           }
         row_box+=fbloque; //Next row.
       }
@@ -115,11 +115,11 @@ MMatrix a_cajas(const std::vector<size_t> dim_rows,const std::vector<size_t> dim
 //! @param muestra: template matrix which blocks dimensions will be used
 //! to define the blocks of the new matrix.
 //! @param a: matrix that will be converted.
-MMatrix a_cajas(const MMatrix &muestra,const m_double &a)
+MMatrix to_boxes(const MMatrix &muestra,const m_double &a)
   {
     const std::vector<size_t> dim_rows= muestra.get_dim_rows();
     const std::vector<size_t> dim_columns= muestra.get_dim_columns();
-    return a_cajas(dim_rows,dim_columns,a);
+    return to_boxes(dim_rows,dim_columns,a);
   }
 
 

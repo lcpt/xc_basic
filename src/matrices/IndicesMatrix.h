@@ -47,7 +47,7 @@ class IndicesMatrix: public TMatrix<VIndices,std::vector<VIndices > >
     IndicesMatrix(const size_t &f=1,const size_t &c=1,const VIndices &p= VIndices());
     IndicesMatrix(const m_int &,const std::vector<VIndices > &);
 
-    IndicesMatrix GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const;
+    IndicesMatrix getBox(size_t f1, size_t c1, size_t f2, size_t c2) const;
     IndicesMatrix getRow(size_t ) const;
     IndicesMatrix getColumn(size_t ) const;
 

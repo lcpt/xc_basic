@@ -23,35 +23,35 @@
 #ifndef COLUMNCONSTREF_H
 #define COLUMNCONSTREF_H
 
-#include "ConstRefCaja.h"
+#include "BoxConstRef.h"
 
 //! @brief Constant reference to a column of a matrix.
 template <class MAT>
-class ColumnConstRef: public ConstRefCaja<MAT>
+class ColumnConstRef: public BoxConstRef<MAT>
   {
   public:
-    typedef typename ConstRefCaja<MAT>::const_reference const_reference;
+    typedef typename BoxConstRef<MAT>::const_reference const_reference;
 
     ColumnConstRef(const MAT &m,const size_t &c= 1,const size_t &f= 1);
     ColumnConstRef(const MAT &m,const size_t &,const size_t &,const size_t &);
     ColumnConstRef(const MAT &mat,const RangoIndice &,const size_t &);
     virtual const_reference operator()(size_t iRow) const
-      { return ConstRefCaja<MAT>::operator()(iRow,1); }
+      { return BoxConstRef<MAT>::operator()(iRow,1); }
   };
 
 template<class MAT>
 ColumnConstRef<MAT>::ColumnConstRef(const MAT &mat,const size_t &c,const size_t &f)
-  : ConstRefCaja<MAT>(mat,f,c,mat.getNumberOfRows(),c)
+  : BoxConstRef<MAT>(mat,f,c,mat.getNumberOfRows(),c)
   {}
 
 template<class MAT>
 ColumnConstRef<MAT>::ColumnConstRef(const MAT &mat,const size_t &c,const size_t &f1,const size_t &f2)
-  : ConstRefCaja<MAT>(mat,f1,c,f2,c)
+  : BoxConstRef<MAT>(mat,f1,c,f2,c)
   {}
 
 template<class MAT>
 ColumnConstRef<MAT>::ColumnConstRef(const MAT &mat,const RangoIndice &row_range,const size_t &col)
-  : ConstRefCaja<MAT>(mat,row_range,col)
+  : BoxConstRef<MAT>(mat,row_range,col)
   {}
 
 #endif

@@ -118,14 +118,14 @@ class ZMatrix : public TMatrix<numero,vectorZ<numero> >
         m.Trn();
         return m;
       }
-    ZMatrix<numero> GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const;
+    ZMatrix<numero> getBox(size_t f1, size_t c1, size_t f2, size_t c2) const;
     ZMatrix<numero> getRow(size_type iRow) const
-      { return GetCaja(iRow,1,iRow,this->n_columns); }
+      { return getBox(iRow,1,iRow,this->n_columns); }
     ZMatrix<numero> getColumn(size_type col) const
-      { return GetCaja(1,col,this->n_rows,col); }
+      { return getBox(1,col,this->n_rows,col); }
     ZMatrix<numero> GetMenor(size_t f,size_t c) const;
     void Idn(void);
-    void SumaCaja(size_t f,size_t c,const ZMatrix<numero> &caja);
+    void sumBox(size_t f,size_t c,const ZMatrix<numero> &box);
     numero GetDetLento(void) const;
     numero GetDet(const numero &eps= 1e-10) const;
     numero Traza(void) const;
@@ -212,12 +212,12 @@ ZMatrix<numero> ZMatrix<numero>::GetMenor(size_t f,size_t c) const
   { return ::GetMenor(*this,f,c); }
   
 template <class numero>  
-void ZMatrix<numero>::SumaCaja(size_t f,size_t c,const ZMatrix<numero> &caja)
+void ZMatrix<numero>::sumBox(size_t f,size_t c,const ZMatrix<numero> &box)
   {
     register size_type i,j;
-    for(i=1;i<=caja.n_rows;i++)
-      for(j=1;j<=caja.n_columns;j++)
-        PutSuma(i+f-1,j+c-1,caja(i,j));
+    for(i=1;i<=box.n_rows;i++)
+      for(j=1;j<=box.n_columns;j++)
+        PutSuma(i+f-1,j+c-1,box(i,j));
   }
 
 template <class numero>
@@ -348,7 +348,7 @@ inline ZMatrix<numero> operator*(const ZMatrix<numero> &m1,const ZMatrix<numero>
     for(register sz_type i=1;i<=n_rows;i++)
       for(register sz_type j=1;j<=ncols;j++)
         {
-          register numero t= m1(i,1) * m2(1,j); //Inicializamos (pueden ser matrices por cajas).
+          register numero t= m1(i,1) * m2(1,j); //Initialize (they can be matrices of boxes).
           for(register sz_type k=2;k<= ncols_m1;k++)
             t+= m1(i,k) * m2(k,j);
           producto(i,j)= t;
@@ -476,16 +476,16 @@ except local variables C,Kp,Lp allocated (and disposed of) here.
     return d0;  //return el determinante
   } //DMGT
 
-//! @brief Return la «caja» comprendida entre los índices being passed as parameter.
+//! @brief Return the box between the indices being passed as parameter.
 template <class numero>
-ZMatrix<numero> ZMatrix<numero>::GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
+ZMatrix<numero> ZMatrix<numero>::getBox(size_t f1, size_t c1, size_t f2, size_t c2) const
   {
-    this->check_get_caja(f1,c1,f2,c2);
-    ZMatrix<numero> caja(f2-f1+1,c2-c1+1);
-    for(register size_type i=1;i<=caja.n_rows;i++)
-      for(register size_type j=1;j<=caja.n_columns;j++)
-        caja(i,j)= ZMatrix<numero>::operator()(i+f1-1,j+c1-1);
-    return caja;
+    this->check_get_box(f1,c1,f2,c2);
+    ZMatrix<numero> box(f2-f1+1,c2-c1+1);
+    for(register size_type i=1;i<=box.n_rows;i++)
+      for(register size_type j=1;j<=box.n_columns;j++)
+        box(i,j)= ZMatrix<numero>::operator()(i+f1-1,j+c1-1);
+    return box;
   }
 
 //! @brief Return the trace of the matrix.

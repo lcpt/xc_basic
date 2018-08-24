@@ -18,43 +18,43 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//ConstRefCaja.h 
+//BoxConstRef.h 
 
-#ifndef CONSTREFCAJA_H
-#define CONSTREFCAJA_H
+#ifndef BOXCONSTREF_H
+#define BOXCONSTREF_H
 
 #include "ProtoMatrix.h"
 #include "RangoIndice.h"
 
 //! @brief Base class for the references to a matrix box.
-class BaseRefCaja: public ProtoMatrix
+class BoxBaseRef: public ProtoMatrix
   {
   protected:
     size_t offset_f; //!< row offset.
     size_t offset_c; //!< column offset.
   public:
-    BaseRefCaja(const ProtoMatrix &m,const size_t &f1= 1,const size_t &c1= 1);
-    BaseRefCaja(const ProtoMatrix &m,const size_t &,const size_t &,const size_t &,const size_t &);
-    BaseRefCaja(const ProtoMatrix &mat,const RangoIndice &row_range,const RangoIndice &column_range);
-    BaseRefCaja(const ProtoMatrix &mat,const RangoIndice &,const size_t &);
-    BaseRefCaja(const ProtoMatrix &mat,const size_t &,const RangoIndice &);
+    BoxBaseRef(const ProtoMatrix &m,const size_t &f1= 1,const size_t &c1= 1);
+    BoxBaseRef(const ProtoMatrix &m,const size_t &,const size_t &,const size_t &,const size_t &);
+    BoxBaseRef(const ProtoMatrix &mat,const RangoIndice &row_range,const RangoIndice &column_range);
+    BoxBaseRef(const ProtoMatrix &mat,const RangoIndice &,const size_t &);
+    BoxBaseRef(const ProtoMatrix &mat,const size_t &,const RangoIndice &);
     RangoIndice getRowRange(void) const;
     RangoIndice getColumnRange(void) const;
   };
 
 //! @brief Reference to a matrix box.
 template <class MAT>
-class ConstRefCaja: public BaseRefCaja
+class BoxConstRef: public BoxBaseRef
   {
     const MAT &m;
   public:
     typedef typename MAT::const_reference const_reference;
 
-    ConstRefCaja(const MAT &m,const size_t &f1= 1,const size_t &c1= 1);
-    ConstRefCaja(const MAT &m,const size_t &,const size_t &,const size_t &,const size_t &);
-    ConstRefCaja(const MAT &mat,const RangoIndice &row_range,const RangoIndice &column_range);
-    ConstRefCaja(const MAT &mat,const RangoIndice &,const size_t &);
-    ConstRefCaja(const MAT &mat,const size_t &,const RangoIndice &);
+    BoxConstRef(const MAT &m,const size_t &f1= 1,const size_t &c1= 1);
+    BoxConstRef(const MAT &m,const size_t &,const size_t &,const size_t &,const size_t &);
+    BoxConstRef(const MAT &mat,const RangoIndice &row_range,const RangoIndice &column_range);
+    BoxConstRef(const MAT &mat,const RangoIndice &,const size_t &);
+    BoxConstRef(const MAT &mat,const size_t &,const RangoIndice &);
     virtual const_reference operator()(size_t iRow=1,size_t col=1) const
       { return m(iRow+offset_f,col+offset_c); }
     void Print(std::ostream &) const;
@@ -62,32 +62,32 @@ class ConstRefCaja: public BaseRefCaja
 
 //! @brief Constructor por defecto.
 template<class MAT>
-ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const size_t &f1,const size_t &c1)
-  : BaseRefCaja(mat,f1,c1), m(mat) {}
+BoxConstRef<MAT>::BoxConstRef(const MAT &mat,const size_t &f1,const size_t &c1)
+  : BoxBaseRef(mat,f1,c1), m(mat) {}
 
 //! @brief Constructor.
 template<class MAT>
-ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const size_t &f1,const size_t &c1,const size_t &f2,const size_t &c2)
-  : BaseRefCaja(mat,f1,c1,f2,c2), m(mat)
+BoxConstRef<MAT>::BoxConstRef(const MAT &mat,const size_t &f1,const size_t &c1,const size_t &f2,const size_t &c2)
+  : BoxBaseRef(mat,f1,c1,f2,c2), m(mat)
   {}
 
 //! @brief Constructor.
 template<class MAT>
-ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const RangoIndice &row_range,const RangoIndice &column_range)
-  : BaseRefCaja(mat,row_range,column_range), m(mat) {}
+BoxConstRef<MAT>::BoxConstRef(const MAT &mat,const RangoIndice &row_range,const RangoIndice &column_range)
+  : BoxBaseRef(mat,row_range,column_range), m(mat) {}
 
 //! @brief Column alone constructor.
 template<class MAT>
-ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const RangoIndice &row_range,const size_t &col)
-  : BaseRefCaja(mat,row_range,col), m(mat) {}
+BoxConstRef<MAT>::BoxConstRef(const MAT &mat,const RangoIndice &row_range,const size_t &col)
+  : BoxBaseRef(mat,row_range,col), m(mat) {}
 
 //! @brief Row alone constructor.
 template<class MAT>
-ConstRefCaja<MAT>::ConstRefCaja(const MAT &mat,const size_t &iRow,const RangoIndice &column_range)
-  : BaseRefCaja(mat,iRow,column_range), m(mat) {}
+BoxConstRef<MAT>::BoxConstRef(const MAT &mat,const size_t &iRow,const RangoIndice &column_range)
+  : BoxBaseRef(mat,iRow,column_range), m(mat) {}
 
 template<class MAT>
-void ConstRefCaja<MAT>::Print(std::ostream &os) const
+void BoxConstRef<MAT>::Print(std::ostream &os) const
   {
     os << '[';
     size_t n_rows= this->getNumberOfRows(),n_columns= this->getNumColumns();
@@ -103,7 +103,7 @@ void ConstRefCaja<MAT>::Print(std::ostream &os) const
   }
 
 template <class MAT>
-inline std::ostream &operator<<(std::ostream &os,const ConstRefCaja<MAT> &c)
+inline std::ostream &operator<<(std::ostream &os,const BoxConstRef<MAT> &c)
   {
     c.Print(os);
     return os;

@@ -24,7 +24,7 @@
 
 #include <iostream>
 #include "ProtoMatrix.h"
-#include "ConstRefCaja.h"
+#include "BoxConstRef.h"
 #include "RowConstRef.h"
 #include "ColumnConstRef.h"
 #include <list>
@@ -48,7 +48,7 @@ class TMatrix: public ProtoMatrix, public STO
     typedef typename STO::value_type value_type;
     typedef typename STO::reference reference;
     typedef typename STO::const_reference const_reference;
-    typedef ConstRefCaja<TMatrix<T,STO> > const_ref_caja;
+    typedef BoxConstRef<TMatrix<T,STO> > box_const_ref;
     typedef RowConstRef<TMatrix<T,STO> > row_const_ref;
     typedef ColumnConstRef<TMatrix<T,STO> > const_ref_col;
 
@@ -101,16 +101,16 @@ class TMatrix: public ProtoMatrix, public STO
         return *this;
       }
     TMatrix<T,STO> GetTrn(void) const;
-    TMatrix<T,STO> GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
+    TMatrix<T,STO> getBox(size_t f1, size_t c1, size_t f2, size_t c2) const
       { return TMatrix<T,STO>(*this,f1,c1,f2,c2); }
-    const_ref_caja GetConstRefCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
-      { return const_ref_caja(*this,f1,c1,f2,c2); }
-    const_ref_caja GetConstRefCaja(const RangoIndice &row_range,const RangoIndice &column_range) const
-      { return const_ref_caja(*this,row_range,column_range); }
-    const_ref_caja GetConstRefCaja(size_t f=1, size_t c=1) const
-      { return const_ref_caja(*this,f,c); }
+    box_const_ref GetBoxConstRef(size_t f1, size_t c1, size_t f2, size_t c2) const
+      { return box_const_ref(*this,f1,c1,f2,c2); }
+    box_const_ref GetBoxConstRef(const RangoIndice &row_range,const RangoIndice &column_range) const
+      { return box_const_ref(*this,row_range,column_range); }
+    box_const_ref GetBoxConstRef(size_t f=1, size_t c=1) const
+      { return box_const_ref(*this,f,c); }
     TMatrix<T,STO> getRow(size_t iRow) const
-      { return GetCaja(iRow,1,iRow,n_columns); }
+      { return getBox(iRow,1,iRow,n_columns); }
     row_const_ref getRowConstRef(size_t f, size_t c1, size_t c2) const
       { return row_const_ref(*this,f,c1,c2); }
     row_const_ref getRowConstRef(size_t f, const RangoIndice &column_range) const
@@ -124,30 +124,30 @@ class TMatrix: public ProtoMatrix, public STO
     const_ref_col getColumnConstRef(size_t c=1, size_t f=1) const
       { return const_ref_col(*this,c,f); }
     TMatrix<T,STO> getColumn(size_t col) const
-      { return GetCaja(1,col,n_rows,col); }
+      { return getBox(1,col,n_rows,col); }
     TMatrix<T,STO> GetMenor(size_t f,size_t c) const;
-    void PutCaja(size_t f,size_t c,const TMatrix<T,STO> &caja);      
+    void putBox(size_t f,size_t c,const TMatrix<T,STO> &);      
     void putRow(size_t iRow,const TMatrix<T,STO> &f)
       {
         if (!compareColumnNumber(*this,f)) return;
-        PutCaja(iRow,1,f);
+        putBox(iRow,1,f);
       }
     void PutCol(size_t col,const TMatrix<T,STO> &c)
       {
         if (!compareRowNumber(*this,c)) return;
-        PutCaja(1,col,c);
+        putBox(1,col,c);
       }
     void OrlaCol(const TMatrix<T,STO> &c)
       {
         TMatrix<T,STO> m(n_rows,n_columns+1);
-        m.PutCaja(1,1,*this);
+        m.putBox(1,1,*this);
         m.PutCol(n_columns+1,c);
         *this= m;
       }
     void decorateRow(const TMatrix<T,STO> &f)
       {
         TMatrix<T,STO> m(n_rows+1,n_columns);
-        m.PutCaja(1,1,*this);
+        m.putBox(1,1,*this);
         m.putRow(n_rows+1,f);
         *this= m;
       }
@@ -232,12 +232,12 @@ TMatrix<T,STO> TMatrix<T,STO>::GetMenor(size_t f,size_t c) const
 
 //! @brief Put the box int the position (f,c) of this matrix.
 template <class T,class STO>
-void TMatrix<T,STO>::PutCaja(size_t f,size_t c,const TMatrix<T,STO> &caja)
+void TMatrix<T,STO>::putBox(size_t f,size_t c,const TMatrix<T,STO> &box)
   {
-    check_put_caja(f,c,caja);
-    for(register size_t i=1;i<=caja.n_rows;i++)
-      for(register size_t j=1;j<=caja.n_columns;j++)
-        TMatrix<T,STO>::operator()(i+f-1,j+c-1)= caja(i,j);
+    check_put_box(f,c,box);
+    for(register size_t i=1;i<=box.n_rows;i++)
+      for(register size_t j=1;j<=box.n_columns;j++)
+        TMatrix<T,STO>::operator()(i+f-1,j+c-1)= box(i,j);
   }
 
 //! @brief Operador salida.
@@ -278,7 +278,7 @@ inline M traspuesta(const M &m)
 template<class T,class STO>
 TMatrix<T,STO>::TMatrix(const TMatrix<T,STO> &orig,size_t f1, size_t c1, size_t f2, size_t c2): ProtoMatrix(f2-f1+1,c2-c1+1), STO(Tam()) 
   {
-    orig.check_get_caja(f1,c1,f2,c2);
+    orig.check_get_box(f1,c1,f2,c2);
     for(register size_t i=1;i<=n_rows;i++)
       for(register size_t j=1;j<=n_columns;j++)
         (*this)(i,j)= orig(i+f1-1,j+c1-1);

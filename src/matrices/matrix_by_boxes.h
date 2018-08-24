@@ -18,17 +18,17 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//mat_por_cajas.h
+//matrix_by_boxes.h
 
-#ifndef MAT_POR_CAJAS_H
-#define MAT_POR_CAJAS_H
+#ifndef MATRIX_BY_BOXES_H
+#define MATRIX_BY_BOXES_H
 
 #include "ZMatrix.h"
 
-//! @brief Matrix por cajas.
-//! E es la clase de las cajas.
-template <class TCAJA>
-class MatPorCajas: public ZMatrix<TCAJA>
+//! @brief Matrix made of boxes.
+//! E is the template class for the boxes.
+template <class TBOX>
+class MatrixByBoxes: public ZMatrix<TBOX>
   {
   protected:
     size_t get_rows_row(const size_t &f) const;
@@ -37,52 +37,52 @@ class MatPorCajas: public ZMatrix<TCAJA>
     std::vector<size_t> get_dim_columns(void) const;
     
   public:
-    typedef ZMatrix<TCAJA> m_cajas;
-    typedef typename m_cajas::size_type size_type;
-    typedef typename TCAJA::value_type value_type;
-    typedef typename m_cajas::iterator iterator;
-    typedef typename m_cajas::const_iterator const_iterator;
+    typedef ZMatrix<TBOX> box_matrix;
+    typedef typename box_matrix::size_type size_type;
+    typedef typename TBOX::value_type value_type;
+    typedef typename box_matrix::iterator iterator;
+    typedef typename box_matrix::const_iterator const_iterator;
 
-    MatPorCajas(void);
-    MatPorCajas(size_type n_rows,size_type n_columns);
-    MatPorCajas(size_type n_rows,size_type n_columns,const TCAJA &val);
-    MatPorCajas(const std::vector<size_t> &);
-    MatPorCajas(const std::vector<size_t> &,const std::vector<size_t> &);
-    MatPorCajas(const MatPorCajas &otra);
-    MatPorCajas& operator=(const MatPorCajas &m);
+    MatrixByBoxes(void);
+    MatrixByBoxes(size_type n_rows,size_type n_columns);
+    MatrixByBoxes(size_type n_rows,size_type n_columns,const TBOX &val);
+    MatrixByBoxes(const std::vector<size_t> &);
+    MatrixByBoxes(const std::vector<size_t> &,const std::vector<size_t> &);
+    MatrixByBoxes(const MatrixByBoxes &otra);
+    MatrixByBoxes& operator=(const MatrixByBoxes &m);
 
     size_t getTotalNumberOfRows(void) const;
     size_t getTotalNumberOfColumns(void) const;
     void Con(const value_type &d);
-    MatPorCajas<TCAJA> &Trn(void);
-    MatPorCajas<TCAJA> GetTrn(void) const;
-    TCAJA QuitaBloques(void);
-    MatPorCajas<TCAJA> &operator*=(const TCAJA &m);
-    MatPorCajas<TCAJA> &operator*=(const value_type &d);
-    MatPorCajas<TCAJA> &operator*=(const MatPorCajas<TCAJA> &m);
+    MatrixByBoxes<TBOX> &Trn(void);
+    MatrixByBoxes<TBOX> GetTrn(void) const;
+    TBOX QuitaBloques(void);
+    MatrixByBoxes<TBOX> &operator*=(const TBOX &m);
+    MatrixByBoxes<TBOX> &operator*=(const value_type &d);
+    MatrixByBoxes<TBOX> &operator*=(const MatrixByBoxes<TBOX> &m);
   };
 
 //! @brief  Constructor.
-template <class TCAJA>
-MatPorCajas<TCAJA>::MatPorCajas(void)
-  : m_cajas(1,1) {}
+template <class TBOX>
+MatrixByBoxes<TBOX>::MatrixByBoxes(void)
+  : box_matrix(1,1) {}
 
 //! @brief  Constructor.
-template <class TCAJA>
-MatPorCajas<TCAJA>::MatPorCajas(size_type n_rows,size_type n_columns)
-  : m_cajas(n_rows,n_columns) {}
+template <class TBOX>
+MatrixByBoxes<TBOX>::MatrixByBoxes(size_type n_rows,size_type n_columns)
+  : box_matrix(n_rows,n_columns) {}
 
 //! @brief  Constructor.
-template <class TCAJA>
-MatPorCajas<TCAJA>::MatPorCajas(size_type n_rows,size_type n_columns,const TCAJA &val)
-  : m_cajas(n_rows,n_columns,val) {}
+template <class TBOX>
+MatrixByBoxes<TBOX>::MatrixByBoxes(size_type n_rows,size_type n_columns,const TBOX &val)
+  : box_matrix(n_rows,n_columns,val) {}
 
 //! @brief Constructor.
 //!
 //! @param dim: Dimensiones de rows and columns (square matrix).
-template <class TCAJA>
-MatPorCajas<TCAJA>::MatPorCajas(const std::vector<size_t> &dim)
-  :  m_cajas(dim.size(),dim.size())
+template <class TBOX>
+MatrixByBoxes<TBOX>::MatrixByBoxes(const std::vector<size_t> &dim)
+  :  box_matrix(dim.size(),dim.size())
   {
     for(register size_t i=1;i<=this->n_rows;i++)
       for(register size_t j=1;j<=this->n_columns;j++)
@@ -93,9 +93,9 @@ MatPorCajas<TCAJA>::MatPorCajas(const std::vector<size_t> &dim)
 //!
 //! @param dim_rows: row dimension.
 //! @param dim_columns: column dimension.
-template <class TCAJA>
-MatPorCajas<TCAJA>::MatPorCajas(const std::vector<size_t> &dim_rows,const std::vector<size_t> &dim_columns)
-  :  m_cajas(dim_rows.size(),dim_columns.size())
+template <class TBOX>
+MatrixByBoxes<TBOX>::MatrixByBoxes(const std::vector<size_t> &dim_rows,const std::vector<size_t> &dim_columns)
+  :  box_matrix(dim_rows.size(),dim_columns.size())
   {
     for(register size_t i=1;i<=this->n_rows;i++)
       for(register size_t j=1;j<=this->n_columns;j++)
@@ -103,22 +103,22 @@ MatPorCajas<TCAJA>::MatPorCajas(const std::vector<size_t> &dim_rows,const std::v
   }
 
 //! Constructor de copia.
-template <class TCAJA>
-MatPorCajas<TCAJA>::MatPorCajas(const MatPorCajas &otra)
-  : m_cajas(otra) {}
+template <class TBOX>
+MatrixByBoxes<TBOX>::MatrixByBoxes(const MatrixByBoxes &otra)
+  : box_matrix(otra) {}
 
 //! @brief Assignment operator.
-template <class TCAJA>
-MatPorCajas<TCAJA> &MatPorCajas<TCAJA>::operator=(const MatPorCajas<TCAJA> &m)
+template <class TBOX>
+MatrixByBoxes<TBOX> &MatrixByBoxes<TBOX>::operator=(const MatrixByBoxes<TBOX> &m)
   {
-    m_cajas::operator=(m);
+    box_matrix::operator=(m);
     return *this;
   }
 
 
 //! @brief Return el number of rows of the iRow-th row matrices.
-template <class TCAJA>
-size_t MatPorCajas<TCAJA>::get_rows_row(const size_t &iRow) const
+template <class TBOX>
+size_t MatrixByBoxes<TBOX>::get_rows_row(const size_t &iRow) const
   {
     size_t retval= 0;
     const size_t ncls= this->getNumberOfColumns();
@@ -131,8 +131,8 @@ size_t MatPorCajas<TCAJA>::get_rows_row(const size_t &iRow) const
   }
 
 //! @brief Return el number of columns de las matrices de the column c.
-template <class TCAJA>
-size_t MatPorCajas<TCAJA>::get_columns_column(const size_t c) const
+template <class TBOX>
+size_t MatrixByBoxes<TBOX>::get_columns_column(const size_t c) const
   {
     size_t retval= 0;
     const size_t nrows= this->getNumberOfRows();
@@ -145,8 +145,8 @@ size_t MatPorCajas<TCAJA>::get_columns_column(const size_t c) const
   }
 
 //! @brief Return el number of rows of each row.
-template <class TCAJA>
-std::vector<size_t> MatPorCajas<TCAJA>::get_dim_rows(void) const
+template <class TBOX>
+std::vector<size_t> MatrixByBoxes<TBOX>::get_dim_rows(void) const
   {
     const size_t nrows= this->getNumberOfRows();
     std::vector<size_t> retval(nrows,0);
@@ -155,8 +155,8 @@ std::vector<size_t> MatPorCajas<TCAJA>::get_dim_rows(void) const
     return retval;
   }
 //! @brief Return el number of rows of each column.
-template <class TCAJA>
-std::vector<size_t> MatPorCajas<TCAJA>::get_dim_columns(void) const
+template <class TBOX>
+std::vector<size_t> MatrixByBoxes<TBOX>::get_dim_columns(void) const
   {
     const size_t ncls= this->getNumberOfColumns();
     std::vector<size_t> retval(ncls,0);
@@ -165,8 +165,8 @@ std::vector<size_t> MatPorCajas<TCAJA>::get_dim_columns(void) const
     return retval;
   }
 //! @brief Return the sum of the rows of boxes.
-template <class TCAJA>
-size_t MatPorCajas<TCAJA>::getTotalNumberOfRows(void) const
+template <class TBOX>
+size_t MatrixByBoxes<TBOX>::getTotalNumberOfRows(void) const
   {
     std::vector<size_t> dim_rows= get_dim_rows();
     size_t tot_rows= dim_rows[0];
@@ -175,8 +175,8 @@ size_t MatPorCajas<TCAJA>::getTotalNumberOfRows(void) const
     return tot_rows;
   }
 //! @brief Return the sum of the columns of boxes.
-template <class TCAJA>
-size_t MatPorCajas<TCAJA>::getTotalNumberOfColumns(void) const
+template <class TBOX>
+size_t MatrixByBoxes<TBOX>::getTotalNumberOfColumns(void) const
   {
     std::vector<size_t> dim_columns= get_dim_columns();
     size_t tot_n_columns= dim_columns[0];
@@ -185,27 +185,27 @@ size_t MatPorCajas<TCAJA>::getTotalNumberOfColumns(void) const
     return tot_n_columns;
   }
 
-//! @brief Iguala todos los valores de todas las cajas to the argument.
-template <class TCAJA>
-void MatPorCajas<TCAJA>::Con(const value_type &d)
+//! @brief Assigns the argument to all the boxes.
+template <class TBOX>
+void MatrixByBoxes<TBOX>::Con(const value_type &d)
   {
     for(iterator i= this->begin();i!=this->end();i++)
       (*i).Con(d);
   }
 //! @brief Traspose the matrix.
-template <class TCAJA>
-MatPorCajas<TCAJA> &MatPorCajas<TCAJA>::Trn(void)
+template <class TBOX>
+MatrixByBoxes<TBOX> &MatrixByBoxes<TBOX>::Trn(void)
   {
-    m_cajas::Trn();
+    box_matrix::Trn();
     for(iterator i= this->begin();i!=this->end();i++)
       (*i).Trn();
     return *this;
   }
 //! @brief Return transposed.
-template <class TCAJA>
-MatPorCajas<TCAJA> MatPorCajas<TCAJA>::GetTrn(void) const
+template <class TBOX>
+MatrixByBoxes<TBOX> MatrixByBoxes<TBOX>::GetTrn(void) const
   {
-    MatPorCajas<TCAJA> m= *this;
+    MatrixByBoxes<TBOX> m= *this;
     m.Trn();
     return m;
   }
@@ -213,35 +213,35 @@ MatPorCajas<TCAJA> MatPorCajas<TCAJA>::GetTrn(void) const
 //! @brief Return the matrix that has the same number of boxes that this has
 //! blocks. We suppose that the number of rows of the blocks of a row is the
 //! same and that the number of columns of the blocks are also the same.
-template <class TCAJA>
-TCAJA MatPorCajas<TCAJA>::QuitaBloques(void)
+template <class TBOX>
+TBOX MatrixByBoxes<TBOX>::QuitaBloques(void)
   {
-    TCAJA retval(getTotalNumberOfRows(),getTotalNumberOfColumns());
+    TBOX retval(getTotalNumberOfRows(),getTotalNumberOfColumns());
     size_t f= 1,c= 1;
-    TCAJA caja;
+    TBOX box;
     for(size_t i= 1;i<=this->getNumberOfRows();i++)
       {
         for(size_t j= 1;j<=this->getNumberOfColumns();j++)
           {
-            caja= (*this)(i,j);
-            retval.PutCaja(f,c,caja);
-            c+= caja.getNumberOfColumns();
+            box= (*this)(i,j);
+            retval.putBox(f,c,box);
+            c+= box.getNumberOfColumns();
 	      }
-        f+= caja.getNumberOfRows();
+        f+= box.getNumberOfRows();
         c= 1;
       }
     return retval;
   }
 //! @brief Operador *=
-template <class TCAJA>
-MatPorCajas<TCAJA> &MatPorCajas<TCAJA>::operator*=(const TCAJA &m)
+template <class TBOX>
+MatrixByBoxes<TBOX> &MatrixByBoxes<TBOX>::operator*=(const TBOX &m)
   {
     this->Prod(m);
     return *this;
   }
 //! @brief Operador *=
-template <class TCAJA>
-MatPorCajas<TCAJA> &MatPorCajas<TCAJA>::operator*=(const value_type &d)
+template <class TBOX>
+MatrixByBoxes<TBOX> &MatrixByBoxes<TBOX>::operator*=(const value_type &d)
   {
     size_type i,sz= this->size();      
     for(i= 0;i<sz;i++)
@@ -249,10 +249,10 @@ MatPorCajas<TCAJA> &MatPorCajas<TCAJA>::operator*=(const value_type &d)
     return *this;
   }
 //! @brief Operador *=
-template <class TCAJA>
-MatPorCajas<TCAJA> &MatPorCajas<TCAJA>::operator*=(const MatPorCajas<TCAJA> &m)
+template <class TBOX>
+MatrixByBoxes<TBOX> &MatrixByBoxes<TBOX>::operator*=(const MatrixByBoxes<TBOX> &m)
   {
-    m_cajas::operator*=(m);
+    box_matrix::operator*=(m);
     return *this;
   }
 

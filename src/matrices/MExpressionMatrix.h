@@ -24,12 +24,12 @@
 #define MEXPRESSIONMATRIX_H
 
 #include "ExpressionMatrix.h"
-#include "mat_por_cajas.h"
+#include "matrix_by_boxes.h"
 
 class MMatrix;
 class ExprAlgebra;
 
-typedef MatPorCajas<ExpressionMatrix> m_expression_matrix;
+typedef MatrixByBoxes<ExpressionMatrix> m_expression_matrix;
 
 class MExpressionMatrix: public m_expression_matrix
   {

@@ -58,16 +58,16 @@ IndicesMatrix::IndicesMatrix(const m_int &posiciones,const std::vector<VIndices>
 		<< " (<" << nf*nc << ").\n";
   }
 //! @brief Return the row cuyos índices is being passed as parameter.
-IndicesMatrix IndicesMatrix::GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
+IndicesMatrix IndicesMatrix::getBox(size_t f1, size_t c1, size_t f2, size_t c2) const
   { return IndicesMatrix(*this,f1,c1,f2,c2); }
 
 //! @brief Return the iRow-th row.
 IndicesMatrix IndicesMatrix::getRow(size_t iRow) const
-  { return GetCaja(iRow,1,iRow,this->n_columns); }
+  { return getBox(iRow,1,iRow,this->n_columns); }
 
 //! @brief Retunr the iCol-th column.
 IndicesMatrix IndicesMatrix::getColumn(size_t iColumn) const
-  { return GetCaja(1,iColumn,this->n_rows,iColumn); }
+  { return getBox(1,iColumn,this->n_rows,iColumn); }
 
 //! @brief Agrega a todos los miembros el valor
 //! que is being passed as parameter.

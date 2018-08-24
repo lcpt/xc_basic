@@ -39,15 +39,16 @@ class ProtoMatrix
       { PutDim(n_rows,n_columns); }
     inline virtual bool check_range(const size_t &iRow,const size_t &col) const
       { return ((iRow<=n_rows) && (col<=n_columns)); }
-    inline void check_put_caja(size_t f,size_t c,const ProtoMatrix &caja) const
+    inline void check_put_box(size_t f,size_t c,const ProtoMatrix &box) const
       {
-        if(((f+caja.getNumberOfRows())>(n_rows+1)) || ((c+caja.getNumberOfColumns())>(n_columns+1)))
-          std::cerr << "Indices erróneos en función PutCaja." << std::endl;
+        if(((f+box.getNumberOfRows())>(n_rows+1)) || ((c+box.getNumberOfColumns())>(n_columns+1)))
+          std::cerr << __FUNCTION__
+	            << "; indices out of range." << std::endl;
       }
-    inline void check_get_caja(size_t f1, size_t c1, size_t f2, size_t c2) const
+    inline void check_get_box(size_t f1, size_t c1, size_t f2, size_t c2) const
       {
         if ( (f2 < f1) || (c2 < c1) )
-          std::cerr << "Indices erróneos en función GetCaja." << std::endl;
+          std::cerr << "Indices erróneos en función getBox." << std::endl;
       }
     inline void check_sto_sum(const ProtoMatrix &m) const
       {

@@ -155,12 +155,12 @@ class matdispZ : public ZMatrix<numero>
         retval.Trn();
         return retval;
       }
-    matdispZ<numero> GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const;
+    matdispZ<numero> getBox(size_t f1, size_t c1, size_t f2, size_t c2) const;
     matdispZ<numero> getRow(size_t iRow) const
-      { return GetCaja(iRow,1,iRow,this->n_columns); }
+      { return getBox(iRow,1,iRow,this->n_columns); }
     matdispZ<numero> getColumn(size_t col) const
-      { return GetCaja(1,col,this->n_rows,col); }
-    void PutCaja(size_t f,size_t c,const matdispZ<numero> &caja);
+      { return getBox(1,col,this->n_rows,col); }
+    void putBox(size_t f,size_t c,const matdispZ<numero> &box);
     numero Traza(void) const;
     ZMatrix_number GetCompleta(void) const;
 
@@ -499,29 +499,29 @@ void matdispZ<numero>::writeCpp(std::ostream &os) const
 
 
 template <class numero>
-matdispZ<numero> matdispZ<numero>::GetCaja(size_t f1, size_t c1, size_t f2, size_t c2) const
+matdispZ<numero> matdispZ<numero>::getBox(size_t f1, size_t c1, size_t f2, size_t c2) const
   {
     // XXX "mejorar esta rutina"
-    this->check_get_caja(f1,c1,f2,c2);
-    matdispZ<numero> caja(f2-f1+1,c2-c1+1);
+    this->check_get_box(f1,c1,f2,c2);
+    matdispZ<numero> box(f2-f1+1,c2-c1+1);
     const_c_iterator c;
     const_f_iterator f;
     for(c= columns.begin();c!=columns.end();c++)
       for(f= c->second.begin();f!=c->second.end();f++)
         if( (c->first>=c1) && (c->first<=c2) &&
             (f->first>=f1) && (f->first<=f2))
-          caja(f->first-f1+1,c->first-c1+1)= f->second;
-    return caja;
+          box(f->first-f1+1,c->first-c1+1)= f->second;
+    return box;
   }
 
 template <class numero>
-void matdispZ<numero>::PutCaja(size_t f,size_t c,const matdispZ<numero> &caja)
+void matdispZ<numero>::putBox(size_t f,size_t c,const matdispZ<numero> &box)
   {
-    check_put_caja(f,c,caja);
+    check_put_box(f,c,box);
     size_t i,j;
-    for (i=1;i<=caja.n_rows;i++)
-      for (j=1;j<=caja.n_columns;j++)
-        (*this)(i+f-1,j+c-1)= caja(i,j);
+    for (i=1;i<=box.n_rows;i++)
+      for (j=1;j<=box.n_columns;j++)
+        (*this)(i+f-1,j+c-1)= box(i,j);
     Compacta();
   }
 
