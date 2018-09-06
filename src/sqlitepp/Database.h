@@ -137,7 +137,7 @@ m_opendbs vector. New Query objects can then reuse old connections.
        { return database; }
 
    private:
-     Database(const Database& ) : m_mutex(m_mutex) {}
+     Database(const Database &other) : m_mutex(other.m_mutex) {} //LCPT 6/9/2018 
      Database& operator=(const Database& ) { return *this; }
      void error(const char *format, ...);
      //

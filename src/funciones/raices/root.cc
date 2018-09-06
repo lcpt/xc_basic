@@ -328,33 +328,37 @@ int DeflatePolyRoots(double* coeff, double initGuess,
   for (i = 0; i < n; i++)
      *(a + i) = *(coeff + i);
 
-  while (iter++ <= maxIter && n > 1) {
-     z = x;
-     *(b + n - 1) = *(a + n - 1);
-     *(c + n - 1) = *(a + n - 1);
-     for (i = n - 2; i > 0; i--) {
-       *(b + i) = *(a + i) + z * *(b + i + 1);
-       *(c + i) = *(b + i) + z * *(c + i + 1);
-     }
-     *b = *a + z * *(b + 1);
-     diff = *b / *(c + 1);
-     x -= diff;
-     if (fabs(diff) <= tolerance) {
-       iter = 1; /* reset iteration counter */
-       n--;
-       *(roots + *numRoots) = x;
-       *numRoots += 1;
-       /* update deflated roots */
-       for (i = 0; i < n; i++)
-         *(a + i) = *(b + i + 1);
-         /* get the last root */
-         if (n == 2) {
-           n--;
-           *(roots + *numRoots) = -(*a);
-           *numRoots += 1;
-         }
-     }
-  }
+  while (iter++ <= maxIter && n > 1)
+    {
+      z = x;
+      *(b + n - 1) = *(a + n - 1);
+      *(c + n - 1) = *(a + n - 1);
+      for (i = n - 2; i > 0; i--)
+	{
+	  *(b + i) = *(a + i) + z * *(b + i + 1);
+	  *(c + i) = *(b + i) + z * *(c + i + 1);
+        }
+      *b = *a + z * *(b + 1);
+      diff = *b / *(c + 1);
+      x -= diff;
+      if(fabs(diff) <= tolerance)
+	{
+	  iter = 1; /* reset iteration counter */
+	  n--;
+	  *(roots + *numRoots) = x;
+	  *numRoots += 1;
+	  /* update deflated roots */
+	  for(i = 0; i < n; i++)
+	    *(a + i) = *(b + i + 1);
+	  /* get the last root */
+	  if(n == 2)
+	    {
+	      n--;
+	      *(roots + *numRoots) = -(*a);
+	      *numRoots += 1;
+	    }
+	}
+    }
   /* deallocate dynamic arrays */
   free(a);
   free(b);

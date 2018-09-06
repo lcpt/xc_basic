@@ -286,8 +286,8 @@ void matdispZ<numero>::sp_vector::PutCol(const typename sp_vector::size_type c,Z
 template<class numero>
 typename matdispZ<numero>::sp_vector matdispZ<numero>::sp_vector::getNumberOfRows(const typename sp_vector::size_type f1,const typename sp_vector::size_type f2) const
   {
-    if(f2<f1) return;
     sp_vector retval;
+    if(f2<f1) return retval;
     const_iterator f;
     for(f= this->begin();f!=this->end();f++)
       if((f->first>=f1) && (f->first<=f2))
