@@ -26,8 +26,6 @@ xc_basic installation.
          -SQLite 3 development files (libsqlite3).
          -VTK (Visualization ToolKit <http://www.vtk.org>).
          -X11 (libX11-dev).
-         -HDF5 (www.hdfgroup.org). Salome interface.
-         -MED V3.0 (www.code-aster.org/outils/med). Salome interface.
 
       You can find a list of the Ubuntu (or Debian) packages you need to
       fulfill the installation in "doc/needed_packages.txt". If you have
