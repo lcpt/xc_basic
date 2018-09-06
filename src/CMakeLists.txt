@@ -42,12 +42,11 @@ find_package(VTK REQUIRED)
 find_package(GTK2 REQUIRED gtk)
 set(Boost_USE_STATIC_LIBS   ON)
 set(Boost_USE_MULTITHREADED ON)
-#set(Boost_DETAILED_FAILURE_MSG ON)
-find_package(Boost 1.38 COMPONENTS regex math)
+set(Boost_DETAILED_FAILURE_MSG ON)
+find_package(Boost 1.65.1 COMPONENTS regex math_c99 math_c99f math_c99l math_tr1 math_tr1f math_tr1l)
 find_package(SQLITE3 REQUIRED)
-find_package(MED REQUIRED)
 find_package(ExecInfo)
-find_package(HDF5 REQUIRED)
+find_package(MPI REQUIRED)
 
 if(GTK2_FOUND)
   include_directories(${GTK2_INCLUDE_DIRS})
@@ -57,18 +56,11 @@ IF(USE_VTK_FILE)
   message(STATUS "vtk file:  ${USE_VTK_FILE}")
   SET(VTK_FOUND 1)
 ENDIF(USE_VTK_FILE)
-if(MED_FOUND)
-  include_directories(${MED_INCLUDE_DIRS})
+if(MPI_FOUND)
+  include_directories(${MPI_INCLUDE_PATH})
 endif()
 
 INCLUDE_DIRECTORIES(${GTK_INCLUDE_DIR})
-include_directories(${HDF5_INCLUDE_DIRS})
-include_directories(${HDF5_HEADER_INCLUDE_DIR})
-message(STATUS "hdf5 found:  ${HDF5_FOUND}")
-# message(STATUS "********* hdf5 version: " ${HDF5_VERSION})
-# message(STATUS "********* hdf5 includes: " ${HDF5_INCLUDE_DIRS})
-# message(STATUS "********* hdf5 include: " ${HDF5_INCLUDE_FILENAME})
-# message(STATUS "********* hdf5 definitions: " ${HDF_DEFINITIONS})
 
 SET(text text/text_string text/LabelContainer text/en_letra text/StrTok text/tab_cod text/latex text/StringFormatter text/FixedWidthReader)
 
@@ -92,9 +84,7 @@ SET(misc_funciones funciones/estadisticas/statlib funciones/estadisticas/Muestra
 
 SET(funciones ${algebra} ${misc_funciones})
 
-SET(MedXC  med_xc/CellModel med_xc/MEDMEM_CellModel med_xc/InterpKernelGaussCoords med_xc/InterpKernelException med_xc/MEDMEM_Coordinate med_xc/MEDMEM_DriversDef med_xc/MEDMEM_Exception med_xc/MEDMEM_Family med_xc/MEDMEM_Field med_xc/MEDMEM_GaussLocalization med_xc/MEDMEM_GenDriver med_xc/MEDMEM_Grid med_xc/MEDMEM_Group med_xc/MEDMEM_Init med_xc/MEDMEM_MedFileBrowser med_xc/MEDMEM_MedVersion med_xc/MEDMEM_MeshFuse med_xc/MEDMEM_PorflowMeshDriver med_xc/MEDMEM_RCBase med_xc/MEDMEM_SkyLineArray med_xc/MEDMEM_Support med_xc/MEDMEM_TopLevel med_xc/MEDMEM_Unit med_xc/MEDMEM_Connectivity med_xc/MEDMEM_ConnectZone med_xc/MEDMEM_DriverFactory med_xc/MEDMEM_DriverTools med_xc/MEDMEM_Mesh med_xc/MEDMEM_GMesh med_xc/PointLocator med_xc/MEDMEM_Meshing med_xc/MEDMEM_VtkMeshDriver med_xc/MEDMEM_GibiMeshDriver med_xc/MEDMEM_EnsightFieldDriver med_xc/MEDMEM_EnsightMeshDriver med_xc/MEDMEM_EnsightMedDriver med_xc/MEDMEM_EnsightUtils med_xc/MEDMEM_MedMeshDriver med_xc/MEDMEM_VtkMedDriver med_xc/MEDMEM_InterlacingPolicy)
-
-ADD_LIBRARY(xc_basic ${tiempo} ${text} ${streams} ${stl} ${util} ${sqlitepp} ${matrices} ${skypack} ${itpack} ${umfpack} ${funciones} ${unidades} ${MedXC})
+ADD_LIBRARY(xc_basic ${tiempo} ${text} ${streams} ${stl} ${util} ${sqlitepp} ${matrices} ${skypack} ${itpack} ${umfpack} ${funciones} ${unidades})
 INSTALL(TARGETS xc_basic DESTINATION lib)
  
 SET(CPACK_GENERATOR "DEB")
