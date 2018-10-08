@@ -14,7 +14,7 @@ PROJECT(xc_basic)
 SET(xc_basic_DIR ${CMAKE_SOURCE_DIR}/..)
 message(STATUS "project dir: ${xc_basic_DIR}")
 string(REGEX REPLACE "/xc_basic/src.*" "" xc_basic_INC ${CMAKE_SOURCE_DIR})
-message(STATUS "include dir: "${xc_basic_INC})
+message(STATUS "include dir: " ${xc_basic_INC})
 SET(xc_basic_LIB ${xc_basic_INC}/xc_basic/lib)
 message(STATUS "lib dir: ${xc_basic_LIB}")
 
