@@ -66,7 +66,7 @@ SET(text text/text_string text/LabelContainer text/en_letra text/StrTok text/tab
 
 SET(streams streams/imanip streams/prep)
 
-SET(util util/cmd_args util/memoria util/inercia util/print_trace)
+SET(util util/cmd_args util/memoria util/inertia util/print_trace)
 
 SET(sqlitepp sqlitepp/Database  sqlitepp/Query  sqlitepp/StderrLog  sqlitepp/SysLog)
 
@@ -87,23 +87,3 @@ SET(funciones ${algebra} ${misc_funciones})
 ADD_LIBRARY(xc_basic ${tiempo} ${text} ${streams} ${stl} ${util} ${sqlitepp} ${matrices} ${skypack} ${itpack} ${umfpack} ${funciones} ${unidades})
 INSTALL(TARGETS xc_basic DESTINATION lib)
  
-SET(CPACK_GENERATOR "DEB")
-INCLUDE(InstallRequiredSystemLibraries)
-
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "xc_basic")
-SET(CPACK_PACKAGE_VENDOR "XC")
-SET(CPACK_PACKAGE_DESCRIPTION_FILE "${xc_basic_DIR}/readme.txt")
-SET(CPACK_RESOURCE_FILE_LICENSE "${xc_basic_DIR}/license.txt")
-SET(CPACK_PACKAGE_VERSION_MAJOR "0")
-SET(CPACK_PACKAGE_VERSION_MINOR "12")
-SET(CPACK_PACKAGE_VERSION_PATCH "0")
-SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}")
-
-SET(CPACK_DEBIAN_PACKAGE_NAME "xc_basic")
-SET(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
-SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libstdc++6 (>=4.3), libgcc1 (>=1:4.3), libc6 (>=2.7), libvtk5 (>=5.0)")
-SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Luis C. Pérez Tato") #required
-SET(CPACK_DEBIAN_PACKAGE_DESCRIPTION "Biblioteca de funciones para XC y otros programas.")
-SET(CPACK_DEBIAN_PACKAGE_SECTION "contrib/science")
- 
-INCLUDE(CPack)
