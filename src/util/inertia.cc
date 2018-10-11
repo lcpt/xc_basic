@@ -18,12 +18,13 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//inercia.cc
+//inertia.cc
 
-#include "inercia.h"
+#include "inertia.h"
 #include <iostream>
 
-double theta_inercia(const double &Ix,const double &Iy,const double &Pxy)
+//! @brief Return the angle that defines a principal axes of inertia.
+double theta_inertia(const double &Ix,const double &Iy,const double &Pxy)
   {
     const double tol= std::numeric_limits<double>::epsilon();
     const double eps= abs(Ix-Iy)/std::max(Ix,Iy);

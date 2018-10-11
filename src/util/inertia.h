@@ -18,28 +18,27 @@
 // junto a este programa. 
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
-//inercia.h
+//inertia.h
 
-#ifndef INERCIA_H
-#define INERCIA_H
+#ifndef INERTIA_H
+#define INERTIA_H
 
 #include <cmath>
 #include "matem.h"
 
-//! @brief Devuelve el ángulo que define un eje principal de inercia.
-double theta_inercia(const double &Ix,const double &Iy,const double &Pxy);
+double theta_inertia(const double &Ix,const double &Iy,const double &Pxy);
 
-//! @brief Funcion auxiliar para calcular los momentos principales de inercia.
-inline double R_inercia(const double &Ix,const double &Iy,const double Pxy)
+//! @brief Auxiliary function to compute principal moments of inertia.
+inline double R_inertia(const double &Ix,const double &Iy,const double Pxy)
   { return sqrt(sqr((Ix-Iy)/2)+sqr(Pxy)); }
 
-//! @brief Devuelve el momento de inercia principal mayor.
-inline double I1_inercia(const double &iy,const double &iz,const double &pyz)
-  { return (iy+iz)/2+R_inercia(iy,iz,pyz); }
+//! @brief Return the principal major moment of inertia.
+inline double I1_inertia(const double &iy,const double &iz,const double &pyz)
+  { return (iy+iz)/2+R_inertia(iy,iz,pyz); }
 
-//! @brief Devuelve el momento de inercia principal menor.
-inline double I2_inercia(const double &iy,const double &iz,const double &pyz)
-  { return (iy+iz)/2-R_inercia(iy,iz,pyz); }
+//! @brief Return the principal minor moment of inertia.
+inline double I2_inertia(const double &iy,const double &iz,const double &pyz)
+  { return (iy+iz)/2-R_inertia(iy,iz,pyz); }
 
 
 #endif
