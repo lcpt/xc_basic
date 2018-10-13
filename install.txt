@@ -5,14 +5,14 @@ xc_basic installation.
     I'ts not always easy to verify than installation works properly
     (obviously the developer's machine is the worst place to test
     installation process). If you find a bug in the installation please 
-    feel free to write to l.pereztato@gmail.com.
+    feel free to add an issue at https://github.com/xcfem/xc/issues.
 
 1.- Pre-requisites.
 
     xc_basic is a C++ (and fortran) library, so a C++ and a Fortran
     compiler are necessary. The library and test programs were tested
     with GNU C++ and Fortran version 4.8.2
-    
+
 
     - You will also need CMake also ((http://www.cmake.org/).
     - The library is suposed to be used over Linux, maybe it's possible
