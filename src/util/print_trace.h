@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-//  biblioteca xc_basic; funciones y clases de uso general
+//  xc_basic library; general purpose classes and functions.
 //
 //  Copyright (C)  Luis Claudio Pérez Tato
 //

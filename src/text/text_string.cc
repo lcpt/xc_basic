@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-//  biblioteca xc_basic; funciones y clases de uso general
+//  xc_basic library; general purpose classes and functions.
 //
 //  Copyright (C)  Luis Claudio Pérez Tato
 //
@@ -603,10 +603,10 @@ const std::deque<std::string> &separa_sumandos(const std::string &str)
 
 //! Recibe una text string del tipo:
 //
-//! nombre_funcion(arg1,arg2,arg3,...)
+//! function_name(arg1,arg2,arg3,...)
 //!
 //! y devuelve las text strings;
-//! - retval[0]= nombre_funcion
+//! - retval[0]= function_name
 //! - retval[1]= arg1,arg2,arg3,...
 //!
 std::deque<std::string> getfuncargs(const std::string &str)
@@ -622,10 +622,10 @@ std::deque<std::string> getfuncargs(const std::string &str)
 
 //! Recibe una text string del tipo:
 //
-//! nombre_funcion(arg1,arg2,arg3,...)
+//! function_name(arg1,arg2,arg3,...)
 //!
 //! y devuelve las text strings;
-//! - retval[0]= nombre_funcion
+//! - retval[0]= function_name
 //! - retval[1]= arg1
 //! - retval[2]= arg2
 //! - retval[3]= arg3

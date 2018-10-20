@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-//  biblioteca xc_basic; funciones y clases de uso general
+//  xc_basic library; general purpose classes and functions.
 //
 //  Copyright (C)  Luis Claudio Pérez Tato
 //
@@ -19,8 +19,8 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //gj_aux.h
-//Funciones auxiliares para los  mEtodos
-//de Gauss y de Jordan para la solucion de un sistema de ecuaciones lineal.
+//Auxiliary functions for the Gauss and Jordan methods
+//for solving linear systems of equations.
 
 #ifndef GJ_AUX_H
 #define GJ_AUX_H
@@ -28,8 +28,8 @@
 #include "math.h"
 const double zero = 1e-7;
 
-//Las funciones siguientes deberAn estar definidas para cualquier objeto
-//con el que se quieran emplear las rutinas de gauss.h y jordan.h
+//The following functions must be defined for any object intended to be
+//used with the routines from gauss.h and jordan.h
 
 inline double gj_abs(const double &r)
   { return fabs(r); }

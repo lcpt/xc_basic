@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-//  biblioteca xc_basic; funciones y clases de uso general
+//  xc_basic library; general purpose classes and functions.
 //
 //  Copyright (C)  Luis Claudio Pérez Tato
 //
@@ -19,7 +19,7 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //prep.h
-//Funciones de preprocesamiento.
+//Preprocessing functions.
 
 #ifndef PREP_H
 #define PREP_H

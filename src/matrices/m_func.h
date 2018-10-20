@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-//  biblioteca xc_basic; funciones y clases de uso general
+//  xc_basic library; general purpose classes and functions.
 //
 //  Copyright (C)  Luis Claudio Pérez Tato
 //
@@ -19,8 +19,8 @@
 // En caso contrario, consulte <http://www.gnu.org/licenses/>.
 //----------------------------------------------------------------------------
 //m_func.h
-//Matrices de funciones reales de n variables, esto es
-//una función de Rn en Rn.
+//Matrices of real functions of n variables, that is a function
+//from Rn to Rn.
 
 #ifndef M_FUNC_H
 #define M_FUNC_H

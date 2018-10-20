@@ -78,12 +78,12 @@ SET(itpack itpack/dsrc2c.f itpack/jcg.f itpack/jsi.f itpack/rscg.f itpack/rssi.f
 
 SET(umfpack umfpack/umd2fb.f umfpack/umd2co.f umfpack/umd2fa.f umfpack/umd2f0.f umfpack/umd2f1.f umfpack/umd2f2.f umfpack/umd2fg.f umfpack/umd2in.f umfpack/umd2of.f umfpack/umd2s2.f umfpack/umd2sl.f umfpack/umd2so.f umfpack/umd2su.f umfpack/umd2er.f umfpack/umd2p1.f umfpack/umd2p2.f umfpack/umd2lt.f umfpack/umd2ut.f umfpack/umd2rf.f umfpack/umd2ra.f umfpack/umd2r0.f umfpack/umd2r2.f umfpack/umd2rg.f umfpack/umd21i.f umfpack/mc21b.f umfpack/mc13e.f)
 
-SET(algebra funciones/algebra/TablaLiterales funciones/algebra/ArbolExpr funciones/algebra/ExprAlgebra funciones/algebra/Expresion funciones/algebra/ExprInfija funciones/algebra/ExprPostfija funciones/algebra/LexAlgebra funciones/algebra/Lexico funciones/algebra/Literal funciones/algebra/OpBinario funciones/algebra/OpComparacion funciones/algebra/OpBooleano funciones/algebra/Macaulay funciones/algebra/Operando funciones/algebra/OpUnario funciones/algebra/ProtoExpr funciones/algebra/Rama funciones/algebra/Variable funciones/algebra/Operador funciones/algebra/Segnal funciones/algebra/ExprFunctor funciones/algebra/OpndoConNombre funciones/algebra/OpTrigonometricas funciones/algebra/ConjVariables funciones/algebra/MapValores funciones/algebra/integ_num)
+SET(algebra functions/algebra/TablaLiterales functions/algebra/ArbolExpr functions/algebra/ExprAlgebra functions/algebra/Expresion functions/algebra/ExprInfija functions/algebra/ExprPostfija functions/algebra/LexAlgebra functions/algebra/Lexico functions/algebra/Literal functions/algebra/OpBinario functions/algebra/OpComparacion functions/algebra/OpBooleano functions/algebra/Macaulay functions/algebra/Operando functions/algebra/OpUnario functions/algebra/ProtoExpr functions/algebra/Rama functions/algebra/Variable functions/algebra/Operador functions/algebra/Segnal functions/algebra/ExprFunctor functions/algebra/OpndoConNombre functions/algebra/OpTrigonometricas functions/algebra/ConjVariables functions/algebra/MapValores functions/algebra/integ_num)
 
-SET(misc_funciones funciones/estadisticas/statlib funciones/estadisticas/Muestra funciones/estadisticas/combinatoria funciones/extremos/extremo funciones/macaulay/Macaulay funciones/polinomios/Polinomio funciones/polinomios/IndPol funciones/polinomios/NmbVars funciones/raices/NewtonRaphson funciones/raices/root funciones/funcs_forma/FForma funciones/funcs_forma/PtosIntegracion)
+SET(functions_misc functions/estadisticas/statlib functions/estadisticas/Muestra functions/estadisticas/combinatoria functions/extremos/extremo functions/macaulay/Macaulay functions/polinomios/Polinomio functions/polinomios/IndPol functions/polinomios/NmbVars functions/raices/NewtonRaphson functions/raices/root functions/funcs_forma/FForma functions/funcs_forma/PtosIntegracion)
 
-SET(funciones ${algebra} ${misc_funciones})
+SET(functions ${algebra} ${functions_misc})
 
-ADD_LIBRARY(xc_basic ${tiempo} ${text} ${streams} ${stl} ${util} ${sqlitepp} ${matrices} ${skypack} ${itpack} ${umfpack} ${funciones} ${unidades})
+ADD_LIBRARY(xc_basic ${tiempo} ${text} ${streams} ${stl} ${util} ${sqlitepp} ${matrices} ${skypack} ${itpack} ${umfpack} ${functions} ${unidades})
 INSTALL(TARGETS xc_basic DESTINATION lib)
  

@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-//  biblioteca xc_basic; funciones y clases de uso general
+//  xc_basic library; general purpose classes and functions.
 //
 //  Copyright (C)  Luis Claudio Pérez Tato
 //
@@ -25,7 +25,7 @@
 #define POLYNOMIALMATRIX_H
 
 #include "ZMatrix.h"
-#include "xc_basic/src/funciones/polinomios/Polinomio.h"
+#include "xc_basic/src/functions/polinomios/Polinomio.h"
 #include "m_double.h"
 
 typedef ZMatrix<Polinomio> polynomial_matrix;
