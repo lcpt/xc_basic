@@ -2,4 +2,4 @@
 
 Basic C++ library for <a href="https://github.com/xcfem/xc" target="_new">XC</a> and some other programs.
 
-You need to clone this repository if you want to compile XC (that will be simplified in a future version of XC).
+THIS REPOSITORY HAS BEEN MERGED INTO xc_utils. IT IS NOT NEEDED ANYMORE AND IT WILL BE FROZEN SOON.
